@@ -1,0 +1,62 @@
+Hey everyone!!
+
+***RSVP Goddammit***
+
+The RSVP Functionality is up and Ready.  Everyone RSVP so I have an idea of who is all comin' to LAN 3².  Here's the procedure:
+
+1. If you don't have a login, create one, by going to: http://www.gummlanparty.net/newmember.asp
+2. Login to GummLANParty.net
+3. Edit your profile, you'll see the RSVP info at the bottom
+4. To see who's all comin, go to the Statistics section.  This will list all the information on the next LAN Party as well as the past LAN Parties.
+
+I want everyone to RSVP, which means I want everyone to gimme thier information . . . and please, give me real data, I intend on sending out Physical Newsletters to everyone, as a hard-copy reminder.
+
+
+***Jedi Knight II***
+
+This is a Great Game.  My Brother and I have been playing this quite a bit, but we've not yet played against each other.  I don't know about you, but I think the dark side is far more fun than the light side.  The Dark side has all agressive force powers, where the light side does pretty much defensive moves.  You know what they say: The best Defense is a good offense.
+
+I, as well as I'm sure castro and Slaw, would like to see this game have a substantial popularity at the next LAN, and I'll be trying to help that along by making a ton of copies.
+
+
+***ECS K7S5A Overclocked***
+
+I had previously been under the impression that the K7S5A was not overclockable.  Since the only BIOS Bus Speeds are 100 and 133, and there is no playing with the FSB.  But I came across a ROM to Flash my BIOS with a hacked ROM, that included different FSB Speeds.  This is bloody nice.  I am able to run my AMD XP1800+ successfully at XP1900+ by setting the FSB to 138MHz.  This board doesn't go in increments of 1MHz, and the next step above 138MHz is 150MHz.  The computer will boot at that speed (effectivly running at XP2100+), but windows crashes before it's finished loading.  I can't mess with the voltage, so I'll just hafta settle with 1900+.
+
+After Overclocking my CPU, I went ahead and jumped my GeForce3 Ti200 to 200 MHz and the RAM clock to 460Mhz.  I finally broke the 7000 barrier with 3D Mark 2001 - I scored over 7100 . . . excellent.  Since I am in competition with Slaw, I've recently ordered a new Mobo the famed Abit KR7A-Raid.  And I scored it for a measly $90 + $10 shipping.  Excellent.  I'll be clocking the shit out of this mother now.
+
+If you have a K7S5A, let me know and I can get you the ROM to overclock your CPU.
+
+I don't knwo if any of you saw on the message board, but I found some info on a dude that overclocked a Pentium 4 2.2 GHz to 3.675 GHz!!  Of course to do something like that required a bit more cooling power than you standard water cooler.  But i know what would work . . . Liquid Nitrogen . . . which is what they used - pretty nuts.  Check out the messageboard, you'll find it, it's labeled: "Ohh...MY...dad!" 
+
+
+***Conclusion***
+
+LAN Party 3² -> Saturday, June 8th, 2002 @ 5PM
+
+Now that the RSVP Section is up a little less than a month before the Next LAN, I expect everyone to RSVP.  Also, it wouldn't be a bad idea to check out the message board, as there have been a lot of superimposed pictures of my head on practically everything.
+
+The Stories section has gotten a lot of action in the last week, it'd be nice to see it get more.
+
+Story: What will Happen?
+One time, Funger sucked on a donkey, but it was juicy and soft. and then he made wu-tang suck it. Then one day old dirty bastard came with his crooked old dirty nasty teeth to eat his ass. Unger then broke out the porn and the vasaline and slicked his hair , pubic hair that is , all the way back. behind his anus hole. & tied his ass hair in a square knot. and slipped it back into place, where the sun don't shine ever. The next day Bill Gates decided it was time for action, so he hopped into his hoochie mobile ready for a night of . . . 
+
+Finish it off at http://www.gummlanparty.net/story.asp
+
+
+Again : LAN Party 3² -> Saturday, June 8th, 2002 @ 5PM
+
+How bout one more time: LAN Party 3² -> Saturday, June 8th, 2002 @ 5PM
+
+JUNE 8 DON'T FORGET THAT THERE IS A LAN PARTY AT THE NORMAL PLACE AND THE NORMAL TIME
+
+I'd like to see everyone show up, since the theatre will maybe have died down a little, and everyone is off school (college people at least).
+
+Alrighty, one last time : LAN Party 3² -> Saturday, June 8th, 2002 @ 5PM
+
+"You don't need a million dollars to do nothing, man. Just take a look at my cousin, he's broke, don't do shit."
+
+http://www.gummlanparty.net
+
+-Gumm
+

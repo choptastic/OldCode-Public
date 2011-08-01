@@ -1,0 +1,79 @@
+Hey everyone, just letting everyone know the status of the new website, on which I am so diligently working (seriously, I'm working like 5 hours/day).
+
+And for those of you that don't remember or haven't read the last newsletter, the site is being completely rebuilt from scratch.  Using a 3-tiered.... goddammit, read the last newsletter first.
+
+
+***New Logo***
+
+Since the creation of GummLANParty.net, I've never made a Logo.  I Finally did for the new stuff.  I've had many critics of it, who ask such meaningless questions as "What does a butterfly knife have to do with GummLANParty?" And to that I answer "Everything, Bitch!  Don't question me or I'll flip out and cut your head off and not even care about it" (a realultimatepower.net reference).
+
+Anyways, if you're bored, check out the new logo at : 
+
+http://www.gummlanparty.net/viewblock.asp?C=2236
+
+
+***Backwards compatible (kinda)***
+
+Almost all the functionality of the old (current) site will exist in the new site.  I will be taking out some of the old stupid stuff that no one uses (like the Stories Section).  But the major stuff is still all there, like The Forum and RSVPing (terminology that is changed to Registering in the new site).
+
+
+***Registering and Computers***
+
+When you edit your profile, you have the ability to inventory your computers you own.  For instance I have Mine, Jeff's, Nelly's and the Server.
+
+When you register, you will no longer fill in a text box of the number of computers you are bringing, you simply check the boxes of the computers you have inventoried to bring.
+
+
+***Staff***
+
+I intend on having a "Staff".  This will be certain individuals that have contributed a huge amount of time and effort to help me make these things.  They're primary purpose is to write articles relating to games and technology, as well as helping me moderate the forum, and possibly writing newsletters, but I'm not sure quite yet.  If you want to write articles for the new website, just let me know, and I can certainly arrange that.
+
+
+***Articles***
+
+In contrast to the existing Games Section which sucks balls, there will be Articles ranging anywhere from Games reviews, to technology reports, to Rants about Microsoft.  If all goes well, I'd hope there to be at least 2 articles a week for people to read.  I know I can produce at least 1 a week.
+
+
+***Survey***
+
+I know I tried this a few months ago and it failed miserably, but I'd like to bring back the weekly survey.  I have every intention on doing so, and you can expect there to be a survey on the new website.
+
+
+***Store***
+
+Maybe I'll have T-Shirts up for sale.... probably not... I don't know.  They're bloody expensive.  I figure I'd sell them at cost to the current members (or maybe a $1 profit... they average at about $7-8 a piece).  I don't know, it would certainly help to advertise GummLANParty.net to help produce enough people to have a successful first public LAN Party.  That would be sweet.
+
+If I do do that section, at first it would be all Paypal payments, or Check, cuz I don't have the time to mess around with Verisign or anything for the Credit Card processing
+
+
+***Finally, a Release Date***
+
+Ob boy.... I'm gonna try to set a date that I'll be doing this, but it'll be hard to guess as school starts Wednesday.  Okay here's the projected date, and I'll try to guess late.
+
+Expect the changes to be finished and uploaded to GummLANParty.net by :
+
+Monday September 9th, 2002.
+
+The website will go down for 30 minutes to 3 hours that night to import all the old data to the new table structure (even that's been changed).  Even though I will have all the procedures to import the data, error's are never forseen.
+
+
+***Requirements***
+
+According to Israr, 96 percent of all internet users use IE.  This is nice as the main browser fow which I'm developing this is IE, but I also have Netscape 4.7, Netscape 6, Mozilla 1.1, and Opera 6 on which I'm testing the website.  The only problems right now really are that Netscape 4.7 doesn't support many of the stylesheet formatting options that I'm using, so the site will look rather plain to losers like you using Netscope 4.7.  But it works well on Opera, and it's flawless on Netscape 6, Mozilla 1.1 and IE 6.
+
+So there ya go. I'm also using a considerable amount of JavaScript on the site, so you will need JavaScript allowed (including popup windows, which are now part of the forum interface, not for ads)
+
+
+***Conclusion***
+
+Once again expect the website to go down Late Sunday/Early Monday for the nwe changes to be implemented, and when you visit the site on Monday, it'll be a whole new submersive experience.
+
+Until then, continue to check the forum, and remember at the latest, the next LAN Party is :
+
+Saturday, January 4th, 2003 @ 5 PM
+
+"Shoot the hostage"
+
+Later muh bruthas and sistas,
+
+-Gumm

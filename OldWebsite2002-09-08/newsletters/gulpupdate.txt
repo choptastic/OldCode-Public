@@ -1,0 +1,82 @@
+Hello everyone,
+
+Here's an update on some stuff.
+
+First and formost, LAN 8 will be here in only 3 days.  That's right . . . Three days.
+
+So we prepare for the next page in the Gumm LAN Party.
+
+Soon enough, LAN 8 will be apon us and past and we'll be pumped for LAN 9 (whose date is announced in this newsletter)
+
+
+***Set up***
+
+LAN Party setup will begin at around 3pm friday evening (Me, Bill and Unger will be begin setup well before that).  Anyone is welcome to come join us to help in preparation.  The more input, the better.  I'd like this LAN to be nicknamed "The Best Organized Gumm LAN Ever."  If you want to help out, just show up at my house, and go into the basement (If no one's around, just wait and play SNES or something, or do your own thing.
+
+
+***Games***
+
+In terms of expected games: Lots of people eem to want to play Medal of Honor, which I just recently acquired a copy.  I've not bought it (as I would have), as the PCGamer review said it focuses more on Single player(which doesn't really appeal to me) than multiplayer.  We can try it out at LAN 8, see if we like it, but I'm willing to bet that LAN 8 will ultimatly be dominated by the reigning champion, Quake III Arena (I have 11 copies burned).  I would expect there to be some Ghost Recon as well (I have 14 copies of this).  Additionally, I've been playing a lot of Aliens vs PRedator 2 recently, and it's quite a fun game.  There's nothing cooler that starting off as a face-hugger and wrapping youself around some poor helpless human's face, or chopping off someone's leg with the Predator Disc.  I intend as well on making a few copies of Red Faction, if you'd like to play what I have finished of the South Shore Map.  Do keep in mind, however, it is not, nor will it ever be, finished.  Finally, I'm sorry there was no Tetrinet played at LAN 7 (to which I was expecting to dedicate an entire room).  This has been remedied for LAN 8.  I have 5 working slow computers capable of running Tetrinet, so can can have some Tetrinet.
+
+
+***Message Board***
+
+Unger and I have been trying to get people to post on the message board, to no avail.  I've fixed the bug where it crashes if the subject contains an apostrophe (aka: single quote for you programmers).  Additionally, GuLP (previously the GummLANParty.net Messenger), includes functionality to let everyone currently logged on that there has been a post on the message board, for instant response.
+
+
+***GuLP***
+
+A New Version of GuLP is out.  Current version 0.21  This incorporates quite a few new feaures.
+
+1. During Chat, there is an indicator that tell you the status of the person with whom you are chatting.  It is green if the person has activated or typed anything in the past 15 seconds, it turned yellow if they have been idle between 15 and 60 seconds, and it turns red if they haven't interacted with the window in more than a minute.
+
+2. Windows 2000/XP only (the window is partially translucent so you can see what is going on behind you).  Kind of fun, but not very useful, just something for visualization.
+
+3. Announcement feature.  The server will be sending out Scheduled mass messages, such as "LAN PARTY IN 4 HOURS" or something to that nature.
+
+5. Autologin.  If checked, this will automatically log you on, when the program starts.
+
+6. Start with Windows.  This put itself in the registry and sets whether or not the program will start with windows.  If this is the case, (and you have autologin enabled), it will automatically just put the icon in the System Tray (the spot on the lower right of the screen with all the little icons).
+
+7. Webserver updating.  This tells the Webserver whether or not you are online, so it can display you in the list just below the menu on the Website.
+
+8. Bug Fixes: 
+	a. Subscript out of Range when you try to create a chat window after closing one.
+	b. Chat window does not scroll automatically with the chat
+	c. Took the menu out of the system tray.  SO if you click on the Tray icon, the main window will open and you can click the "Menu" Button to get menu.
+	d. "GummLANParty.net homepage" selection in the menu automatically logs you into the website, so you can interact right off the bat.
+
+9. Any suggestions would be appreciated
+
+**Suggestions***
+
+I'm currently implementing a feature to submit anonymous suggestions/complaints.  Your identity is not stored in the database.  This will be found on the website later today (hopefully)
+
+
+***New Computers***
+
+Some attendees have gotten themselves some new computers since last LAN.
+Josh Klamecki: XP1800+, Abit KG7, Geforce3 Ti200, 512 Reged Ecc DDR (2x256 sticks).
+Mike VanHierden (a friend of Jeff's): Athlon 1.33GHz (not an XP), ECS K7S5A, GeForce4 MX440, 256 DDR Ram
+Slaw: (this data is estimated, as I don't know the details) P4 1.7, Dell Mobo, 512 RDRAM, GeForce3 something.  His 3dMark bench was just over 7000 which is damn good.
+I have a working computer finally the specs are: ECS K7S5A, XP1800+, GeForce3Ti200, 512 DDR
+Additionally, I've upgraded one of my other ones: ECS K7S5A, Athlon 1.3GHz, GeForce3 Ti200, 256 SDRAM
+
+
+***Reminder***
+
+LAN PArty 8: Saturday March 9th, @ 5PM (that's in three days)
+
+And An Official Announcement:  LAN Party 3 squared: Saturday June 8th @ 5PM.
+
+***Conclusion***
+
+Well I think I'm done with all this.  Remember we only have 3 days, start polishing up those skillz.  hehe.
+
+"Why does it say paper-jam when there is no paper-jam?!?  I swear to god, one of these days, I-I-I, I just kick this piece of shit out the window."
+"You an' me both man . . .things lucky I'm not armed."
+
+Later,
+
+-Gumm (Chops)
+http://www.gummlanparty.net

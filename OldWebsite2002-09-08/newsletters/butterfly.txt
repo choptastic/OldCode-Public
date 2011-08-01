@@ -1,0 +1,115 @@
+Yo Everyone... it's been a while since a newsletter, despite the fact tht every day I want to write one and send it off... but I can't just write one at work and send it... the boss would't like that.
+
+
+***LAN Party A Info***
+
+LAN PArty A is rapidly appropaching (this saturday, actually).  I Hope everyone excited about it.  I'll be starting the burning soon, making plenty of copuies of Ghost Recon, and desert Siege. And can't SoF2, and Warcraft 3.  Finally we'll also need some quake 1 for the tourney.
+
+I've rewired the basement, and this time, the changes are perminenet unless someone can think of a better set up, which no one will, cuz I'm the master.  Essentially, there is a 16 port hub in the back room, next the server (I've moved it out there from under my desk), which is branching out to various locations where an 8 port hub will be.  This has been all done because again, I'll be too busy on friday to take the day off and set up.  I'll hafta do all the remaining set up Saturday morning.
+
+Finally, I would prefer if everyone brought headphones this time.  I know some will insist on bringing speakers, and I'm not going to kick you out for that, but I would prefer such.  Speakers get a little bulky and take up room, and I've discerned that we have room for exactly 29 computers (maybe 30 if we do a little squeezing).  I'll have headphones for sale, but I'm not sure how much yet (I'll estimate $7).
+
+
+***How the shit did this happen***
+
+So I've never, ever advertised the Gumm LAN Party on the internet before.  I've never requested the link be placed on a website, yet somehow.... and I'm totally lost as to how, but somehow in the past few weeks, I've had 2 peopel register whom I don't know.  One person from Florida, now yesterday, someone from Illinois.  So I took it apon myself to do a google search for Gumm LAN Party., and sure enough, there I am.  How did this happen?!?!  Have some of you linked to me on a public website (I know about stevenstefanik.com, but that's not the concern).
+
+The first person that registered (from florida) said he was looking for a LAN Party in the Florida Area, wwhy then, did he sign up for a Party in wisconsin?!?  He also said he found the site through a link elsewhere, but he didn't remember the site.... c'mon I need to know these things.
+
+
+***Tourney Info***
+
+Yes, the tourney is still going on, and it seems that since no one suggested anything else, that Quake 1 will be the game of choice.  This can be downloaded from the FTP Site.  You should all know the info to connect, it's been in previous newsletters.  Quaker 1 can be found in /games/id/quake.exe
+
+Yes, the prize is a digital camera, and yes the entrance is free.  Many of you ask me how I can afford it asnd that I should start charging for entrance.  Every game will be recorded from every perspective for publication on the website, and I'd like a screenshot of every final game.
+
+I figure this is how we can get it done efficiently.
+
+We'll start with several Free For Alls on the following maps.
+
+e4m8 : The Nameless City
+e4m7 : Azure Agony
+e3m1 : Termination Central
+dm3  : The Abandoned Base
+e3m5 : Wind Tunnels
+
+Then the Top 8 players from the FFA will move on to double elimination brackets.  Each match will be determined by best 2 out of 3 games.
+
+The levels at the different tiers of the differnt brackets are as follows :
+e1m1 : The Slipgate Complex
+e1m2 : Castle of the Damned
+dm1  : Place of Two Deaths
+dm2  : Claustrophobopolis
+dm4  : The Bad Place
+dm5  : The Cistern
+dm6  : The Dark Zone
+
+Finally the champions of each bracket wil play for final victory on an unannounced map (I just haven't determined what would be an exciting level for this).  IF the winner of the losers bracket beats the winner of the winners bracket, when they will play again, as per the rules of double elimination.  Whether or not they will play the same map is yet undecided.
+
+This will be fun.  Download the game off my server, I'll make sure my brother doesn't disconnect you.
+
+
+***Young People***
+
+What the hell is wrong with college aged kids.
+
+In High School is was being popular.  In college it's a differnt kind of cool.  I'm particularly speaking of males our age.
+
+This weekend, my dad went up north to do some serious renovation of our cabin .  I had every intention on going, until I heard who was all going to help.  Several of my cousins and their friends were going to "help."  A few of you have met my cousin Jeremy, Cory, and Phillip.  Many of you have also discerned that Jeremy is dumb as rocks, followed by Cory.  Phillip is a warrior who pulled a Jetliner 50 feet with some friends.  Phillip is cool.
+
+Well I didn't go cuz I knew it was gonna be a whole lotta drinking and discussion about how many "bitches they've bagged" and how often they get hammered or stoned.  I don't quite fit in there since my discussions are things like "I like Duke Nukem...yep... that's a 3D Game."
+
+Even the movie discussions would resort to things like Scary Movie, Blue Crush, and Coyote Ugly being the best movies ever cuz of the "bitches" and me getting made fun of for liking that "gay as fuck" Moulin Rouge, or that "Smart Person Movie" A Beautiful Mind.  Adn Jason X wtih Techno-Jason was soooo "bad-ass."
+
+Okay I pretty much hate my cousins.  None of those previous statements are quotes, merely representatiosn of the intellegence I'm up against.
+
+Well this fuckin topped it.  I hear now that my dad said that it was a good idea I didn't go.  Jeremly didn't even help, he just stared at himself in the mirror, as he got a new tatoo.  And he changed his shirt every time it got dirty, he also fixed his h air before going to do some hard labor.  Hello!!! Digging in dirt will get you dirty.  The root word of dirty is dirt.  Niot that I pretend to be in shape or anything, but Jeremy does.  He lifts only his arms, so he got a fat ass belly and super ripped arms.  Goddamn, he's dumb.
+
+The realization here is one I've made several times, but feel like writing about.  I get along better with 40+ men than I do with College aged people.  With the exception of you "LAN Partiers" my peers are goddamned stupid.  Peopel say I should be so hateful.  It's not healthy.
+
+Fuck That!!!
+
+The need to be told every step fo the way that you are cool, and fit in, is not healthy.
+
+Why don't I bring up grudges as well.  Several people , including my mom, tell me that it's not "Healthy" to hold grudges.  Bullshit.  There are reason I hold grudge. Want some goddamned enlightenment, here it is:
+
+A grudge is a reminder to yourself why a certain individual is too fucked up to be a friend.
+
+Now you all feel damned enlightened, don't you.
+
+
+***Butterfly productions***
+
+I got a pretty sweet idea for a Game company name and logo.
+
+"ButterFly Productions"
+
+Sounds fruity, right?
+
+The logo animation thingy will start out with a butterfly flying around happily on the screen, when you'll see an animated hand whip out a butterfly knife, flip it open ninja style, and stab the happy butterfly knife against the left side of the screen.
+
+The Logo would then form the Butterfly productions with "Butterfly" above the horizontal knife, and "productions" below it.
+
+Pretty bad-ass, eh?  Everyone likes butterfly knives cuz they're sweet.  That probably wouldn't go over too well with the crazy "video games are evil" parents, like my uncle that won't let his kids do Pokemon because it's "blasphemous," which it isn't - you'r not worshipping the pokemon like a god, you are playing with them.
+
+
+***Warcraft 3 is sweet***
+
+I've finally started to find some time to play war3 on Battle.net.  The game is so sweet.  But so far, I've played 5 random games.  3 of those I was night elves and 2 I was Undead,  I as hoping it'd be a little more random than that.  Oh well.
+
+THe Undead are pretty sweet... I've never realyl appreciated them, until using the Overlord with his sleep and Infernal spell.  It's so bad ass... you get a free unit with 1500 hit points and he crashes down as a meteor stunning and injuring opponents nearby.  Soooo sweet.
+
+
+***Conclusion***
+
+Alright... remember LAN Party A is this saturday
+
+Saturday, August 24th at 5PM
+
+Be there or get a foot in you ass.
+
+Later
+
+"Look at that subtle off-white coloring... the tasteful thickness of it.  Oh my god... it even has a watermark"
+
+-Gumm

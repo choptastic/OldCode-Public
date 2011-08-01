@@ -1,0 +1,1400 @@
+
+#include<BIOS.H>
+#include<CONIO.H>
+#include<CTYPE.H>
+#include<DOS.H>
+#include<GRAPHICS.H>
+#include<IOSTREAM.H>
+#include<STDIO.H>
+#include<STDLIB.H>
+#include<mouse.h>
+#include<fstream.h>
+
+#include<c:\cpp\wc2\image.h>
+//#include<c:\wc2\image.h>
+
+
+small_image gath1;     //gatherer pics
+small_image cgath1;
+small_image agath1;
+
+small_image warr1;
+small_image awarr1;
+
+small_image wiz1;
+small_image awiz1;
+
+//small_image cat1;
+//small_image acat1;
+
+//small_image bee1;
+//small_image beekeep1;
+
+small_image scout1;
+
+small_image arch1;
+
+small_image hall1;
+small_image barr1;
+small_image temple1;
+small_image tower1;
+//small_image smith1;
+small_image mine1;
+
+small_image grass1;
+small_image mud1;
+small_image water1;
+
+small_image fire1;
+
+small_image explode1;
+
+small_image pointer;
+
+const int gath=0;
+const int warr=1;
+const int wiz=2;
+const int arch=3;
+//const int cat=4;
+const int scout=5;
+const int blade=6;
+const int armor=7;
+
+
+const int hall=100;
+const int barr=101;
+const int temple=102;
+const int tower=103;
+//const int smith=104;
+const int mine=106;
+
+const int grass=200;
+const int mud=201;
+const int water=202;
+
+const unsigned char gathhp=20;       //20
+const unsigned char gathhit=1;       //1
+const unsigned char gatharm=0;       //0
+const unsigned char gathspeed=5;     //5
+const unsigned char gathcost=10;     //10
+const unsigned int gathbuild=100;     //100
+
+const unsigned char warrhp=40;       //40
+const unsigned char warrhit=3;       //3
+const unsigned char warrarm=1;       //1
+const unsigned char warrspeed=3;     //3
+const unsigned char warrcost=20;   //20
+const unsigned int warrbuild=150;     //5
+
+const unsigned char wizhp=30;       //30
+const unsigned char wizhit=2;       //2
+const unsigned char wizarm=0;       //0
+const unsigned char wizspeed=4;     //4
+const unsigned char wizmana=50;    //50
+const unsigned char wizcost=40;	  //40
+const unsigned int wizbuild=225;     //7
+
+const unsigned char scouthp=25;       //25
+const unsigned char scouthit=0;       //0
+const unsigned char scoutarm=3;       //3
+const unsigned char scoutspeed=1;     //1
+const unsigned char scoutcost=30;     //30
+const unsigned int scoutbuild=180;     //7
+
+const unsigned char archhp=30;       //30
+const unsigned char archhit=0;       //0
+const unsigned char archarm=10;       //10
+const unsigned char archspeed=5;     //5
+const unsigned char archcost=60;     //60
+const unsigned int archbuild=200;     //9
+/*
+const unsigned char cathp=70;       //70
+const unsigned char cathit=7;       //10
+const unsigned char catarm=6;       //6
+const unsigned char catspeed=6;     //5
+const unsigned char catrange=13;    //13
+const unsigned char catcost=75;     //70
+const unsigned char catbuild=11;    //11
+*/
+const unsigned int hallhp=350;     //350
+const unsigned char hallarm=25;     //20
+const unsigned int hallcost=300;   //300
+const unsigned int hallbuild=700;  //20
+
+const unsigned char barrhp=230;	   //230
+const unsigned char barrarm=17;     //17
+const unsigned char barrcost=100;   //100
+const unsigned int barrbuild=450;   //14
+
+const unsigned char templehp=190;   //190
+const unsigned char templearm=13;   //13
+const unsigned char templecost=200; //200
+const unsigned int templebuild=600; //17
+
+/*
+const unsigned int smithhp=300;   //300
+const unsigned char smitharm=20;   //20
+const unsigned char smithcost=200; //200
+const unsigned char smithbuild=16;  //16
+*/
+const unsigned char towerhp=100;   //100
+const unsigned char towerarm=10;   //10
+const unsigned char towercost=100; //100
+const unsigned int towerbuild=275;  //10
+
+const unsigned int minehp=5000; //5000
+const unsigned long minegold=20000; //20000
+const unsigned char minearm=30;   //30
+
+const unsigned int bladecost=300;
+const unsigned int armorcost=200;
+const unsigned int armorbuild=500;
+const unsigned int bladebuild=500;
+const unsigned int bladeup=2;
+const unsigned int armorup=2;
+
+
+const char north=0;
+const char south=1;
+const char west=2;
+const char east=3;
+
+const char carrying=0;
+const char empty=-1;
+
+
+const int xscreen=17;
+const int yscreen=11;
+const int xsize=99;
+const int ysize=99;
+const int xvisual=120;
+const int yvisual=15;
+const int size=30;
+const int delaytime=1;
+
+int player;
+int totalunits;
+int xbottom=0;
+int ybottom=0;
+int xmousestatus;
+int ymousestatus;
+int selected;
+int x,y;
+char page;
+char pointback[30][30][2];
+char old[xscreen+1][yscreen+1][2];
+unsigned long gold[3];
+//char minimaps[100][100][2];
+
+
+class unit_type
+{
+	public:
+	unsigned int hp;          //hitpoint
+	unsigned char hit;         //Attack strength
+	unsigned char arm;        //Armor
+	unsigned char team;       //Team
+	long mana;        //Mana and progress(in building)
+	//unsigned char frame;      //current frame of animation
+	unsigned char x, y;        //coordinates
+	unsigned char dir;        //direction facing
+	unsigned char desx, desy;  //destination
+	unsigned char type;       //type of unit
+	unsigned char status;      //status
+
+}unit[300];
+
+class map_type
+{
+	public:
+	unsigned char terrain;
+	unsigned char status;
+}map[100][100];
+
+
+void textxy(int x, int y, int num);    //to eliminate ltoa
+void clearpointback();   //pointer
+void drawpointback();    //pointer
+void getback();          //pointer
+void hidepointer();      //pointer
+void drawpointer();      //pointer
+void xmousestat();        //staus of mouse(1=down,2=up,3=clicked,4=released)
+void drawbase();         //draws rectangle and minimap rec
+void setup();            //graphics
+void loadpics();         //hence the name
+void loadmap();          //again, hence the name
+void oldscreen();        //helps the scrolling process speed up
+void drawmap();          //draws the screen and minimap
+void changescreen();     //scrolls the screen
+void checkclick();       //hence the name
+void startmakingunit(int index,int type);  // hence the name
+void makingcheck();  //checking if a un8it is being made
+void makeunit(int index);  //picks a the spot to place the new unit
+void putunit(int x, int y, int type,int team); //puts unit at (x,y)
+void unitmove();  //moves guys
+void xmove(int index, int amt); //move left and right
+void ymove(int index, int amt);  //move up and down
+void showinfo(); //shows information about selected unit
+int pickmovey(int index,int amt); //picks which direction to move when moving up or down
+int pickmovex(int index, int amt); //left or right
+void drawgold();
+void progress(int amt, int color);
+void checkprogress();
+void findnearest(int index, int type,int team, int &sx, int &sy, int &distance);
+void hallminecheck();
+void enemycheck();
+
+/////////////////////////begin the fun stuff
+////////////////////////////////////////////
+////////////////////////////////////////////
+void textxy(int x, int y, int num)
+{
+	char string[20];
+	ltoa(num,string,10);
+	outtextxy(x,y,string);
+
+}
+
+void clearpointback()
+{
+	for(int loopx=0;loopx<30;loopx++)
+	for(int loopy=0;loopy<30;loopy++)
+	{
+
+		pointback[loopx][loopy][1]=-1;
+		pointback[loopx][loopy][0]=-1;
+	}
+}
+void drawpointback()
+{
+	for(int loopx=0;loopx<30;loopx++)
+	for(int loopy=0;loopy<30;loopy++)
+	{
+
+		if(pointback[loopx][loopy][page]!=-1) putpixel(loopx+x,loopy+y,pointback[loopx][loopy][page]);
+	}
+}
+
+void getback()
+{
+	for(int loopx=0;loopx<30;loopx++)
+	for(int loopy=0;loopy<30;loopy++)
+	{
+
+		pointback[loopx][loopy][page]=getpixel(loopx+x,loopy+y);
+	}
+}
+
+void hidepointer()
+{
+	drawpointback();
+	x=readmousex();
+	y=readmousey();
+	clearpointback();
+}
+
+
+void drawpointer()
+{
+
+	if(mousemoved()==1)
+	{
+		hidepointer();
+		getback();
+		pointer.draw(x,y,0,0);
+	}
+}
+
+
+
+void xmousestat()
+{
+	if(xmousestatus==4) xmousestatus=2;
+	else if(xmousestatus==3) xmousestatus=1;
+	else if(mousereleased(0)==1) xmousestatus=4;
+	else if(mouseclicked(0)==1) xmousestatus=3;
+}
+
+void ymousestat()
+{
+	if(ymousestatus==4) ymousestatus=2;
+	else if(ymousestatus==3) ymousestatus=1;
+	else if(mousereleased(1)==1) ymousestatus=4;
+	else if(mouseclicked(1)==1) ymousestatus=3;
+}
+
+
+void drawbase()
+{
+	setactivepage(0);
+	setcolor(15);
+	rectangle(xvisual-1,yvisual-1,xvisual+size*xscreen,yvisual+size*yscreen);
+	rectangle(1,1,102,102);
+	setactivepage(1);
+	setcolor(15);
+	rectangle(xvisual-1,yvisual-1,xvisual+size*xscreen,yvisual+size*yscreen);
+	rectangle(1,1,102,102);
+}
+
+
+void setup()
+{
+	int gdriver = EGA, gmode = EGAHI, errorcode;
+	initgraph(&gdriver, &gmode, "");
+	errorcode = graphresult();
+	if (errorcode != grOk)  /* an error occurred */
+	{
+		printf("Graphics error: %s\n", grapherrormsg(errorcode));
+		printf("Press any key to halt:");
+		getch();
+		exit(1);             /* return with error code */
+	}
+}
+
+
+void loadpics()
+{
+
+	gath1.load("c:\\wc2\\gath.wcp");
+	agath1.load("c:\\wc2\\agath1.wcp");
+	cgath1.load("c:\\wc2\\cgath1.wcp");
+
+	warr1.load("c:\\wc2\\warr1.wcp");
+	awarr1.load("c:\\wc2\\awarr1.wcp");
+
+	wiz1.load("c:\\wc2\\wiz1.wcp");
+	awiz1.load("c:\\wc2\\awiz1.wcp");
+
+	//cat1.load("c:\\wc2\\cat.wcp");
+	//acat1.load("c:\\wc2\\acat.wcp");
+
+	scout1.load("c:\\wc2\\scout.wcp");
+
+	arch1.load("c:\\wc2\\arch.wcp");
+
+	hall1.load("c:\\wc2\\hall.wcp");
+	barr1.load("c:\\wc2\\barr.wcp");
+	temple1.load("c:\\wc2\\temple.wcp");
+	tower1.load("c:\\wc2\\tower.wcp");
+	mine1.load("c:\\wc2\\mine.wcp");
+
+	grass1.load("c:\\wc2\\grass.wcp");
+	mud1.load("c:\\wc2\\mud.wcp");
+	water1.load("c:\\wc2\\water.wcp");
+
+	fire1.load("c:\\wc2\\fire1.wcp");
+
+	explode1.load("c:\\wc2\\explode.wcp");
+
+	pointer.load("c:\\wc2\\pointer.pnt");
+
+}
+
+void loadmap()
+{
+	totalunits=0;
+	char temp;
+	ifstream file;
+	file.open("c:\\wc2\\map");
+	for(int loopx=0;loopx<100;loopx++)
+	for(int loopy=0;loopy<100;loopy++)
+	{
+		file >> map[loopx][loopy].terrain;
+	}
+	for(loopx=0;loopx<2;loopx++)
+	{
+		file >> unit[totalunits].x;
+		file >> unit[totalunits].y;
+
+		unit[totalunits].x-=27;
+		unit[totalunits].y-=27;
+
+		putunit(unit[totalunits].x,unit[totalunits].y,hall,loopx);
+	}
+
+	for(loopx=0;loopx<8;loopx++)
+	{
+		file >> temp;
+		if(temp-27>=0)
+		{
+			unit[totalunits].x=temp;
+			file >> unit[totalunits].y;
+			unit[totalunits].x-=27;
+			unit[totalunits].y-=27;
+
+			unit[totalunits].type=mine;
+			unit[totalunits].team=0;
+			putunit(unit[totalunits].x,unit[totalunits].y,mine,0);
+		}
+		else file >> temp;
+
+
+	}
+
+	file.close();
+
+
+}
+
+
+void minimap()
+{
+		for(int loopx=2;loopx<102;loopx++)
+		for(int loopy=2;loopy<102;loopy++)
+		{
+			if(getpixel(loopx,loopy)!=1 && map[loopx-2][loopy-2].terrain==water) putpixel(loopx,loopy,1);
+			else if(getpixel(loopx,loopy)!=2 && map[loopx-2][loopy-2].terrain==grass) putpixel(loopx,loopy,2);
+			else if(getpixel(loopx,loopy)!=6 && map[loopx-2][loopy-2].terrain==mud) putpixel(loopx,loopy,6);
+		}
+
+		for(loopx=0;loopx<totalunits;loopx++)
+		{
+			if(unit[loopx].type==mine && getpixel(unit[loopx].x+2,unit[loopx].y+2)!=14) putpixel(unit[loopx].x+2,unit[loopx].y+2,14);
+			else if(getpixel(unit[loopx].x+2,unit[loopx].y+2)!=unit[loopx].team+1) putpixel(unit[loopx].x+2,unit[loopx].y+2,unit[loopx].team);
+		}
+
+	//setcolor(15);
+	//rectangle(xbottom+2,ybottom+2,xbottom+xscreen+2,ybottom+2+yscreen);
+}
+
+
+void oldscreen()
+{
+
+	int x,y;
+	for(int loopx=0;loopx<xscreen;loopx++)
+	for(int loopy=0;loopy<xscreen;loopy++)
+	{
+		old[loopx][loopy][page]=map[loopx+xbottom][loopy+ybottom].terrain;
+	}
+	for(loopx=0;loopx<totalunits;loopx++)
+	{
+		x=unit[loopx].x;
+		y=unit[loopx].y;
+		if(x>=xbottom && x<xbottom+xscreen && y>=ybottom && y<ybottom+yscreen)
+		{
+			old[x-xbottom][y-ybottom][page]=unit[loopx].type;
+		}
+	}
+}
+
+void drawmap()
+{
+
+	drawpointback();
+	int loop;
+	if(page==0) page=1;
+	else page=0;
+	setactivepage(page);
+
+	int x,y;
+	for(int loopx=0;loopx<xscreen;loopx++)
+	for(int loopy=0;loopy<yscreen;loopy++)
+	{
+		x=xbottom+loopx;
+		y=ybottom+loopy;
+		if(map[x][y].terrain!=old[loopx][loopy][page])
+		{
+			if(map[x][y].terrain==grass) grass1.draw(xvisual+loopx*size,yvisual+loopy*size,0,0);
+			else if(map[x][y].terrain==mud) mud1.draw(xvisual+loopx*size,yvisual+loopy*size,0,0);
+			else if(map[x][y].terrain==water) water1.draw(xvisual+loopx*size,yvisual+loopy*size,0,0);
+		}
+	}
+
+	setcolor(14);
+	for(loop=0;loop<totalunits;loop++)
+	{
+		x=unit[loop].x;
+		y=unit[loop].y;
+
+
+		if(x>=xbottom && x<xbottom+xscreen && y>=ybottom && y<ybottom+yscreen)
+		{
+
+
+			if(unit[loop].type==mine) mine1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,0,0);
+			else if(unit[loop].type==hall) hall1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,0,unit[loop].team+2);
+			else if(unit[loop].type==gath && unit[loop].status!=carrying) gath1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,unit[loop].dir,unit[loop].team+2);
+			else if(unit[loop].type==gath && unit[loop].status==carrying) cgath1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,unit[loop].dir,unit[loop].team+2);
+			else if(unit[loop].type==arch) arch1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,unit[loop].dir,unit[loop].team+2);
+			else if(unit[loop].type==barr) barr1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,0,unit[loop].team+2);
+			else if(unit[loop].type==temple) temple1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,0,unit[loop].team+2);
+			else if(unit[loop].type==tower) tower1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,0,unit[loop].team+2);
+			else if(unit[loop].type==warr) warr1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,unit[loop].dir,unit[loop].team+2);
+			else if(unit[loop].type==wiz) wiz1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,unit[loop].dir,unit[loop].team+2);
+			else if(unit[loop].type==scout) scout1.draw(xvisual+(x-xbottom)*size,yvisual+(y-ybottom)*size,unit[loop].dir,unit[loop].team+2);
+
+		}
+
+		if(selected==loop && x>=xbottom && x<xbottom+xscreen && y>=ybottom && y<ybottom+yscreen) rectangle(xvisual+(x-xbottom)*size+1,yvisual+(y-ybottom)*size+1,xvisual+(x-xbottom)*size+size-1,yvisual+(y-ybottom)*size+size-1);
+	}
+	clearpointback();
+	showinfo();
+	//minimap();
+	setvisualpage(page);
+	oldscreen();
+}
+
+void changescreen()
+{
+	int x=readmousex();
+	int y=readmousey();
+	if(x<2 && xbottom>0)
+	{
+		xbottom-=2;
+		drawmap();
+	}
+	else if(x>638 && xbottom<xsize-xscreen)
+	{
+		xbottom+=2;
+		drawmap();
+	}
+
+	if(y<2 && ybottom>0)
+	{
+		ybottom-=2;
+		drawmap();
+	}
+	else if(y>348 && ybottom<ysize-yscreen)
+	{
+		ybottom+=2;
+		drawmap();
+	}
+}
+
+void checkclick()
+{
+	int x,y,ux,uy;
+	x=readmousex();
+	y=readmousey();
+	if(xmousestatus==3)
+	{
+		for(int loop=0;loop<totalunits;loop++)
+		{
+			ux=unit[loop].x;
+			uy=unit[loop].y;
+			if(ux>=xbottom && ux<xbottom+xscreen && uy>=ybottom && uy<ybottom+yscreen)
+			{
+				ux-=xbottom;
+				uy-=ybottom;
+				if(x>=xvisual+(ux*size) && x<xvisual+(ux*size)+size && y>=yvisual+(uy*size) && y<yvisual+(uy*size)+size)
+				{
+					selected=loop;
+					//showinfo();
+					drawmap();
+
+					break;
+				}
+			}
+		}
+	}
+	else if(xmousestatus==1)
+	{
+		if(x>=2 && x<102 && y>=2 && y<102)
+		{
+			xbottom=x-2-8;
+			ybottom=y-2-5;
+			if(xbottom<0) xbottom=0;
+			if(ybottom<0) ybottom=0;
+			drawmap();
+		}
+	}
+	else if(ymousestatus==3)
+	{
+		if(unit[selected].type<100)
+		{
+			ux=(x-xvisual)/size+xbottom;
+			uy=(y-yvisual)/size+ybottom;
+
+			unit[selected].desx=ux;
+			unit[selected].desy=uy;
+
+		}
+	}
+
+}
+
+
+void putunit(int x, int y, int type,int team)
+{
+	unit[totalunits].x=x;
+	unit[totalunits].y=y;
+	unit[totalunits].type=type;
+	unit[totalunits].team=team;
+	unit[totalunits].mana=-1;
+	unit[totalunits].status=-1;
+	unit[totalunits].desx=x;
+	unit[totalunits].desy=y;
+	unit[totalunits].dir=random(4);
+	unit[totalunits].status=empty;
+	if(type==gath)
+	{
+		unit[totalunits].hp=gathhp;
+		unit[totalunits].arm=gatharm;
+		unit[totalunits].hit=gathhit;
+	}
+	else if(type==arch)
+	{
+		unit[totalunits].hp=archhp;
+		unit[totalunits].arm=archarm;
+	}
+	else if(type==hall)
+	{
+		unit[totalunits].hp=hallhp;
+		unit[totalunits].arm=hallarm;
+	}
+	else if(type==mine)
+	{
+		unit[totalunits].hp=minehp;
+		unit[totalunits].arm=minearm;
+		unit[totalunits].mana=minegold;
+	}
+	else if(type==warr)
+	{
+		unit[totalunits].hp=warrhp;
+		unit[totalunits].arm=warrarm;
+		unit[totalunits].hit=warrhit;
+	}
+	else if(type==wiz)
+	{
+		unit[totalunits].hp=wizhp;
+		unit[totalunits].arm=wizarm;
+		unit[totalunits].hit=warrhit;
+		unit[totalunits].mana=wizmana;
+	}
+	else if(type==scout)
+	{
+		unit[totalunits].hp=scouthp;
+		unit[totalunits].arm=scoutarm;
+		unit[totalunits].hit=scouthit;
+	}
+	else if(type==blade)
+	{
+		for(int loop=0;loop<totalunits;loop++)
+		{
+			if(unit[loop].team==player) unit[loop].hit+=bladeup;
+		}
+	}
+	else if(type==armor)
+	{
+		for(int loop=0;loop<totalunits;loop++)
+		{
+			if(unit[loop].team==player) unit[loop].arm+=armorup;
+		}
+	}
+
+
+	totalunits++;
+
+}
+
+void makeunit(int index)
+{
+	int distance=32000;
+	int x,y,loopx,loopy,sx,sy,used=0;
+	x=unit[index].x;
+	y=unit[index].y;
+	for(loopx=0;loopx<xsize;loopx++)
+	for(loopy=0;loopy<ysize;loopy++)
+	{
+		used=0;
+		for(int loop=0;loop<totalunits;loop++)
+		{
+			if((unit[loop].x==loopx && unit[loop].y==loopy) ||  map[loopx][loopy].terrain==water)
+			{
+				used=1;
+			}
+		}
+
+		if((x!=loopx || y!=loopy) && used==0)
+		{
+			if(abs(x-loopx)+abs(y-loopy)<distance)
+			{
+				sx=loopx;
+				sy=loopy;
+				distance=abs(x-loopx)+abs(y-loopy);
+			}
+		}
+	}
+	putunit(sx,sy,unit[index].status,unit[index].team);
+	drawmap();
+
+}
+
+
+
+void makingcheck()
+{
+	for(int loop=0;loop<totalunits;loop++)
+	{
+		if(unit[loop].mana>0 && unit[loop].type>=hall && unit[loop].type!=mine)
+		{
+
+			unit[loop].mana--;
+
+
+			if(unit[loop].mana==0)
+			{
+				makeunit(loop);
+				unit[loop].mana=-1;
+				showinfo();
+			}
+		}
+		if(unit[loop].mana>0 && unit[loop].type==arch)
+		{
+			unit[loop].mana--;
+			if(unit[loop].mana==0)
+			{
+				unit[loop].mana=-1;
+				unit[loop].type=unit[loop].status;
+				if(unit[loop].type==barr)
+				{
+					unit[loop].hp=barrhp;
+					unit[loop].arm=barrarm;
+				}
+				else if(unit[loop].type==hall)
+				{
+					unit[loop].hp=hallhp;
+					unit[loop].arm=hallarm;
+				}
+				else if(unit[loop].type==temple)
+				{
+					unit[loop].hp=templehp;
+					unit[loop].arm=templearm;
+				}
+				else if(unit[loop].type==tower)
+				{
+					unit[loop].hp=towerhp;
+					unit[loop].arm=towerarm;
+				}
+
+				drawmap();
+
+				showinfo();
+			}
+		}
+	}
+}
+
+
+void startmakingunit(int index,int type)
+{
+	if(type==gath)
+	{
+		unit[index].mana=gathbuild;
+		unit[index].status=gath;
+	}
+	else if(type==arch)
+	{
+		unit[index].mana=archbuild;
+		unit[index].status=arch;
+	}
+	else if(type==barr)
+	{
+		unit[index].mana=barrbuild;
+		unit[index].status=barr;
+	}
+	else if(type==hall)
+	{
+		unit[index].mana=hallbuild;
+		unit[index].status=hall;
+	}
+	else if(type==tower)
+	{
+		unit[index].mana=towerbuild;
+		unit[index].status=tower;
+	}
+	else if(type==temple)
+	{
+		unit[index].mana=templebuild;
+		unit[index].status=temple;
+	}
+	else if(type==blade)
+	{
+		unit[index].mana=bladebuild;
+		unit[index].status=blade;
+	}
+	else if(type==armor)
+	{
+		unit[index].mana=armorbuild;
+		unit[index].status=armor;
+	}
+	else if(type==wiz)
+	{
+		unit[index].mana=wizbuild;
+		unit[index].status=wiz;
+	}
+	else if(type==warr)
+	{
+		unit[index].mana=warrbuild;
+		unit[index].status=warr;
+	}
+	else if(type==scout)
+	{
+		unit[index].mana=scoutbuild;
+		unit[index].status=scout;
+	}
+
+}
+
+void terrainpixel(int x, int y)
+{
+	for(int loop=0;loop<2;loop++)
+	{
+		setactivepage(loop);
+		if(map[x][y].terrain==grass) putpixel(x+2,y+2,2);
+		else if(map[x][y].terrain==water) putpixel(x+2,y+2,1);
+		if(map[x][y].terrain==mud) putpixel(x+2,y+2,6);
+	}
+	setactivepage(page);
+}
+
+void unitpixel(int index)
+{
+
+	for(int loop=0;loop<2;loop++)
+	{
+		setactivepage(loop);
+		if(unit[index].team!=player) putpixel(unit[index].x+2,unit[index].y+2,4);
+		else putpixel(unit[index].x+2,unit[index].y+2,10);
+	}
+	setactivepage(page);
+}
+
+void xmove(int index, int amt)
+{
+
+	terrainpixel(unit[index].x,unit[index].y);
+	unit[index].x+=amt;
+	if(amt>0) unit[index].dir=east;
+	else if(amt<0) unit[index].dir=west;
+	if(unit[index].x>=xbottom && unit[index].x<xbottom+xscreen && unit[index].y>=ybottom && unit[index].y<ybottom+yscreen) drawmap();
+	unitpixel(index);
+}
+
+void ymove(int index, int amt)
+{
+	terrainpixel(unit[index].x,unit[index].y);
+	unit[index].y+=amt;
+	if(amt>0) unit[index].dir=south;
+	else if(amt<0) unit[index].dir=north;
+	if(unit[index].x>=xbottom && unit[index].x<xbottom+xscreen && unit[index].y>=ybottom && unit[index].y<ybottom+yscreen) drawmap();
+	unitpixel(index);
+}
+
+int pickmovey(int index, int amt)
+{
+	int used;
+	int x=unit[index].x;
+	int y=unit[index].y;
+	if(unit[index].type==scout)
+	{
+		ymove(index,amt);
+		used=0;
+	}
+	else if(map[x][y+amt].terrain!=water)
+	{
+		used=0;
+		for(int loop1=0;loop1<totalunits;loop1++)
+		{
+			if(unit[loop1].x==x && unit[loop1].y==y+amt && (unit[loop1].team!=unit[index].team/* || unit[loop1].type==mine*/))
+			{
+				used=1;
+			}
+		}
+		if(used==0)
+		{
+			ymove(index,amt);
+		}
+
+	}
+	else used=1;
+	return used;
+
+}
+
+int pickmovex(int index, int amt)
+{
+	int used;
+	int x=unit[index].x;
+	int y=unit[index].y;
+	if(unit[index].type==scout)
+	{
+		xmove(index,amt);
+		used=0;
+	}
+	else if(map[x+amt][y].terrain!=water)
+	{
+		used=0;
+		for(int loop1=0;loop1<totalunits;loop1++)
+		{
+			if(unit[loop1].x==x+amt && unit[loop1].y==y && (unit[loop1].team!=unit[index].team/* || unit[loop1].type==mine*/))
+			{
+				used=1;
+			}
+		}
+		if(used==0)
+		{
+			xmove(index,amt);
+		}
+	}
+	else used=1;
+	return used;
+}
+
+
+void enemycheck()
+{
+	int distance;
+	int sx,sy;
+	for(int loop=0;loop<totalunits;loop++)
+	{
+		if(unit[loop].team==player && unit[loop].type<100)
+		{
+			for(int loop1=0;loop1<totalunits;loop1++)
+			{
+				if(player==0) findnearest(loop,-1,1,sx,sy,distance);
+				else findnearest(loop,-1,0,sx,sy,distance);
+				//gotoxy(1,1);
+				//cout << distance << "   ";
+
+				if(distance<=5 && unit[loop].desx==unit[loop].x && unit[loop].desy==unit[loop].y)
+				{
+					unit[loop].desx=sx;
+					unit[loop].desy=sy;
+				}
+			}
+		}
+
+	}
+}
+
+
+
+void unitmove()
+{
+	int used;
+	for(int loop=0;loop<totalunits;loop++)
+	{
+		enemycheck();
+		if(abs(unit[loop].x-unit[loop].desx)>=abs(unit[loop].y-unit[loop].desy))
+		{
+			if(unit[loop].desx>unit[loop].x)
+			{
+				used=pickmovex(loop,1);
+				if(used==1)
+				{
+					if(unit[loop].dir==north)
+					{
+						used=pickmovey(loop,-1);
+						if(used==1) pickmovey(loop,1);
+					}
+					else
+					{
+						used=pickmovey(loop,1);
+						if(used==1) pickmovey(loop,-1);
+					}
+				}
+			}
+			else if(unit[loop].desx<unit[loop].x)
+			{
+				used=pickmovex(loop,-1);
+				if(used==1)
+				{
+					if(unit[loop].dir==north)
+					{
+						used=pickmovey(loop,-1);
+						if(used==1) pickmovey(loop,1);
+					}
+					else
+					{
+						used=pickmovey(loop,1);
+						if(used==1) pickmovey(loop,-1);
+					}
+				}
+			}
+		}
+		else if(abs(unit[loop].x-unit[loop].desx)<=abs(unit[loop].y-unit[loop].desy))
+		{
+			if(unit[loop].desy>unit[loop].y)
+			{
+				used=pickmovey(loop,1);
+				if(used==1)
+				{
+					if(unit[loop].dir==west)
+					{
+						used=pickmovex(loop,-1);
+						if(used==1) pickmovex(loop,1);
+					}
+					else
+					{
+						used=pickmovex(loop,1);
+						if(used==1) pickmovex(loop,-1);
+					}
+				}
+			}
+			else if(unit[loop].desy<unit[loop].y)
+			{
+				used=pickmovey(loop,-1);
+				if(used==1)
+				{
+					if(unit[loop].dir==west)
+					{
+						used=pickmovex(loop,-1);
+						if(used==1) pickmovex(loop,1);
+					}
+					else
+					{
+						used=pickmovex(loop,1);
+						if(used==1) pickmovex(loop,-1);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+void progress(int amt, int color)
+{
+	outtextxy(5,140,"Progress:");
+	setcolor(15);
+	setfillstyle(1,color+2);
+	rectangle(5,160,5+(amt/10),175);
+	bar(6,161,4+(amt/10),174);
+}
+
+void showinfo()
+{
+	//for(int loop=0;loop<2;loop++)
+	//{
+		drawpointback();
+		clearpointback();
+		//if(page==1) setactivepage(0);
+		//else setactivepage(1);
+		setfillstyle(1,0);
+		bar(0,103,118,350);
+		setcolor(1);
+
+		textxy(5,300,unit[selected].team);
+		outtextxy(5,120,"HP  :");
+		outtextxy(5,130,"Arm :");
+		if(unit[selected].type==hall)
+		{
+			if(unit[selected].mana<=0)
+			{
+				outtextxy(5,140,"(G)atherer");
+				outtextxy(5,150,"(A)rch");
+				setcolor(13);
+				textxy(90,140,gathcost);
+				textxy(90,150,archcost);
+			}
+			else
+			{
+				progress(unit[selected].mana,unit[selected].team);
+			}
+		}
+		else if(unit[selected].type==tower)
+		{
+			if(unit[selected].mana<=0)
+			{
+				outtextxy(5,140,"(S)cout");
+				setcolor(13);
+				textxy(90,140,scoutcost);
+			}
+			else
+			{
+				progress(unit[selected].mana,unit[selected].team);
+			}
+		}
+		else if(unit[selected].type==temple)
+		{
+			if(unit[selected].mana<=0)
+			{
+				outtextxy(5,140,"(W)izard");
+				setcolor(13);
+				textxy(90,140,wizcost);
+			}
+			else
+			{
+				progress(unit[selected].mana,unit[selected].team);
+			}
+		}
+		else if(unit[selected].type==barr)
+		{
+			if(unit[selected].mana<=0)
+			{
+				outtextxy(5,140,"(W)arrior");
+				outtextxy(5,150,"(B)lade up");
+				outtextxy(5,160,"(A)rmor up");
+				setcolor(13);
+				textxy(90,140,warrcost);
+				textxy(90,150,bladecost);
+				textxy(90,160,armorcost);
+			}
+			else
+			{
+				progress(unit[selected].mana,unit[selected].team);
+			}
+		}
+		else if(unit[selected].type==mine)
+		{
+			outtextxy(5,140,"Gold:");
+			setcolor(13);
+			textxy(80,140,unit[selected].mana);
+		}
+		else if(unit[selected].type==gath || unit[selected].type==warr)
+		{
+			outtextxy(5,140,"Attk:");
+			setcolor(13);
+			textxy(90,140,unit[selected].hit);
+
+		}
+		else if(unit[selected].type==wiz)
+		{
+			outtextxy(5,140,"Attk:");
+			outtextxy(5,150,"Mana:");
+			setcolor(13);
+			textxy(90,140,unit[selected].hit);
+			textxy(90,140,unit[selected].mana);
+		}
+		else if(unit[selected].type==arch)
+		{
+			if(unit[selected].mana<=0)
+			{
+				outtextxy(5,140,"(H)all");
+				outtextxy(5,150,"(B)arrak");
+				outtextxy(5,160,"(T)emple");
+				outtextxy(5,170,"To(W)er");
+				setcolor(13);
+				textxy(90,140,hallcost);
+				textxy(90,150,barrcost);
+				textxy(90,160,templecost);
+				textxy(90,170,towercost);
+			}
+			else
+			{
+				progress(unit[selected].mana,unit[selected].team);
+			}
+		}
+
+		setcolor(13);
+		textxy(85,120,unit[selected].hp);
+		textxy(85,130,unit[selected].arm);
+
+	//}
+}
+
+void checkprogress()
+{
+	if(unit[selected].mana>=0 && (unit[selected].type>=hall || unit[selected].type==arch) && unit[selected].type!=mine)
+	{
+		showinfo();
+	}
+}
+
+void findnearest(int index, int type,int team, int &sx, int &sy, int &distance)
+{
+	int x=unit[index].x;
+	int y=unit[index].y;
+	sx=unit[index].x;
+	sy=unit[index].y;
+	distance=32000;
+	for(int  loop=0;loop<totalunits;loop++)
+	{
+		if(unit[loop].team==team && (unit[loop].type==type || type==-1))
+		if(abs(x-unit[loop].x)+abs(y-unit[loop].y)<distance)
+		{
+			distance=abs(x-unit[loop].x)-abs(y-unit[loop].y);
+			sx=unit[loop].x;
+			sy=unit[loop].y;
+		}
+	}
+}
+
+
+
+void hallminecheck()
+{
+	int x,y,distance;
+	for(int loop=0;loop<totalunits;loop++)
+	{
+		if(unit[loop].type==mine)
+		{
+			for(int loop1=0;loop1<totalunits;loop1++)
+			{
+				if(unit[loop1].type==gath && unit[loop1].x==unit[loop].x && unit[loop1].y==unit[loop].y && unit[loop1].team==player && unit[loop1].status!=carrying && unit[loop1].desx==unit[loop].x && unit[loop1].desy==unit[loop].y)
+				{
+					unit[loop1].status=carrying;
+					findnearest(loop1,hall,player,x,y,distance);
+					unit[loop1].desx=x;
+					unit[loop1].desy=y;
+					drawmap();
+				}
+			}
+		}
+		else if(unit[loop].type==hall && unit[loop].team==player)
+		{
+			for(int loop1=0;loop1<totalunits;loop1++)
+			{
+				if(unit[loop1].type==gath && unit[loop1].x==unit[loop].x && unit[loop1].y==unit[loop].y && unit[loop1].team==player && unit[loop1].status==carrying && unit[loop1].desx==unit[loop].x && unit[loop1].desy==unit[loop].y)
+				{
+					gold[player]+=10;
+					unit[loop1].status=empty;
+					findnearest(loop1,mine,0,x,y,distance);
+					unit[loop1].desx=x;
+					unit[loop1].desy=y;
+					drawmap();
+				}
+			}
+		}
+
+	}
+}
+
+
+
+void drawgold()
+{
+	setfillstyle(1,0);
+	bar(220,0,300,13);
+	setcolor(14);
+	outtextxy(180,5,"Gold:");
+	textxy(225,5,gold[player]);
+}
+
+void main()
+{
+
+	char choice;
+	clrscr();
+	cout << "Player 0 or 1 : ";
+	cin >> player;
+	setup();
+	outtextxy(100,200,"Loading");
+	loadpics();
+	loadmap();
+	x=1;
+	y=300;
+	gold[0]=20000;
+	cleardevice();
+	page=0;
+	drawbase();
+	drawmap();
+	minimap();
+	drawmap();
+	minimap();
+	drawgold();
+	drawpointer();
+	do
+	{
+		do
+		{
+			xmousestat();
+			ymousestat();
+			changescreen();
+			checkclick();
+			makingcheck();
+			unitmove();
+			checkprogress();
+			//drawgold();
+			hallminecheck();
+			drawpointer();
+
+			delay(delaytime);
+
+		}while(bioskey(1)==0);
+		choice=toupper(getch());
+		switch(choice)
+		{
+			case('G'):
+			{
+				if(unit[selected].type==hall && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=gathcost)
+				{
+					startmakingunit(selected,gath);
+					gold[player]-=gathcost;
+				}
+				break;
+			}
+			case('A'):
+			{
+				if(unit[selected].type==hall && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=archcost)
+				{
+					startmakingunit(selected,arch);
+					gold[player]-=archcost;
+				}
+				if(unit[selected].type==barr && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=armorcost)
+				{
+					startmakingunit(selected,armor);
+					gold[player]-=armorcost;
+				}
+				break;
+			}
+			case('B'):
+			{
+				if(unit[selected].type==arch && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=barrcost)
+				{
+					startmakingunit(selected,barr);
+					gold[player]-=barrcost;
+				}
+				else if(unit[selected].type==barr && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=bladecost)
+				{
+					startmakingunit(selected,blade);
+					gold[player]-=bladecost;
+				}
+				break;
+			}
+			case('H'):
+			{
+				if(unit[selected].type==arch && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=hallcost)
+				{
+					startmakingunit(selected,hall);
+					gold[player]-=barrcost;
+				}
+				break;
+			}
+			case('W'):
+			{
+				if(unit[selected].type==arch && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=towercost)
+				{
+					startmakingunit(selected,tower);
+					gold[player]-=towercost;
+				}
+				else if(unit[selected].type==temple && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=wizcost)
+				{
+					startmakingunit(selected,wiz);
+					gold[player]-=wizcost;
+				}
+				else if(unit[selected].type==barr && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=warrcost)
+				{
+					startmakingunit(selected,warr);
+					gold[player]-=warrcost;
+				}
+				break;
+			}
+			case('T'):
+			{
+				if(unit[selected].type==arch && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=templecost)
+				{
+					startmakingunit(selected,temple);
+					gold[player]-=templecost;
+				}
+				break;
+			}
+			case('S'):
+			{
+				if(unit[selected].type==tower && unit[selected].mana==-1 && unit[selected].team==player && gold[player]>=scoutcost)
+				{
+					startmakingunit(selected,scout);
+					gold[player]-=scoutcost;
+				}
+				break;
+			}
+
+
+		}
+
+	}while(choice!='Q');
+
+
+}

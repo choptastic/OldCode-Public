@@ -1,0 +1,1316 @@
+
+ Start  Stop   Length Name               Class
+
+ 00000H 0C730H 0C731H _TEXT              CODE
+ 0C740H 10399H 03C5AH _BGI_TEXT          CODE
+ 103A0H 103A0H 00000H _FARDATA           FAR_DATA
+ 103A0H 103A0H 00000H _FARBSS            FAR_BSS
+ 103A0H 103A0H 00000H _OVERLAY_          OVRINFO
+ 103A0H 103A0H 00000H _1STUB_            STUBSEG
+ 103A0H 1B255H 0AEB6H _DATA              DATA
+ 1B256H 1B257H 00002H _CVTSEG            DATA
+ 1B258H 1B25DH 00006H _SCNSEG            DATA
+ 1B25EH 1B25EH 00000H GRAPH              DATA
+ 1B25EH 1B25EH 00000H _CONST             CONST
+ 1B25EH 1B287H 0002AH _INIT_             INITDATA
+ 1B288H 1B288H 00000H _INITEND_          INITDATA
+ 1B288H 1B293H 0000CH _EXIT_             EXITDATA
+ 1B294H 1B294H 00000H _EXITEND_          EXITDATA
+ 1B294H 1B2DDH 0004AH _BSS               BSS
+ 1B2DEH 1B2DEH 00000H _BSSEND            BSSEND
+ 1B2E0H 1B35FH 00080H _STACK             STACK
+
+
+Detailed map of segments
+
+ 0000:0000 0291 C=CODE   S=_TEXT          G=(none)  M=c0.ASM     ACBP=28
+ 0000:0291 7D95 C=CODE   S=_TEXT          G=(none)  M=WARCHOPS.CPP ACBP=28
+ 0000:8026 0024 C=CODE   S=_TEXT          G=(none)  M=ATEXIT     ACBP=28
+ 0000:804A 0000 C=CODE   S=_TEXT          G=(none)  M=CTYPE      ACBP=28
+ 0000:804A 000C C=CODE   S=_TEXT          G=(none)  M=DEL        ACBP=28
+ 0000:8056 0089 C=CODE   S=_TEXT          G=(none)  M=EXIT       ACBP=28
+ 0000:80DF 0000 C=CODE   S=_TEXT          G=(none)  M=FILES      ACBP=28
+ 0000:80DF 0000 C=CODE   S=_TEXT          G=(none)  M=FILES2     ACBP=28
+ 0000:80DF 0000 C=CODE   S=_TEXT          G=(none)  M=FMODE      ACBP=28
+ 0000:80DF 0017 C=CODE   S=_TEXT          G=(none)  M=F_LXMUL    ACBP=28
+ 0000:80F6 001C C=CODE   S=_TEXT          G=(none)  M=F_SCOPY    ACBP=28
+ 0000:8112 0026 C=CODE   S=_TEXT          G=(none)  M=GETDATE    ACBP=28
+ 0000:8138 0000 C=CODE   S=_TEXT          G=(none)  M=HEAPLEN    ACBP=28
+ 0000:8138 00AE C=CODE   S=_TEXT          G=(none)  M=H_LDIV     ACBP=28
+ 0000:81E6 0021 C=CODE   S=_TEXT          G=(none)  M=H_LLSH     ACBP=28
+ 0000:8207 004B C=CODE   S=_TEXT          G=(none)  M=IOERROR    ACBP=28
+ 0000:8252 0011 C=CODE   S=_TEXT          G=(none)  M=ISATTY     ACBP=28
+ 0000:8263 009A C=CODE   S=_TEXT          G=(none)  M=LONGTOA    ACBP=28
+ 0000:82FD 0029 C=CODE   S=_TEXT          G=(none)  M=LSEEK      ACBP=28
+ 0000:8326 0051 C=CODE   S=_TEXT          G=(none)  M=NEW        ACBP=28
+ 0000:8377 0017 C=CODE   S=_TEXT          G=(none)  M=N_LXMUL    ACBP=28
+ 0000:838E 001C C=CODE   S=_TEXT          G=(none)  M=N_SCOPY    ACBP=28
+ 0000:83AA 0037 C=CODE   S=_TEXT          G=(none)  M=RAND       ACBP=28
+ 0000:83E1 002D C=CODE   S=_TEXT          G=(none)  M=READA      ACBP=28
+ 0000:840E 0026 C=CODE   S=_TEXT          G=(none)  M=SETDATE    ACBP=28
+ 0000:8434 009D C=CODE   S=_TEXT          G=(none)  M=SETUPIO    ACBP=28
+ 0000:84D1 0079 C=CODE   S=_TEXT          G=(none)  M=STIME      ACBP=28
+ 0000:854A 0000 C=CODE   S=_TEXT          G=(none)  M=STKLEN     ACBP=28
+ 0000:854A 0016 C=CODE   S=_TEXT          G=(none)  M=TELL       ACBP=28
+ 0000:8560 002C C=CODE   S=_TEXT          G=(none)  M=TOUPPER    ACBP=28
+ 0000:858C 04C6 C=CODE   S=_TEXT          G=(none)  M=VPRINTER   ACBP=28
+ 0000:8A52 009F C=CODE   S=_TEXT          G=(none)  M=VRAM       ACBP=28
+ 0000:8AF1 0000 C=CODE   S=_TEXT          G=(none)  M=WSCROLL    ACBP=28
+ 0000:8AF1 0025 C=CODE   S=_TEXT          G=(none)  M=BIOSKEY    ACBP=28
+ 0000:8B16 006F C=CODE   S=_TEXT          G=(none)  M=BRK        ACBP=28
+ 0000:8B85 0029 C=CODE   S=_TEXT          G=(none)  M=CLRSCR     ACBP=28
+ 0000:8BAE 0149 C=CODE   S=_TEXT          G=(none)  M=CPRINTF    ACBP=28
+ 0000:8CF7 01B3 C=CODE   S=_TEXT          G=(none)  M=CRTINIT    ACBP=28
+ 0000:8EAA 001F C=CODE   S=_TEXT          G=(none)  M=CVTFAK     ACBP=28
+ 0000:8EC9 009D C=CODE   S=_TEXT          G=(none)  M=DELAY      ACBP=28
+ 0000:8F66 0052 C=CODE   S=_TEXT          G=(none)  M=GETCH      ACBP=28
+ 0000:8FB8 000C C=CODE   S=_TEXT          G=(none)  M=GEXIT      ACBP=28
+ 0000:8FC4 000C C=CODE   S=_TEXT          G=(none)  M=GFREEMEM   ACBP=28
+ 0000:8FD0 000E C=CODE   S=_TEXT          G=(none)  M=GGETMEM    ACBP=28
+ 0000:8FDE 0049 C=CODE   S=_TEXT          G=(none)  M=GOTOXY     ACBP=28
+ 0000:9027 0095 C=CODE   S=_TEXT          G=(none)  M=GPTEXT     ACBP=28
+ 0000:90BC 0027 C=CODE   S=_TEXT          G=(none)  M=IOCTL      ACBP=28
+ 0000:90E3 0012 C=CODE   S=_TEXT          G=(none)  M=KBHIT      ACBP=28
+ 0000:90F5 009D C=CODE   S=_TEXT          G=(none)  M=MOVETEXT   ACBP=28
+ 0000:9192 0277 C=CODE   S=_TEXT          G=(none)  M=NEARHEAP   ACBP=28
+ 0000:9409 0013 C=CODE   S=_TEXT          G=(none)  M=PUTCH      ACBP=28
+ 0000:941C 0004 C=CODE   S=_TEXT          G=(none)  M=REALCVT    ACBP=28
+ 0000:9420 01AB C=CODE   S=_TEXT          G=(none)  M=SCREEN     ACBP=28
+ 0000:95CB 017E C=CODE   S=_TEXT          G=(none)  M=SCROLL     ACBP=28
+ 0000:9749 0057 C=CODE   S=_TEXT          G=(none)  M=SETENVP    ACBP=28
+ 0000:97A0 002C C=CODE   S=_TEXT          G=(none)  M=WHEREXY    ACBP=28
+ 0000:97CC 007C C=CODE   S=_TEXT          G=(none)  M=ATOL       ACBP=28
+ 0000:9848 001B C=CODE   S=_TEXT          G=(none)  M=CHMODA     ACBP=28
+ 0000:9863 0026 C=CODE   S=_TEXT          G=(none)  M=CLOSE      ACBP=28
+ 0000:9889 001E C=CODE   S=_TEXT          G=(none)  M=CLOSEA     ACBP=28
+ 0000:98A7 007D C=CODE   S=_TEXT          G=(none)  M=FFLUSH     ACBP=28
+ 0000:9924 0038 C=CODE   S=_TEXT          G=(none)  M=FLUSHALL   ACBP=28
+ 0000:995C 010C C=CODE   S=_TEXT          G=(none)  M=FSEEK      ACBP=28
+ 0000:9A68 005F C=CODE   S=_TEXT          G=(none)  M=GETENV     ACBP=28
+ 0000:9AC7 0067 C=CODE   S=_TEXT          G=(none)  M=LTOA1      ACBP=28
+ 0000:9B2E 001F C=CODE   S=_TEXT          G=(none)  M=MEMCPY     ACBP=28
+ 0000:9B4D 0040 C=CODE   S=_TEXT          G=(none)  M=MEMSET     ACBP=28
+ 0000:9B8D 0177 C=CODE   S=_TEXT          G=(none)  M=OPEN       ACBP=28
+ 0000:9D04 004D C=CODE   S=_TEXT          G=(none)  M=OPENA      ACBP=28
+ 0000:9D51 0017 C=CODE   S=_TEXT          G=(none)  M=PRINTF     ACBP=28
+ 0000:9D68 02DE C=CODE   S=_TEXT          G=(none)  M=PUTC       ACBP=28
+ 0000:A046 00C8 C=CODE   S=_TEXT          G=(none)  M=READ       ACBP=28
+ 0000:A10E 0003 C=CODE   S=_TEXT          G=(none)  M=READU      ACBP=28
+ 0000:A111 00CA C=CODE   S=_TEXT          G=(none)  M=SETVBUF    ACBP=28
+ 0000:A1DB 0022 C=CODE   S=_TEXT          G=(none)  M=STRCPY     ACBP=28
+ 0000:A1FD 001A C=CODE   S=_TEXT          G=(none)  M=STRLEN     ACBP=28
+ 0000:A217 002C C=CODE   S=_TEXT          G=(none)  M=STRNCPY    ACBP=28
+ 0000:A243 02E5 C=CODE   S=_TEXT          G=(none)  M=TIMECVT    ACBP=28
+ 0000:A528 024E C=CODE   S=_TEXT          G=(none)  M=TZSET      ACBP=28
+ 0000:A776 0104 C=CODE   S=_TEXT          G=(none)  M=WRITE      ACBP=28
+ 0000:A87A 003A C=CODE   S=_TEXT          G=(none)  M=WRITEA     ACBP=28
+ 0000:A8B4 0003 C=CODE   S=_TEXT          G=(none)  M=WRITEU     ACBP=28
+ 0000:A8B7 0021 C=CODE   S=_TEXT          G=(none)  M=XFFLUSH    ACBP=28
+ 0000:A8D8 019C C=CODE   S=_TEXT          G=(none)  M=IOSTSTD    ACBP=28
+ 0000:AA74 0077 C=CODE   S=_TEXT          G=(none)  M=FSBCLOSE   ACBP=28
+ 0000:AAEB 0089 C=CODE   S=_TEXT          G=(none)  M=FSBCTR1    ACBP=28
+ 0000:AB74 008A C=CODE   S=_TEXT          G=(none)  M=FSBCTR2    ACBP=28
+ 0000:ABFE 0044 C=CODE   S=_TEXT          G=(none)  M=FSBDTR     ACBP=28
+ 0000:AC42 00FC C=CODE   S=_TEXT          G=(none)  M=FSBOFLOW   ACBP=28
+ 0000:AD3E 010F C=CODE   S=_TEXT          G=(none)  M=FSBOPEN    ACBP=28
+ 0000:AE4D 0083 C=CODE   S=_TEXT          G=(none)  M=FSBSBUF    ACBP=28
+ 0000:AED0 0127 C=CODE   S=_TEXT          G=(none)  M=FSBSKOFF   ACBP=28
+ 0000:AFF7 0099 C=CODE   S=_TEXT          G=(none)  M=FSBSYNC    ACBP=28
+ 0000:B090 014F C=CODE   S=_TEXT          G=(none)  M=FSBUFLOW   ACBP=28
+ 0000:B1DF 002D C=CODE   S=_TEXT          G=(none)  M=FSCLOSE    ACBP=28
+ 0000:B20C 0064 C=CODE   S=_TEXT          G=(none)  M=FSCTR1     ACBP=28
+ 0000:B270 0056 C=CODE   S=_TEXT          G=(none)  M=FSDTR      ACBP=28
+ 0000:B2C6 0056 C=CODE   S=_TEXT          G=(none)  M=FSOPEN     ACBP=28
+ 0000:B31C 007D C=CODE   S=_TEXT          G=(none)  M=IFSCTR1    ACBP=28
+ 0000:B399 006D C=CODE   S=_TEXT          G=(none)  M=IFSDTR     ACBP=28
+ 0000:B406 0016 C=CODE   S=_TEXT          G=(none)  M=ISTASN2    ACBP=28
+ 0000:B41C 0052 C=CODE   S=_TEXT          G=(none)  M=ISTCTR1    ACBP=28
+ 0000:B46E 0057 C=CODE   S=_TEXT          G=(none)  M=ISTCTR4    ACBP=28
+ 0000:B4C5 0066 C=CODE   S=_TEXT          G=(none)  M=ISTDGET    ACBP=28
+ 0000:B52B 007B C=CODE   S=_TEXT          G=(none)  M=ISTDIPFX   ACBP=28
+ 0000:B5A6 0047 C=CODE   S=_TEXT          G=(none)  M=ISTDTR1    ACBP=28
+ 0000:B5ED 0050 C=CODE   S=_TEXT          G=(none)  M=ISTDTR2    ACBP=28
+ 0000:B63D 0087 C=CODE   S=_TEXT          G=(none)  M=ISTEATWH   ACBP=28
+ 0000:B6C4 002E C=CODE   S=_TEXT          G=(none)  M=ISTEINT    ACBP=28
+ 0000:B6F2 03D2 C=CODE   S=_TEXT          G=(none)  M=ISTELNG    ACBP=28
+ 0000:BAC4 0087 C=CODE   S=_TEXT          G=(none)  M=ISTESCHR   ACBP=28
+ 0000:BB4B 0016 C=CODE   S=_TEXT          G=(none)  M=OSTASN2    ACBP=28
+ 0000:BB61 004D C=CODE   S=_TEXT          G=(none)  M=OSTCTR1    ACBP=28
+ 0000:BBAE 0057 C=CODE   S=_TEXT          G=(none)  M=OSTCTR3    ACBP=28
+ 0000:BC05 004C C=CODE   S=_TEXT          G=(none)  M=OSTDTR1    ACBP=28
+ 0000:BC51 0050 C=CODE   S=_TEXT          G=(none)  M=OSTDTR2    ACBP=28
+ 0000:BCA1 002A C=CODE   S=_TEXT          G=(none)  M=OSTFLUSH   ACBP=28
+ 0000:BCCB 028F C=CODE   S=_TEXT          G=(none)  M=OSTINT     ACBP=28
+ 0000:BF5A 0027 C=CODE   S=_TEXT          G=(none)  M=OSTOPFX    ACBP=28
+ 0000:BF81 0038 C=CODE   S=_TEXT          G=(none)  M=OSTOSFX    ACBP=28
+ 0000:BFB9 01FC C=CODE   S=_TEXT          G=(none)  M=OSTOUTST   ACBP=28
+ 0000:C1B5 0030 C=CODE   S=_TEXT          G=(none)  M=STBALC     ACBP=28
+ 0000:C1E5 0054 C=CODE   S=_TEXT          G=(none)  M=STBCTR1    ACBP=28
+ 0000:C239 0022 C=CODE   S=_TEXT          G=(none)  M=STBDNEXT   ACBP=28
+ 0000:C25B 0088 C=CODE   S=_TEXT          G=(none)  M=STBDSGTN   ACBP=28
+ 0000:C2E3 007C C=CODE   S=_TEXT          G=(none)  M=STBDSPTN   ACBP=28
+ 0000:C35F 002F C=CODE   S=_TEXT          G=(none)  M=STBDTR     ACBP=28
+ 0000:C38E 000B C=CODE   S=_TEXT          G=(none)  M=STBOFLOW   ACBP=28
+ 0000:C399 000B C=CODE   S=_TEXT          G=(none)  M=STBPBFL    ACBP=28
+ 0000:C3A4 0020 C=CODE   S=_TEXT          G=(none)  M=STBSBUF    ACBP=28
+ 0000:C3C4 0065 C=CODE   S=_TEXT          G=(none)  M=STBSETB    ACBP=28
+ 0000:C429 003C C=CODE   S=_TEXT          G=(none)  M=STBSETG    ACBP=28
+ 0000:C465 002D C=CODE   S=_TEXT          G=(none)  M=STBSETP    ACBP=28
+ 0000:C492 000E C=CODE   S=_TEXT          G=(none)  M=STBSKOFF   ACBP=28
+ 0000:C4A0 001F C=CODE   S=_TEXT          G=(none)  M=STBSKPOS   ACBP=28
+ 0000:C4BF 0044 C=CODE   S=_TEXT          G=(none)  M=STBSPUTN   ACBP=28
+ 0000:C503 0038 C=CODE   S=_TEXT          G=(none)  M=STBSYNC    ACBP=28
+ 0000:C53B 0024 C=CODE   S=_TEXT          G=(none)  M=STBUFLOW   ACBP=28
+ 0000:C55F 0034 C=CODE   S=_TEXT          G=(none)  M=STCLEAR    ACBP=28
+ 0000:C593 0027 C=CODE   S=_TEXT          G=(none)  M=STCTR1     ACBP=28
+ 0000:C5BA 002F C=CODE   S=_TEXT          G=(none)  M=STDTR      ACBP=28
+ 0000:C5E9 003E C=CODE   S=_TEXT          G=(none)  M=STINIT     ACBP=28
+ 0000:C627 00A9 C=CODE   S=_TEXT          G=(none)  M=STSETF1    ACBP=28
+ 0000:C6D0 0025 C=CODE   S=_TEXT          G=(none)  M=STSETST    ACBP=28
+ 0000:C6F5 003C C=CODE   S=_TEXT          G=(none)  M=STTIE      ACBP=28
+ 0C74:0000 188F C=CODE   S=_BGI_TEXT      G=(none)  M=GRAPHC     ACBP=28
+ 0C74:188F 0A27 C=CODE   S=_BGI_TEXT      G=(none)  M=GRAPH      ACBP=28
+ 0C74:22C0 199A C=CODE   S=_BGI_TEXT      G=(none)  M=BGIOVR     ACBP=68
+ 103A:0000 0000 C=FAR_DATA S=_FARDATA       G=(none)  M=c0.ASM     ACBP=68
+ 103A:0000 0000 C=FAR_BSS S=_FARBSS        G=(none)  M=c0.ASM     ACBP=68
+ 103A:0000 0000 C=OVRINFO S=_OVERLAY_      G=(none)  M=c0.ASM     ACBP=68
+ 103A:0000 0000 C=STUBSEG S=_1STUB_        G=(none)  M=c0.ASM     ACBP=68
+ 103A:0000 00AA C=DATA   S=_DATA          G=DGROUP  M=c0.ASM     ACBP=68
+ 103A:00AA A22A C=DATA   S=_DATA          G=DGROUP  M=WARCHOPS.CPP ACBP=48
+ 103A:A2D4 0006 C=DATA   S=_DATA          G=DGROUP  M=GLOAD      ACBP=48
+ 103A:A2DA 065B C=DATA   S=_DATA          G=DGROUP  M=GRAPHC     ACBP=48
+ 103A:A936 000B C=DATA   S=_DATA          G=DGROUP  M=GRAPH      ACBP=48
+ 103A:A942 0002 C=DATA   S=_DATA          G=DGROUP  M=ATEXIT     ACBP=48
+ 103A:A944 0101 C=DATA   S=_DATA          G=DGROUP  M=CTYPE      ACBP=48
+ 103A:AA46 0000 C=DATA   S=_DATA          G=DGROUP  M=DEL        ACBP=48
+ 103A:AA46 0006 C=DATA   S=_DATA          G=DGROUP  M=EXIT       ACBP=48
+ 103A:AA4C 0140 C=DATA   S=_DATA          G=DGROUP  M=FILES      ACBP=48
+ 103A:AB8C 002A C=DATA   S=_DATA          G=DGROUP  M=FILES2     ACBP=48
+ 103A:ABB6 0004 C=DATA   S=_DATA          G=DGROUP  M=FMODE      ACBP=48
+ 103A:ABBA 0000 C=DATA   S=_DATA          G=DGROUP  M=F_LXMUL    ACBP=48
+ 103A:ABBA 0000 C=DATA   S=_DATA          G=DGROUP  M=F_SCOPY    ACBP=48
+ 103A:ABBA 0000 C=DATA   S=_DATA          G=DGROUP  M=GETDATE    ACBP=48
+ 103A:ABBA 0002 C=DATA   S=_DATA          G=DGROUP  M=HEAPLEN    ACBP=48
+ 103A:ABBC 0000 C=DATA   S=_DATA          G=DGROUP  M=H_LDIV     ACBP=48
+ 103A:ABBC 0000 C=DATA   S=_DATA          G=DGROUP  M=H_LLSH     ACBP=48
+ 103A:ABBC 005B C=DATA   S=_DATA          G=DGROUP  M=IOERROR    ACBP=48
+ 103A:AC18 0000 C=DATA   S=_DATA          G=DGROUP  M=ISATTY     ACBP=48
+ 103A:AC18 0000 C=DATA   S=_DATA          G=DGROUP  M=LONGTOA    ACBP=48
+ 103A:AC18 0000 C=DATA   S=_DATA          G=DGROUP  M=LSEEK      ACBP=48
+ 103A:AC18 0002 C=DATA   S=_DATA          G=DGROUP  M=NEW        ACBP=48
+ 103A:AC1A 0000 C=DATA   S=_DATA          G=DGROUP  M=N_LXMUL    ACBP=48
+ 103A:AC1A 0000 C=DATA   S=_DATA          G=DGROUP  M=N_SCOPY    ACBP=48
+ 103A:AC1A 0004 C=DATA   S=_DATA          G=DGROUP  M=RAND       ACBP=48
+ 103A:AC1E 0000 C=DATA   S=_DATA          G=DGROUP  M=READA      ACBP=48
+ 103A:AC1E 0000 C=DATA   S=_DATA          G=DGROUP  M=SETDATE    ACBP=48
+ 103A:AC1E 0000 C=DATA   S=_DATA          G=DGROUP  M=SETUPIO    ACBP=48
+ 103A:AC1E 0000 C=DATA   S=_DATA          G=DGROUP  M=STIME      ACBP=48
+ 103A:AC1E 0002 C=DATA   S=_DATA          G=DGROUP  M=STKLEN     ACBP=48
+ 103A:AC20 0000 C=DATA   S=_DATA          G=DGROUP  M=TELL       ACBP=48
+ 103A:AC20 0000 C=DATA   S=_DATA          G=DGROUP  M=TOUPPER    ACBP=48
+ 103A:AC20 0067 C=DATA   S=_DATA          G=DGROUP  M=VPRINTER   ACBP=48
+ 103A:AC88 0000 C=DATA   S=_DATA          G=DGROUP  M=VRAM       ACBP=48
+ 103A:AC88 0002 C=DATA   S=_DATA          G=DGROUP  M=WSCROLL    ACBP=48
+ 103A:AC8A 0000 C=DATA   S=_DATA          G=DGROUP  M=BIOSKEY    ACBP=48
+ 103A:AC8A 0000 C=DATA   S=_DATA          G=DGROUP  M=BRK        ACBP=48
+ 103A:AC8A 0000 C=DATA   S=_DATA          G=DGROUP  M=CLRSCR     ACBP=48
+ 103A:AC8A 0000 C=DATA   S=_DATA          G=DGROUP  M=CPRINTF    ACBP=48
+ 103A:AC8A 0018 C=DATA   S=_DATA          G=DGROUP  M=CRTINIT    ACBP=48
+ 103A:ACA2 0031 C=DATA   S=_DATA          G=DGROUP  M=CVTFAK     ACBP=48
+ 103A:ACD4 0004 C=DATA   S=_DATA          G=DGROUP  M=DELAY      ACBP=48
+ 103A:ACD8 0000 C=DATA   S=_DATA          G=DGROUP  M=GETCH      ACBP=48
+ 103A:ACD8 0000 C=DATA   S=_DATA          G=DGROUP  M=GEXIT      ACBP=48
+ 103A:ACD8 0000 C=DATA   S=_DATA          G=DGROUP  M=GFREEMEM   ACBP=48
+ 103A:ACD8 0000 C=DATA   S=_DATA          G=DGROUP  M=GGETMEM    ACBP=48
+ 103A:ACD8 0000 C=DATA   S=_DATA          G=DGROUP  M=GOTOXY     ACBP=48
+ 103A:ACD8 0000 C=DATA   S=_DATA          G=DGROUP  M=GPTEXT     ACBP=48
+ 103A:ACD8 0000 C=DATA   S=_DATA          G=DGROUP  M=IOCTL      ACBP=48
+ 103A:ACD8 0002 C=DATA   S=_DATA          G=DGROUP  M=KBHIT      ACBP=48
+ 103A:ACDA 0000 C=DATA   S=_DATA          G=DGROUP  M=MOVETEXT   ACBP=48
+ 103A:ACDA 0006 C=DATA   S=_DATA          G=DGROUP  M=NEARHEAP   ACBP=48
+ 103A:ACE0 0000 C=DATA   S=_DATA          G=DGROUP  M=PUTCH      ACBP=48
+ 103A:ACE0 0000 C=DATA   S=_DATA          G=DGROUP  M=REALCVT    ACBP=48
+ 103A:ACE0 0000 C=DATA   S=_DATA          G=DGROUP  M=SCREEN     ACBP=48
+ 103A:ACE0 0000 C=DATA   S=_DATA          G=DGROUP  M=SCROLL     ACBP=48
+ 103A:ACE0 0002 C=DATA   S=_DATA          G=DGROUP  M=SETENVP    ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=WHEREXY    ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=ATOL       ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=CHMODA     ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=CLOSE      ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=CLOSEA     ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=FFLUSH     ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=FLUSHALL   ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=FSEEK      ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=GETENV     ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=LTOA1      ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=MEMCPY     ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=MEMSET     ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=OPEN       ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=OPENA      ACBP=48
+ 103A:ACE2 0000 C=DATA   S=_DATA          G=DGROUP  M=PRINTF     ACBP=48
+ 103A:ACE2 0001 C=DATA   S=_DATA          G=DGROUP  M=PUTC       ACBP=48
+ 103A:ACE4 0000 C=DATA   S=_DATA          G=DGROUP  M=READ       ACBP=48
+ 103A:ACE4 0000 C=DATA   S=_DATA          G=DGROUP  M=READU      ACBP=48
+ 103A:ACE4 0004 C=DATA   S=_DATA          G=DGROUP  M=SETVBUF    ACBP=48
+ 103A:ACE8 0000 C=DATA   S=_DATA          G=DGROUP  M=STRCPY     ACBP=48
+ 103A:ACE8 0000 C=DATA   S=_DATA          G=DGROUP  M=STRLEN     ACBP=48
+ 103A:ACE8 0000 C=DATA   S=_DATA          G=DGROUP  M=STRNCPY    ACBP=48
+ 103A:ACE8 000C C=DATA   S=_DATA          G=DGROUP  M=TIMECVT    ACBP=48
+ 103A:ACF4 002F C=DATA   S=_DATA          G=DGROUP  M=TZSET      ACBP=48
+ 103A:AD24 0000 C=DATA   S=_DATA          G=DGROUP  M=WRITE      ACBP=48
+ 103A:AD24 0000 C=DATA   S=_DATA          G=DGROUP  M=WRITEA     ACBP=48
+ 103A:AD24 0000 C=DATA   S=_DATA          G=DGROUP  M=WRITEU     ACBP=48
+ 103A:AD24 0000 C=DATA   S=_DATA          G=DGROUP  M=XFFLUSH    ACBP=48
+ 103A:AD24 00A0 C=DATA   S=_DATA          G=DGROUP  M=IOSTSTD    ACBP=48
+ 103A:ADC4 0000 C=DATA   S=_DATA          G=DGROUP  M=FSBCLOSE   ACBP=48
+ 103A:ADC4 0016 C=DATA   S=_DATA          G=DGROUP  M=FSBCTR1    ACBP=48
+ 103A:ADDA 0016 C=DATA   S=_DATA          G=DGROUP  M=FSBCTR2    ACBP=48
+ 103A:ADF0 0018 C=DATA   S=_DATA          G=DGROUP  M=FSBDTR     ACBP=48
+ 103A:AE08 0000 C=DATA   S=_DATA          G=DGROUP  M=FSBOFLOW   ACBP=48
+ 103A:AE08 0000 C=DATA   S=_DATA          G=DGROUP  M=FSBOPEN    ACBP=48
+ 103A:AE08 0000 C=DATA   S=_DATA          G=DGROUP  M=FSBSBUF    ACBP=48
+ 103A:AE08 0000 C=DATA   S=_DATA          G=DGROUP  M=FSBSKOFF   ACBP=48
+ 103A:AE08 0000 C=DATA   S=_DATA          G=DGROUP  M=FSBSYNC    ACBP=48
+ 103A:AE08 0000 C=DATA   S=_DATA          G=DGROUP  M=FSBUFLOW   ACBP=48
+ 103A:AE08 0000 C=DATA   S=_DATA          G=DGROUP  M=FSCLOSE    ACBP=48
+ 103A:AE08 0004 C=DATA   S=_DATA          G=DGROUP  M=FSCTR1     ACBP=48
+ 103A:AE0C 0004 C=DATA   S=_DATA          G=DGROUP  M=FSDTR      ACBP=48
+ 103A:AE10 0000 C=DATA   S=_DATA          G=DGROUP  M=FSOPEN     ACBP=48
+ 103A:AE10 0006 C=DATA   S=_DATA          G=DGROUP  M=IFSCTR1    ACBP=48
+ 103A:AE16 0006 C=DATA   S=_DATA          G=DGROUP  M=IFSDTR     ACBP=48
+ 103A:AE1C 0000 C=DATA   S=_DATA          G=DGROUP  M=ISTASN2    ACBP=48
+ 103A:AE1C 0004 C=DATA   S=_DATA          G=DGROUP  M=ISTCTR1    ACBP=48
+ 103A:AE20 0004 C=DATA   S=_DATA          G=DGROUP  M=ISTCTR4    ACBP=48
+ 103A:AE24 0000 C=DATA   S=_DATA          G=DGROUP  M=ISTDGET    ACBP=48
+ 103A:AE24 0000 C=DATA   S=_DATA          G=DGROUP  M=ISTDIPFX   ACBP=48
+ 103A:AE24 0004 C=DATA   S=_DATA          G=DGROUP  M=ISTDTR1    ACBP=48
+ 103A:AE28 0004 C=DATA   S=_DATA          G=DGROUP  M=ISTDTR2    ACBP=48
+ 103A:AE2C 0000 C=DATA   S=_DATA          G=DGROUP  M=ISTEATWH   ACBP=48
+ 103A:AE2C 0000 C=DATA   S=_DATA          G=DGROUP  M=ISTEINT    ACBP=48
+ 103A:AE2C 0000 C=DATA   S=_DATA          G=DGROUP  M=ISTELNG    ACBP=48
+ 103A:AE2C 0000 C=DATA   S=_DATA          G=DGROUP  M=ISTESCHR   ACBP=48
+ 103A:AE2C 0000 C=DATA   S=_DATA          G=DGROUP  M=OSTASN2    ACBP=48
+ 103A:AE2C 0004 C=DATA   S=_DATA          G=DGROUP  M=OSTCTR1    ACBP=48
+ 103A:AE30 0004 C=DATA   S=_DATA          G=DGROUP  M=OSTCTR3    ACBP=48
+ 103A:AE34 0004 C=DATA   S=_DATA          G=DGROUP  M=OSTDTR1    ACBP=48
+ 103A:AE38 0004 C=DATA   S=_DATA          G=DGROUP  M=OSTDTR2    ACBP=48
+ 103A:AE3C 0000 C=DATA   S=_DATA          G=DGROUP  M=OSTFLUSH   ACBP=48
+ 103A:AE3C 0036 C=DATA   S=_DATA          G=DGROUP  M=OSTINT     ACBP=48
+ 103A:AE72 0000 C=DATA   S=_DATA          G=DGROUP  M=OSTOPFX    ACBP=48
+ 103A:AE72 0000 C=DATA   S=_DATA          G=DGROUP  M=OSTOSFX    ACBP=48
+ 103A:AE72 0000 C=DATA   S=_DATA          G=DGROUP  M=OSTOUTST   ACBP=48
+ 103A:AE72 0000 C=DATA   S=_DATA          G=DGROUP  M=STBALC     ACBP=48
+ 103A:AE72 0016 C=DATA   S=_DATA          G=DGROUP  M=STBCTR1    ACBP=48
+ 103A:AE88 0000 C=DATA   S=_DATA          G=DGROUP  M=STBDNEXT   ACBP=48
+ 103A:AE88 0000 C=DATA   S=_DATA          G=DGROUP  M=STBDSGTN   ACBP=48
+ 103A:AE88 0000 C=DATA   S=_DATA          G=DGROUP  M=STBDSPTN   ACBP=48
+ 103A:AE88 0016 C=DATA   S=_DATA          G=DGROUP  M=STBDTR     ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBOFLOW   ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBPBFL    ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBSBUF    ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBSETB    ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBSETG    ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBSETP    ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBSKOFF   ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBSKPOS   ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBSPUTN   ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBSYNC    ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STBUFLOW   ACBP=48
+ 103A:AE9E 0000 C=DATA   S=_DATA          G=DGROUP  M=STCLEAR    ACBP=48
+ 103A:AE9E 0002 C=DATA   S=_DATA          G=DGROUP  M=STCTR1     ACBP=48
+ 103A:AEA0 0016 C=DATA   S=_DATA          G=DGROUP  M=STDTR      ACBP=48
+ 103A:AEB6 0000 C=DATA   S=_DATA          G=DGROUP  M=STINIT     ACBP=48
+ 103A:AEB6 0000 C=DATA   S=_DATA          G=DGROUP  M=STSETF1    ACBP=48
+ 103A:AEB6 0000 C=DATA   S=_DATA          G=DGROUP  M=STSETST    ACBP=48
+ 103A:AEB6 0000 C=DATA   S=_DATA          G=DGROUP  M=STTIE      ACBP=48
+ 103A:AEB6 0000 C=DATA   S=_CVTSEG        G=DGROUP  M=c0.ASM     ACBP=48
+ 103A:AEB6 0002 C=DATA   S=_CVTSEG        G=DGROUP  M=CVTFAK     ACBP=48
+ 103A:AEB8 0000 C=DATA   S=_CVTSEG        G=DGROUP  M=REALCVT    ACBP=48
+ 103A:AEB8 0000 C=DATA   S=_SCNSEG        G=DGROUP  M=c0.ASM     ACBP=48
+ 103A:AEB8 0006 C=DATA   S=_SCNSEG        G=DGROUP  M=CVTFAK     ACBP=48
+ 103A:AEBE 0000 C=DATA   S=GRAPH          G=DGROUP  M=GRAPHC     ACBP=48
+ 103A:AEBE 0000 C=CONST  S=_CONST         G=DGROUP  M=c0.ASM     ACBP=48
+ 103A:AEBE 0000 C=INITDATA S=_INIT_         G=DGROUP  M=c0.ASM     ACBP=48
+ 103A:AEBE 0006 C=INITDATA S=_INIT_         G=DGROUP  M=SETUPIO    ACBP=48
+ 103A:AEC4 0006 C=INITDATA S=_INIT_         G=DGROUP  M=CRTINIT    ACBP=48
+ 103A:AECA 0006 C=INITDATA S=_INIT_         G=DGROUP  M=DELAY      ACBP=48
+ 103A:AED0 0006 C=INITDATA S=_INIT_         G=DGROUP  M=SETENVP    ACBP=48
+ 103A:AED6 0006 C=INITDATA S=_INIT_         G=DGROUP  M=TZSET      ACBP=48
+ 103A:AEDC 000C C=INITDATA S=_INIT_         G=DGROUP  M=IOSTSTD    ACBP=48
+ 103A:AEE8 0000 C=INITDATA S=_INITEND_      G=DGROUP  M=c0.ASM     ACBP=28
+ 103A:AEE8 0000 C=EXITDATA S=_EXIT_         G=DGROUP  M=c0.ASM     ACBP=48
+ 103A:AEE8 000C C=EXITDATA S=_EXIT_         G=DGROUP  M=IOSTSTD    ACBP=48
+ 103A:AEF4 0000 C=EXITDATA S=_EXITEND_      G=DGROUP  M=c0.ASM     ACBP=28
+ 103A:AEF4 0000 C=BSS    S=_BSS           G=DGROUP  M=c0.ASM     ACBP=48
+ 103A:AEF4 0000 C=BSS    S=_BSS           G=DGROUP  M=WARCHOPS.CPP ACBP=48
+ 103A:AEF4 0040 C=BSS    S=_BSS           G=DGROUP  M=ATEXIT     ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=IOERROR    ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=ISATTY     ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=LONGTOA    ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=LSEEK      ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=READA      ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=SETDATE    ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=SETUPIO    ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=VPRINTER   ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=VRAM       ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=BIOSKEY    ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=BRK        ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=CRTINIT    ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=DELAY      ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=GETCH      ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=IOCTL      ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=KBHIT      ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=ATOL       ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=CHMODA     ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=CLOSEA     ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=GETENV     ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=MEMCPY     ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=MEMSET     ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=OPEN       ACBP=48
+ 103A:AF34 0000 C=BSS    S=_BSS           G=DGROUP  M=OPENA      ACBP=48
+ 103A:AF34 0001 C=BSS    S=_BSS           G=DGROUP  M=PUTC       ACBP=48
+ 103A:AF36 0000 C=BSS    S=_BSS           G=DGROUP  M=READ       ACBP=48
+ 103A:AF36 0000 C=BSS    S=_BSS           G=DGROUP  M=STRCPY     ACBP=48
+ 103A:AF36 0000 C=BSS    S=_BSS           G=DGROUP  M=STRLEN     ACBP=48
+ 103A:AF36 0000 C=BSS    S=_BSS           G=DGROUP  M=STRNCPY    ACBP=48
+ 103A:AF36 0008 C=BSS    S=_BSS           G=DGROUP  M=TZSET      ACBP=48
+ 103A:AF3E 0000 C=BSS    S=_BSS           G=DGROUP  M=WRITEA     ACBP=48
+ 103A:AF3E 0000 C=BSS    S=_BSS           G=DGROUP  M=IOSTSTD    ACBP=48
+ 103A:AF3E 0000 C=BSSEND S=_BSSEND        G=DGROUP  M=c0.ASM     ACBP=28
+ 1B2E:0000 0080 C=STACK  S=_STACK         G=(none)  M=c0.ASM     ACBP=74
+
+  Address         Publics by Name
+
+ 0000:804A       operator delete(void near*)
+ 0000:833F       operator new(unsigned int)
+ 0000:7FCE       abs(int)
+ 0000:69D5 idle  ai(int)
+ 0000:6785 idle  ai_attack()
+ 0000:6257 idle  ai_checkoutskirts(int,int)
+ 0000:6986 idle  ai_fireattack()
+ 0000:6872 idle  ai_firevicinity(int,int)
+ 0000:62C9 idle  ai_makebuild(int,int,int)
+ 0000:5E80 idle  ai_makeguy(int)
+ 0000:646F idle  ai_movetobuild(int)
+ 0000:42FC idle  attack(int,int)
+ 0000:46DB idle  attackcheck(int,int)
+ 0000:5062 idle  changeguys()
+ 0000:6CB2 idle  checkend()
+ 0000:4EC9 idle  checkfire()
+ 0000:5979 idle  checksel()
+ 0000:5BD4 idle  clearmove()
+ 0000:2576 idle  createunit(int,int,int)
+ 0C74:188F idle  @DGROUP
+ 0000:3FE1 idle  drawexplode(int,int)
+ 0000:3409 idle  drawgold()
+ 0000:1FF4 idle  drawmap()
+ 0000:330F idle  drawsel()
+ 0000:1782 idle  draw_coord(int,int)
+ 0000:AB74       filebuf::filebuf(int)
+ 0000:AAEB       filebuf::filebuf()
+ 0000:ABFE       filebuf::~filebuf()
+ 0000:AA74       filebuf::close()
+ 0000:AD3E       filebuf::open(const char near*,int,int)
+ 103A:ADF0       filebuf::openprot
+ 0000:AC42       filebuf::overflow(int)
+ 0000:AED0       filebuf::seekoff(long,seek_dir,int)
+ 0000:AE4D       filebuf::setbuf(char near*,int)
+ 0000:AFF7       filebuf::sync()
+ 0000:B090       filebuf::underflow()
+ 0000:364F idle  findenemy(int,int)
+ 0000:34C9 idle  findhall(int,int)
+ 0000:38E0 idle  findmine(int,int)
+ 0000:B20C       fstreambase::fstreambase()
+ 0000:B270       fstreambase::~fstreambase()
+ 0000:B1DF       fstreambase::close()
+ 0000:B2C6       fstreambase::open(const char near*,int,int)
+ 0000:02B6 idle  hidemouse()
+ 0000:6687 idle  idle_unit(int)
+ 0000:B31C       ifstream::ifstream()
+ 0000:B399       ifstream::~ifstream()
+ 0000:7DB1       ifstream::open(const char near*,int,int)
+ 0000:0291 idle  initmouse()
+ 0000:C593       ios::ios()
+ 0000:C5BA       ios::~ios()
+ 103A:AEA4       ios::adjustfield
+ 103A:AEA0       ios::basefield
+ 0000:C55F       ios::clear(int)
+ 103A:AEA8       ios::floatfield
+ 0000:C5E9       ios::init(streambuf near*)
+ 103A:AEAC       ios::nextbit
+ 0000:C627       ios::setf(long)
+ 0000:C6D0       ios::setstate(int)
+ 103A:AEB2       ios::stdioflush
+ 0000:C6F5       ios::tie(ostream near*)
+ 103A:AEB0       ios::usercount
+ 0000:A9BC idle  Iostream_delete()
+ 0000:B41C       istream::istream()
+ 0000:B5A6       istream::~istream()
+ 0000:B6C4       istream::operator >>(int near&)
+ 0000:B921       istream::operator >>(long near&)
+ 0000:BAC4       istream::operator >>(char near&)
+ 0000:B4C5       istream::do_get()
+ 0000:B63D       istream::eatwhite()
+ 0000:B52B       istream::ipfx(int)
+ 0000:B406       istream_withassign::operator =(streambuf near*)
+ 0000:B46E       istream_withassign::istream_withassign()
+ 0000:B5ED       istream_withassign::~istream_withassign()
+ 0000:337C idle  killmine(int,int)
+ 0000:2018 idle  loadmap()
+ 0000:31B8 idle  loadpics()
+ 0000:4FE6 idle  makefire(int,int)
+ 0000:7E5E       map_type::arm(int)
+ 0000:0BA2 idle  map_type::display()
+ 0000:7F82       map_type::gold(unsigned int)
+ 0000:7DCC       map_type::hp(unsigned int)
+ 0000:7EF0       map_type::mp(unsigned int)
+ 0000:7F39       map_type::progress(int)
+ 0000:7E15       map_type::see(int)
+ 0000:7EA7       map_type::str(int)
+ 0000:39A6 idle  minecheck(int,int)
+ 0000:02E7 idle  mouseclicked(int)
+ 0000:0309 idle  mouselimit(int,int,int,int)
+ 0000:02CA idle  mousemoved()
+ 0000:02F8 idle  mousereleased(int)
+ 0000:16F6 idle  mousestatx()
+ 0000:173B idle  mousestaty()
+ 0000:6171 idle  nearestunitxy(char,int)
+ 0000:BB61       ostream::ostream()
+ 0000:BC05       ostream::~ostream()
+ 0000:8010       ostream::operator <<(int)
+ 0000:BD8E       ostream::operator <<(long)
+ 0000:7D96       ostream::operator <<(const char near*)
+ 0000:BEA5 idle  ostream::operator <<(unsigned long)
+ 0000:BF5A       ostream::do_opfx()
+ 0000:BF81       ostream::do_osfx()
+ 0000:BCA1       ostream::flush()
+ 0000:BFB9       ostream::outstr(const char near*,const char near*)
+ 0000:BB4B       ostream_withassign::operator =(streambuf near*)
+ 0000:BBAE       ostream_withassign::ostream_withassign()
+ 0000:BC51       ostream_withassign::~ostream_withassign()
+ 0000:7FDD       random(int)
+ 0000:7FFF       randomize()
+ 0000:029A idle  readmousex()
+ 0000:02A8 idle  readmousey()
+ 0000:5C08 idle  replenishmana()
+ 0000:0324 idle  setup()
+ 0000:8326 idle  set_new_handler(void(near*)())
+ 0000:02C0 idle  showmouse()
+ 0000:1E65 idle  shroudall(int)
+ 0000:095A idle  small_image::draw(int,int,int)
+ 0000:0ADE idle  small_image::load(char near*)
+ 0000:C1E5       streambuf::streambuf()
+ 0000:C35F       streambuf::~streambuf()
+ 0000:C1B5       streambuf::doallocate()
+ 0000:C25B       streambuf::do_sgetn(char near*,int)
+ 0000:C239       streambuf::do_snextc()
+ 0000:C2E3       streambuf::do_sputn(const char near*,int)
+ 0000:C38E       streambuf::overflow(int)
+ 0000:C399       streambuf::pbackfail(int)
+ 0000:C492       streambuf::seekoff(long,seek_dir,int)
+ 0000:C4A0       streambuf::seekpos(long,int)
+ 0000:C3C4       streambuf::setb(char near*,char near*,int)
+ 0000:C3A4       streambuf::setbuf(char near*,int)
+ 0000:C429       streambuf::setg(char near*,char near*,char near*)
+ 0000:C465       streambuf::setp(char near*,char near*)
+ 0000:C4BF       streambuf::sputn(const char near*,int)
+ 0000:C503       streambuf::sync()
+ 0000:C53B       streambuf::underflow()
+ 0000:037B idle  title(int,int,char near*,char near*,char near*,char near*,char near*,char near*,char near*,char near*,
+ 0000:2DB7 idle  training()
+ 0000:4D57 idle  tryxmove(int,int,int)
+ 0000:4E10 idle  tryymove(int,int,int)
+ 0000:63E0 idle  unitcount(int,int)
+ 0000:1EBF idle  unshroud(int,int)
+ 0000:4051 idle  xattack(int,int,int)
+ 0000:4B93 idle  xmove(int,int,int)
+ 0000:41A9 idle  yattack(int,int,int)
+ 0000:4C75 idle  ymove(int,int,int)
+ 103A:0000 idle  DATASEG@
+ 0000:028D idle  DGROUP@
+ 0000:813B       F_LDIV@
+ 0000:814A idle  F_LMOD@
+ 0000:8142 idle  F_LUDIV@
+ 0000:8152 idle  F_LUMOD@
+ 0000:81E9 idle  F_LXLSH@
+ 0000:80DF       F_LXMUL@
+ 0000:80F6       F_SCOPY@
+ 0000:813B idle  LDIV@
+ 0000:814A idle  LMOD@
+ 0000:8142 idle  LUDIV@
+ 0000:8152 idle  LUMOD@
+ 0000:81E9 idle  LXLSH@
+ 0000:80DF idle  LXMUL@
+ 0000:8138       N_LDIV@
+ 0000:8147       N_LMOD@
+ 0000:813F       N_LUDIV@
+ 0000:814F       N_LUMOD@
+ 0000:81E6       N_LXLSH@
+ 0000:8377       N_LXMUL@
+ 0000:838E       N_SCOPY@
+ 0000:80F6 idle  SCOPY@
+ 0000:0278       _abort
+ 0C74:12FB idle  _arc
+ 103A:190A idle  _arch1
+ 103A:1A0E idle  _arch2
+ 0000:8026 idle  _atexit
+ 0000:983C idle  _atoi
+ 0000:97CC       _atol
+ 103A:0CDA idle  _attack1
+ 103A:0DDE idle  _attack2
+ 0C74:1C68       _bar
+ 0C74:1C8B idle  _bar3d
+ 103A:02B2 idle  _barrack1
+ 103A:03B6 idle  _barrack2
+ 103A:1702 idle  _bfire
+ 0000:8AF1       _bioskey
+ 0000:8B69 idle  _brk
+ 103A:08CA idle  _carry1
+ 103A:09CE idle  _carry2
+ 103A:AD72 idle  _cerr
+ 103A:AD24 idle  _cin
+ 0C74:1326 idle  _circle
+ 0C74:0EFD       _cleardevice
+ 0C74:0FB3 idle  _clearviewport
+ 103A:AD98       _clog
+ 0000:9863       _close
+ 0C74:0E53       _closegraph
+ 0000:8B85       _clrscr
+ 103A:AD4C       _cout
+ 0000:8CE1 idle  _cprintf
+ 103A:AD16       _daylight
+ 0000:8F05       _delay
+ 0C74:0656 idle  _detectgraph
+ 103A:AC99       _directvideo
+ 0000:A243       _dostounix
+ 0C74:1C28 idle  _drawpoly
+ 0C74:1CCC       _ellipse
+ 103A:ACE0       _environ
+ 103A:0094       _errno
+ 0000:80A4       _exit
+ 103A:15FE idle  _explode
+ 0000:98A7       _fflush
+ 0C74:1CFC idle  _fillellipse
+ 0C74:1C48 idle  _fillpoly
+ 103A:14FA idle  _fire
+ 103A:1B17 idle  _firestart
+ 0C74:1EEB idle  _floodfill
+ 0000:9924       _flushall
+ 0000:9D7F idle  _fputc
+ 0000:9EA4 idle  _fputchar
+ 0000:9192       _free
+ 0000:99B9       _fseek
+ 0000:9A1D idle  _ftell
+ 0C74:1D69 idle  _getarccoords
+ 0C74:1352 idle  _getaspectratio
+ 0C74:13FE idle  _getbkcolor
+ 0000:8F66       _getch
+ 0000:8F7F idle  _getche
+ 0C74:13ED idle  _getcolor
+ 0000:8112       _getdate
+ 0C74:1DE9       _getdefaultpalette
+ 0C74:10AF idle  _getdrivername
+ 0000:9A68       _getenv
+ 0C74:1264 idle  _getfillpattern
+ 0C74:1213 idle  _getfillsettings
+ 0C74:0DFE idle  _getgraphmode
+ 0C74:209C idle  _getimage
+ 0C74:115B idle  _getlinesettings
+ 0C74:1DB3       _getmaxcolor
+ 0C74:1E27       _getmaxmode
+ 0C74:1089 idle  _getmaxx
+ 0C74:109C idle  _getmaxy
+ 0C74:10D5 idle  _getmodename
+ 0C74:05B7 idle  _getmoderange
+ 0C74:14F8 idle  _getpalette
+ 0C74:1DCE       _getpalettesize
+ 0C74:205B idle  _getpixel
+ 0000:9027       _gettext
+ 0C74:15DB idle  _gettextsettings
+ 0000:8125       _gettime
+ 0C74:0F94 idle  _getviewsettings
+ 0C74:106B idle  _getx
+ 0C74:107A idle  _gety
+ 103A:1B1A idle  _goattack
+ 0000:8FDE       _gotoxy
+ 0C74:0884 idle  _graphdefaults
+ 0C74:0193       _grapherrormsg
+ 0C74:030D       _graphresult
+ 103A:12F2 idle  _grass
+ 103A:00AA idle  _hall1
+ 103A:01AE idle  _hall2
+ 0C74:1517 idle  _imagesize
+ 0C74:096A       _initgraph
+ 0C74:0BDE idle  _installuserdriver
+ 0C74:0CCC idle  _installuserfont
+ 0000:90BC       _ioctl
+ 0000:8252       _isatty
+ 0000:9AC7       _itoa
+ 0000:90E3 idle  _kbhit
+ 0C74:1C05       _line
+ 0C74:1120 idle  _linerel
+ 0C74:10F9 idle  _lineto
+ 0000:82FD       _lseek
+ 0000:9B09       _ltoa
+ 0000:6D77       _main
+ 0000:9261       _malloc
+ 103A:1B24 idle  _map
+ 0000:9B2E       _memcpy
+ 0000:9B73       _memset
+ 103A:1806 idle  _mine
+ 103A:1B15 idle  _mousestatxus
+ 103A:1B16 idle  _mousestatyus
+ 0C74:104B idle  _moverel
+ 103A:1B14 idle  _movestat
+ 0000:90F5       _movetext
+ 0C74:1024 idle  _moveto
+ 0000:9BB8       _open
+ 0C74:15FA idle  _outtext
+ 0C74:1F60       _outtextxy
+ 103A:1B1C idle  _p1gold
+ 103A:1B20 idle  _p2gold
+ 103A:06C2 idle  _peon1
+ 103A:07C6 idle  _peon2
+ 0C74:1388 idle  _pieslice
+ 103A:1B18 idle  _player
+ 0C74:18D3 idle  _postdevice
+ 0000:9D51       _printf
+ 0000:9409       _putch
+ 0C74:154C idle  _putimage
+ 0C74:207C       _putpixel
+ 0000:907B       _puttext
+ 0000:83BB       _rand
+ 0000:A10E       _read
+ 0000:93B8 idle  _realloc
+ 0C74:11BD       _rectangle
+ 0C74:03F3 idle  _registerfarbgidriver
+ 0C74:04AC idle  _registerfarbgifont
+ 0C74:0E21 idle  _restorecrtmode
+ 0000:8B75 idle  _sbrk
+ 0C74:1D39       _sector
+ 103A:1B12 idle  _selx
+ 103A:1B13 idle  _sely
+ 0C74:19F7 idle  _setactivepage
+ 0C74:140F idle  _setallpalette
+ 0C74:1370 idle  _setaspectratio
+ 0C74:13B3 idle  _setbkcolor
+ 0C74:1D92       _setcolor
+ 0000:840E       _setdate
+ 0C74:1284 idle  _setfillpattern
+ 0C74:1230       _setfillstyle
+ 0C74:0580 idle  _setgraphbufsize
+ 0C74:0D76 idle  _setgraphmode
+ 0C74:117A idle  _setlinestyle
+ 0000:9B4D idle  _setmem
+ 0C74:14B5 idle  _setpalette
+ 0C74:1E62 idle  _setrgbpalette
+ 0C74:1648       _settextjustify
+ 0C74:1689 idle  _settextstyle
+ 0000:8421       _settime
+ 0C74:1858 idle  _setusercharsize
+ 0000:A111       _setvbuf
+ 0C74:0F18 idle  _setviewport
+ 0C74:19D4 idle  _setvisualpage
+ 0C74:1A1D       _setwritemode
+ 0000:83AA       _srand
+ 0000:84D1 idle  _stime
+ 0000:A1DB       _strcpy
+ 0000:A1FD       _strlen
+ 0000:A217       _strncpy
+ 0000:854A       _tell
+ 103A:04BA idle  _temple1
+ 103A:05BE idle  _temple2
+ 0C74:187E idle  _textheight
+ 0C74:200D       _textwidth
+ 0000:8503       _time
+ 103A:AD12       _timezone
+ 0000:8560       _toupper
+ 103A:AD0E idle  _tzname
+ 0000:A528       _tzset
+ 0000:9AEF idle  _ultoa
+ 0000:8F9C idle  _ungetch
+ 0000:A35A       _unixtodos
+ 103A:0AD2 idle  _warr1
+ 103A:0BD6 idle  _warr2
+ 103A:13F6 idle  _water
+ 0000:97AA idle  _wherex
+ 0000:97B9 idle  _wherey
+ 103A:0EE2 idle  _wizard1
+ 103A:0FE6 idle  _wizard2
+ 0000:A8B4       _write
+ 103A:10EA idle  _zattack1
+ 103A:11EE idle  _zattack2
+ 0000:1000 idle  __AHINCR
+ 0000:000C idle  __AHSHIFT
+ 103A:A942       __atexitcnt
+ 103A:AEF4       __atexittbl
+ 0C74:1AE1       __autodetect
+ 103A:A4FA idle  __backcolor
+ 103A:A475       __BGI_ADD
+ 103A:A2D8       __BGI_auto
+ 103A:A2D4       __BGI_ovr
+ 103A:00A2 idle  __brklvl
+ 103A:0084 idle  __C0argc
+ 103A:0086 idle  __C0argv
+ 0000:8DB3 idle  __c0crtinit
+ 103A:0088       __C0environ
+ 103A:ACD9       __cChar
+ 0000:80C5 idle  __cexit
+ 103A:ACD8       __cFlag
+ 0000:016F       __checknull
+ 0000:9848       __chmod
+ 0000:015C       __cleanup
+ 0000:9889       __close
+ 0000:8BAE       __CPUTN
+ 0000:8DD0 idle  __crtinit
+ 103A:A944       __ctype
+ 0000:0000  Abs  __cvtfak
+ 0000:80D3 idle  __c_exit
+ 103A:A471       __DDO_ADD
+ 103A:ABBC       __doserrno
+ 0000:8240 idle  __DOSERROR
+ 103A:ABBE idle  __dosErrorToSV
+ 103A:A4F8       __drawcolor
+ 103A:008A       __envLng
+ 103A:008C       __envseg
+ 103A:008E       __envSize
+ 0000:80B3       __exit
+ 103A:AA46       __exitbuf
+ 103A:AA48 idle  __exitfopen
+ 103A:AA4A idle  __exitopen
+ 103A:A4F9       __fillcolor
+ 103A:A4FC       __fillstyle
+ 103A:ACDA idle  __first
+ 103A:ABB6       __fmode
+ 103A:A4F0       __FON_ADD
+ 0000:9D68 idle  __fputc
+ 0000:9EB5       __FPUTN
+ 0000:8FB8       __graphexit
+ 0000:8FC4       __graphfreemem
+ 0000:8FD0       __graphgetmem
+ 0C74:0329 idle  __GraphNotInstalled
+ 0C74:22C0       __GRP_ovr
+ 0C74:1BB4       __gr_cleardevice
+ 0C74:1B52       __gr_detectgraph
+ 103A:A4EE idle  __gr_ErrCode
+ 0C74:1E06       __gr_getmodename
+ 0C74:1A90       __gr_imagesize
+ 0C74:1BE8       __gr_lineto
+ 0C74:1BCB       __gr_moveto
+ 0C74:20D9       __gr_putimage
+ 0C74:1995       __gr_restorecrtmode
+ 0C74:1EA7       __gr_setallpalette
+ 0C74:1E43       __gr_setbkcolor
+ 0C74:1A40       __gr_setfillpattern
+ 0C74:1F30       __gr_setfillstyle
+ 0C74:195F       __gr_setgraphmode
+ 0C74:1EC2       __gr_setlinestyle
+ 0C74:1E88       __gr_setpalette
+ 0C74:1A73       __gr_settextjustify
+ 0C74:1F96       __gr_settextstyle
+ 0C74:1FE7       __gr_setusercharsize
+ 0C74:1933       __gr_setviewport
+ 0C74:203A       __gr_textheight
+ 103A:009E idle  __heapbase
+ 103A:ABBA       __heaplen
+ 103A:00A6 idle  __heaptop
+ 0C74:1B8F       __initdevice
+ 0C74:18EA       __installdevice
+ 103A:0074 idle  __Int0Vector
+ 103A:0078 idle  __Int4Vector
+ 103A:007C idle  __Int5Vector
+ 103A:0080 idle  __Int6Vector
+ 0000:8207       __IOERROR
+ 0000:A697       __ISDST
+ 103A:ACDC idle  __last
+ 103A:A4FB       __linestyle
+ 0000:8263       __LONGTOA
+ 0000:028F idle  __MMODEL
+ 103A:ACF4 idle  __monthDay
+ 103A:AC18 idle  __new_handler
+ 103A:AB8C       __nfile
+ 0000:8F7F idle  __Ngetche
+ 103A:ABB8       __notUmask
+ 0000:8F9C idle  __Nungetch
+ 0000:9D04       __open
+ 103A:AB8E       __openfd
+ 103A:0092 idle  __osmajor
+ 103A:0093 idle  __osminor
+ 103A:0092 idle  __osversion
+ 103A:A503 idle  __OverScanColor
+ 103A:0090 idle  __psp
+ 0000:83E1       __read
+ 0000:941C       __REALCVT
+ 103A:AEB6       __RealCvtVector
+ 0C74:18EF       __reinstalldevice
+ 0000:01EC       __restorezero
+ 103A:ACDE idle  __rover
+ 103A:AEB8 idle  __ScanTodVector
+ 0000:954C       __SCREENIO
+ 0000:95ED       __SCROLL
+ 0000:0000 idle  __setenvp__
+ 0000:8434       __setupio
+ 103A:0096 idle  __StartTime
+ 103A:A4F4       __StatOfs
+ 103A:A4F6       __StatSeg
+ 103A:AC1E       __stklen
+ 103A:AA4C       __streams
+ 0000:0197       __terminate
+ 0000:0000 idle  __turboCrt
+ 0000:82E0 idle  __UTOA
+ 0000:9588       __VALIDATEXY
+ 103A:0092 idle  __version
+ 103A:AC8A       __video
+ 0000:8D2F       __VideoInt
+ 0000:85A4       __VPRINTER
+ 0000:8A52       __VPTR
+ 0000:8A77       __VRAM
+ 0000:97A0       __wherexy
+ 0000:A87A       __write
+ 103A:AC88       __wscroll
+ 0000:A8B7       __xfflush
+ 0000:8B16       ___brk
+ 103A:009C       ___brklvl
+ 103A:009A idle  ___heapbase
+ 0C74:0178 idle  ___move
+ 0000:A046       ___read
+ 0000:8B38       ___sbrk
+ 0000:A776       ___write
+
+  Address         Publics by Value
+
+ 0000:0000 idle  __turboCrt
+ 0000:0000  Abs  __cvtfak
+ 0000:0000 idle  __setenvp__
+ 0000:000C idle  __AHSHIFT
+ 0000:1000 idle  __AHINCR
+ 0000:015C       __cleanup
+ 0000:016F       __checknull
+ 0000:0197       __terminate
+ 0000:01EC       __restorezero
+ 0000:0278       _abort
+ 0000:028D idle  DGROUP@
+ 0000:028F idle  __MMODEL
+ 0000:0291 idle  initmouse()
+ 0000:029A idle  readmousex()
+ 0000:02A8 idle  readmousey()
+ 0000:02B6 idle  hidemouse()
+ 0000:02C0 idle  showmouse()
+ 0000:02CA idle  mousemoved()
+ 0000:02E7 idle  mouseclicked(int)
+ 0000:02F8 idle  mousereleased(int)
+ 0000:0309 idle  mouselimit(int,int,int,int)
+ 0000:0324 idle  setup()
+ 0000:037B idle  title(int,int,char near*,char near*,char near*,char near*,char near*,char near*,char near*,char near*,
+ 0000:095A idle  small_image::draw(int,int,int)
+ 0000:0ADE idle  small_image::load(char near*)
+ 0000:0BA2 idle  map_type::display()
+ 0000:16F6 idle  mousestatx()
+ 0000:173B idle  mousestaty()
+ 0000:1782 idle  draw_coord(int,int)
+ 0000:1E65 idle  shroudall(int)
+ 0000:1EBF idle  unshroud(int,int)
+ 0000:1FF4 idle  drawmap()
+ 0000:2018 idle  loadmap()
+ 0000:2576 idle  createunit(int,int,int)
+ 0000:2DB7 idle  training()
+ 0000:31B8 idle  loadpics()
+ 0000:330F idle  drawsel()
+ 0000:337C idle  killmine(int,int)
+ 0000:3409 idle  drawgold()
+ 0000:34C9 idle  findhall(int,int)
+ 0000:364F idle  findenemy(int,int)
+ 0000:38E0 idle  findmine(int,int)
+ 0000:39A6 idle  minecheck(int,int)
+ 0000:3FE1 idle  drawexplode(int,int)
+ 0000:4051 idle  xattack(int,int,int)
+ 0000:41A9 idle  yattack(int,int,int)
+ 0000:42FC idle  attack(int,int)
+ 0000:46DB idle  attackcheck(int,int)
+ 0000:4B93 idle  xmove(int,int,int)
+ 0000:4C75 idle  ymove(int,int,int)
+ 0000:4D57 idle  tryxmove(int,int,int)
+ 0000:4E10 idle  tryymove(int,int,int)
+ 0000:4EC9 idle  checkfire()
+ 0000:4FE6 idle  makefire(int,int)
+ 0000:5062 idle  changeguys()
+ 0000:5979 idle  checksel()
+ 0000:5BD4 idle  clearmove()
+ 0000:5C08 idle  replenishmana()
+ 0000:5E80 idle  ai_makeguy(int)
+ 0000:6171 idle  nearestunitxy(char,int)
+ 0000:6257 idle  ai_checkoutskirts(int,int)
+ 0000:62C9 idle  ai_makebuild(int,int,int)
+ 0000:63E0 idle  unitcount(int,int)
+ 0000:646F idle  ai_movetobuild(int)
+ 0000:6687 idle  idle_unit(int)
+ 0000:6785 idle  ai_attack()
+ 0000:6872 idle  ai_firevicinity(int,int)
+ 0000:6986 idle  ai_fireattack()
+ 0000:69D5 idle  ai(int)
+ 0000:6CB2 idle  checkend()
+ 0000:6D77       _main
+ 0000:7D96       ostream::operator <<(const char near*)
+ 0000:7DB1       ifstream::open(const char near*,int,int)
+ 0000:7DCC       map_type::hp(unsigned int)
+ 0000:7E15       map_type::see(int)
+ 0000:7E5E       map_type::arm(int)
+ 0000:7EA7       map_type::str(int)
+ 0000:7EF0       map_type::mp(unsigned int)
+ 0000:7F39       map_type::progress(int)
+ 0000:7F82       map_type::gold(unsigned int)
+ 0000:7FCE       abs(int)
+ 0000:7FDD       random(int)
+ 0000:7FFF       randomize()
+ 0000:8010       ostream::operator <<(int)
+ 0000:8026 idle  _atexit
+ 0000:804A       operator delete(void near*)
+ 0000:80A4       _exit
+ 0000:80B3       __exit
+ 0000:80C5 idle  __cexit
+ 0000:80D3 idle  __c_exit
+ 0000:80DF       F_LXMUL@
+ 0000:80DF idle  LXMUL@
+ 0000:80F6       F_SCOPY@
+ 0000:80F6 idle  SCOPY@
+ 0000:8112       _getdate
+ 0000:8125       _gettime
+ 0000:8138       N_LDIV@
+ 0000:813B       F_LDIV@
+ 0000:813B idle  LDIV@
+ 0000:813F       N_LUDIV@
+ 0000:8142 idle  F_LUDIV@
+ 0000:8142 idle  LUDIV@
+ 0000:8147       N_LMOD@
+ 0000:814A idle  F_LMOD@
+ 0000:814A idle  LMOD@
+ 0000:814F       N_LUMOD@
+ 0000:8152 idle  LUMOD@
+ 0000:8152 idle  F_LUMOD@
+ 0000:81E6       N_LXLSH@
+ 0000:81E9 idle  LXLSH@
+ 0000:81E9 idle  F_LXLSH@
+ 0000:8207       __IOERROR
+ 0000:8240 idle  __DOSERROR
+ 0000:8252       _isatty
+ 0000:8263       __LONGTOA
+ 0000:82E0 idle  __UTOA
+ 0000:82FD       _lseek
+ 0000:8326 idle  set_new_handler(void(near*)())
+ 0000:833F       operator new(unsigned int)
+ 0000:8377       N_LXMUL@
+ 0000:838E       N_SCOPY@
+ 0000:83AA       _srand
+ 0000:83BB       _rand
+ 0000:83E1       __read
+ 0000:840E       _setdate
+ 0000:8421       _settime
+ 0000:8434       __setupio
+ 0000:84D1 idle  _stime
+ 0000:8503       _time
+ 0000:854A       _tell
+ 0000:8560       _toupper
+ 0000:85A4       __VPRINTER
+ 0000:8A52       __VPTR
+ 0000:8A77       __VRAM
+ 0000:8AF1       _bioskey
+ 0000:8B16       ___brk
+ 0000:8B38       ___sbrk
+ 0000:8B69 idle  _brk
+ 0000:8B75 idle  _sbrk
+ 0000:8B85       _clrscr
+ 0000:8BAE       __CPUTN
+ 0000:8CE1 idle  _cprintf
+ 0000:8D2F       __VideoInt
+ 0000:8DB3 idle  __c0crtinit
+ 0000:8DD0 idle  __crtinit
+ 0000:8F05       _delay
+ 0000:8F66       _getch
+ 0000:8F7F idle  __Ngetche
+ 0000:8F7F idle  _getche
+ 0000:8F9C idle  __Nungetch
+ 0000:8F9C idle  _ungetch
+ 0000:8FB8       __graphexit
+ 0000:8FC4       __graphfreemem
+ 0000:8FD0       __graphgetmem
+ 0000:8FDE       _gotoxy
+ 0000:9027       _gettext
+ 0000:907B       _puttext
+ 0000:90BC       _ioctl
+ 0000:90E3 idle  _kbhit
+ 0000:90F5       _movetext
+ 0000:9192       _free
+ 0000:9261       _malloc
+ 0000:93B8 idle  _realloc
+ 0000:9409       _putch
+ 0000:941C       __REALCVT
+ 0000:954C       __SCREENIO
+ 0000:9588       __VALIDATEXY
+ 0000:95ED       __SCROLL
+ 0000:97A0       __wherexy
+ 0000:97AA idle  _wherex
+ 0000:97B9 idle  _wherey
+ 0000:97CC       _atol
+ 0000:983C idle  _atoi
+ 0000:9848       __chmod
+ 0000:9863       _close
+ 0000:9889       __close
+ 0000:98A7       _fflush
+ 0000:9924       _flushall
+ 0000:99B9       _fseek
+ 0000:9A1D idle  _ftell
+ 0000:9A68       _getenv
+ 0000:9AC7       _itoa
+ 0000:9AEF idle  _ultoa
+ 0000:9B09       _ltoa
+ 0000:9B2E       _memcpy
+ 0000:9B4D idle  _setmem
+ 0000:9B73       _memset
+ 0000:9BB8       _open
+ 0000:9D04       __open
+ 0000:9D51       _printf
+ 0000:9D68 idle  __fputc
+ 0000:9D7F idle  _fputc
+ 0000:9EA4 idle  _fputchar
+ 0000:9EB5       __FPUTN
+ 0000:A046       ___read
+ 0000:A10E       _read
+ 0000:A111       _setvbuf
+ 0000:A1DB       _strcpy
+ 0000:A1FD       _strlen
+ 0000:A217       _strncpy
+ 0000:A243       _dostounix
+ 0000:A35A       _unixtodos
+ 0000:A528       _tzset
+ 0000:A697       __ISDST
+ 0000:A776       ___write
+ 0000:A87A       __write
+ 0000:A8B4       _write
+ 0000:A8B7       __xfflush
+ 0000:A9BC idle  Iostream_delete()
+ 0000:AA74       filebuf::close()
+ 0000:AAEB       filebuf::filebuf()
+ 0000:AB74       filebuf::filebuf(int)
+ 0000:ABFE       filebuf::~filebuf()
+ 0000:AC42       filebuf::overflow(int)
+ 0000:AD3E       filebuf::open(const char near*,int,int)
+ 0000:AE4D       filebuf::setbuf(char near*,int)
+ 0000:AED0       filebuf::seekoff(long,seek_dir,int)
+ 0000:AFF7       filebuf::sync()
+ 0000:B090       filebuf::underflow()
+ 0000:B1DF       fstreambase::close()
+ 0000:B20C       fstreambase::fstreambase()
+ 0000:B270       fstreambase::~fstreambase()
+ 0000:B2C6       fstreambase::open(const char near*,int,int)
+ 0000:B31C       ifstream::ifstream()
+ 0000:B399       ifstream::~ifstream()
+ 0000:B406       istream_withassign::operator =(streambuf near*)
+ 0000:B41C       istream::istream()
+ 0000:B46E       istream_withassign::istream_withassign()
+ 0000:B4C5       istream::do_get()
+ 0000:B52B       istream::ipfx(int)
+ 0000:B5A6       istream::~istream()
+ 0000:B5ED       istream_withassign::~istream_withassign()
+ 0000:B63D       istream::eatwhite()
+ 0000:B6C4       istream::operator >>(int near&)
+ 0000:B921       istream::operator >>(long near&)
+ 0000:BAC4       istream::operator >>(char near&)
+ 0000:BB4B       ostream_withassign::operator =(streambuf near*)
+ 0000:BB61       ostream::ostream()
+ 0000:BBAE       ostream_withassign::ostream_withassign()
+ 0000:BC05       ostream::~ostream()
+ 0000:BC51       ostream_withassign::~ostream_withassign()
+ 0000:BCA1       ostream::flush()
+ 0000:BD8E       ostream::operator <<(long)
+ 0000:BEA5 idle  ostream::operator <<(unsigned long)
+ 0000:BF5A       ostream::do_opfx()
+ 0000:BF81       ostream::do_osfx()
+ 0000:BFB9       ostream::outstr(const char near*,const char near*)
+ 0000:C1B5       streambuf::doallocate()
+ 0000:C1E5       streambuf::streambuf()
+ 0000:C239       streambuf::do_snextc()
+ 0000:C25B       streambuf::do_sgetn(char near*,int)
+ 0000:C2E3       streambuf::do_sputn(const char near*,int)
+ 0000:C35F       streambuf::~streambuf()
+ 0000:C38E       streambuf::overflow(int)
+ 0000:C399       streambuf::pbackfail(int)
+ 0000:C3A4       streambuf::setbuf(char near*,int)
+ 0000:C3C4       streambuf::setb(char near*,char near*,int)
+ 0000:C429       streambuf::setg(char near*,char near*,char near*)
+ 0000:C465       streambuf::setp(char near*,char near*)
+ 0000:C492       streambuf::seekoff(long,seek_dir,int)
+ 0000:C4A0       streambuf::seekpos(long,int)
+ 0000:C4BF       streambuf::sputn(const char near*,int)
+ 0000:C503       streambuf::sync()
+ 0000:C53B       streambuf::underflow()
+ 0000:C55F       ios::clear(int)
+ 0000:C593       ios::ios()
+ 0000:C5BA       ios::~ios()
+ 0000:C5E9       ios::init(streambuf near*)
+ 0000:C627       ios::setf(long)
+ 0000:C6D0       ios::setstate(int)
+ 0000:C6F5       ios::tie(ostream near*)
+ 0C74:0178 idle  ___move
+ 0C74:0193       _grapherrormsg
+ 0C74:030D       _graphresult
+ 0C74:0329 idle  __GraphNotInstalled
+ 0C74:03F3 idle  _registerfarbgidriver
+ 0C74:04AC idle  _registerfarbgifont
+ 0C74:0580 idle  _setgraphbufsize
+ 0C74:05B7 idle  _getmoderange
+ 0C74:0656 idle  _detectgraph
+ 0C74:0884 idle  _graphdefaults
+ 0C74:096A       _initgraph
+ 0C74:0BDE idle  _installuserdriver
+ 0C74:0CCC idle  _installuserfont
+ 0C74:0D76 idle  _setgraphmode
+ 0C74:0DFE idle  _getgraphmode
+ 0C74:0E21 idle  _restorecrtmode
+ 0C74:0E53       _closegraph
+ 0C74:0EFD       _cleardevice
+ 0C74:0F18 idle  _setviewport
+ 0C74:0F94 idle  _getviewsettings
+ 0C74:0FB3 idle  _clearviewport
+ 0C74:1024 idle  _moveto
+ 0C74:104B idle  _moverel
+ 0C74:106B idle  _getx
+ 0C74:107A idle  _gety
+ 0C74:1089 idle  _getmaxx
+ 0C74:109C idle  _getmaxy
+ 0C74:10AF idle  _getdrivername
+ 0C74:10D5 idle  _getmodename
+ 0C74:10F9 idle  _lineto
+ 0C74:1120 idle  _linerel
+ 0C74:115B idle  _getlinesettings
+ 0C74:117A idle  _setlinestyle
+ 0C74:11BD       _rectangle
+ 0C74:1213 idle  _getfillsettings
+ 0C74:1230       _setfillstyle
+ 0C74:1264 idle  _getfillpattern
+ 0C74:1284 idle  _setfillpattern
+ 0C74:12FB idle  _arc
+ 0C74:1326 idle  _circle
+ 0C74:1352 idle  _getaspectratio
+ 0C74:1370 idle  _setaspectratio
+ 0C74:1388 idle  _pieslice
+ 0C74:13B3 idle  _setbkcolor
+ 0C74:13ED idle  _getcolor
+ 0C74:13FE idle  _getbkcolor
+ 0C74:140F idle  _setallpalette
+ 0C74:14B5 idle  _setpalette
+ 0C74:14F8 idle  _getpalette
+ 0C74:1517 idle  _imagesize
+ 0C74:154C idle  _putimage
+ 0C74:15DB idle  _gettextsettings
+ 0C74:15FA idle  _outtext
+ 0C74:1648       _settextjustify
+ 0C74:1689 idle  _settextstyle
+ 0C74:1858 idle  _setusercharsize
+ 0C74:187E idle  _textheight
+ 0C74:188F idle  @DGROUP
+ 0C74:18D3 idle  _postdevice
+ 0C74:18EA       __installdevice
+ 0C74:18EF       __reinstalldevice
+ 0C74:1933       __gr_setviewport
+ 0C74:195F       __gr_setgraphmode
+ 0C74:1995       __gr_restorecrtmode
+ 0C74:19D4 idle  _setvisualpage
+ 0C74:19F7 idle  _setactivepage
+ 0C74:1A1D       _setwritemode
+ 0C74:1A40       __gr_setfillpattern
+ 0C74:1A73       __gr_settextjustify
+ 0C74:1A90       __gr_imagesize
+ 0C74:1AE1       __autodetect
+ 0C74:1B52       __gr_detectgraph
+ 0C74:1B8F       __initdevice
+ 0C74:1BB4       __gr_cleardevice
+ 0C74:1BCB       __gr_moveto
+ 0C74:1BE8       __gr_lineto
+ 0C74:1C05       _line
+ 0C74:1C28 idle  _drawpoly
+ 0C74:1C48 idle  _fillpoly
+ 0C74:1C68       _bar
+ 0C74:1C8B idle  _bar3d
+ 0C74:1CCC       _ellipse
+ 0C74:1CFC idle  _fillellipse
+ 0C74:1D39       _sector
+ 0C74:1D69 idle  _getarccoords
+ 0C74:1D92       _setcolor
+ 0C74:1DB3       _getmaxcolor
+ 0C74:1DCE       _getpalettesize
+ 0C74:1DE9       _getdefaultpalette
+ 0C74:1E06       __gr_getmodename
+ 0C74:1E27       _getmaxmode
+ 0C74:1E43       __gr_setbkcolor
+ 0C74:1E62 idle  _setrgbpalette
+ 0C74:1E88       __gr_setpalette
+ 0C74:1EA7       __gr_setallpalette
+ 0C74:1EC2       __gr_setlinestyle
+ 0C74:1EEB idle  _floodfill
+ 0C74:1F30       __gr_setfillstyle
+ 0C74:1F60       _outtextxy
+ 0C74:1F96       __gr_settextstyle
+ 0C74:1FE7       __gr_setusercharsize
+ 0C74:200D       _textwidth
+ 0C74:203A       __gr_textheight
+ 0C74:205B idle  _getpixel
+ 0C74:207C       _putpixel
+ 0C74:209C idle  _getimage
+ 0C74:20D9       __gr_putimage
+ 0C74:22C0       __GRP_ovr
+ 103A:0000 idle  DATASEG@
+ 103A:0074 idle  __Int0Vector
+ 103A:0078 idle  __Int4Vector
+ 103A:007C idle  __Int5Vector
+ 103A:0080 idle  __Int6Vector
+ 103A:0084 idle  __C0argc
+ 103A:0086 idle  __C0argv
+ 103A:0088       __C0environ
+ 103A:008A       __envLng
+ 103A:008C       __envseg
+ 103A:008E       __envSize
+ 103A:0090 idle  __psp
+ 103A:0092 idle  __osversion
+ 103A:0092 idle  __osmajor
+ 103A:0092 idle  __version
+ 103A:0093 idle  __osminor
+ 103A:0094       _errno
+ 103A:0096 idle  __StartTime
+ 103A:009A idle  ___heapbase
+ 103A:009C       ___brklvl
+ 103A:009E idle  __heapbase
+ 103A:00A2 idle  __brklvl
+ 103A:00A6 idle  __heaptop
+ 103A:00AA idle  _hall1
+ 103A:01AE idle  _hall2
+ 103A:02B2 idle  _barrack1
+ 103A:03B6 idle  _barrack2
+ 103A:04BA idle  _temple1
+ 103A:05BE idle  _temple2
+ 103A:06C2 idle  _peon1
+ 103A:07C6 idle  _peon2
+ 103A:08CA idle  _carry1
+ 103A:09CE idle  _carry2
+ 103A:0AD2 idle  _warr1
+ 103A:0BD6 idle  _warr2
+ 103A:0CDA idle  _attack1
+ 103A:0DDE idle  _attack2
+ 103A:0EE2 idle  _wizard1
+ 103A:0FE6 idle  _wizard2
+ 103A:10EA idle  _zattack1
+ 103A:11EE idle  _zattack2
+ 103A:12F2 idle  _grass
+ 103A:13F6 idle  _water
+ 103A:14FA idle  _fire
+ 103A:15FE idle  _explode
+ 103A:1702 idle  _bfire
+ 103A:1806 idle  _mine
+ 103A:190A idle  _arch1
+ 103A:1A0E idle  _arch2
+ 103A:1B12 idle  _selx
+ 103A:1B13 idle  _sely
+ 103A:1B14 idle  _movestat
+ 103A:1B15 idle  _mousestatxus
+ 103A:1B16 idle  _mousestatyus
+ 103A:1B17 idle  _firestart
+ 103A:1B

@@ -1,0 +1,817 @@
+// Button.h
+// Copyright 1998, Chops and Associates
+// "You Genk This...You Feel my Wrath"
+#include<string.h>
+// ******************************Syntaxes*******************************8
+
+void additem(int windex, int sindex, char *msg);
+void changelabel(int windex, int lindex, const char caption[]);
+void changewindows(int windex);
+int checkbuttons();
+void createbutton(int index, int bindex, int x1, int y1, int x2, int y2, int depth, char *label);
+void createlabel(int windex, int lindex, int x1, int y1, int x2, int y2, int color);
+void createlist(int windex, int sindex, int x1, int y1);
+void createtext(int windex, int tindex, int x1, int y1, int x2, int y2);
+void createwindows(int index, int x1, int y1, int x2, int y2, int back_color, int bar_color, char *caption);
+void deletebutton(int windex, int bindex);
+void deleteitem(int windex, int sindex, int index);
+void deletelist(int windex, int sindex);
+void deletetext(int windex, int tindex);
+void deletewindows(int index);
+void disablebutton(int windex,int bindex);
+void drawallwindows();
+void drawbutton(int windex,int index);
+void drawbuttons();
+void drawlabel(int windex,int lindex);
+void drawlist(int windex, int sindex);
+void drawtext(int windex,int tindex);
+void drawwindows(int index);
+void enablebutton(int windex,int bindex);
+void entertext(int tindex);
+int listcount(int windex, int sindex);
+void mousemove();
+int mouseover();
+int mousestat();
+char *returntext(int windex, int tindex);
+int selected(int windex,int sindex);
+int selectedwindow();
+
+
+
+// **************************** End syntaxes ********************
+
+
+int x,y;
+int mousedown=0;
+const int maxbutton=15;
+const int maxwindows=10;
+const int maxtext=7;
+const int maxlabel=10;
+const int maxlist=4;
+const int maxlistitem=20;
+int mousestatus=2;
+
+struct array_char_type
+{
+	char text[30];
+};
+struct list_type
+{
+	int x1,y1;
+	char *item[maxlistitem];
+	int status;
+	int selected;
+	int enabled;
+};
+struct text_type
+{
+	int x1,y1,x2,y2;
+	char text[50];
+	int enabled;
+	int maxchar;
+	int typing;
+};
+struct label_type
+{
+	int x1,y1,x2,y2;
+	char caption[50];
+	int color;
+	int enabled;
+};
+
+struct button_type
+{
+	int x1,x2,y1,y2;
+	char *label;
+	int status;
+	int depth;
+	int visible;
+	char key;
+	int enabled;
+
+};
+
+struct windows_type
+{
+	int x1,y1,x2,y2;
+	char *caption;
+	int status;
+	int visible;
+	int bar_color;
+	int back_color;
+	button_type button[maxbutton];
+	text_type textbox[maxtext];
+	label_type label[maxlabel];
+	list_type list[maxlist];
+	int position;
+
+}windows[maxwindows];
+
+int windowsselected;
+
+int mousestat()
+{
+	return mousestatus;
+
+}
+
+int selectedwindow()
+{
+	return windowsselected;
+}
+
+void drawbutton(int windex,int index)
+{
+	hidemouse();
+	int x1=windows[windex].button[index].x1;
+	int x2=windows[windex].button[index].x2;
+	int y1=windows[windex].button[index].y1;
+	int y2=windows[windex].button[index].y2;
+	int depth=windows[windex].button[index].depth;
+	int ywidth=y2-y1;
+	int xwidth=x2-x1;
+
+	setfillstyle(1,7);
+	bar(x1,y1,x2,y2);
+	setcolor(0);
+	rectangle(x1+depth,y1+depth,x2-depth,y2-depth);
+	line(x1,y1,x1+depth,y1+depth);
+	line(x2,y2,x2-depth,y2-depth);
+	line(x1,y2,x1+depth,y2-depth);
+	line(x2,y1,x2-depth,y1+depth);
+	rectangle(x1-1,y1-1,x2+1,y2+1);
+
+	if(windows[windex].button[index].status==1)
+	{
+		setfillstyle(1,8);
+		floodfill(x1+depth/2,y1+ywidth,0);
+		floodfill(x1+xwidth,y1+depth/2,0);
+		setfillstyle(1,15);
+		floodfill(x2-depth/2,y2-ywidth,0);
+		floodfill(x2-xwidth,y2-depth/2,0);
+		setfillstyle(1,7);
+		floodfill(x1+xwidth/2,y1+ywidth/2,0);
+		setcolor(15);
+		settextjustify(1,1);
+		outtextxy(x1+xwidth/2,y1+ywidth/2,windows[windex].button[index].label);
+		if(windows[windex].button[index].enabled==1) setcolor(0);
+		else setcolor(8);
+		outtextxy(x1+xwidth/2+1,y1+ywidth/2+1,windows[windex].button[index].label);
+
+		setcolor(0);
+		rectangle(x1,y1,x2,y2);
+
+	}
+	else
+	{
+		setfillstyle(1,15);
+		floodfill(x1+depth/2,y1+ywidth,0);
+		floodfill(x1+xwidth,y1+depth/2,0);
+		setfillstyle(1,8);
+		floodfill(x2-depth/2,y2-ywidth,0);
+		floodfill(x2-xwidth,y2-depth/2,0);
+		setfillstyle(1,7);
+		floodfill(x1+xwidth/2,y1+ywidth/2,0);
+		setcolor(15);
+		settextjustify(1,1);
+		outtextxy(x1+xwidth/2+3,y1+ywidth/2+2,windows[windex].button[index].label);
+		setcolor(0);
+		outtextxy(x1+xwidth/2+3+1,y1+ywidth/2+2+1,windows[windex].button[index].label);
+		rectangle(x1,y1,x2,y2);
+	}
+	settextjustify(0,0);
+	showmouse();
+}
+
+void drawtext(int windex,int tindex)
+{
+	int x1=windows[windex].textbox[tindex].x1;
+	int x2=windows[windex].textbox[tindex].x2;
+	int y1=windows[windex].textbox[tindex].y1;
+	int y2=windows[windex].textbox[tindex].y2;
+	setfillstyle(1,8);
+	bar(x1,y1,x2,y2);
+	setcolor(14);
+	rectangle(x1,y1,x2,y2);
+	settextjustify(0,0);
+	setcolor(0);
+	outtextxy(x1+10,(y2+y1)/2,windows[windex].textbox[tindex].text);
+	setcolor(14);
+	outtextxy(x1+10+1,(y2+y1)/2+1,windows[windex].textbox[tindex].text);
+
+}
+
+
+char *returntext(int windex, int tindex)
+{
+	return windows[windex].textbox[tindex].text;
+}
+
+void drawlabel(int windex,int lindex)
+{
+	int x1=windows[windex].label[lindex].x1;
+	int x2=windows[windex].label[lindex].x2;
+	int y1=windows[windex].label[lindex].y1;
+	int y2=windows[windex].label[lindex].y2;
+	int color=windows[windex].label[lindex].color;
+
+	setfillstyle(1,windows[windex].back_color);
+	bar(x1,y1,x2,y2);
+	settextjustify(0,0);
+	setcolor(8);
+	outtextxy(x1+10,(y2+y1)/2,windows[windex].label[lindex].caption);
+	setcolor(color);
+	outtextxy(x1+10+1,(y2+y1)/2+1,windows[windex].label[lindex].caption);
+
+}
+
+//*******************************************************8
+//**********************************************
+
+
+
+void drawlist(int windex, int sindex)
+{
+	hidemouse();
+	int items=listcount(windex,sindex);
+
+	int x1=windows[windex].list[sindex].x1;
+	int y1=windows[windex].list[sindex].y1;
+	int x2,y2;
+	int loop;
+	int selected=windows[windex].list[sindex].selected;
+
+	if(windows[windex].list[sindex].status==1)
+	{
+		x2=x1+125;
+		y2=y1+15;
+		setfillstyle(1,7);
+		bar(x1,y1,x2,y2);
+		setcolor(2);
+		rectangle(x1,y1,x2,y2);
+		setfillstyle(1,4);
+		bar(x2-15,y1,x2,y2);
+		settextjustify(0,1);
+		setcolor(0);
+		outtextxy(x1+5,y1+7,windows[windex].list[sindex].item[selected]);
+	}
+	else if(windows[windex].list[sindex].status==0)
+	{
+		x2=x1+125;
+		y2=y1+items*15+15;
+		setfillstyle(1,7);
+		bar(x1,y1,x2,y2);
+		setcolor(2);
+		rectangle(x1,y1,x2,y2);
+		settextjustify(0,1);
+		for(loop=0;loop<=items;loop++)
+		{
+			if(selected==loop) setcolor(4);
+			else setcolor(0);
+			outtextxy(x1+5,y1+7+(15*loop),windows[windex].list[sindex].item[loop]);
+			line(x1+3,y1+(15*loop)+14,x2-3,y1+(15*loop)+14);
+		}
+	}
+	showmouse();
+
+
+
+
+}
+
+
+
+void changelabel(int windex, int lindex, const char caption[])
+{
+	for(int loop=0;loop<50;loop++)
+	{
+
+		windows[windex].label[lindex].caption[loop]=caption[loop];
+	}
+	drawlabel(windex,lindex);
+}
+
+
+
+void createbutton(int index, int bindex, int x1, int y1, int x2, int y2, int depth, char *label)
+{
+	windows[index].button[bindex].x1=x1;
+	windows[index].button[bindex].y1=y1;
+	windows[index].button[bindex].x2=x2;
+	windows[index].button[bindex].y2=y2;
+	windows[index].button[bindex].label=label;
+	windows[index].button[bindex].depth=depth;
+	windows[index].button[bindex].visible=1;
+	windows[index].button[bindex].status=1;
+	windows[index].button[bindex].enabled=1;
+	drawbutton(index,bindex);
+}
+
+
+void deletebutton(int windex, int bindex)
+{
+	hidemouse();
+	bar(windows[windex].button[bindex].x1,windows[windex].button[bindex].y1,windows[windex].button[bindex].x2,windows[windex].button[bindex].y2);
+	windows[windex].button[bindex].x1=0;
+	windows[windex].button[bindex].y1=0;
+	windows[windex].button[bindex].x2=0;
+	windows[windex].button[bindex].y2=0;
+	windows[windex].button[bindex].label="";
+	windows[windex].button[bindex].depth=3;
+	windows[windex].button[bindex].visible=0;
+	windows[windex].button[bindex].status=1;
+	setfillstyle(1,0);
+	showmouse();
+
+
+}
+
+
+void drawbuttons()
+{
+	int loop;
+	for(loop=0;loop<maxbutton;loop++)
+	{
+		if(windows[windowsselected].button[loop].visible==1) drawbutton(windowsselected,loop);
+	}
+
+}
+
+
+
+
+
+int mouseover()
+{
+	int loop;
+	int x1,x2,y1,y2;
+	for(loop=0;loop<maxbutton;loop++)
+	{
+		x1=windows[windowsselected].button[loop].x1;
+		x2=windows[windowsselected].button[loop].x2;
+		y1=windows[windowsselected].button[loop].y1;
+		y2=windows[windowsselected].button[loop].y2;
+		if(x>x1 && x<x2 && y>y1 && y<y2) return loop;
+	}
+
+
+	return (-1);
+}
+
+
+void mousemove()
+{
+		mouselimit(1,1,640,480);
+		x=readmousex();
+		y=readmousey();
+}
+
+
+void drawwindows(int index)
+{
+	if(windows[index].visible==1)
+	{
+		hidemouse();
+		int x1=windows[index].x1;
+		int y1=windows[index].y1;
+		int x2=windows[index].x2;
+		int y2=windows[index].y2;
+		int back_color=windows[index].back_color;
+		int bar_color=windows[index].bar_color;
+		if(windowsselected!=index)
+		{
+			bar_color=7;
+			back_color=8;
+		}
+
+		setfillstyle(1,back_color);
+
+		bar(x1,y1,x2,y2);
+		setfillstyle(1,0);
+		setcolor(15);
+		rectangle(x1,y1,x2,y2);
+		setcolor(4);
+		rectangle(x1+1,y1+1,x2-1,y2-1);
+		setcolor(8);
+		rectangle(x1+2,y1+2,x2-2,y2-2);
+		setfillstyle(1,bar_color);
+		bar(x1+3,y1+3,x2-3,y1+15);
+		setcolor(bar_color+8);
+		settextjustify(1,1);
+		outtextxy((x1+x2)/2,y1+9,windows[index].caption);
+		setcolor(0);
+		outtextxy((x1+x2)/2+1,y1+9+1,windows[index].caption);
+
+		for(int loop=0;loop<maxbutton;loop++)
+		{
+			if(windows[index].button[loop].visible==1) drawbutton(index,loop);
+		}
+		for(loop=0;loop<maxtext;loop++)
+		{
+			if(windows[index].textbox[loop].enabled==1) drawtext(index,loop);
+		}
+		for(loop=0;loop<maxlabel;loop++)
+		{
+			if(windows[index].label[loop].enabled==1) drawlabel(index,loop);
+		}
+		for(loop=0;loop<maxlist;loop++)
+		{
+			if(windows[index].list[loop].enabled==1) drawlist(index,loop);
+		}
+
+
+
+		showmouse();
+	}
+}
+
+
+void drawallwindows()
+{
+
+	hidemouse();
+	cleardevice();
+	showmouse();
+	for(int looop=maxwindows;looop>0;looop--)
+	{
+		for(int loop=0;loop<maxwindows;loop++)
+		{
+
+			if(windows[loop].position==looop) drawwindows(loop);
+		}
+	}
+
+}
+
+void changewindows(int windex)
+{
+	int opos;
+	opos=windows[windex].position;
+
+		for(int loop=0;loop<maxwindows;loop++)
+		{
+
+			if(windows[loop].position<opos) windows[loop].position++;
+		}
+
+	windows[windex].position=1;
+
+	int oldselected=windowsselected;
+	windowsselected=windex;
+	//drawallwindows();
+	drawwindows(oldselected);
+	drawwindows(windowsselected);
+
+}
+
+void entertext(int tindex)
+{
+
+	for(int loop=0;loop<50;loop++) windows[windowsselected].textbox[tindex].text[loop]=' ';
+	windows[windowsselected].textbox[tindex].text[49]='\0';
+	windows[windowsselected].textbox[tindex].typing=1;
+	hidemouse();
+	char input;
+	for(loop=0;loop<windows[windowsselected].textbox[tindex].maxchar;loop++)
+	{
+		input=toupper(getch());
+		if(input==13)
+		{
+			windows[windowsselected].textbox[tindex].text[loop]='\0';
+			break;
+		}
+		else if(input==8 && loop>0)
+		{
+			windows[windowsselected].textbox[tindex].text[loop]='\0';
+			windows[windowsselected].textbox[tindex].text[loop-1]='\0';
+			loop-=2;
+		}
+		else if(input==' ') windows[windowsselected].textbox[tindex].text[loop]=input;
+		else if(input<20) loop--;
+		else windows[windowsselected].textbox[tindex].text[loop]=input;
+
+		drawtext(windowsselected,tindex);
+	}
+	windows[windowsselected].textbox[tindex].typing=0;
+	windows[windowsselected].textbox[tindex].text[49]='\0';
+	drawtext(windowsselected,tindex);
+	showmouse();
+
+}
+
+
+
+int checkbuttons()
+{
+	int loop;
+	int x1,x2,y1,y2;
+	int wx1,wx2,wy1,wy2;
+	int gonnabreak;
+	if(mousestatus==4) mousestatus=2;
+	if(mousestatus==3) mousestatus=1;
+
+	//mouseclicked
+	if(mouseclicked(0)==1)
+	{
+		mousestatus=3;
+		for(loop=0;loop<maxbutton;loop++)
+		{
+			x1=windows[windowsselected].button[loop].x1;
+			x2=windows[windowsselected].button[loop].x2;
+			y1=windows[windowsselected].button[loop].y1;
+			y2=windows[windowsselected].button[loop].y2;
+			if(x>x1 && x<x2 && y>y1 && y<y2 && windows[windowsselected].button[loop].enabled==1)
+			{
+				windows[windowsselected].button[loop].status=0;
+				drawbutton(windowsselected,loop);
+			}
+		}
+		for(loop=0;loop<maxlist;loop++)
+		{
+			x1=windows[windowsselected].list[loop].x1;
+			y1=windows[windowsselected].list[loop].y1;
+			if(windows[windowsselected].list[loop].status==1)
+			{
+				x2=x1+125;
+				//y2=y1+(items*15)+15;
+				y2=y1+15;
+				if(x>x1 && x<x2 && y>y1 && y<y2)
+				{
+					windows[windowsselected].list[loop].status=0;
+					drawlist(windowsselected,loop);
+				}
+			}
+		}
+	}
+
+
+	if(mousereleased(0)==1)
+	{
+		mousestatus=4;
+		for(loop=0;loop<maxbutton;loop++)
+		{
+			x1=windows[windowsselected].button[loop].x1;
+			x2=windows[windowsselected].button[loop].x2;
+			y1=windows[windowsselected].button[loop].y1;
+			y2=windows[windowsselected].button[loop].y2;
+			if(x>x1 && x<x2 && y>y1 && y<y2 && windows[windowsselected].button[loop].enabled==1)
+			{
+				windows[windowsselected].button[loop].status=1;
+				drawbutton(windowsselected,loop);
+				return loop;
+			}
+		}
+		for(loop=0;loop<maxtext;loop++)
+		{
+			x1=windows[windowsselected].textbox[loop].x1;
+			x2=windows[windowsselected].textbox[loop].x2;
+			y1=windows[windowsselected].textbox[loop].y1;
+			y2=windows[windowsselected].textbox[loop].y2;
+			if(x>x1 && x<x2 && y>y1 && y<y2 && windows[windowsselected].textbox[loop].enabled==1)
+			{
+				entertext(loop);
+			}
+		}
+		int checkwindow=1;
+		for(loop=0;loop<maxlist;loop++)
+		{
+			x1=windows[windowsselected].list[loop].x1;
+			y1=windows[windowsselected].list[loop].y1-15;
+			x2=x1+125;
+			y2=y1+15;
+			int items=listcount(windowsselected,loop);
+
+			if(windows[windowsselected].list[loop].status==0)
+			{
+			       for(int loop1=0;loop1<=items;loop1++)
+			       {
+					y1+=15;
+					y2+=15;
+
+					if(x>x1 && x<x2 && y>y1 && y<y2)
+					{
+						windows[windowsselected].list[loop].selected=loop1;
+						windows[windowsselected].list[loop].status=1;
+						drawallwindows();
+						checkwindow=0;
+					}
+			       }
+			}
+		}
+
+
+		if(checkwindow==1)
+		{
+
+			x1=windows[windowsselected].x1;
+			x2=windows[windowsselected].x2;
+			y1=windows[windowsselected].y1;
+			y2=windows[windowsselected].y2;
+			if(x<x1 || x>x2 || y<y1 || y>y2)
+			{
+				for(int looop=1;looop<maxwindows;looop++)
+				{
+
+					for(loop=0;loop<maxwindows;loop++)
+					{
+						if(windows[loop].position==looop)
+						{
+
+							wx1=windows[loop].x1;
+							wx2=windows[loop].x2;
+							wy1=windows[loop].y1;
+							wy2=windows[loop].y2;
+							if(x>wx1 && x<wx2 && y>wy1 && y<wy2)
+							{
+								changewindows(loop);
+								gonnabreak=1;
+								break;
+							}
+						}
+					}
+					if(gonnabreak==1) break;
+				}
+			}
+
+		}
+	}
+
+
+	for(loop=0;loop<maxlist;loop++)
+	{
+		x1=windows[windowsselected].list[loop].x1;
+		y1=windows[windowsselected].list[loop].y1-15;
+		x2=x1+125;
+		y2=y1+15;
+		int items=listcount(windowsselected,loop);
+		int selected=windows[windowsselected].list[loop].selected;
+		if(windows[windowsselected].list[loop].status==0)
+		{
+		       for(int loop1=0;loop1<=items;loop1++)
+		       {
+				y1+=15;
+				y2+=15;
+				if(x>x1 && x<x2 && y>y1 && y<y2 && selected!=loop1)
+				{
+					windows[windowsselected].list[loop].selected=loop1;
+					drawlist(windowsselected,loop);
+
+				}
+		       }
+		}
+	}
+	return(-1);
+}
+
+void disablebutton(int windex,int bindex)
+{
+
+	windows[windex].button[bindex].enabled=0;
+	drawbutton(windex,bindex);
+}
+
+void enablebutton(int windex,int bindex)
+{
+	windows[windex].button[bindex].enabled=1;
+	drawbutton(windex,bindex);
+}
+
+
+
+void deletewindows(int index)
+{
+	windows[index].visible=0;
+	setfillstyle(1,0);
+	int x1=windows[index].x1;
+	int x2=windows[index].x2;
+	int y1=windows[index].y1;
+	int y2=windows[index].y2;
+	hidemouse();
+
+	for(int loop=0;loop<maxbutton;loop++) deletebutton(index,loop);
+	bar(x1,y1,x2,y2);
+	showmouse();
+	drawallwindows();
+}
+
+
+void createlabel(int windex,int lindex, int x1, int y1, int x2, int y2, int color)
+{
+	windows[windex].label[lindex].x1=x1;
+	windows[windex].label[lindex].x2=x2;
+	windows[windex].label[lindex].y1=y1;
+	windows[windex].label[lindex].y2=y2;
+	windows[windex].label[lindex].caption[0]='\0';
+	windows[windex].label[lindex].color=color;
+	windows[windex].label[lindex].enabled=1;
+}
+
+
+
+
+
+void deletetext(int windex,int tindex)
+{
+	int x1=windows[windex].textbox[tindex].x1;
+	int x2=windows[windex].textbox[tindex].x2;
+	int y1=windows[windex].textbox[tindex].y1;
+	int y2=windows[windex].textbox[tindex].y2;
+	windows[windex].textbox[tindex].enabled=0;
+	setfillstyle(1,0);
+	bar(x1,x2,y1,y2);
+	drawallwindows();
+}
+
+
+void createtext(int windex, int tindex, int x1, int y1, int x2, int y2)
+{
+	windows[windex].textbox[tindex].x1=x1;
+	windows[windex].textbox[tindex].x2=x2;
+	windows[windex].textbox[tindex].y1=y1;
+	windows[windex].textbox[tindex].y2=y2;
+	windows[windex].textbox[tindex].maxchar=(x2-x1)/8.5;
+	windows[windex].textbox[tindex].enabled=1;
+	windows[windex].textbox[tindex].typing=0;
+	for(int loop=0;loop<50;loop++) windows[windex].textbox[tindex].text[loop]=' ';
+	windows[windex].textbox[tindex].text[49]='\0';
+	drawtext(windex,tindex);
+}
+
+
+void additem(int windex, int sindex, char *msg)
+{
+	int num=listcount(windex,sindex);
+	windows[windex].list[sindex].item[num+1]=msg;
+	drawlist(windex,sindex);
+}
+
+void deleteitem(int windex, int sindex, int index)
+{
+	windows[windex].list[sindex].item[index]="";
+	for(int loop=index;loop<maxlistitem-1;loop++)
+	{
+		windows[windex].list[sindex].item[loop]=windows[windex].list[sindex].item[loop+1];
+	}
+	windows[windex].list[sindex].item[maxlistitem]="";
+	drawlist(windex,sindex);
+}
+
+int listcount(int windex, int sindex)
+{
+	for(int loop=0;loop<maxlistitem;loop++)
+	{
+		if(strlen(windows[windex].list[sindex].item[loop])==0)
+		{
+			return loop-1;
+		}
+	}
+	return -1;
+}
+int selected(int windex,int sindex)
+{
+	return windows[windex].list[sindex].selected;
+}
+
+
+void deletelist(int windex, int sindex)
+{
+	windows[windex].list[sindex].enabled=0;
+}
+
+
+void createlist(int windex, int sindex, int x1, int y1)
+{
+	windows[windex].list[sindex].enabled=1;
+	windows[windex].list[sindex].x1=x1;
+	windows[windex].list[sindex].y1=y1;
+	for(int loop=0;loop<maxlistitem;loop++)
+	{
+		windows[windex].list[sindex].item[loop]="";
+	}
+	windows[windex].list[sindex].selected=0;
+	windows[windex].list[sindex].status=1;
+	drawlist(windex,sindex);
+}
+
+
+void createwindows(int index, int x1, int y1, int x2, int y2, int back_color, int bar_color, char *caption)
+{
+	deletewindows(index);
+	for(int loop=0;loop<maxwindows;loop++)
+	{
+		windows[loop].position++;
+	}
+	windows[index].x1=x1;
+	windows[index].x2=x2;
+	windows[index].y1=y1;
+	windows[index].y2=y2;
+	windows[index].caption=caption;
+	windows[index].visible=1;
+	windows[index].back_color=back_color;
+	windows[index].bar_color=bar_color;
+	windows[index].position=1;
+	windowsselected=index;
+
+	drawallwindows();
+}
+

@@ -1,0 +1,108 @@
+
+//Title:       Select Applet
+//Version:     1.0
+//Copyright:   Copyright (c) Jesse Gumm
+//Author:      Jesse Gumm
+//Company:
+//Description:
+package selectapplet;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+import java.net.*;
+
+public class SelectApplet extends Applet implements ActionListener{
+  boolean isStandalone = false;
+  boolean badURL;
+  Button sun,net,micro,john;
+  String url;
+
+  //Get a parameter value
+  public String getParameter(String key, String def) {
+    return isStandalone ? System.getProperty(key, def) :
+      (getParameter(key) != null ? getParameter(key) : def);
+  }
+
+  //Construct the applet
+  public SelectApplet() {
+  }
+
+  //Initialize the applet
+  public void init()
+  {
+    GridLayout layout = new GridLayout(2,2,10,10);
+    setLayout(layout);
+    Font font = new Font("TimesRoman",Font.PLAIN,20);
+    setFont(font);
+    sun=new Button("Sun");
+    micro=new Button("Microsoft");
+    net=new Button("Netscape");
+    john=new Button("Johnson");
+    add(sun);
+    add(micro);
+    add(net);
+    add(john);
+    sun.addActionListener(this);
+    net.addActionListener(this);
+    micro.addActionListener(this);
+    john.addActionListener(this);
+    setBackground(Color.white);
+    badURL=false;
+  }
+
+  public void paint(Graphics g)
+  {
+    if(badURL)
+      g.drawString("Bad URL",60,130);
+  }
+
+  public void actionPerformed(ActionEvent e)
+  {
+    Button b=(Button)e.getSource();
+    if(b.equals(sun))
+      url="http://www.sun.com";
+    else if (b.equals(net))
+      url="http://www.netscape.com";
+    else if (b.equals(micro))
+      url="http://www.microsoft.com";
+    else
+      url="http://www.jci.com";
+    try
+    {
+      URL u=new URL(url);
+      AppletContext context = getAppletContext();
+      context.showDocument(u);
+    }
+    catch(MalformedURLException e1)
+    {
+      badURL=true;
+      repaint();
+    }
+  }
+  //Component initialization
+  private void jbInit() throws Exception {
+  }
+
+  //Start the applet
+  public void start() {
+  }
+
+  //Stop the applet
+  public void stop() {
+  }
+
+  //Destroy the applet
+  public void destroy() {
+  }
+
+  //Get Applet information
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+
+  //Get parameter info
+  public String[][] getParameterInfo() {
+    return null;
+  }
+}

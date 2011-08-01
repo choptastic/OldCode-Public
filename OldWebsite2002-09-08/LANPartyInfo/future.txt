@@ -1,0 +1,13 @@
+I'm currently working on a HUGE revamp of the website, so don't expect many changes to this layout or functionality until I finish this update.  I'm looking at a WHOLE new look.  New color scheme, new menus, added functionality (including different security levels, ie: Article Writers and Forum Regulators)... the works.  I'll also be adding a var more in-depth approach to the games section.  In addition to "Games we'll play at LAN," I'd like a Previews and Reviews section.  Also a Members section for you to put more information in your profile, and with options to show and hide certain info you want the public to see and the private members to see.
+
+In addition to redoing everything, I'll also be fixing up and code and making it far more efficient.  I'll be making it a Logical 3-Tier system, powered by SQL Server 2000.
+
+Outside of just the website, I would like to find a way to make our little shin-digs public, eventually getting a large enough following to open up our own commercial place like a CyberCafe for the hard-core.  None of those shits like "Cyber City" or the MilwaukeePC places.  This will be By Gamers for Gamers.
+
+I'm beginning to think that I'm just going to abandon completely, my idea of trying to work with the movie theatres.  there are two MAJOR Reasons for this:
+
+1. Movie Theatres (at least the ones with the money to spend) don't want to buy things from small-fries, let alone a single person.  There's too much of a risk of a small company going under.  They want the large corporation security and are willing to pay huge amounts of money for that.
+
+2. I like movies.  I like working with Theatres.  It would feel cool to say, "Marcus Theatres is a client of mine".  Peachy.  I LOVE Games.  I would LOVE to make a game.  It would be the most awesome thing in the world to say, "See that sweet-ass game... I made it."  So I'm giving into the artist in me over the economist in me.  This also means, that I'll have more time for school, so there is less of a chance of me dropping out of school.  Plus if I have my own "Cyber Cafe," I should have more time to dedicate to Making a game, and playing games.
+
+So that's the future of the Gumm LAN Party, hopefully.

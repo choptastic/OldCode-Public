@@ -1,0 +1,2307 @@
+//#include<h:\include\include.h>
+//#include<h:\warchops\image.h>
+
+#include<include.h>
+#include<c:\cpp\warchops\image.h>
+
+
+small_image hall1;
+small_image hall2;
+
+small_image barrack1;
+small_image barrack2;
+
+small_image temple1;
+small_image temple2;
+
+small_image peon1;
+small_image peon2;
+small_image carry1;
+small_image carry2;
+
+small_image warr1;
+small_image warr2;
+small_image attack1;
+small_image attack2;
+
+small_image wizard1;
+small_image wizard2;
+small_image zattack1;
+small_image zattack2;
+
+small_image grass;
+small_image water;
+small_image fire;
+small_image explode;
+small_image bfire;
+small_image mine;
+
+small_image arch1;
+small_image arch2;
+
+
+const unsigned char north=0;
+const unsigned char south=1;
+const unsigned char west=2;
+const unsigned char east=3;
+
+const unsigned char size=15;
+const unsigned char screen_ysize=31;
+const unsigned char screen_xsize=37;
+const unsigned char xsize=37;
+const unsigned char ysize=31;
+const unsigned char xsmall=75;
+const unsigned char ysmall=10;
+
+
+const char h1=1;
+const char h2=2;
+const char b1=3;
+const char b2=4;
+const char t1=5;
+const char t2=6;
+const char p1=7;
+const char p2=8;
+const char w1=9;
+const char w2=10;
+const char z1=11;
+const char z2=12;
+const char m=13;
+const char g=14;
+const char w=15;
+const char c1=17;
+const char c2=18;
+const char a1=19;
+const char a2=20;
+const char za1=21;
+const char za2=22;
+const char wu1=23;
+const char wu2=24;
+const char au1=25;
+const char au2=26;
+const char ah1=27;
+const char ah2=28;
+
+const char delaytime=1;
+
+
+const unsigned long mineg=65000; //gold per mine gold
+const int minehp=5000; //gold mine hp
+const int gpt=50; //gold per trip
+const int startgold=1000;  // starting gold for both teams
+
+const int builds=2; //building sight
+const int builda=10;  //building armor
+
+const int archhp=30; //architect hitpoints
+const int archa=1;   //archatect armor
+const int archbt=8; //archatect build time  15
+const int archmt=11; //archatect move time
+
+const int hhp=700; //hall hp
+const int hbt=20; //hall build time       30
+
+const int bhp=500; // barrack hp
+const int bbt=14; //barrrack build time    20
+
+const int thp=400; //temple hp
+const int tbt=17; //temple build time      25
+
+const int whp=70; //warr hp
+const int wh=10;  //warr strength
+const int wa=4; //warr armor
+const int warrs=2; //warr sight
+const int wmt=8; //warr move time
+const int wbt=3; //warr build time       4
+
+const int php=40; //warr hp
+const int pa=1; //peon armor
+const int ps=1; //peon sight
+const int pmt=12; //peon move time
+const int cmt=14; // peon carrying move time
+const int pbt=1; // peon build time  3
+
+
+const int zhp=55; //wizard hp
+const int zh=5; //wizard strength
+const int za=3; //wizard armor
+const int zm=200; //wizard mana
+const int zs=3; //wizard sight
+const int zfsm=25; //wizard spell far seeing mana
+const int zfm=75; //wizard spell fire mana
+const int zmt=11; //wizard move time
+const int zbt=5; //wizard build time       8
+
+const int abt=11; //armor upgrade build time    17
+const int weapbt=11; //weapon upgrade time      17
+const int uwv=3;   //weap upgrade value
+const int uav=2;   //armor upgrade value
+
+const int fsize=1; //fire size
+const int fdur=50; //fire duration
+const int fdist=15;
+
+
+char selx,sely;
+char movestat=0;
+char mousestatxus;
+char mousestatyus;
+char firestart=0;
+int player;
+int goattack=0;
+
+unsigned long p1gold=startgold;
+unsigned long p2gold=startgold;
+
+
+struct unit_t
+{
+	char str;
+	char see;
+	int hp;
+	char arm;
+	char desx;
+	char desy;
+	unsigned long mana;    // is mana for units, gold for a mine
+	char dir;
+	char moved;
+	char move;
+	char type;
+	char making;
+};
+
+
+class map_type
+{
+	public:
+		char terrain;
+		char fire;
+		char shroud;
+		unit_t unit;
+		void display();
+	private:
+
+		char string[10];
+		void hp(unsigned int num)
+		{
+			itoa(num,string,10);
+			outtextxy(5,380,"HP : ");
+			outtextxy(40,380,string);
+		}
+		void mp(unsigned int num)
+		{
+			itoa(num,string,10);
+			outtextxy(5,460,"MP : ");
+			outtextxy(45,460,string);
+		}
+		void see(int num)
+		{
+			itoa(num,string,10);
+			outtextxy(5,440,"See : ");
+			outtextxy(45,440,string);
+		}
+		void str(int num)
+		{
+			itoa(num,string,10);
+			outtextxy(5,420,"Str : ");
+			outtextxy(45,420,string);
+		}
+		void arm(int num)
+		{
+			itoa(num,string,10);
+			outtextxy(5,400,"Arm : ");
+			outtextxy(45,400,string);
+		}
+
+		void gold(unsigned int num)
+		{
+			ltoa(num,string,10);
+			outtextxy(5,400,"Gold : ");
+			outtextxy(25,410,string);
+		}
+		void progress(int num)
+		{
+			itoa(num,string,10);
+			outtextxy(5,300,"Progress");
+			outtextxy(25,310,string);
+		}
+
+}map[xsize][ysize];
+
+void map_type::display()
+{
+
+	hidemouse();
+	setcolor(15);
+	if(shroud!=1 && unit.type%2==1)
+	{
+		if(terrain==w)
+		{
+			water.draw(5,250,0);
+		}
+		else if(terrain==g)
+		{
+			grass.draw(5,250,0);
+		}
+		setcolor(0);
+		setfillstyle(1,0);
+		bar(1,270,70,470);
+		setcolor(15);
+		if(unit.type==p1 || unit.type==c1)
+		{
+			outtextxy(5,280,"Peasant");
+			outtextxy(5,300,"M=Move");
+			outtextxy(5,320,"S=Stop");
+
+			peon1.draw(5,250,unit.dir);
+			hp(unit.hp);
+			see(unit.see);
+			arm(unit.arm);
+		}
+		else if(unit.type==p2 || unit.type==c2)
+		{
+			outtextxy(5,280,"Peasant");
+			outtextxy(5,300,"M=Move");
+			outtextxy(5,320,"S=Stop");
+			peon2.draw(5,250,unit.dir);
+			hp(unit.hp);
+			arm(unit.arm);
+			see(unit.see);
+		}
+
+
+		else if(unit.type==w1 || unit.type==a1)
+		{
+			outtextxy(5,280,"Warrior");
+			outtextxy(5,300,"M=Move");
+			outtextxy(5,320,"S=Stop");
+			warr1.draw(5,250,unit.dir);
+
+			hp(unit.hp);
+			arm(unit.arm);
+			str(unit.str);
+			see(unit.see);
+
+		}
+		else if(unit.type==w2 || unit.type==a2)
+		{
+			outtextxy(5,280,"Warrior");
+			outtextxy(5,300,"M=Move");
+			outtextxy(5,320,"S=Stop");
+			warr2.draw(5,250,unit.dir);
+
+			hp(unit.hp);
+			arm(unit.arm);
+			str(unit.str);
+			see(unit.see);
+		}
+		else if(unit.type==z1 || unit.type==za1)
+		{
+			outtextxy(5,280,"Wizard");
+			outtextxy(5,300,"M=Move");
+			outtextxy(5,320,"S=Stop");
+			outtextxy(5,340,"V=Vision");
+			outtextxy(5,360,"F=Fire");
+			wizard1.draw(5,250,unit.dir);
+
+			hp(unit.hp);
+			arm(unit.arm);
+			str(unit.str);
+			see(unit.see);
+			mp(unit.mana);
+		}
+		else if(unit.type==z2 || unit.type==za2)
+		{
+			outtextxy(5,280,"Wizard");
+			outtextxy(5,300,"M=Move");
+			outtextxy(5,320,"S=Stop");
+			outtextxy(5,340,"V=Vision");
+			outtextxy(5,360,"F=Fire");
+
+			wizard2.draw(5,250,unit.dir);
+
+			hp(unit.hp);
+			arm(unit.arm);
+			str(unit.str);
+			see(unit.see);
+			mp(unit.mana);
+		}
+		else if(unit.type==ah1)
+		{
+			outtextxy(5,280,"Archtect");
+			arch1.draw(5,250,unit.dir);
+			hp(unit.hp);
+			see(unit.see);
+			arm(unit.arm);
+			if(unit.mana<=0)
+			{
+				outtextxy(5,300,"M=Move");
+				outtextxy(5,310,"S=Stop");
+				outtextxy(5,320,"H=Hall");
+				outtextxy(25,330,"5000G");
+				outtextxy(5,340,"B=Barrak");
+				outtextxy(25,350,"3500G");
+				outtextxy(5,360,"T=Temple");
+				outtextxy(25,370,"4200G");
+			}
+			else progress(unit.mana);
+		}
+		else if	(unit.type==ah2)
+		{
+			outtextxy(5,280,"Archtect");
+			arch2.draw(5,250,unit.dir);
+			hp(unit.hp);
+			see(unit.see);
+			arm(unit.arm);
+			if(unit.mana<=0)
+			{
+				outtextxy(5,300,"M=Move");
+				outtextxy(5,310,"S=Stop");
+				outtextxy(5,320,"H=Hall");
+				outtextxy(25,330,"5000G");
+				outtextxy(5,340,"B=Barrak");
+				outtextxy(25,350,"3500G");
+				outtextxy(5,360,"T=Temple");
+				outtextxy(25,370,"4200G");
+			}
+			else progress(unit.mana);
+		}
+
+		else if(unit.type==m)
+		{
+
+			outtextxy(5,280,"GoldMine");
+			mine.draw(5,250,0);
+			gold(unit.mana);
+		}
+		else if(unit.type==h1)
+		{
+			outtextxy(5,280,"TownHall");
+			hall1.draw(5,250,0);
+			hp(unit.hp);
+			arm(unit.arm);
+			if(unit.mana>=1)
+			{
+				progress(unit.mana);
+			}
+			else
+			{
+				outtextxy(5,300,"P=Peasnt");
+				outtextxy(25,310,"500G");
+				outtextxy(5,330,"A=Arctct");
+				outtextxy(25,340,"900G");
+			}
+		}
+		else if(unit.type==h2)
+		{
+			outtextxy(5,280,"TownHall");
+			hall2.draw(5,250,0);
+			hp(unit.hp);
+			arm(unit.arm);
+			if(unit.mana>=1)
+			{
+				progress(unit.mana);
+			}
+			else
+			{
+				outtextxy(5,300,"P=Peasnt");
+				outtextxy(25,310,"500G");
+				outtextxy(5,330,"A=Arctct");
+				outtextxy(25,340,"900G");
+			}
+
+		}
+		else if(unit.type==b1)
+		{
+			barrack1.draw(5,250,0);
+			outtextxy(5,280,"Barracks");
+			hp(unit.hp);
+			arm(unit.arm);
+			if(unit.mana>=1)
+			{
+				progress(unit.mana);
+			}
+			else
+			{
+				outtextxy(5,300,"T=Warr");
+				outtextxy(25,310,"800G");
+				outtextxy(5,330,"W=Wpn Up");
+				outtextxy(25,340,"3000G");
+				outtextxy(5,360,"A=Arm Up");
+				outtextxy(25,370,"3000G");
+			}
+		}
+		else if(unit.type==b2)
+		{
+			barrack2.draw(5,250,0);
+			outtextxy(5,280,"Barracks");
+			hp(unit.hp);
+			arm(unit.arm);
+			if(unit.mana>=1)
+			{
+				progress(unit.mana);
+			}
+			else
+			{
+				outtextxy(5,300,"T=Warr");
+				outtextxy(25,310,"800G");
+				outtextxy(5,330,"W=Wpn Up");
+				outtextxy(25,340,"3000G");
+				outtextxy(5,360,"A=Arm Up");
+				outtextxy(25,370,"3000G");
+			}
+		}
+		else if(unit.type==t1)
+		{
+			temple1.draw(5,250,0);
+			outtextxy(5,280,"Temple");
+			hp(unit.hp);
+			arm(unit.arm);
+			if(unit.mana>=1)
+			{
+				progress(unit.mana);
+			}
+			else
+			{
+				outtextxy(5,300,"Z=Wizard");
+				outtextxy(25,310,"1300G");
+			}
+		}
+		else if(unit.type==t2)
+		{
+			temple2.draw(5,250,0);
+			outtextxy(5,280,"Temple");
+			hp(unit.hp);
+			arm(unit.arm);
+			if(unit.mana>=1)
+			{
+				progress(unit.mana);
+			}
+			else
+			{
+				outtextxy(5,300,"Z=Wizard");
+				outtextxy(25,310,"1300G");
+			}
+		}
+	}
+	else
+	{
+		setcolor(0);
+		setfillstyle(1,0);
+		bar(1,270,70,470);
+		setcolor(15);
+	}
+	showmouse();
+
+}
+
+
+void mousestatx()
+{
+	if(mousestatxus==4) mousestatxus=2;
+	else if(mousestatxus==3) mousestatxus=1;
+	else if(mousereleased(0)==1) mousestatxus=4;
+	else if(mouseclicked(0)==1) mousestatxus=3;
+}
+
+void mousestaty()
+{
+	if(mousestatyus==4) mousestatyus=2;
+	else if(mousestatyus==3) mousestatyus=1;
+	else if(mousereleased(1)==1) mousestatyus=4;
+	else if(mouseclicked(1)==1) mousestatyus=3;
+}
+
+void draw_coord(int x, int y)
+{
+	hidemouse();
+	if(map[x][y].shroud==1)
+	{
+		setfillstyle(1,0);
+		bar(xsmall+x*size,ysmall+y*size,xsmall+x*size+15,ysmall+y*size+15);
+		showmouse();
+		return;
+	}
+	char type=map[x][y].unit.type;
+	if(map[x][y].terrain==g) grass.draw(xsmall+x*size,ysmall+y*size,0);
+	else if(map[x][y].terrain==w) water.draw(xsmall+x*size,ysmall+y*size,0);
+
+	if(type==h1) hall1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==h2) hall2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==b1) barrack1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==b2) barrack2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==t1) temple1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==t2) temple2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==p1) peon1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==p2) peon2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==w1) warr1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==w2) warr2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==a1) attack1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==a2) attack2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==z1) wizard1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==z2) wizard2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==za1) zattack1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==za2) zattack2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==m) mine.draw(xsmall+x*size,ysmall+y*size,0);
+	else if(type==c1) carry1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==c2) carry2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==ah1) arch1.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+	else if(type==ah2) arch2.draw(xsmall+x*size,ysmall+y*size,map[x][y].unit.dir);
+
+
+	if(map[x][y].fire>0) fire.draw(xsmall+x*size,ysmall+y*size,0);
+
+
+	if(type==h1 || type==h2 || type==b1 || type==b2 || type==t1 || type==t2)
+	{
+		if(map[x][y].unit.hp<275) bfire.draw(xsmall+x*size,ysmall+y*size,0);
+	}
+	showmouse();
+}
+
+void shroudall(int type)
+{
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(type==1) map[loopx][loopy].shroud=1;
+			else map[loopx][loopy].shroud=0;
+			draw_coord(loopx,loopy);
+		}
+	}
+}
+
+void unshroud(int x, int y)
+{
+	int type=map[x][y].unit.type;
+	int v=0;
+	if(type==p1 || type==c1) v=ps;
+	else if(type==w1 || type==a1) v=warrs;
+	else if(type==z1 || type==za1) v=zs;
+	else if(type==h1 || type==b1 || type==t1) v=builds;
+	else if(type==ah1) v=builds;
+	if(v>0)
+	{
+		for(int loopx=x-v;loopx<=x+v;loopx++)
+		{
+			if(loopx<0) loopx=0;
+			else if(loopx>=xsize) break;
+			for(int loopy=y-v;loopy<=y+v;loopy++)
+			{
+				if(loopy<0) loopy=0;
+				else if(loopy>=ysize) break;
+				if(map[loopx][loopy].shroud==1 && abs(x-loopx)+abs(y-loopy)<=v);
+				{
+					map[loopx][loopy].shroud=0;
+					draw_coord(loopx,loopy);
+				}
+			}
+		}
+	}
+}
+
+
+void drawmap()
+{
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			draw_coord(loopx,loopy);
+		}
+	}
+}
+
+
+void loadmap()
+{
+
+	ifstream file;
+	char type;
+	file.open("map1.map");
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			file >> map[loopx][loopy].terrain;
+			file >> map[loopx][loopy].unit.type;
+			map[loopx][loopy].unit.type-=50;
+			map[loopx][loopy].terrain-=50;
+			map[loopx][loopy].fire=0;
+			map[loopx][loopy].unit.desx=loopx;
+			map[loopx][loopy].unit.desy=loopy;
+			type=map[loopx][loopy].unit.type;
+			if(type==p1 || type==p2)
+			{
+				map[loopx][loopy].unit.hp=php;
+				map[loopx][loopy].unit.arm=pa;
+				map[loopx][loopy].unit.dir=random(4);
+				map[loopx][loopy].unit.mana=0;
+				map[loopx][loopy].unit.str=0;
+				map[loopx][loopy].unit.see=ps;
+				map[loopx][loopy].unit.move=pmt;
+			}
+			else if(type==w1 || type==w2)
+			{
+				map[loopx][loopy].unit.hp=whp;
+				map[loopx][loopy].unit.arm=wa;
+				map[loopx][loopy].unit.dir=random(4);
+				map[loopx][loopy].unit.mana=0;
+				map[loopx][loopy].unit.str=wh;
+				map[loopx][loopy].unit.see=warrs;
+				map[loopx][loopy].unit.move=wmt;
+			}
+			else if(type==z1 || type==z2)
+			{
+				map[loopx][loopy].unit.hp=zhp;
+				map[loopx][loopy].unit.arm=za;
+				map[loopx][loopy].unit.dir=random(4);
+				map[loopx][loopy].unit.mana=zm;
+				map[loopx][loopy].unit.str=zh;
+				map[loopx][loopy].unit.see=zs;
+				map[loopx][loopy].unit.move=zmt;
+			}
+			else if(type==m)
+			{
+				map[loopx][loopy].unit.hp=minehp;
+				map[loopx][loopy].unit.mana=mineg;
+				map[loopx][loopy].unit.arm=builda;
+			}
+			else if(type==h1 || type==h2)
+			{
+				map[loopx][loopy].unit.hp=hhp;
+				map[loopx][loopy].unit.see=builds;
+				map[loopx][loopy].unit.arm=builda;
+			}
+			else if(type==b1 || type==b2)
+			{
+				map[loopx][loopy].unit.hp=bhp;
+				map[loopx][loopy].unit.see=builds;
+				map[loopx][loopy].unit.arm=builda;
+			}
+			else if(type==t1 || type==t2)
+			{
+				map[loopx][loopy].unit.hp=thp;
+				map[loopx][loopy].unit.see=builds;
+				map[loopx][loopy].unit.arm=builda;
+			}
+		}
+	}
+	file.close();
+
+}
+
+void createunit(int x, int y, int type)
+{
+	int distance=32000;
+	int sx,sy;
+	if(map[x][y].unit.type==ah1 || map[x][y].unit.type==ah2)
+	{
+		map[x][y].unit.type=type;
+		if(type==h2 || type==h1) map[x][y].unit.hp=hhp;
+		else if(type==b1 || type==b2) map[x][y].unit.hp=bhp;
+		else if(type==t1 || type==t2) map[x][y].unit.hp=thp;
+		map[x][y].unit.see=builds;
+		map[x][y].unit.arm=builda;
+		map[x][y].unit.dir=north;
+		draw_coord(x,y);
+	}
+	else
+	{
+		for(int loopx=0;loopx<xsize;loopx++)
+		{
+			for(int loopy=0;loopy<ysize;loopy++)
+			{
+				if(type==au1 && map[loopx][loopy].unit.type%2==1) map[loopx][loopy].unit.arm+=uav;
+				else if(type==wu1 && map[loopx][loopy].unit.type%2==1 && map[loopx][loopy].unit.type!=z1) map[loopx][loopy].unit.str+=uwv;
+				else if(type==au2 && map[loopx][loopy].unit.type%2==0 && map[loopx][loopy].unit.type!=0) map[loopx][loopy].unit.arm+=uav;
+				else if(type==wu2 && map[loopx][loopy].unit.type%2==0 && map[loopx][loopy].unit.type!=0 && map[loopx][loopy].unit.type!=0) map[loopx][loopy].unit.str+=uwv;
+
+				if(type>=wu1 && type <=au2 && loopx==selx && loopy==sely) map[loopx][loopy].display();
+
+				else if(map[loopx][loopy].unit.type==0 && map[loopx][loopy].terrain!=w)
+				{
+
+					if(abs(x-loopx)+abs(y-loopy)<distance)
+					{
+
+						sx=loopx;
+						sy=loopy;
+						distance=abs(x-loopx)+abs(y-loopy);
+
+					}
+				}
+
+			}
+		}
+		if(type==p1 || type==p2)
+		{
+			map[sx][sy].unit.type=type;
+			map[sx][sy].unit.hp=php;
+			map[sx][sy].unit.arm=pa;
+			map[sx][sy].unit.dir=random(4);
+			map[sx][sy].unit.mana=0;
+			map[sx][sy].unit.str=0;
+			map[sx][sy].unit.see=ps;
+			map[sx][sy].unit.move=pmt;
+			map[sx][sy].unit.desx=sx;
+			map[sx][sy].unit.desy=sy;
+		}
+		if(type==ah1 || type==ah2)
+		{
+			map[sx][sy].unit.type=type;
+			map[sx][sy].unit.hp=archhp;
+			map[sx][sy].unit.arm=archa;
+			map[sx][sy].unit.dir=random(4);
+			map[sx][sy].unit.mana=0;
+			map[sx][sy].unit.see=ps;
+			map[sx][sy].unit.move=archmt;
+			map[sx][sy].unit.desx=sx;
+			map[sx][sy].unit.desy=sy;
+		}
+		else if(type==w1 || type==w2)
+		{
+			map[sx][sy].unit.type=type;
+			map[sx][sy].unit.hp=whp;
+			map[sx][sy].unit.arm=wa;
+			map[sx][sy].unit.dir=random(4);
+			map[sx][sy].unit.mana=0;
+			map[sx][sy].unit.str=wh;
+			map[sx][sy].unit.see=warrs;
+			map[sx][sy].unit.move=wmt;
+			map[sx][sy].unit.desx=sx;
+			map[sx][sy].unit.desy=sy;
+		}
+		else if(type==z1 || type==z2)
+		{
+			map[sx][sy].unit.type=type;
+			map[sx][sy].unit.hp=zhp;
+			map[sx][sy].unit.arm=za;
+			map[sx][sy].unit.dir=random(4);
+			map[sx][sy].unit.mana=zm;
+			map[sx][sy].unit.str=zh;
+			map[sx][sy].unit.see=zs;
+			map[sx][sy].unit.move=zmt;
+			map[sx][sy].unit.desx=sx;
+			map[sx][sy].unit.desy=sy;
+		}
+	}
+	draw_coord(sx,sy);
+
+}
+
+void training()
+{
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.mana>=1 && (map[loopx][loopy].unit.type<11 || map[loopx][loopy].unit.type>=ah1))
+			{
+				map[loopx][loopy].unit.move--;
+				if(map[loopx][loopy].unit.move<=0)
+				{
+					if(map[loopx][loopy].unit.making==p1 || map[loopx][loopy].unit.making==p2) map[loopx][loopy].unit.move=pbt;
+					else if(map[loopx][loopy].unit.making==ah1 || map[loopx][loopy].unit.making==ah2) map[loopx][loopy].unit.move=archbt;
+					else if(map[loopx][loopy].unit.making==w1 || map[loopx][loopy].unit.making==w2) map[loopx][loopy].unit.move=wbt;
+					else if(map[loopx][loopy].unit.making==z1 || map[loopx][loopy].unit.making==z2) map[loopx][loopy].unit.move=zbt;
+					else if(map[loopx][loopy].unit.making==wu1 || map[loopx][loopy].unit.making==wu2) map[loopx][loopy].unit.move=weapbt;
+					else if(map[loopx][loopy].unit.making==au1 || map[loopx][loopy].unit.making==au2) map[loopx][loopy].unit.move=abt;
+					else if(map[loopx][loopy].unit.making==h1 || map[loopx][loopy].unit.making==h2) map[loopx][loopy].unit.move=hbt;
+					else if(map[loopx][loopy].unit.making==b1 || map[loopx][loopy].unit.making==b2) map[loopx][loopy].unit.move=bbt;
+					else if(map[loopx][loopy].unit.making==t1 || map[loopx][loopy].unit.making==t2) map[loopx][loopy].unit.move=tbt;
+
+					map[loopx][loopy].unit.mana++;
+					if(map[loopx][loopy].unit.mana==100)
+					{
+						map[loopx][loopy].unit.mana=0;
+						createunit(loopx,loopy,map[loopx][loopy].unit.making);
+					}
+					if(selx==loopx && sely==loopy) map[loopx][loopy].display();
+				}
+
+			}
+		}
+	}
+}
+
+
+
+void loadpics()
+{
+
+	hall2.load("hall2.wcp");
+	hall1.load("hall1.wcp");
+
+	barrack1.load("barrack1.wcp");
+	barrack2.load("barrack2.wcp");
+
+	temple1.load("temple1.wcp");
+	temple2.load("temple2.wcp");
+
+	peon1.load("peon1.wcp");
+	peon2.load("peon2.wcp");
+	carry1.load("carry1.wcp");
+	carry2.load("carry2.wcp");
+
+	warr1.load("warr1.wcp");
+	warr2.load("warr2.wcp");
+	attack1.load("attack1.wcp");
+	attack2.load("attack2.wcp");
+
+	wizard1.load("wizard1.wcp");
+	wizard2.load("wizard2.wcp");
+	zattack1.load("zattack1.wcp");
+	zattack2.load("zattack2.wcp");
+
+	grass.load("grass.wcp");
+	water.load("water.wcp");
+	mine.load("mine.wcp");
+	fire.load("fire.wcp");
+	bfire.load("bfire.wcp");
+	explode.load("explode.wcp");
+
+	arch1.load("arch1.wcp");
+	arch2.load("arch2.wcp");
+}
+
+
+void drawsel()
+{
+	hidemouse();
+	draw_coord(selx,sely);
+	setcolor(15);
+	int x1=xsmall+selx*size;
+	int x2=x1+size;
+	int y1=ysmall+sely*size;
+	int y2=y1+size;
+	rectangle(x1,y1,x2-1,y2-1);
+	showmouse();
+}
+void killmine(int x, int y)
+{
+	if(x==selx && y==sely) map[x][y].display();
+
+	if(map[x][y].unit.mana<1)
+	{
+		map[x][y].unit.type=0;
+		draw_coord(x,y);
+		if(selx==x && sely==y) drawsel();
+	}
+
+}
+
+void drawgold()
+{
+	char string[10];
+	setfillstyle(1,0);
+	bar(70,1,600,8);
+	if(player==1)
+	{
+		ltoa(p1gold,string,10);
+		outtextxy(100,9,"P1 Gold: ");
+		outtextxy(170,9,string);
+	}
+	else if(player==2)
+	{
+		ltoa(p2gold,string,10);
+		outtextxy(400,9,"P2 Gold: ");
+		outtextxy(470,9,string);
+	}
+}
+
+void findhall(int x, int y)
+{
+	int distance=32000;
+
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type==h1 && map[x][y].unit.type==c1)
+			{
+				if(abs(x-loopx)+abs(y-loopy)<distance)
+				{
+					map[x][y].unit.desx=loopx;
+					map[x][y].unit.desy=loopy;
+					distance=abs(x-loopx)+abs(y-loopy);
+				}
+			}
+			else if(map[loopx][loopy].unit.type==h2 && map[x][y].unit.type==c2)
+			{
+				if(abs(x-loopx)+abs(y-loopy)<distance)
+				{
+					map[x][y].unit.desx=loopx;
+					map[x][y].unit.desy=loopy;
+					distance=abs(x-loopx)+abs(y-loopy);
+				}
+			}
+		}
+	}
+}
+
+void findenemy(int x, int y)
+{
+	int distance=32000;
+	int see=map[x][y].unit.see;
+	if(x==map[x][y].unit.desx && y==map[x][y].unit.desy)
+	{
+		for(int loopx=x-see;loopx<x+see;loopx++)
+		{
+			if(loopx<0) loopx=0;
+			if(loopx>=xsize) break;
+			for(int loopy=y-see;loopy<y+see;loopy++)
+			{
+				if(loopy<0) loopy=0;
+				if(loopy>=ysize) break;
+				if(map[loopx][loopy].unit.type%2==0 && map[loopx][loopy].unit.type!=0 && (map[x][y].unit.type==w1 || map[x][y].unit.type==z1))
+				{
+					if(abs(x-loopx)+abs(y-loopy)<distance)
+					{
+						map[x][y].unit.desx=loopx;
+						map[x][y].unit.desy=loopy;
+						distance=abs(x-loopx)+abs(y-loopy);
+					}
+				}
+				else if(map[loopx][loopy].unit.type%2==1 && map[loopx][loopy].unit.type!=m && (map[x][y].unit.type==w2 || map[x][y].unit.type==z2))
+				{
+					if(abs(x-loopx)+abs(y-loopy)<distance)
+					{
+						map[x][y].unit.desx=loopx;
+						map[x][y].unit.desy=loopy;
+						distance=abs(x-loopx)+abs(y-loopy);
+					}
+				}
+			}
+		}
+	}
+}
+
+void findmine(int x, int y)
+{
+	int distance=32000;
+
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type==m)
+			{
+				if(abs(x-loopx)+abs(y-loopy)<distance)
+				{
+					map[x][y].unit.desx=loopx;
+					map[x][y].unit.desy=loopy;
+					distance=abs(x-loopx)+abs(y-loopy);
+				}
+			}
+		}
+	}
+}
+
+
+void minecheck(int x, int y)
+{
+	if(map[x][y].unit.type==p1)
+	{
+		if(map[x+1][y].unit.type==m)
+		{
+			map[x][y].unit.type=c1;
+			map[x+1][y].unit.mana-=gpt;
+			killmine(x+1,y);
+			findhall(x,y);
+		}
+		else if(map[x-1][y].unit.type==m)
+		{
+			map[x][y].unit.type=c1;
+			map[x-1][y].unit.mana-=gpt;
+			killmine(x-1,y);
+			findhall(x,y);
+		}
+		else if(map[x][y+1].unit.type==m)
+		{
+			map[x][y].unit.type=c1;
+			map[x][y+1].unit.mana-=gpt;
+			killmine(x,y+1);
+			findhall(x,y);
+		}
+		else if(map[x][y-1].unit.type==m)
+		{
+			map[x][y].unit.type=c1;
+			map[x][y-1].unit.mana-=gpt;
+			killmine(x,y-1);
+			findhall(x,y);
+		}
+		draw_coord(x,y);
+		if(map[x][y].unit.type==c1) drawsel();
+	}
+	else if(map[x][y].unit.type==c1)
+	{
+		if(map[x+1][y].unit.type==h1)
+		{
+			map[x][y].unit.type=p1;
+			p1gold+=gpt;
+			findmine(x,y);
+		}
+		else if(map[x-1][y].unit.type==h1)
+		{
+			map[x][y].unit.type=p1;
+			p1gold+=gpt;
+			findmine(x,y);
+		}
+		else if(map[x][y+1].unit.type==h1)
+		{
+			map[x][y].unit.type=p1;
+			p1gold+=gpt;
+			findmine(x,y);
+		}
+		else if(map[x][y-1].unit.type==h1)
+		{
+			map[x][y].unit.type=p1;
+			p1gold+=gpt;
+			findmine(x,y);
+		}
+
+		if(map[x][y].unit.type==p1)draw_coord(x,y);
+		drawsel();
+	}
+	else if(map[x][y].unit.type==p2)
+	{
+		if(map[x+1][y].unit.type==m)
+		{
+			map[x][y].unit.type=c2;
+			map[x+1][y].unit.mana-=gpt;
+			killmine(x+1,y);
+			findhall(x,y);
+		}
+		else if(map[x-1][y].unit.type==m)
+		{
+			map[x][y].unit.type=c2;
+			map[x-1][y].unit.mana-=gpt;
+			killmine(x-1,y);
+			findhall(x,y);
+		}
+		else if(map[x][y+1].unit.type==m)
+		{
+			map[x][y].unit.type=c2;
+			map[x][y+1].unit.mana-=gpt;
+			killmine(x,y+1);
+			findhall(x,y);
+		}
+		else if(map[x][y-1].unit.type==m)
+		{
+			map[x][y].unit.type=c2;
+			map[x][y-1].unit.mana-=gpt;
+			killmine(x,y-1);
+			findhall(x,y);
+		}
+		draw_coord(x,y);
+		if(map[x][y].unit.type==c2)drawsel();
+	}
+	else if(map[x][y].unit.type==c2)
+	{
+		if(map[x+1][y].unit.type==h2)
+		{
+			map[x][y].unit.type=p2;
+			p2gold+=gpt;
+			findmine(x,y);
+		}
+		else if(map[x-1][y].unit.type==h2)
+		{
+			map[x][y].unit.type=p2;
+			p2gold+=gpt;
+			findmine(x,y);
+		}
+		else if(map[x][y+1].unit.type==h2)
+		{
+			map[x][y].unit.type=p2;
+			p2gold+=gpt;
+			findmine(x,y);
+		}
+		else if(map[x][y-1].unit.type==h2)
+		{
+			map[x][y].unit.type=p2;
+			p2gold+=gpt;
+			findmine(x,y);
+		}
+
+		draw_coord(x,y);
+		if(map[x][y].unit.type==p2)drawsel();
+	}
+	drawgold();
+
+}
+
+void drawexplode(int x, int y)
+{
+	int type=map[x][y].unit.type;
+	if(type==h1 || type==h2 || type==b1 || type==b2 || type==t1 || type==t2)
+	{
+		explode.draw(xsmall+x*size,ysmall+y*size,0);
+		delay(100);
+	}
+}
+
+int xattack(int x, int y, int amt)
+{
+	int hit;
+	hit=random(map[x][y].unit.str)-random(map[x+amt][y].unit.arm);
+	if(hit<1) hit=1;
+	map[x+amt][y].unit.hp-=hit;
+	if(amt>0) map[x][y].unit.dir=east;
+	else if(amt<0) map[x][y].unit.dir=west;
+	if(map[x+amt][y].unit.hp<1)
+	{
+		drawexplode(x+amt,y);
+		map[x+amt][y].unit.type=0;
+		draw_coord(x+amt,y);
+		hit=0;
+	}
+	if(selx==x+amt && sely==y) map[selx][sely].display();
+	if(selx==x && sely==y) drawsel();
+	return hit;
+}
+
+int yattack(int x, int y, int amt)
+{
+	int hit;
+	hit=random(map[x][y].unit.str)-random(map[x][y+amt].unit.arm);
+	if(hit<1) hit=1;
+	map[x][y+amt].unit.hp-=hit;
+	if(amt>0) map[x][y].unit.dir=south;
+	else if(amt<0) map[x][y].unit.dir=north;
+	if(map[x][y+amt].unit.hp<1)
+	{
+		drawexplode(x,y+amt);
+		map[x][y+amt].unit.type=0;
+		draw_coord(x,y+amt);
+	}
+	if(selx==x && sely==y+amt) map[selx][sely].display();
+	if(selx==x && sely==y) drawsel();
+	return hit;
+}
+
+void attack(int x, int y)
+{
+
+	int hit=0;
+	if(map[x][y].unit.type==w1 || map[x][y].unit.type==z1/* || unit.type==p1 || unit.type==c1*/)
+	{
+		if(map[x+1][y].unit.type%2==0 && map[x+1][y].unit.type!=0 && x+1<xsize)
+		{
+			hit=xattack(x,y,1);
+		}
+		else if(map[x-1][y].unit.type%2==0 && map[x-1][y].unit.type!=0 && x-1>=0)
+		{
+			hit=xattack(x,y,-1);
+		}
+		else if(map[x][y+1].unit.type%2==0 && map[x][y+1].unit.type!=0 && y+1<ysize)
+		{
+			hit=yattack(x,y,1);
+		}
+		else if(map[x][y-1].unit.type%2==0 && map[x][y-1].unit.type!=0 && y-1>=0)
+		{
+			hit=yattack(x,y,-1);
+		}
+		if(hit>0)
+		{
+			if(map[x][y].unit.type==w1)map[x][y].unit.type=a1;
+			else if(map[x][y].unit.type==z1) map[x][y].unit.type=za1;
+			draw_coord(x,y);
+			drawsel();
+		}
+	}
+	else if(map[x][y].unit.type==w2 || map[x][y].unit.type==z2/* || map[x][y].unit.type==p2 || map[x][y].unit.type==c2*/)
+	{
+		if(map[x+1][y].unit.type%2==1 && x+1<xsize)
+		{
+			hit=xattack(x,y,1);
+		}
+		else if(map[x-1][y].unit.type%2==1 && x-1>=0)
+		{
+			hit=xattack(x,y,-1);
+		}
+		else if(map[x][y+1].unit.type%2==1 && y+1<ysize)
+		{
+			hit=yattack(x,y,1);
+		}
+		else if(map[x][y-1].unit.type%2==1 && y-1>=0)
+		{
+			hit=yattack(x,y,-1);
+		}
+		if(hit>0)
+		{
+			if(map[x][y].unit.type==w2) map[x][y].unit.type=a2;
+			else if(map[x][y].unit.type==z2) map[x][y].unit.type=za2;
+			draw_coord(x,y);
+			drawsel();
+		}
+	}
+
+	if(x==selx && y==sely)
+	{
+		map[selx][sely].display();
+		drawsel();
+	}
+
+
+
+}
+
+
+int attackcheck(int x, int y)
+{
+	if(map[x][y].unit.type==w1 || map[x][y].unit.type==z1 /*|| map[x][y].unit.type==p1 || map[x][y].unit.type==c1*/)
+	{
+		if(map[x+1][y].unit.type%2==0 && map[x+1][y].unit.type!=0 && x+1<xsize)
+		{
+			if(map[x][y].unit.desx==x+1 && map[x][y].unit.desy==y) return 2;
+			return 1;
+		}
+		else if(map[x-1][y].unit.type%2==0 && map[x-1][y].unit.type!=0 && x-1>=0)
+		{
+			if(map[x][y].unit.desx==x-1 && map[x][y].unit.desy==y) return 2;
+			return 1;
+		}
+		else if(map[x][y+1].unit.type%2==0 && map[x][y+1].unit.type!=0 && y+1<ysize)
+		{
+			if(map[x][y].unit.desx==x && map[x][y].unit.desy==y+1)return 2;
+			return 1;
+		}
+		else if(map[x][y-1].unit.type%2==0 && map[x][y-1].unit.type!=0 && y-1>=0)
+		{
+			if(map[x][y].unit.desx==x && map[x][y].unit.desy==y-1) return 2;
+			return 1;
+		}
+	}
+	else if(map[x][y].unit.type==w2 || map[x][y].unit.type==z2)
+	{
+		if(map[x+1][y].unit.type%2==1 && x+1<xsize && map[x+1][y].unit.type!=m)
+		{
+			if(map[x][y].unit.desx==x+1 && map[x][y].unit.desy==y) return 2;
+			return 1;
+		}
+		else if(map[x-1][y].unit.type%2==1 && x-1>=0 && map[x-1][y].unit.type!=m)
+		{
+			if(map[x][y].unit.desx==x-1 && map[x][y].unit.desy==y) return 2;
+			return 1;
+		}
+		else if(map[x][y+1].unit.type%2==1 && y+1<ysize && map[x][y+1].unit.type!=m)
+		{
+			if(map[x][y].unit.desx==x && map[x][y].unit.desy==y+1) return 2;
+			return 1;
+		}
+		else if(map[x][y-1].unit.type%2==1 && y-1>=0 && map[x][y-1].unit.type!=m)
+		{
+			if(map[x][y].unit.desx==x && map[x][y].unit.desy==y-1) return 2;
+			return 1;
+		}
+	}
+	findenemy(x,y);
+
+
+	return 0;
+}
+
+
+
+void xmove(int loopx, int loopy, int amt)
+{
+	if(amt==-1) map[loopx][loopy].unit.dir=west;
+	else if(amt==1) map[loopx][loopy].unit.dir=east;
+	map[loopx+amt][loopy].unit=map[loopx][loopy].unit;
+	map[loopx][loopy].unit.type=0;
+	minecheck(loopx+amt,loopy);
+	unshroud(loopx+amt,loopy);
+	draw_coord(loopx,loopy);
+	draw_coord(loopx+amt,loopy);
+	if(loopx==selx && loopy==sely)
+	{
+		selx+=amt;
+		drawsel();
+	}
+}
+
+
+void ymove(int loopx, int loopy, int amt)
+{
+	if(amt==-1) map[loopx][loopy].unit.dir=north;
+	else if(amt==1) map[loopx][loopy].unit.dir=south;
+	map[loopx][loopy+amt].unit=map[loopx][loopy].unit;
+	map[loopx][loopy].unit.type=0;
+	minecheck(loopx,loopy+amt);
+
+	unshroud(loopx,loopy+amt);
+
+	draw_coord(loopx,loopy);
+	draw_coord(loopx,loopy+amt);
+	if(loopx==selx && loopy==sely)
+	{
+		sely+=amt;
+		drawsel();
+	}
+}
+
+void tryxmove(int loopx, int loopy, int amt)
+{
+	if(map[loopx+amt][loopy].unit.type==0 && map[loopx+amt][loopy].terrain!=w && loopx+amt>=0 && loopx+amt<xsize)
+	xmove(loopx,loopy,amt);
+	else if(map[loopx-amt][loopy].unit.type==0 && map[loopx-amt][loopy].terrain!=w  && loopx-amt>=0 && loopx-amt<xsize)
+	xmove(loopx,loopy,-amt);
+}
+
+void tryymove(int loopx, int loopy, int amt)
+{
+	if(map[loopx][loopy+amt].unit.type==0 && map[loopx][loopy+amt].terrain!=w  && loopy+amt>=0 && loopy+amt<ysize)
+	ymove(loopx,loopy,amt);
+	else if(map[loopx][loopy-amt].unit.type==0 && map[loopx][loopy-amt].terrain!=w && loopy-amt>=0 && loopy-amt<ysize)
+	ymove(loopx,loopy,-amt);
+}
+
+
+void checkfire()
+{
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].fire>0)
+			{
+				map[loopx][loopy].fire--;
+				if(map[loopx][loopy].unit.type!=0) map[loopx][loopy].unit.hp--;
+				if(map[loopx][loopy].unit.hp<1) map[loopx][loopy].unit.type=0;
+				if(map[loopx][loopy].unit.type!=0 || map[loopx][loopy].fire==0) draw_coord(loopx,loopy);
+				if(loopx==selx && loopy==sely)
+				{
+					map[loopx][loopy].display();
+					drawsel();
+				}
+
+			}
+		}
+	}
+}
+
+void makefire(int x, int y)
+{
+	for(int loopx=x-fsize;loopx<=x+fsize;loopx++)
+	{
+		if(loopx<0) loopx=0;
+		if(loopx>=xsize) break;
+		for(int loopy=y-fsize;loopy<=y+fsize;loopy++)
+		{
+			if(loopy<0) loopy=0;
+			if(loopy>=ysize) break;
+			map[loopx][loopy].fire+=fdur;
+			draw_coord(loopx,loopy);
+		}
+	}
+}
+
+
+void changeguys()
+{
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type!=0)
+			{
+				if(map[loopx][loopy].unit.type==a1)
+				{
+					map[loopx][loopy].unit.type=w1;
+					draw_coord(loopx,loopy);
+				}
+				else if(map[loopx][loopy].unit.type==za1)
+				{
+					map[loopx][loopy].unit.type=z1;
+					draw_coord(loopx,loopy);
+				}
+				else if(map[loopx][loopy].unit.type==a2)
+				{
+					map[loopx][loopy].unit.type=w2;
+					draw_coord(loopx,loopy);
+				}
+				else if(map[loopx][loopy].unit.type==za2)
+				{
+					map[loopx][loopy].unit.type=z2;
+					draw_coord(loopx,loopy);
+				}
+
+				if(map[loopx][loopy].unit.moved==0)
+				{
+
+					if(attackcheck(loopx,loopy)!=0)
+					{
+						if(attackcheck(loopx,loopy)==2)
+						{
+							map[loopx][loopy].unit.desx=loopx;
+							map[loopx][loopy].unit.desy=loopy;
+						}
+
+						if(map[loopx][loopy].unit.moved==0 && map[loopx][loopy].unit.move==0)
+						{
+							attack(loopx,loopy);
+							map[loopx][loopy].unit.moved=1;
+							map[loopx][loopy].unit.move=wmt;
+						}
+						else
+						{
+							map[loopx][loopy].unit.moved=1;
+							map[loopx][loopy].unit.move--;
+						}
+					}
+					if((map[loopx][loopy].unit.desx!=loopx || map[loopx][loopy].unit.desy!=loopy))
+					{
+						map[loopx][loopy].unit.moved=1;
+						map[loopx][loopy].unit.move--;
+						if(map[loopx][loopy].unit.move<=0)
+						{
+							if(map[loopx][loopy].unit.type==p1 || map[loopx][loopy].unit.type==p2) map[loopx][loopy].unit.move=pmt;
+							else if(map[loopx][loopy].unit.type==c1 || map[loopx][loopy].unit.type==c2) map[loopx][loopy].unit.move=cmt;
+							else if(map[loopx][loopy].unit.type==ah1 || map[loopx][loopy].unit.type==ah2) map[loopx][loopy].unit.move=archmt;
+							else if(map[loopx][loopy].unit.type==w1 || map[loopx][loopy].unit.type==w2) map[loopx][loopy].unit.move=wmt;
+							else if(map[loopx][loopy].unit.type==z1 || map[loopx][loopy].unit.type==z2) map[loopx][loopy].unit.move=zmt;
+
+							if(abs(loopx-map[loopx][loopy].unit.desx) > abs(loopy-map[loopx][loopy].unit.desy))
+							{
+								if(map[loopx][loopy].unit.desx > loopx)
+								{
+									if(map[loopx+1][loopy].terrain!=w && map[loopx+1][loopy].unit.type==0) xmove(loopx,loopy,1);
+									else if(map[loopx][loopy].unit.dir==south) tryymove(loopx,loopy,1);
+									else if(map[loopx][loopy].unit.dir==north) tryymove(loopx,loopy,-1);
+									else if(map[loopx][loopy].unit.desy>loopy) tryymove(loopx,loopy,1);
+									else tryymove(loopx,loopy,-1);
+								}
+								else if(map[loopx][loopy].unit.desx < loopx)
+								{
+									if(map[loopx-1][loopy].terrain!=w && map[loopx-1][loopy].unit.type==0) xmove(loopx,loopy,-1);
+									else if(map[loopx][loopy].unit.dir==south) tryymove(loopx,loopy,1);
+									else if(map[loopx][loopy].unit.dir==north) tryymove(loopx,loopy,-1);
+									else if(map[loopx][loopy].unit.desy>loopy) tryymove(loopx,loopy,1);
+									else tryymove(loopx,loopy,-1);
+								}
+							}
+							else if(abs(loopx-map[loopx][loopy].unit.desx) <= abs(loopy-map[loopx][loopy].unit.desy))
+							{
+								if(map[loopx][loopy].unit.desy>loopy)
+								{
+									if(map[loopx][loopy+1].terrain!=w && map[loopx][loopy+1].unit.type==0) ymove(loopx,loopy,1);
+									else if(map[loopx][loopy].unit.dir==east) tryxmove(loopx,loopy,1);
+									else if(map[loopx][loopy].unit.dir==west) tryxmove(loopx,loopy,-1);
+									else if(map[loopx][loopy].unit.desx>loopx) tryxmove(loopx,loopy,1);
+									else tryxmove(loopx,loopy,-1);
+								}
+								else if(map[loopx][loopy].unit.desy<loopy)
+								{
+									if(map[loopx][loopy-1].terrain!=w && map[loopx][loopy-1].unit.type==0) ymove(loopx,loopy,-1);
+									else if(map[loopx][loopy].unit.dir==east) tryxmove(loopx,loopy,1);
+									else if(map[loopx][loopy].unit.dir==west) tryxmove(loopx,loopy,-1);
+									else if(map[loopx][loopy].unit.desx>loopx) tryxmove(loopx,loopy,1);
+									else tryxmove(loopx,loopy,-1);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+void checksel()
+{
+	int x=readmousex();
+	int y=readmousey();
+	int x1,x2,y1,y2;
+	if(x>xsmall && x<xsmall+size*xsize && y>ysmall && y<ysmall+size*ysize && (mousestatxus==3 || mousestatyus==3))
+	{
+		for(int loopx=0;loopx<xsize;loopx++)
+		{
+			for(int loopy=0;loopy<ysize;loopy++)
+			{
+				x1=xsmall+loopx*size;
+				x2=x1+size;
+				y1=ysmall+loopy*size;
+				y2=y1+size;
+				if(x>=x1 && x<x2 && y>=y1 && y<y2)
+				{
+					int type=map[selx][sely].unit.type;
+
+					if(firestart==1 && mousestatxus==3 && abs(selx-loopx)+abs(sely-loopy)<fdist)
+					{
+						makefire(loopx,loopy);
+						map[selx][sely].unit.mana-=50;
+						map[selx][sely].display();
+
+					}
+					else if(movestat==0 && mousestatyus!=3)
+					{
+
+						draw_coord(selx,sely);
+						selx=loopx;
+						sely=loopy;
+						drawsel();
+						map[loopx][loopy].display();
+					}
+					else if(movestat==1 || mousestatyus==3)
+					{
+						if(type>=p1 && type!=m)
+						{
+							map[selx][sely].unit.desx=loopx;
+							map[selx][sely].unit.desy=loopy;
+							setcolor(15);
+							line(x1,y1,x2-1,y2-1);
+							line(x2-1,y1,x1,y2-1);
+							delay(100);
+							draw_coord(loopx,loopy);
+						}
+					}
+					firestart=0;
+					movestat=0;
+
+				}
+			}
+		}
+	}
+}
+
+
+void clearmove()
+{
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			map[loopx][loopy].unit.moved=0;
+		}
+	}
+}
+
+
+void replenishmana()
+{
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type==z1 && map[loopx][loopy].unit.mana<zm)
+			{
+				if(map[loopx+1][loopy].unit.type==t1) map[loopx][loopy].unit.mana=zm;
+				else if(map[loopx-1][loopy].unit.type==t1) map[loopx][loopy].unit.mana=zm;
+				else if(map[loopx][loopy+1].unit.type==t1) map[loopx][loopy].unit.mana=zm;
+				else if(map[loopx][loopy-1].unit.type==t1) map[loopx][loopy].unit.mana=zm;
+			}
+			else if(map[loopx][loopy].unit.type==z2 && map[loopx][loopy].unit.mana<zm)
+			{
+				if(map[loopx+1][loopy].unit.type==t2) map[loopx][loopy].unit.mana=zm;
+				else if(map[loopx-1][loopy].unit.type==t2) map[loopx][loopy].unit.mana=zm;
+				else if(map[loopx][loopy+1].unit.type==t2) map[loopx][loopy].unit.mana=zm;
+				else if(map[loopx][loopy-1].unit.type==t2) map[loopx][loopy].unit.mana=zm;
+			}
+		}
+	}
+}
+
+
+void ai_makeguy(int type)
+{
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type==h2 && map[loopx][loopy].unit.mana<=0 && (type==p2 || type==ah2))
+			{
+				if((p2gold>=500 && type==p2))
+				{
+					map[loopx][loopy].unit.mana=1;
+					map[loopx][loopy].unit.making=type;
+					p2gold-=500;
+					drawgold();
+				}
+				else if(p2gold>=900 && type==ah2)
+				{
+					map[loopx][loopy].unit.mana=1;
+					map[loopx][loopy].unit.making=type;
+					p2gold-=900;
+					drawgold();
+				}
+			}
+			else if(map[loopx][loopy].unit.type==b2 && map[loopx][loopy].unit.mana<=0 && (type==w2 || type==au2 || type==wu2))
+			{
+				if((p2gold>=800 && type==w2))
+				{
+					map[loopx][loopy].unit.mana=1;
+					map[loopx][loopy].unit.making=type;
+					p2gold-=800;
+					drawgold();
+				}
+				else if(p2gold>=3000 && (type==au2 || type==wu2))
+				{
+					map[loopx][loopy].unit.mana=1;
+					map[loopx][loopy].unit.making=type;
+					p2gold-=3000;
+					drawgold();
+				}
+
+
+			}
+			else if(map[loopx][loopy].unit.type==t2 && map[loopx][loopy].unit.mana<=0 && type==z2)
+			{
+				if((p2gold>=1300 && type==z2))
+				{
+					map[loopx][loopy].unit.mana=1;
+					map[loopx][loopy].unit.making=type;
+					p2gold-=1300;
+					drawgold();
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+int nearestunitxy(char xy,int type)
+{
+	xy=toupper(xy);
+	int distance=32000;
+	int sx=0;
+	int sy=0;
+	int x,y;
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type==h2)
+			x=loopx;
+			y=loopy;
+		}
+	}
+
+	for(loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(abs(x-loopx)+abs(y-loopy)<distance && map[loopx][loopy].unit.type==type)
+			{
+				sx=loopx;
+				sy=loopy;
+				distance=abs(x-loopx)+abs(y-loopy);
+			}
+		}
+	}
+	if(xy=='X') return sx;
+	else if(xy=='Y') return sy;
+	return 0;
+}
+
+
+int ai_checkoutskirts(int x, int y)
+{
+	int count=0;
+	int type;
+	for(int loopx=x-3;loopx<=x+3;loopx++)
+	{
+		for(int loopy=y-3;loopy<=y+3;loopy++)
+		{
+			type=map[loopx][loopy].unit.type;
+			if(type==h2 || type==b2 || type==m || type==t2) count++;
+		}
+	}
+	return count;
+}
+
+
+void ai_makebuild(int x, int y, int type)
+{
+	map[x][y].unit.desx=x;
+	map[x][y].unit.desy=y;
+	map[x][y].unit.making=type;
+	map[x][y].unit.mana=1;
+	map[x][y].unit.arm=builda;
+	map[x][y].unit.dir=north;
+	if(type==h2) map[x][y].unit.hp=hhp;
+	else if(type==b2) map[x][y].unit.hp=bhp;
+	else if(type==t2) map[x][y].unit.hp=thp;
+	draw_coord(x,y);
+}
+
+int unitcount(int type, int type2)
+{
+	int count=0;
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type==type || map[loopx][loopy].unit.type==type2)
+			{
+				if(map[loopx][loopy].unit.type==ah2 && map[loopx][loopy].unit.making!=0) count--;
+				count++;
+			}
+		}
+	}
+	return count;
+}
+
+void ai_movetobuild(int type)
+{
+	int x=nearestunitxy('X',ah2);
+	int y=nearestunitxy('Y',ah2);
+	if(unitcount(ah2,100)<=0) ai_makeguy(ah2);
+	else if(((type==b2 && p2gold>=3500) || (type==t2 && p2gold>=4200)) && map[x][y].unit.mana<=0)
+	{
+		int num=random(200);
+		if(ai_checkoutskirts(x,y)==0)
+		{
+			ai_makebuild(x,y,type);
+			if(type==b2) p2gold-=3500;
+			else if(type==t2) p2gold-=4200;
+		}
+		else if(num%2==0)
+		{
+			map[x][y].unit.desx++;
+			map[x][y].unit.desy++;
+			if(map[x][y].unit.desx>=xsize) map[x][y].unit.desx=xsize-1;
+			if(map[x][y].unit.desy>=ysize) map[x][y].unit.desy=ysize-1;
+		}
+		else
+		{
+			map[x][y].unit.desx--;
+			map[x][y].unit.desy--;
+			if(map[x][y].unit.desx<0) map[x][y].unit.desx=0;
+			if(map[x][y].unit.desy<0) map[x][y].unit.desy=0;
+		}
+	}
+}
+
+
+
+
+
+void idle_unit(int type)
+{
+	int num;
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type==type && map[loopx][loopy].unit.desx==loopx && map[loopx][loopy].unit.desy==loopy)
+			{
+				if(type==p2) findmine(loopx,loopy);
+				else if(type==ah2 && map[loopx][loopy].unit.mana==0)
+				{
+
+					num=random(2);
+					if(num==0 && p2gold>=4200)
+					{
+						ai_movetobuild(t2);
+					}
+					else if(num==1 && p2gold>=3500)
+					{
+						ai_movetobuild(b2);
+					}
+				}
+
+			}
+		}
+	}
+}
+
+void ai_attack()
+{
+	int type;
+	int x,y;
+	int num;
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			type=map[loopx][loopy].unit.type;
+			num=random(3);
+			x=nearestunitxy('X',h1)-num;
+			y=nearestunitxy('Y',h1)-num;
+
+			if(x>=xsize) x=xsize-1;
+			else if(x<0) x=0;
+			if(y>=ysize) y=ysize-1;
+			else if(y<0) y=0;
+
+			if(type==w2 || type==a2 || type==z2 || type==za2)
+			{
+				map[loopx][loopy].unit.desx=x;
+				map[loopx][loopy].unit.desy=y;
+			}
+		}
+	}
+}
+
+void ai_firevicinity(int x, int y)
+{
+	for(int loopx=x-6;loopx<=x+6;loopx++)
+	{
+		if(loopx<0) loopx=0;
+		else if(loopx>=xsize) break;
+		for(int loopy=y-6;loopy<=y+6;loopy++)
+		{
+			if(loopy<0) loopy=0;
+			else if(loopy>=ysize) break;
+			if(map[x][y].unit.mana>=50 && map[loopx][loopy].unit.type%2==1 && map[loopx][loopy].unit.type!=m)
+			{
+				makefire(loopx,loopy);
+				map[x][y].unit.mana-=50;
+				if(x==selx && y==sely) map[x][y].display();
+			}
+
+
+		}
+	}
+}
+
+void ai_fireattack()
+{
+	int type;
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			type=map[loopx][loopy].unit.type;
+			if(type==z2 || type==za2)
+			{
+				ai_firevicinity(loopx,loopy);
+			}
+		}
+	}
+}
+
+
+
+int ai(int step)
+{
+
+	switch(step)
+	{
+
+		case(7):
+		{
+			if(goattack==1)
+			{
+				ai_attack();
+				goattack=0;
+			}
+		}
+		case(6):
+		{
+			if(unitcount(w1,a1)+unitcount(p1,c1)+unitcount(z1,za1)<=unitcount(w2,a2)+unitcount(p2,c2)+unitcount(z2,za2) && step==6)
+			{
+				step=7;
+				goattack=1;
+			}
+
+			else
+			{
+				if(p2gold>=1300)
+				{
+					if(random(2)==0) ai_makeguy(w2);
+					else ai_makeguy(z2);
+				}
+			}
+
+		}
+		case(5):
+		{
+			//new town
+		}
+		case(4):
+		{
+			int y=nearestunitxy('Y',w2);
+			int x=nearestunitxy('X',w2);
+			if(map[x][y].unit.arm==wa) ai_makeguy(au2);
+			else if(map[x][y].unit.str==wh) ai_makeguy(wu2);
+			else if(map[x][y].unit.str>wh && map[x][y].unit.arm>wa && step==4) step=6;
+			//else step=4;
+		}
+
+		case(3):
+		{
+			if(unitcount(z2,za2)<=7*unitcount(t2,100) && unitcount(t2,100)>=1) ai_makeguy(z2);
+			else if(unitcount(z2,za2)<=7 && unitcount(z2,100)<1)ai_movetobuild(t2);
+			if((unitcount(t2,100)>=1 && unitcount(z2,za2)>=4) && step==3) step=4;
+			//else step=3;
+		}
+
+
+		case(2):
+		{
+			if(unitcount(w2,a2)<=7 && unitcount(b2,100)>=1) ai_makeguy(w2);
+			else if(unitcount(w2,a2)<=7 && unitcount(b2,100)<1) ai_movetobuild(b2);
+			if(((unitcount(b2,100)>=1 && unitcount(w2,a2)>=7)) && step==2) step=3;
+			//else step=2;
+		}
+		case(1):
+		{
+			if(unitcount(p2,c2)<10)
+			{
+				step=1;
+				ai_makeguy(p2);
+			}
+			else if(step==1) step=2;
+		}
+	}
+
+
+	idle_unit(p2);
+	idle_unit(ah2);
+	ai_fireattack();
+
+	return step;
+}
+
+
+int checkend()
+{
+	int p1count=0;
+	int p2count=0;
+	for(int loopx=0;loopx<xsize;loopx++)
+	{
+		for(int loopy=0;loopy<ysize;loopy++)
+		{
+			if(map[loopx][loopy].unit.type%2==1 && map[loopx][loopy].unit.type!=m) p1count++;
+			else if(map[loopx][loopy].unit.type%2==0 && map[loopx][loopy].unit.type!=0) p2count++;
+		}
+	}
+	if(p2count==0) return 2;
+	else if(p1count==0) return 1;
+	return 0;
+}
+
+
+
+
+void main()
+{
+	//clrscr();
+	randomize();
+	/*cout << "Players : ";
+	cin >> player;
+	*/
+	chdir("c:\\cpp\\warchops");
+	player=1;
+	setup();
+	outtextxy(250,250,"WarChops version AlphaBetaKappa");
+	getch();
+	cleardevice();
+	char choice;
+	int step=1;
+	setcolor(15);
+	settextjustify(1,1);
+	outtextxy(320,240,"Loading");
+	rectangle(xsmall-1,ysmall-1,xsmall+(size*screen_xsize)+1,ysmall+(size*screen_ysize)+1);
+	loadpics();
+	loadmap();
+	shroudall(1);
+	settextjustify(0,0);
+	drawmap();
+	for(int loopx=0;loopx<xsize;loopx++)
+	for(int loopy=0;loopy<ysize;loopy++)
+	unshroud(loopx,loopy);
+	setcolor(15);
+	drawgold();
+	showmouse();
+	do
+	{
+		do
+		{
+			//cleardevice();
+			//drawmap();
+			mousestatx();
+			mousestaty();
+			if(player==1) step=ai(step);
+			/*
+			gotoxy(1,1);
+			cout << step;
+			*/
+			changeguys();
+			training();
+			checkfire();
+			checksel();
+			clearmove();
+			replenishmana();
+			delay(delaytime);
+
+			/*
+			setvisualpage(page);
+			if(page==0) page=1;
+			else page=0;
+			setactivepage(page);
+			*/
+
+		}while(bioskey(1)==0/* && checkend()==0*/);
+		/*if(checkend()!=0)*/ choice=toupper(getch());
+		/*else choice=0;*/
+		switch(choice)
+		{
+
+			case('M'):
+			{
+				if((map[selx][sely].unit.type>=7 && map[selx][sely].unit.type<=12) ||
+				map[selx][sely].unit.type==c1 ||
+				map[selx][sely].unit.type==c2 ||
+				map[selx][sely].unit.type==a1 ||
+				map[selx][sely].unit.type==a2)
+				{
+					movestat=1;
+				}
+				break;
+			}
+
+			case('S'):
+			{
+				map[selx][sely].unit.desx=selx;
+				map[selx][sely].unit.desy=sely;
+				break;
+			}
+
+			case('P'):
+			{
+				if(map[selx][sely].unit.type==h1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=500)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=p1;
+						p1gold-=500;
+					}
+				}
+				else if(map[selx][sely].unit.type==h2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=500)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=p2;
+						p2gold-=500;
+					}
+				}
+				drawgold();
+				break;
+			}
+
+			case('T'):
+			{
+				if(map[selx][sely].unit.type==b1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=800)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=w1;
+						p1gold-=800;
+					}
+				}
+				else if(map[selx][sely].unit.type==b2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=800)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=w2;
+						p2gold-=800;
+					}
+				}
+				else if(map[selx][sely].unit.type==ah1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=4200)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=t1;
+						map[selx][sely].unit.hp=thp;
+						map[selx][sely].unit.arm=builda;
+						p1gold-=3500;
+					}
+				}
+				else if(map[selx][sely].unit.type==ah2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=4200)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=t2;
+						map[selx][sely].unit.hp=thp;
+						map[selx][sely].unit.arm=builda;
+						p2gold-=4200;
+					}
+				}
+				drawgold();
+				break;
+			}
+
+			case('Z'):
+			{
+				if(map[selx][sely].unit.type==t1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=1300)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=z1;
+						p1gold-=1300;
+					}
+				}
+				else if(map[selx][sely].unit.type==t2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=1300)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=z2;
+						p2gold-=1300;
+					}
+				}
+				drawgold();
+				break;
+			}
+
+			case('W'):
+			{
+				if(map[selx][sely].unit.type==b1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=3000)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=wu1;
+						p1gold-=3000;
+					}
+				}
+				else if(map[selx][sely].unit.type==b2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=3000)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=wu2;
+						p2gold-=3000;
+					}
+				}
+				drawgold();
+				break;
+			}
+
+			case('A'):
+			{
+				if(map[selx][sely].unit.type==b1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=3000)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=au1;
+						p1gold-=3000;
+					}
+				}
+				else if(map[selx][sely].unit.type==b2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=3000)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=au2;
+						p2gold-=3000;
+					}
+				}
+				else if(map[selx][sely].unit.type==h1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=900)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=ah1;
+						p1gold-=900;
+					}
+				}
+				else if(map[selx][sely].unit.type==h2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=900)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=ah2;
+						p2gold-=900;
+					}
+				}
+				drawgold();
+				break;
+			}
+
+			case('F'):
+			{
+				if(map[selx][sely].unit.type==z1 && map[selx][sely].unit.mana>=50)
+				{
+					firestart=1;
+					drawsel();
+				}
+				else if(map[selx][sely].unit.type==z2 && map[selx][sely].unit.mana>=50)
+				{
+					firestart=1;
+					drawsel();
+				}
+				break;
+			}
+			case('B'):
+			{
+				if(map[selx][sely].unit.type==ah1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=3500)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=b1;
+						map[selx][sely].unit.hp=bhp;
+						map[selx][sely].unit.arm=builda;
+
+						p1gold-=3500;
+					}
+				}
+				else if(map[selx][sely].unit.type==ah2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=3500)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=b2;
+						map[selx][sely].unit.hp=bhp;
+						map[selx][sely].unit.arm=builda;
+						p2gold-=3500;
+					}
+				}
+				drawgold();
+			}
+			case('H'):
+			{
+				if(map[selx][sely].unit.type==ah1 && map[selx][sely].unit.mana<=0)
+				{
+					if(p1gold>=5000)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=h1;
+						map[selx][sely].unit.hp=hhp;
+						map[selx][sely].unit.arm=builda;
+						p1gold-=3500;
+					}
+				}
+				else if(map[selx][sely].unit.type==ah2 && map[selx][sely].unit.mana<=0)
+				{
+					if(p2gold>=5000)
+					{
+						map[selx][sely].unit.mana=1;
+						map[selx][sely].unit.making=h2;
+						map[selx][sely].unit.hp=hhp;
+						map[selx][sely].unit.arm=builda;
+						p2gold-=3500;
+					}
+				}
+				drawgold();
+			}
+			//case('V'):
+			//{
+
+
+
+
+		}
+	}while(choice!='Q' && checkend()==0);
+	closegraph();
+	cout << "Player " << checkend() << " sux mad wong";
+	getch();
+}

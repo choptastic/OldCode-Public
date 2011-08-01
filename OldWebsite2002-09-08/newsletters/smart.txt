@@ -1,0 +1,136 @@
+Two days to go!!  I really need to clean this basement.  And get more pizzas and a bag of Pink Lemonade from South Shore!  hehe.
+
+
+***Fun***
+
+According to Joelle at South Shore, people like her (who will do drugs and drink) will have more fun in life, and an overall better life, than people that don't, because they are willing to try other things.
+
+Is this true?  Have I been misinformed this whole time?!?  I'm gonan hafta change my lifestyle cuz I obviously don't have any fun.  In fact, I'm gonna cancel the LAN Party this saturday to sit down and smoke a bowl while I get drunk off my ass.  Then, maybe then, I can have some fun, cuz I obviously can't when I am sober.
+
+I am miserable...I think drugs are the answer.
+
+
+***How to be really super-dee-super smart***
+
+Follow by example:
+
+Joelle is also very smart here.  Her friends are obviously geniuses, so pay close attention, and rmember to learn by example.
+
+First her and 15 of her friends (high schoolers) decide it was a good idea to go camping and bring two half-barrels and a cooler of wap (spelling?).  When they are there, they are so obnoxious that the neighbors call the cops.  When the cops arrive, many have already been drinking, the cops ask if they can search the place.  They say "sure."  So the cops search and find, sure enough, all the alcohol.  Go figure, you can't really hide that much alcohol.
+
+The cops (rangers) take them all to the station.
+
+ All but 4 get drinking tickets, cuz the 4 blew 0.0.
+
+When the group realize that they will be getting drinking tickets, they decide that IT WOULD BE A GOOD IDEA TO STEAL THINGS FROM TEH COP STATION!!  Isn't that beautiful.  Dumb and Dumber.  So they genk a Bathroom sign, a box of cigars, and A FULL POLICE UNIFORM, WITH BADBGE.
+
+The cops let 8 of them go, but just before lettign the other 8 go, they ask "we're missing a few things, and we know you have them.  Retrun them or the people whose names rented the campsite will all be charged with disorderly conduct.
+
+So they return the cigars and the sign.  Nothing happens.  But they keep the uniform.
+
+Later that night the cops roll on by again, this time with "We're missing a police uniform with badge, do you know anything about it?"
+
+"No, officer"  HA!
+
+The cops leave.
+
+A few hours later, they return again, this time to inform the group that their friend needs to be bailed out of jail.  Apparently one of them decided to return the cops uniform (I don't knwo if it was thed same person who took it).  Anyways, he was in jail because he was charged with "Intent to impersonate an officer of the law"... A FELONY!!!   HAHAHAHA!!!! I love it...
+
+An 18 year old little white pathetic franklinite Felon!!
+
+The system at it's finest.  Punish them stupid shits hard.
+
+That is how to be smart.  Too bad they didn't have weed on them, i'm sure there would have been more felony charges then, since I'm sure most of them have already been caught with weed.   Those are the kinda people I don't want to be allowed to vote.
+
+
+***First Physical Newsletter***
+
+I've sent the first Physical Newsletter on monday.  Most of you should be receiving it soon, if you haven't already.  THere are a few of you whom I could sent as your addresses were either fake or blank.  I tried to fix as many as I could, but theres still a few I don't know how to handle.  So I just didn't send to you.
+
+
+***Server Upgrade and FTP***
+
+Well my server has been upgraded... I now have a 120GB hard drive in it, divided as follows:
+14 G -> Operating System and Server related stuff,
+10 G -> Game Servers and less important things
+1 G  -> Webspace
+90G  -> FTP Site
+
+I know it doesn't add to 120, but you know how things are never exactly what they are.
+
+On the topic of FTP Server, here is the info, officially:
+
+ftp://gummlanparty.net
+Login: warez
+password: netscape
+
+I have 20G on it right now, lots of Southpark and family guy episodes, ISOs, and useful development stuff (including the palm OS Development tools).
+
+If you want to upload something to me, you can add to the folder named "public".  You will have permissions to add, but not to delete.
+
+
+***Laron Ball***
+
+Many of your have probably heard of the courtroom shooting last week.  In short, Laron Ball, 20, was convicted of 1st Degree murder and sentenced to life in prison, so he jumped the jury box and attacked the jurors, as well as getting his hands on a deputy's gun and shooting one of the cops.  The detective in the room shot Ball dead.
+
+What many don't know is this:  Laron Ball was the father of 6 with 1 on the way, all of them were under 3 years old.  He also had a dozen felonies on his record.  My question is this: Why was he walking the streets.  Why was he allowed to even be a part of society.  If he, alone, is not jsutification for capital punishment, what is?  I mean, if we don't torture the evil like him, we might as well kill them, rather than giving them cable TV and a weight set.
+
+
+***Reparations***
+
+I heard something funny today.  The definition for those of you that don't know, Reperations is giving money to Blacks because of Slavery.
+
+What heard was soemthign like this: "Another term for reperations is Welfare!"  HA!!  One of the funniest things and meanest things I've ever heard.
+
+
+***Forum upgrade***
+
+The forum , in light of recent events, has been upgraded.  It should be faster, and I've begun implementing my own Forum scripting system.  As a recap, if you want to add a picture to it, just type in the URL for it.
+
+For example: http://www.server.com/picture.ext
+
+That's it!
+
+I've also opened up the FTP site for the forums.  If you don't have your own webspace, but want to post images, you'll need to do this. Login to ftp://gummlanparty.net with the follwing:
+
+login: forum
+password: images
+
+then you can upload images right to it.  TO link them use the following URL: http://www.gummlanparty.net/forum/picture_you_uploaded.ext
+
+Easy enough.  Let me know if you are having problems.
+
+Additionally, I've implemented a Search function for the forum.  You will find it in the bar at the top of each page.
+
+
+***Gladiator***
+
+"My name is Maximus Desmus Meridius, commander of the armies of the north, and general of the Felix Lengions.  Loyal servant to the true emperor, Marcus Aurelius.  Father to a murdered son...Husband to a murdered wife...And I will have my vengance, in this life or the next."
+
+Truly powerful words.  Accompanied by a truly powerful score.  Yet for some reason it didn't win best score, which it hands down deserved.  Sure Crouching Tiger is a good score, great even, but Gladiator is far superior.  Gladiator's is as though it was written by God himself and simply dictated to Hans Zimmer.  The proof of this is now two years after the release of Gladiator, we've seen something like 5 trailers that utilize the raw, unyielding power that is the Gladiator Score.  Yet, I've not seen one trailer that utilizes Yo-Ya ma and his cello from the "Best score of 2000"
+
+Retroactivly, Crouching Tiger should be stripped of it's best score, and it should be handed to Gladiator, which has obviously proven it's superiority, thereby making Gladiatior the hands down best movie of 2000, leaving Gladiator with 6 oscars, Traffic with 4, and Crouching Tiger with 3.
+
+
+***Conclusion***
+
+It's funny how I always have the conclusion, like I'm wrapping up a story or something, yet, this is just a bunch of random ramblings, with genreally no coherance, whatsoever.
+
+So the LAN Party is in TWO DAYS!!!
+
+TWO FRICKEN DAYS!!!
+
+Saturday, June 8th, 2002
+
+Starts at 5PM.
+
+Lotsa fun...Lotsa Fun!!!
+
+
+"Half a city block explodes in a ball of green flame...GREEN FLAME...and it's...all the hell is breaking loose!  Now if you're protecting Jack Burton..."
+
+"You leave Jack Burton Alone!!! We are in his debt...  He showed great courage."
+
+I didn't do any proofreading of this, so some of it might be way off.
+
+-Gumm

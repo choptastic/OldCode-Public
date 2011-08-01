@@ -1,0 +1,18 @@
+#include<iostream.h>
+#include<stdlib.h>
+void main(int arcg, char *arcv[])
+{
+	int blah;
+	/*
+	if(arcg!=2)
+	{
+		cerr << "Expected: Argument...exiting";
+		exit(1);
+	}
+	*/
+	cout << endl << arcg << endl;
+	//cout << arcv[1];
+	blah=atoi(arcv[2]);
+	cout << blah;
+
+}

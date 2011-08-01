@@ -1,0 +1,79 @@
+[Root]
+Most Recent Package=Framework
+
+
+[Package|Framework|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\COUNTS\Package
+
+[Package|Framework|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Framework|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Framework|Files Found]
+
+[Package|Framework|Files Released]
+
+[Package|Framework|Missing Dependency Information]
+
+[Package|Framework|Out-of-Date Dependency Information]
+
+[Package|Framework|Files Added]
+
+[Package|Framework|Files Removed]
+
+[Package|Framework|Files In Project]
+D:\COUNTS\Framework.exe=Yes
+C:\WINNT\system32\msvbvm60.dll=Yes
+C:\WINNT\system32\OLEAUT32.DLL=Yes
+C:\WINNT\system32\OLEPRO32.DLL=Yes
+C:\WINNT\system32\ASYCFILT.DLL=Yes
+C:\WINNT\system32\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\system32\Mscomct2.ocx=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|Framework|Configure Registry Files]
+Applicable=No
+
+[Package|Framework|Configure Remote Servers]
+Applicable=No
+
+[Package|Framework|Install Locations]
+D:\COUNTS\Framework.exe=$(AppPath)
+C:\WINNT\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\Mscomct2.ocx=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|Framework|Configure Shared Files]
+Applicable=Yes
+D:\COUNTS\Framework.exe=No
+
+[Package|Framework|Distribution]
+Type=single
+Size=
+Title=Counts DLL Framework
+
+[Package|Framework|Package]
+PackageFolder=D:\COUNTS\Package
+ProjectFolder=D:\COUNTS
+ServerSideCab=
+File1=D:\COUNTS\Package\setup.exe
+File2=D:\COUNTS\Package\Setup.Lst
+File3=D:\COUNTS\Package\Framework.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

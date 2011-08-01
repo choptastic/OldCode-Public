@@ -1,0 +1,37 @@
+LAN 8 is coming up: 2 weeks from this past Saturday. 
+
+There will be two people of importance at LAN 8:
+1. MAtt Dewitt, who is back from the marines for a few days
+2. Josh "Homer" Rothman (he got me hooked on Dew, enough to drink the 100 2-liters), who is moving to Alaska the week after LAN Party 8.
+
+The RSVP Section will be up an running before the end of next weekend.
+
+Some Mobo news, I've given up on the Abit KG7.  I've recently been very impressed with the ECS K7S5A.  All this weekend, I've worked on getting the KG7 to work in my computer and I think I've been sent another bad mobo.  I'm just gonna try to get my money back as I am now content with my K7S5A.  The only real drawback of the board is it's inability to overclock.  But with my XP1800+, 512 Unbuffered DDR RAM, and my GeForce3 Ti20 overclocked to 200MHz Clock and 460MHz RAM, I was able to score just under 7000 in 3D Mark 2001.  That's damn good.
+
+Consider the following:
+
+System 1 (My System)
+ECS K7S5a, 512 DDR, XP1800+ (not overclocked), VisionTek GeForce3 Ti200 (200MHz Core, 460 MHz Memory) -- 3DMark Score: 6950 (approx)
+
+System 2(Josh Klamecki's System)
+Abit KG7, 512 DDR, XP1800+ (overclocked to 1610MHz-equivilant to 1900+), VisionTek GeForce3 Ti200 (225MHz Core, 500 MHz Memory) -- 3DMark Score: 6640 (exact)
+
+Notice that System 2 has a faster CPU overclock, and a faster Video Overclock, yet System 1 wails.  It seems that Abit's aren't the best Gaming motherboards after all.  So I'm gonna hafta give Asus a try (that's what Falcon Northwest uses for it's motherboards) and Gigabyte (AMD uses that for it's benchmarks), before I completely dedicated myself to ECS.
+
+Overall, my loyalty to Abit has diminished rapidly since I started dealing with the KG7 in November.
+
+Anyways, enough rambling, on to some more news.
+
+Hopefully this week I can put out a beta of the Gumm LAN Party Messanger Service.  For those of you that don't remember me mentioning that, it's a cheap rip off of AIM or ICQ and will be integrated with the Message Board to let anyone know if a new message has been posted or not.   Of course it will allow for Messaging between members.  I'd like to eventually allow for some form of file format.
+
+Also I'm working on Breakout in OpenGL.  Yup that's right.   The program that practically started it all with Soik.  I'll be implementing as many special blocks of which I cam concieve, and possibly a playback feature with different camera angles (to at least show that it's in 3D).  When I'm finished with that I would like to try to make it multiplayer (kind of like Tetrinet) with attack blocks and stuff.  I don't know how many players it will support yet, but that's a little too far down the road, so I don't need to worry about it, just yet.
+
+Everyone register on the website.  http://www.gummlanparty.net/newmember.asp
+
+Once again, LAN Party 8 will be held on:
+
+Saturday, March 9, 2002 @ 5:00PM
+
+Don't forget.
+
+-Gumm

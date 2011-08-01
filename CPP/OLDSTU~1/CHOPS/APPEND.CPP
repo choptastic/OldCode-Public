@@ -1,0 +1,46 @@
+#include<conio.h>
+#include<iomanip.h>
+#include<fstream.h>
+
+
+void append(char one[], char two[], char out[])
+{
+	ifstream in1(one);
+	ifstream in2(two);
+	ofstream outfile(out);
+	char val;
+	cout << "Adding vals from : " << one << endl;
+
+	in1.get(val);
+	while(!in1.eof())
+	{
+		outfile << val;
+		in1.get(val);
+	}
+	cout << "Adding vals from : " << two << endl;
+
+	in2.get(val);
+	while(!in2.eof())
+	{
+
+		outfile << val;
+		in2.get(val);
+	}
+	cout << out << " is complete";
+	return;
+}
+
+void main()
+{
+	clrscr();
+	char one[100],two[100],out[100];
+	cout << "Enter first file location : ";
+	cin >> one;
+	cout << "Enter second file location : ";
+	cin >> two;
+	cout << "Enter Destination file location : ";
+	cin >> out;
+	cout << "\n\n";
+	append(one,two,out);
+}
+

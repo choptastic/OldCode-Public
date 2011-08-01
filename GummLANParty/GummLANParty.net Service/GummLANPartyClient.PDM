@@ -1,0 +1,120 @@
+[Root]
+Most Recent Package=Client Install
+Most Recent Deploy=Client Delopy
+
+[Deploy|Client Delopy|Root]
+Package=Client Install
+Handler=PDWizard.FolderDplySubWiz
+Folder=D:\GummLANParty.net Service\Client
+
+
+[Package|Client Install|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\GummLANParty.net Service\Client\Package
+
+[Package|Client Install|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Client Install|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Client Install|Files Found]
+
+[Package|Client Install|Files Released]
+User.DLL=
+
+[Package|Client Install|Missing Dependency Information]
+C:\Program Files\Common Files\Microsoft Shared\DAO\dao360.dll=
+C:\WINNT\system32\dao360.dll=
+D:\GummLANParty.net Service\AutoUpdater.exe=
+
+[Package|Client Install|Out-of-Date Dependency Information]
+
+[Package|Client Install|Files Added]
+d:\gummlanparty.net service\client.reg=
+D:\GummLANParty.net Service\URLDownloadToFile.exe=
+D:\GummLANParty.net Service\AutoUpdater.exe=
+
+[Package|Client Install|Files Removed]
+
+[Package|Client Install|Files In Project]
+C:\WINNT\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\system32\MSWINSCK.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+D:\GummLANParty.net Service\client.reg=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\WINNT\system32\dao360.dll=Yes
+D:\GummLANParty.net Service\GuLP.exe=Yes
+D:\GummLANParty.net Service\URLDownloadToFile.exe=Yes
+D:\GummLANParty.net Service\AutoUpdater.exe=Yes
+
+[Package|Client Install|Configure Registry Files]
+Applicable=Yes
+D:\GummLANParty.net Service\client.reg=Register
+
+[Package|Client Install|Configure Remote Servers]
+Applicable=No
+
+[Package|Client Install|Install Locations]
+D:\GummLANParty.net Service\GummLANPartyClient.exe=$(AppPath)
+C:\WINNT\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Common Files\Microsoft Shared\DAO\dao360.dll=$(WinSysPath)
+C:\WINNT\system32\MSWINSCK.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\WINNT\system32\dao360.dll=$(WinSysPath)
+D:\GummLANParty.net Service\GuLP.exe=$(AppPath)
+D:\GummLANParty.net Service\URLDownloadToFile.exe=$(AppPath)
+D:\GummLANParty.net Service\AutoUpdater.exe=$(AppPath)
+
+[Package|Client Install|Configure Shared Files]
+Applicable=Yes
+D:\GummLANParty.net Service\GummLANPartyClient.exe=No
+D:\GummLANParty.net Service\GuLP.exe=No
+D:\GummLANParty.net Service\URLDownloadToFile.exe=No
+D:\GummLANParty.net Service\AutoUpdater.exe=No
+
+[Package|Client Install|Distribution]
+Type=single
+Size=
+Title=GuLP
+
+[Package|Client Install|Package]
+PackageFolder=D:\GummLANParty.net Service\Client\Package
+ProjectFolder=D:\GummLANParty.net Service
+ServerSideCab=
+File1=D:\GummLANParty.net Service\Client\Package\setup.exe
+File2=D:\GummLANParty.net Service\Client\Package\Setup.Lst
+File3=D:\GummLANParty.net Service\Client\Package\GuLP.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Client Install|IconGroups]
+Group0=GummLANParty.net
+PrivateGroup0=0
+Parent0=$(Programs)
+
+[Package|Client Install|GummLANParty.net]
+Icon1=GuLP.exe
+Title1=GuLP
+StartIn1=$(AppPath)
+Key1=Icon1

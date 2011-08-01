@@ -1,0 +1,176 @@
+
+//Version:     1.0
+//Copyright:   Copyright (c) Jesse Gumm
+//Author:      Jesse Gumm
+//Company:      Calculator
+//Description:  Calculator
+package calculator;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Calculator extends Applet implements ActionListener{
+  boolean isStandalone = false;
+  Button numberbuttons[];
+  Button operatorbuttons[];
+  TextField output;
+  double totalnumber;
+  double newnumber;
+  char op;
+  boolean newscreen,isdecimal;
+  //Get a parameter value
+  public String getParameter(String key, String def) {
+    return isStandalone ? System.getProperty(key, def) :
+      (getParameter(key) != null ? getParameter(key) : def);
+  }
+
+  //Construct the applet
+  public Calculator() {
+  }
+
+  //Initialize the applet
+  public void init()
+  {
+    numberbuttons = new Button[10];
+    operatorbuttons = new Button[7];
+    output = new TextField("0");
+    newnumber=0;
+    totalnumber=0;
+    op='=';
+    isdecimal=false;
+    int i;
+    add(output);
+    output.addActionListener(this);
+    for(i=0;i<10;i++)
+    {
+      numberbuttons[i] = new Button(String.valueOf(i));
+      add(numberbuttons[i]);
+      numberbuttons[i].addActionListener(this);
+    }
+    for(i=0;i<7;i++)
+    {
+      operatorbuttons[i] = new Button();
+      add(operatorbuttons[i]);
+      operatorbuttons[i].addActionListener(this);
+    }
+    operatorbuttons[0].setLabel("=");
+    operatorbuttons[1].setLabel("+");
+    operatorbuttons[2].setLabel("-");
+    operatorbuttons[3].setLabel("*");
+    operatorbuttons[4].setLabel("/");
+    operatorbuttons[5].setLabel("C");
+    operatorbuttons[6].setLabel(".");
+  }
+
+  private double operate(double total, char o, double newnum)
+  {
+    switch(o)
+    {
+      case '=': return(newnum);
+      case '+': return(total+newnum);
+      case '-': return(total-newnum);
+      case '*': return(total*newnum);
+      case '/': return(total/newnum);
+    }
+    return '=';
+  }
+
+  public void actionPerformed(ActionEvent e)
+  {
+      char charcode;
+      int num;
+
+      String s=((Button)e.getSource()).getLabel();
+      charcode=s.charAt(0);
+      switch(charcode)
+      {
+
+        case('.'):
+                  if(isdecimal)
+                    break;
+                  else
+                    isdecimal=true;
+        case('0'):
+        case('1'):
+        case('2'):
+        case('3'):
+        case('4'):
+        case('5'):
+        case('6'):
+        case('7'):
+        case('8'):
+        case('9'):
+                  if(newscreen==true)
+                  {
+                    output.setText("0");
+                    newscreen=false;
+                    isdecimal=false;
+                  }
+                  if( Double.parseDouble(output.getText())==0.0 &&
+                      charcode!='.' && output.getText().length()!=2)
+                    output.setText("");
+                  output.setText(output.getText()+String.valueOf(charcode));
+                  break;
+
+        case('+'):
+        case('-'):
+        case('*'):
+        case('/'):
+        case('='):
+                  newnumber=Double.parseDouble(output.getText());
+                  totalnumber=operate(totalnumber,op,newnumber);
+                  output.setText(String.valueOf(totalnumber));
+                  op=charcode;
+                  newscreen=true;
+                  break;
+        case('C'):output.setText("0");
+                  break;
+      }
+
+  }
+
+
+  //Component initialization
+  private void jbInit() throws Exception {
+  }
+
+  //Start the applet
+  public void start()
+  {
+    int y,x;
+    output.setBounds(10,10,130,20);
+    for(y=0;y<3;y++)
+      for(x=1;x<=3;x++)
+      {
+        numberbuttons[y*3+x].setLocation(10+((x-1)*30),50+(y*35));
+      }
+    numberbuttons[0].setLocation(40,155);
+    operatorbuttons[6].setLocation(70,155);
+    operatorbuttons[6].setSize(numberbuttons[0].getSize());
+    for(y=0;y<6;y++)
+    {
+      operatorbuttons[y].setLocation(120,40+(y*23));
+      operatorbuttons[y].setSize(25,20);
+    }
+
+  }
+
+  //Stop the applet
+  public void stop() {
+  }
+
+  //Destroy the applet
+  public void destroy() {
+  }
+
+  //Get Applet information
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+
+  //Get parameter info
+  public String[][] getParameterInfo() {
+    return null;
+  }
+}

@@ -1,0 +1,491 @@
+#include<h:\include\include.h>
+#include<h:\include\button.h>
+
+//#include<c:\tc\bin\chops\include.h>
+//#include<c:\tc\bin\chops\button.h>
+
+const int maxx=30;
+const int maxy=30;
+const int size=10;
+int select=0;
+int sx=-1;
+int sy=-1;
+int ex=-1;
+int ey=-1;
+
+int graph[maxx][maxy];
+
+
+void thumb()
+{
+	setcolor(15);
+	int x1=windows[3].x1;
+	int x2=windows[3].x2;
+	int y1=windows[3].y1;
+	int y2=windows[3].y2;
+	x1=x2-maxx-5;
+	x2=x2-4;
+	y1=y2-maxy-5;
+	y2=y2-4;
+	rectangle(x1,y1,x2,y2);
+
+	for(int loopx=0;loopx<maxx;loopx++)
+	{
+		for(int loopy=0;loopy<maxy;loopy++)
+		{
+
+			if(graph[loopx][loopy]!=16) putpixel(loopx+x1+1,loopy+y1+1,graph[loopx][loopy]);
+			else putpixel(loopx+x1+1,loopy+y1+1,0);
+
+		}
+	}
+}
+
+void drawgrid()
+{
+
+	if(selectedwindow()==3)
+	{
+		hidemouse();
+		//setcolor(15);
+		int x1,x2,y1,y2;
+		for(int loopx=0;loopx<maxx;loopx++)
+		{
+			for(int loopy=0;loopy<maxy;loopy++)
+			{
+				x1=windows[3].x1+4+(loopx*size);
+				x2=x1+size-1;
+				y1=windows[3].y1+17+(loopy*size);
+				y2=y1+size-1;
+
+				if(graph[loopx][loopy]==16)
+				{
+					setfillstyle(1,7);
+					bar(x1,y1,x2,y2);
+					setcolor(8);
+					line(x1,y1,x2,y2);
+					line(x1,y2,x2,y1);
+
+				}
+				else
+				{
+					setfillstyle(1,graph[loopx][loopy]);
+					bar(x1,y1,x2,y2);
+				}
+				setcolor(0);
+				rectangle(x1,y1,x2+1,y2+1);
+
+			}
+		}
+		thumb();
+		showmouse();
+	}
+}
+
+void cleargrid()
+{
+	for(int loopx=0;loopx<maxx;loopx++)
+	{
+		for(int loopy=0;loopy<maxy;loopy++)
+		{
+			graph[loopx][loopy]=16;
+		}
+	}
+	drawgrid();
+}
+
+void drawpixel(int x, int y)
+{
+		hidemouse();
+		int x1=windows[3].x1+4+(x*size);
+		int x2=x1+size-1;
+		int y1=windows[3].y1+17+(y*size);
+		int y2=y1+size-1;
+		setfillstyle(1,graph[x][y]);
+		if(graph[x][y]==16)
+		{
+			setfillstyle(1,7);
+			bar(x1,y1,x2,y2);
+			setcolor(8);
+			line(x1,y1,x2,y2);
+			line(x1,y2,x2,y1);
+		}
+		else bar(x1,y1,x2,y2);
+		setcolor(0);
+		rectangle(x1,y1,x2+1,y2+1);
+		thumb();
+		showmouse();
+}
+
+void fillit(int x, int y, int bcolor, int color)
+{
+	graph[x][y]=color;
+	//drawpixel(x,y);
+	if(graph[x+1][y]==bcolor && x+1<maxx) fillit(x+1,y,bcolor,color);
+	if(graph[x-1][y]==bcolor && x-1>=0) fillit(x-1,y,bcolor,color);
+	if(graph[x][y+1]==bcolor && y+1<maxy) fillit(x,y+1,bcolor,color);
+	if(graph[x][y-1]==bcolor && y-1>=0) fillit(x,y-1,bcolor,color);
+
+}
+
+
+void makeline(int x1,int y1, int x2, int y2)
+{
+	int color=selected(0,0);
+	float m;
+	int b;
+	//int temp=0;
+	//float m;
+
+
+	if(x1==x2) m=666;
+	else m=(y1-y2)/(x1-x2);
+
+	/*
+	if(y1==y2) b=666;
+	else b=0;
+	*/
+
+
+	int loopy,loopx;
+
+	if(m!=666)
+	{
+		for(int loopx=x1;loopx<=x2;loopx++)
+		{
+			//loopy=((y1-y2)/(x1-x2))*(loopx-x1)+y1;
+			loopy=m*(loopx-x1)+y1;
+			graph[loopx][loopy]=color;
+		}
+	}
+
+	if(m!=0)
+	{
+		for(loopy=y1;loopy<=y2;loopy++)
+		{
+			//loopx=(loopy-y1)/((y1-y2)/(x1-x2))+x1;
+			loopx=(loopy-y1)/m+x1;
+			graph[loopx][loopy]=color;
+		}
+	}
+
+}
+
+void rect(int x1, int y1, int x2, int y2)
+{
+	int temp;
+
+	if(x1>x2)
+	{
+		temp=x1;
+		x1=x2;
+		x2=temp;
+	}
+
+	if(y1>y2)
+	{
+		temp=y1;
+		y1=y2;
+		y2=y1;
+	}
+
+	makeline(x1,y1,x1,y2);
+	makeline(x1,y1,x2,y1);
+	makeline(x1,y2,x2,y2);
+	makeline(x2,y1,x2,y2);
+
+	drawgrid();
+
+}
+
+void checkgrid()
+{
+if(selectedwindow()==3)
+{
+	int x1,x2,y1,y2;
+	if(mousestat()==1)
+	{
+		if(selected(1,0)==0)
+		{
+			for(int loopx=0;loopx<maxx;loopx++)
+			{
+				for(int loopy=0;loopy<maxy;loopy++)
+				{
+					x1=windows[3].x1+4+(loopx*size);
+					x2=x1+size-1;
+					y1=windows[3].y1+17+(loopy*size);
+					y2=y1+size-1;
+					if(x>=x1 && x<x2 && y>=y1 && y<y2)
+					{
+						graph[loopx][loopy]=selected(0,0);
+						drawpixel(loopx,loopy);
+					}
+				}
+			}
+			thumb();
+		}
+	}
+	if(mousestat()==3)
+	{
+		if(selected(1,0)==2 || selected(1,0)==3)
+		{
+
+			for(int loopx=0;loopx<maxx;loopx++)
+			{
+				for(int loopy=0;loopy<maxy;loopy++)
+				{
+					x1=windows[3].x1+4+(loopx*size);
+					x2=x1+size-1;
+					y1=windows[3].y1+17+(loopy*size);
+					y2=y1+size-1;
+					if(x>=x1 && x<x2 && y>=y1 && y<y2)
+					{
+						sx=loopx;
+						sy=loopy;
+					}
+
+				}
+			}
+
+
+		}
+		if(selected(1,0)==1)
+		{
+			for(int loopx=0;loopx<maxx;loopx++)
+			{
+				for(int loopy=0;loopy<maxy;loopy++)
+				{
+					x1=windows[3].x1+4+(loopx*size);
+					x2=x1+size-1;
+					y1=windows[3].y1+17+(loopy*size);
+					y2=y1+size-1;
+					if(x>=x1 && x<x2 && y>=y1 && y<y2)
+					{
+						fillit(loopx,loopy,graph[loopx][loopy],selected(0,0));
+						drawgrid();
+					}
+				}
+			}
+		}
+	}
+	if(mousestat()==4 && select==1)
+	{
+		if(selected(1,0)==2)
+		{
+			for(int loopx=0;loopx<maxx;loopx++)
+			{
+				for(int loopy=0;loopy<maxy;loopy++)
+				{
+					x1=windows[3].x1+4+(loopx*size);
+					x2=x1+size-1;
+					y1=windows[3].y1+17+(loopy*size);
+					y2=y1+size-1;
+					if(x>=x1 && x<x2 && y>=y1 && y<y2)
+					{
+						ex=loopx;
+						ey=loopy;
+						makeline(sx,sy,ex,ey);
+						drawgrid();
+					}
+				}
+			}
+		}
+		if(selected(1,0)==3)
+		{
+			for(int loopx=0;loopx<maxx;loopx++)
+			{
+				for(int loopy=0;loopy<maxy;loopy++)
+				{
+					x1=windows[3].x1+4+(loopx*size);
+					x2=x1+size-1;
+					y1=windows[3].y1+17+(loopy*size);
+					y2=y1+size-1;
+					if(x>=x1 && x<x2 && y>=y1 && y<y2)
+					{
+						ex=loopx;
+						ey=loopy;
+						rect(sx,sy,ex,ey);
+						drawgrid();
+					}
+				}
+			}
+		}
+	}
+}
+}
+
+void makeoptions()
+{
+	showmouse();
+
+	createwindows(0,5,5,150,75,0,4,"BrUsH CoLoR");
+	createlist(0,0,15,25);
+	additem(0,0,"Black");
+	additem(0,0,"Blue");
+	additem(0,0,"Green");
+	additem(0,0,"Cyan");
+	additem(0,0,"Red");
+	additem(0,0,"Magenta");
+	additem(0,0,"Brown");
+	additem(0,0,"Lt. Gray");
+	additem(0,0,"Gray");
+	additem(0,0,"Lt. Blue");
+	additem(0,0,"Lt. Green");
+	additem(0,0,"Lt. Cyan");
+	additem(0,0,"Pink");
+	additem(0,0,"Lt. Magenta");
+	additem(0,0,"Yellow");
+	additem(0,0,"White");
+	additem(0,0,"Transparent");
+
+	createwindows(1,5,80,175,220,0,4,"BrUsH aTTrIbUtEs");
+	createlist(1,0,15,115);
+	createlist(1,1,15,185);
+
+	createlabel(1,0,15,100,125,112,4);
+	createlabel(1,1,15,170,125,182,4);
+
+	changelabel(1,0,"Brush Type");
+	changelabel(1,1,"Brush Width");
+
+	additem(1,0,"Freehand");
+	additem(1,0,"Flood Fill");
+	additem(1,0,"Line");
+	additem(1,0,"Rectangle");
+
+	//additem(1,0,"Circle");
+	//additem(1,0,"Filled Circle");
+
+	//additem(1,0,"Filled Rectangle");
+
+	additem(1,1,"1");
+	additem(1,1,"2");
+	additem(1,1,"3");
+	additem(1,1,"4");
+	additem(1,1,"5");
+
+	createwindows(2,5,225,290,375,0,4,"FiLe oPtIoNs");
+	createtext(2,0,20,265,280,285);
+	createlabel(2,0,20,250,170,262,5);
+	changelabel(2,0,"Filename:");
+	createbutton(2,0,20,290,90,330,3,"Save");
+	createbutton(2,1,100,290,170,330,3,"Load");
+	createbutton(2,2,20,340,170,360,4,"Quit");
+
+	createwindows(3,300,10,610,400,0,4,"DrAwInG gRiD");
+	createbutton(3,0,310,375,410,397,5,"Clear Grid");
+	cleargrid();
+
+
+}
+
+
+void save(char *filename)
+{
+	char temp;
+	ofstream file;
+	file.open(filename);
+	temp=maxx;
+	file << temp << endl;
+	temp=maxy;
+	file << temp << endl;
+	for(int loopx=0;loopx<maxx;loopx++)
+	{
+		for(int loopy=0;loopy<maxy;loopy++)
+		{
+			temp=graph[loopx][loopy]+50;
+			file << temp << endl;
+		}
+	}
+	file.close();
+
+
+}
+
+void load(char *filename)
+{
+
+	char temp;
+	int maxxx, maxxy;
+	int blah;
+	ifstream file;
+	file.open(filename);
+
+	file >> temp;
+	maxxx=temp;
+	file >> temp;
+	maxxy=temp;
+
+
+	for(int loopx=0;loopx<maxxx;loopx++)
+	{
+			for(int loopy=0;loopy<maxxy;loopy++)
+			{
+				if(loopy<maxy && loopx<maxx)
+				{
+					file >> temp;
+					graph[loopx][loopy]=temp-50;
+				}
+				else file >> blah;
+			}
+	}
+	file.close();
+	drawgrid();
+
+
+}
+
+void main()
+{
+	setup();
+	cleardevice();
+	makeoptions();
+	int status=-1;
+	int quit=0;
+	int oselected=3;
+	//rect(1,1,40,40);
+
+	drawgrid();
+	do
+	{
+		mousemove();
+
+
+		checkgrid();
+		gotoxy(1,1);
+		cout << mousestat();
+		//delay(50);
+		status=checkbuttons();
+
+		if(oselected!=selectedwindow() && selectedwindow()==3)
+		{
+			drawgrid();
+			select=0;
+		}
+		else select=1;
+		oselected=selectedwindow();
+
+		if(selectedwindow()==2)
+		{
+			if(status==0)
+			{
+				if(returntext(2,0)!="")
+				{
+					save(returntext(2,0));
+				}
+			}
+			else if(status==1)
+			{
+				if(returntext(2,0)!="")
+				{
+					load(returntext(2,0));
+				}
+			}
+			else if(status==2) quit=1;
+		}
+		else if(selectedwindow()==3)
+		{
+			if(status==0) cleargrid();
+		}
+	}while(quit!=1);
+}

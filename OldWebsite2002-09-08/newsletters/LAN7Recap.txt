@@ -1,0 +1,95 @@
+Well, the day we were all waiting for has now come and gone.  I think we can all agree that, except for both Unger's and My computer not working until late (mine not at all), that it went off without a hitch.  In many and most aspects, this was by far the most successful Gumm LAN Party yet.  I don't know exactly how many computers we had, nor do I know yow many people we had, but everyone who's been to the previous LAN Parties, knows that this one was considerably big.  Only once before had we required extra tables, and in that case we only needed 1, here we needed 6 (that is including the table I was using for troubleshooting).
+ 
+The Biggest news of the night, for those of you that were there, but left, or those of you that simply weren't there.  Soik Came!!  His lack of a solid answer had most of us thinking that he was just trying to get out of it by letting us down softly, but we were wrong . . . He came.  Thanx Soik!
+ 
+*************************************
+ 
+Warez:  There was lots of Warez trading at LAN, and that is outstanding, I tried to make copies of games that people would play, but instead of making copies, I had to get my computer to work.  Next LAN I ill have a bunch of spindles loaded with copies of games so we can all play as quickly as possible (The Quake and Red Faction copies seemed to work well).  For those of you that returned the pre-burned Discs, I appreciate it, but you could have kept them.
+ 
+*************************************
+ 
+My Computers (for those of you interested):  Well just this afternoon I finished getting all the RMA numbers for defective products.  The tally comes to: 1 XP1800+ CPU, 2 KG7 Mobos, An AOpen slot A mobo, and a year old KA7 Slot A) Mobo.  After lots of troubleshooting the next day, I found these were the problem.  I now have one working computer: ECS K7S5A, 1.3 GHz Tbird, Xtasy Geforce3 Ti200, 60 GB, 512 SDRAM (board doesn't support Registered DDR).  It scored in the 5000s in 3DMark (and I'm sure it'll score substantially better with the Palomino and some DDR).  So Now I'm waiting for things to return.  I don't know what I'm going to do with the 3 extra motherboards. but I'll find something to do with them.  Maybe I'll sell them on ebay, or put them in some computers someone might want me to build for them.  Also, since this whole ordeal, I will NEVER NEVER NEVER buy a barebones kit again, to prevent me from getting shit Power Supplies.   NEVER AGAIN!!
+ 
+I'm thinking of building some powerhouse Gaming computers and selling them.  I don't want to mix and match parts any more, getting one part from one company, and next time getting a part from another company. I'm going to find a company and brands that work, and that'll be it.  I'll stick with that config for a few months (maybe only getting fast processors and Video cards).  These computers will be all hand built.  If anyone is interested in dropping $1500-$1700 for top of the line stuff with a 1 Year Warranty, let me know.  This thought is still in consideration.
+ 
+*************************************
+ 
+Games we(you) played:  Early there was some Red Faction, I think partially involving the anticipation for the South Shore Map that I never finished.  then others started playing a little Ghost Recon, and then the Asians, Goelz, and Funger played a surprising-but-not-so-surprising game of Red Alert 2 (more about this later).  After that it seemed broken up into factions, some playing Ghost recon, others playing some RA2, other playing games on the internet.  Later in the night (after I had given up on troubleshooting), the all popular, almighty, game-that-Fleming-creams-his-pants-over, Quake 3 Arena came out as strong as if it had just been released, despite it being two years old.  We played that for a while, and topped it all off with a bit of Ghost Recon.  If I'm missing anything, please let me know.
+ 
+*************************************
+ 
+What went wrong:
+-The big one.  Poor organization and preparation due to me troubleshooting from 6am until the start of  LAN.  Nothing was ready.  we almost ran out of Network Cable.  We almost ran out of table space.  It took us an hour to get the network online initially.  No cables were pre-made, no hubs were pre-placed, I didn't know how many tables we would have, didn't have enough beverages, didn't have enough pizza (I think I'll buy a pizza oven before LAN 8). . . The list goes on, yet somehow we managed to have a great party.
+-Bill was late (we're all retards, Bill, we need you!!)
+-My sister's friends hoarding all the pizza and consoles and making a bloody mess (I'm sorry Amy and Jackie, they've been banned)
+-Almost ran out of space
+-We played no Tetrinet
+-Sorrel's computer didn't come in because the goddamn company took a week to build it (fuck that).  Slaw's computer didn't come in either.  Both my computers failed.  Nicks computer quits any application that is CPU or memory intensive.  I'm still troubleshooting this.
+-The South Shore map was unfinished.
+ 
+*************************************
+ 
+What went right:
+-Soik Came
+-My understanding is that everyone had fun
+-Even my girlfriend's computer could play Quake 3.
+-We played Quake 3
+-We had 25 Fast Computers.   This includes my server and Derrick's Lappie (even though they won't play quake, they were good servers)
+-Everyone helped out providing tables and set up.
+ 
+*************************************
+ 
+Awards:
+'Soik' Award: Soik (cuz he came)
+ 
+'Fastest Learner(s)' Award: The Asians (particularly Nghi and Bee for learning Red Alert 2 in a week enough to stomp Unger and Goelz (who plays everyday at work, too)  There really is no explanation for it, except that the Asians have RTS in their Genetic Make-up.
+ 
+'Only guy to not play any computer games' Award: Bill  (and with the exception of one of the LANs where Bill and I tried getting a game of Duke Nukem going, he hasn't played ANY Computer games at ANY LAN Party Yet!)
+ 
+'Last guy to be there' Award: Ian (Jeff's Friend).  He stayed through the night.  Runner-up: Slaw (who still holds the record with 11:30am, achieved at LAN 6)
+ 
+'Biggest Goddamn Monitor' Award: Evan Olson with his monster 21" monitor
+ 
+'Girl' Award: Jackie (my girlfriend), Beth (Jackie's Cousin), and Amy (everyone knows Amy).  This award is handed out to those brave girls who are exposing themselves to a traditionally All-male event.  Bravo!
+ 
+'The reason we even have a LAN Party' Award: This one is actually for the first one, but It still applies.  This goes out to Nghi and Bill.  It was Nghi's idea originally to have the first LAN Party a year ago, and Bill, of course, was the organization, equipment, and knowledge behind the first one.  This is the (literal) mother of the Gumm LAN Party awards.
+ 
+'Fastest Processor' Award: Me with my Athlon XP 1800+ (even though it wasn't working).  To my knowledge, that is the fastest processor there.  I may be wrong, but one thing is for sure, Goelz's 1.7 GHz Pentium wasn't it.
+ 
+'Fastest Video Card' Award: Derrick with his GeForce3 Ti500 (Goddamn!), Runners up: Kyle with his Radeon 8500 and Castro and Evan with their GeForce3 Ti200.  If I've missed someone, let me know.
+ 
+'Most RAM' Award: This goes hands down to Unger, with his whopping 1GB of Registered ECC RAM.  (it was $160 when he bought it, now it's over $400, since the memory prices have skyrocketed over the last few months).
+ 
+'Coolest overall computer' Award: Joe with his bitchin case and his 1.3 overclocked to 1.5.  Runner-up Evan with his big-ass monitor and GeForce3 Ti200, along with an AMD XP 1600+.
+ 
+'Thanks for providing tables' Award: Michelle Seymour (even though she wasn't there), Joe Fleming, Derrick, and let's not forget the original unofficial sponsor of the Gumm LAN Party, Marcus theatres Corp..
+ 
+'I've been to every LAN Party' award: Jackie, Bill, Nick, and Castro. If I'm missing someone, please let me know.
+ 
+'Troubleshooting' Award: That goes to me for dicking around with my computer starting at 5am the morning of until close to 3am the next morning (with a few breaks to set up and help other's troubleshoot).  Runner(s)-Up: Unger for formatting his until 11pm and Bill(who all he really ever does on his computer is troubleshoot).
+ 
+*************************************
+ 
+Alright, I'm gonna wrap this one up.  Thanx everyone for coming. I apologize for the lack of Tetrinet. Next LAN Party, my computer will not fail, and we'll all be able to play games on time.  There will be no farting around for an hour trying to get people online.  All cables will be pre-made and all tables will be placed with Switches on them.  Thank you all for you help and participation and posting on the message board, I will be removing the names from the RSVP list, for a new one.
+ 
+I will also be implementing a 'Login' feature, where you can only interact with the website if you have  login.  I think I will also be modifying the games section so that a given person can only vote once, but change their vote if they wish.  all that to come before LAN 8.
+ 
+*************************************
+ 
+!!!!!!!!Finally here is the official Announcement of LAN 8!!!!!!!!!!
+ 
+Saturday, March 9th, 5PM sharp.
+ 
+That's two months.  Be there.  The more people we get, the closer we get to making it public, and finally renting out halls.  Sadly, if I end up renting out Halls, it'll cost a bit of money.
+ 
+Also, I'd like to do a tourney of some sort with a grand prize of some sort (The best video card available at the time or something like that, not sure)
+ 
+*************************************
+ 
+Alright that's the wrap up of Gumm LAN Party 7.  Thanx all again.
+ 
+I'm taking the website out of commission to upgrade it, so GummLANParty.net will be down for about two weeks.
+ 
+-Gumm
+ 
+http://www.gummlanparty.net

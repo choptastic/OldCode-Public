@@ -1,0 +1,53 @@
+#include<fstream.h>
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+
+
+class binary_file
+{
+	char *filename;
+	long size;
+	long start;
+	public:
+
+	binary_file(char*);
+	long getsize();
+	void out(char*,long);
+	void out(long,long);
+	void out(double,long);
+	void in(char*&,long,long);
+	void in(long&,long,long);
+	void in(double&,long,long);
+}
+
+binary_file::binary_file(char* name)
+{
+	filename=name;
+	ifstream infile(filename);
+	start=infile.tellg();
+	size=0;
+	char *get;
+	infile.getline(get,100,'\0');
+	infile.close();
+
+}
+
+long binary_file::getsize()
+{
+	return size;
+}
+
+
+
+
+void main()
+{
+	clrscr();
+	//binary_file in("c:\\cpp\\include\\mode13h\\tester.exe");
+	//cout << in.getsize();
+	cout << int(EOF);
+	getch();
+
+
+}

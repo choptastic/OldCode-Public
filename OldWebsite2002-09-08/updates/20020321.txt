@@ -1,0 +1,1 @@
+Added Image and Hyperlink support to the messageboard.  Added a FAQ for the GuLP Messenger.  Updated the Game Descriptions, and got some screen shots.

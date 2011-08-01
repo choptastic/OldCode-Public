@@ -1,0 +1,67 @@
+[Root]
+Most Recent Package=Dep File 1
+
+
+[Package|Dep File 1|Root]
+SubWizProgID=PDWizard.DepPkgSubWiz
+BuildFolder=D:\COUNTS
+
+[Package|Dep File 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Dep File 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Dep File 1|Files Found]
+
+[Package|Dep File 1|Files Released]
+
+[Package|Dep File 1|Missing Dependency Information]
+
+[Package|Dep File 1|Out-of-Date Dependency Information]
+
+[Package|Dep File 1|Files Added]
+
+[Package|Dep File 1|Files Removed]
+
+[Package|Dep File 1|Files In Project]
+D:\COUNTS\SETUP.EXE=Yes
+C:\WINNT\system32\msvbvm60.dll=Yes
+C:\WINNT\system32\OLEAUT32.DLL=Yes
+C:\WINNT\system32\OLEPRO32.DLL=Yes
+C:\WINNT\system32\ASYCFILT.DLL=Yes
+C:\WINNT\system32\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\system32\Mscomct2.ocx=Yes
+
+[Package|Dep File 1|Configure Registry Files]
+Applicable=
+
+[Package|Dep File 1|Configure Remote Servers]
+Applicable=
+
+[Package|Dep File 1|Install Locations]
+D:\COUNTS\SETUP.EXE=$(AppPath)
+C:\WINNT\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\Mscomct2.ocx=$(WinSysPath)
+
+[Package|Dep File 1|Configure Shared Files]
+Applicable=
+
+[Package|Dep File 1|DepFile]
+DepCabFile=setup.CAB
+DepCabRun=setup.INF
+
+[Package|Dep File 1|Package]
+PackageFolder=D:\COUNTS
+ProjectFolder=D:\COUNTS
+ServerSideCab=
+File1=D:\COUNTS\setup.DEP
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

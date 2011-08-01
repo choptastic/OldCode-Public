@@ -1,0 +1,188 @@
+#include <stdlib.h>
+#include <mem.h>
+#include <alloc.h>
+#include <dos.h>
+#include <iostream.h>
+#include <fstream.h>
+#include <conio.h>
+#include <ctype.h>
+
+const int SIZE=24;
+
+char letter[SIZE][SIZE];
+int curx=0,cury=0;
+
+void initgraph(void){
+	union REGS IN, OUT; /* Register variables */
+
+	IN.h.al = 0x12;
+	IN.h.ah = 0x00;
+	int86(0x10, &IN, &OUT);
+}
+
+
+
+
+void endgraph(void){
+	union REGS IN, OUT;
+
+	IN.h.al = 0x3;
+	IN.h.ah = 0x00;
+	int86(0x10, &IN, &OUT);
+}
+
+void drawselected()
+{
+	int mx=curx*2+1;
+	gotoxy(mx,cury+1);
+	cout << "[";
+	gotoxy(mx+2,cury+1);
+	cout << "]";
+	gotoxy(mx+1,cury+1);
+}
+
+void delselected()
+{
+	int mx=curx*2+1;
+	gotoxy(mx,cury+1);
+	cout << " ";
+	gotoxy(mx+2,cury+1);
+	cout << " ";
+}
+
+
+
+
+
+
+
+void display()
+{
+	gotoxy(1,1);
+	for(int i=0;i<SIZE;i++)
+	{
+		cout << " ";
+		for(int j=0;j<SIZE;j++)
+			cout << letter[i][j] << " ";
+		cout << endl;
+	}
+	gotoxy(curx+1,cury+1);
+	drawselected();
+}
+
+
+void fillin()
+{
+	for(int i=0;i<SIZE;i++)
+		for(int j=0;j<SIZE;j++)
+			if(letter[i][j]==' ')
+				letter[i][j]=random(26)+'A';
+	display();
+}
+
+void export()
+{
+	char filename[40];
+	clrscr();
+	cout << "Enter Filename to Save: ";
+	cin >> filename;
+	ofstream out(filename);
+	for(int i=0;i<SIZE;i++)
+	{
+		for(int j=0;j<SIZE;j++)
+			out << letter[i][j];
+		out << endl;
+	}
+	for(i=0;i<SIZE;i++)
+	{
+		for(int j=0;j<SIZE;j++)
+			out << letter[i][j] << ' ';
+		out << endl;
+	}
+
+	for(i=0;i<SIZE;i++)
+	{
+		for(int j=0;j<SIZE;j++)
+			out << letter[i][j] << ' ';
+		out << endl << endl;
+	}
+
+	for(i=0;i<SIZE;i++)
+	{
+		for(int j=0;j<SIZE;j++)
+			out << letter[i][j] << '  ';
+		out << endl << endl;
+	}
+	out.close();
+	display();
+}
+
+void clear()
+{
+	for(int i=0;i<SIZE;i++)
+		for(int j=0;j<SIZE;j++)
+			letter[i][j]=' ';//char(i+48);
+	display();
+}
+
+
+void main()
+{
+	char choice=0;
+	//initgraph();
+
+	clear();
+	while(choice!=27)
+	{
+		choice=toupper(getch());
+		if((choice>='A' && choice <='Z') || choice==' ')
+		{
+			letter[cury][curx]=choice;
+			gotoxy(curx*2+2,cury+1);
+			cout << letter[cury][curx];
+			drawselected();
+		}
+		else if(choice=='1')
+			fillin();
+		else if(choice=='2')
+			export();
+		else if(choice=='3')
+			clear();
+		else if(choice=='4')
+		{
+			delselected();
+			curx--;
+			if(curx<0)
+				curx=SIZE-1;
+			drawselected();
+		}
+		else if(choice=='6')
+		{
+			delselected();
+			curx++;
+			if(curx>=SIZE)
+				curx=0;
+			drawselected();
+		}
+		else if(choice=='8')
+		{
+			delselected();
+			cury--;
+			if(cury<0)
+				cury=SIZE-1;
+			drawselected();
+		}
+		else if(choice=='5')
+		{
+			delselected();
+			cury++;
+			if(cury>=SIZE)
+				cury=0;
+			drawselected();
+		}
+
+	}
+	endgraph();
+}
+
+

@@ -1,0 +1,5 @@
+There is a substantially new look to the website today.  I've replaced the old Motherboard theme with a more aesthetically pleasing look (at least I think it looks nicer).  If anyone else has any ideas, shoot them at me.  I've learned some DHTML, so I'd like to experiment with that, but I can't really think of where it would be relevant, without adding some completely useless stuff to the website.  I dunno.
+
+I will make a little flash thing for the GummLANParty.net in the upper left corner.
+
+Since I've learned a little Flash, I'm considering making a Go-Nad Man Flash Cartoon.  Just something to think about.

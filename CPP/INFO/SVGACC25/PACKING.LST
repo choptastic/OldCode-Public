@@ -1,0 +1,26 @@
+*****************************************************************************
+SVGACC - A Super VGA Graphics Library For Use With MS compatible C compilers
+Copyright (c) 1993-1997 By Stephen L. Balkum and Daniel A. Sill
+*****************************************************************************
+     
+     This graphics package consists of the files listed below.
+
+"PACKING.LST" --- This file.
+"README.1ST" ---- The readme file (lots of important information).
+"SVGACC25.TXT" -- The SVGA graphics programming manual (text version).
+"SVGACC.LIB" ---- The SVGA graphics programming library (version 2.5).
+"SVGACC.H" ------ The graphics library include file.
+"SVGADEMO.C" ---- The demo program source code (Main Module).
+"SVGADEM1.C" ---- The demo program source code (Module 1).
+"SVGADEM2.C" ---- The demo program source code (Module 2).
+"SVGADEMO.H" ---- The demo program include file.
+"SVGADEMO.EXE" -- The demo program executable.
+"ORDER.FRM" ----- Ordering information (for mail orders & upgrades).
+"SRC_CODE.TXT" -- Source code license agreement.
+"CHARGEIT.FRM" -- Ordering information (for credit card orders only).
+"DRAGON.FNT" ---- A sample font file.
+"ZEPHYR.PCX" ---- A sample PCX file.
+"HISTORY.CC" ---- Revision history of SVGACC.
+"DESC.SDI" ------ One line, 66 column description of SVGACC.
+"FILE_ID.DIZ" --- Eight line, 45 column description of SVGACC.
+  

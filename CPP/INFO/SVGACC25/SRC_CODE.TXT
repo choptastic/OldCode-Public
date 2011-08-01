@@ -1,0 +1,57 @@
+The complete assembly language source code for the SVGAxx libraries (SVGACC,
+SVGAPB, SVGAPV & SVGAQB all use the same code base) is available for license.
+See the files "ORDER.FRM" or "CHARGIT.FRM" for pricing information. When a
+source code license is purchased, you will receive a disk that contains the
+complete assembly language source code files, make files and batch files
+required to generate any of the SVGAxx graphics libraries. Please note that
+you will need additional programs to create a library. At a minimum this
+includes an assembler and a library manager. Our code was written to utilize
+the following with no modifications: Microsoft Macro Assembler Version (MASM)
+v6.00b, Microsoft Program Maintenance Utility (NMAKE) v1.20 and Microsoft
+Library Manager (LIB) v3.20. For PowerBASIC, the PowerBASIC Object/Unit
+Librarian version v3.00c is also required. Later versions of these utilities
+should work without any problem, however some modifications of the make files
+may be necessary. The source code is provided "as-is" and we are under no
+obligations to help you use this code with your assembler, compiler, linker
+and/or library manager.
+
+To purchase a license you must purchase, or have purchased in the past, a
+version of the SVGAxx graphics library. You must also agree to the following
+source code license agreement. Please read it carefully. Purchasing a source
+code license constitutes your agreement to these terms.
+
+License Agreement for the SVGAxx source code.
+
+This License Agreement is a legal agreement between you and Zephyr Software
+for the SVGAxx source code (SOFTWARE).  By purchasing, installing, copying,
+or using the SOFTWARE, you agree to be bound to these terms.
+
+The SOFTWARE is protected by copyright laws and international copyright
+treaties.  The SOFTWARE is licensed, not sold, and may not be rented or
+leased. United States Government Restricted Rights: Use, duplication or
+disclosure of this software and documentation by the U.S. Government is
+subject to the restrictions as set forth in subparagraph (c)(1)(ii) of the
+Rights in Technical Data and Computer Software clause at DFARS 252.227-7013.
+Contractor/manufacturer is Stephen L. Balkum and Daniel A. Sill, P.O. Box
+7704, Austin, Texas 78713-7704.
+
+You may modify, for purposes of designing, developing, and testing your
+Application, this SOFTWARE.  You may not distribute the SOFTWARE, or any
+modified version of the SOFTWARE, in source code form.
+
+You may not modify or remove any copyright information in the SOFTWARE. This
+includes both comments and actual code.
+
+You may reproduce and distribute the object code version of the SOFTWARE
+provided that it is distributed as part of your Application and your
+Application adds significant and primary functionality.
+
+You also agree to indemnify, hold harmless, and defend Zephyr Software from
+and against any claims or lawsuits, including attorney's fees, that arise or
+result from the use or distribution of your Application. No warranties are
+expressed or implied.  In no event shall Zephyr Software, Stephen L. Balkum
+or Daniel A. will be held liable for damages resulting from the use or misuse
+of this product, including but not limited to implied warranties of fitness
+for a particular purpose.
+
+

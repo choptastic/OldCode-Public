@@ -1,0 +1,1 @@
+<% response.write(request.querystring) %>

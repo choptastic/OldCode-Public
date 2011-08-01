@@ -1,0 +1,97 @@
+#include<conio.h>
+#include<dos.h>
+#include<time.h>
+#include<iostream.h>
+#include<stdlib.h>
+
+const int MAX_QUESTIONS=5;
+
+
+char intro()
+{
+	char choice=0;
+	cout  << "\nYou are about to answer math questions\n"
+			<< "Choose what you wish to test: +,-,*,/ \n"
+			<< "+ = addition\n"
+			<< "- = division\n"
+			<< "* = multiplication\n"
+			<< "/ = division\n"
+			<< "enter 0 to quit\n"
+			<< "Choice : ";
+	while(choice!='+' && choice!='-' && choice!='*' && choice!='/' && choice!='0')
+		choice=getch();
+
+	if(choice=='0') choice=0;
+	return choice;
+}
+
+void countdown()
+{
+	gotoxy(36,13);
+	cout << "Ready";
+	delay(1000);
+	clrscr();
+	gotoxy(38,13);
+	cout << "Set";
+	delay(1000);
+	clrscr();
+	gotoxy(37,13);
+	cout << "GO!!";
+	delay(1000);
+	clrscr();
+	gotoxy(1,1);
+}
+
+
+void go(char op)
+{
+	int x,y,ans,count=MAX_QUESTIONS,in,correct=0;
+	for(count=MAX_QUESTIONS;count>0;count--)
+	{
+		x=random(10)+1;
+		y=random(10)+1;
+		switch(op)
+		{
+			case('+'): ans=x+y;
+							break;
+			case('-'): ans=x-y;
+							break;
+			case('*'): ans=x*y;
+							break;
+			case('/'): ans=x/y;
+							break;
+		}
+		cout << ":: " << x << " " << op << " " << y << " = ";
+		cin >> in;
+		if(in==ans) correct++;
+		else cout << "--Incorrect--\n";
+	}
+	cout << "Done" << endl;
+	cout << "You got " << (correct/float(MAX_QUESTIONS))*100 << "%" << endl;
+
+}
+
+
+
+
+
+
+void main()
+{
+	clrscr();
+	char choice=10;
+	choice=intro();
+	while(choice)
+	{
+		countdown();
+		go(choice);
+		choice=intro();
+	}
+	cout << "Thanx for playing";
+}
+
+
+
+
+
+

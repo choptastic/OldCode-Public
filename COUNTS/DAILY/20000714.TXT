@@ -1,0 +1,45 @@
+Marcus Counts -- End of the Day
+For the date of :7/14/2000
+
+Item            Stock Cab Case1 Case2 Case3 Case4 Total
+|-------------------------------------------------------|
+|Spree        |0    |0    |0    |0    |0    |0    |0    |
+|Nerds        |0    |0    |55   |0    |0    |0    |55   |
+|TeddyGraham  |0    |0    |0    |0    |0    |0    |0    |
+|MilkDuds     |0    |0    |0    |0    |0    |0    |0    |
+|Dots         |0    |0    |0    |0    |0    |0    |0    |
+|JrMint       |0    |0    |0    |0    |0    |0    |0    |
+|SourPatch    |0    |0    |0    |0    |0    |0    |0    |
+|Twizzler     |0    |0    |556  |0    |0    |0    |556  |
+|Crunch       |0    |0    |0    |0    |0    |0    |0    |
+|Raisinet     |0    |0    |0    |0    |0    |0    |0    |
+|Snocap       |0    |0    |0    |0    |0    |0    |0    |
+|Squigglies   |0    |0    |0    |0    |0    |0    |0    |
+|MuddyBears   |0    |0    |0    |0    |0    |0    |0    |
+|KitKat       |0    |0    |55   |0    |0    |0    |55   |
+|MMPlain      |0    |0    |0    |0    |0    |0    |0    |
+|MMPeanut     |0    |0    |0    |0    |0    |0    |0    |
+|ReecesPieces |0    |0    |0    |0    |0    |0    |0    |
+|MMCrispy     |0    |0    |0    |0    |0    |0    |0    |
+|BBs          |0    |0    |0    |0    |0    |0    |0    |
+|Skittles     |0    |0    |0    |0    |0    |0    |0    |
+|KidMunchTray |0    |0    |0    |0    |0    |0    |0    |
+|JrCorn       |0    |0    |0    |0    |0    |0    |0    |
+|MedCorn      |0    |0    |0    |0    |0    |0    |0    |
+|LgCorn       |0    |0    |0    |0    |0    |0    |0    |
+|KidSoda      |0    |0    |0    |0    |0    |0    |0    |
+|JrSoda       |0    |0    |0    |0    |0    |0    |0    |
+|MedSoda      |0    |0    |0    |0    |0    |0    |0    |
+|LgSoda       |0    |0    |0    |0    |0    |0    |0    |
+|TwistnGo     |0    |0    |0    |0    |0    |0    |0    |
+|Aquafina     |0    |0    |0    |0    |0    |0    |0    |
+|SmCapp       |0    |0    |0    |0    |0    |0    |0    |
+|LgCapp       |0    |0    |0    |0    |0    |0    |0    |
+|HotChoc      |0    |0    |0    |0    |0    |0    |0    |
+|HotDog       |0    |0    |0    |0    |0    |0    |0    |
+|ChipTrays    |0    |0    |0    |0    |0    |0    |0    |
+|Nacho        |0    |0    |0    |0    |0    |0    |0    |
+|Pretzel      |0    |0    |0    |0    |0    |0    |0    |
+|-------------------------------------------------------|
+
+Marcus Counts v1.0 by Whoa! Productions

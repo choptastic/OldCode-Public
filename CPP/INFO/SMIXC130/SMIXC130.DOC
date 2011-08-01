@@ -1,0 +1,242 @@
+         _____      __    __     ____     __   __       ______
+        /  _  \    |  \  /  |   |    |   |  \ /  |     /  __  \
+       |  / \__|   |   \/   |    |  |     \  ~  /     |  /  \__|
+       |  \___     |        |    |  |      |   |      | |
+        \___  \    |  /\/\  |    |  |      |   |      | |
+        __  \  |   |  |  |  |    |  |      |   |      | |     _
+       |  \_/  |   |  |  |  |    |  |     /  ^  \     |  \___/ |
+        \_____/    |__|  |__|   |____|   |__/ \__|     \______/
+
+                         for Borland C real mode
+
+                              Version 1.30
+                    Written by Ethan Brodsky (97/6/6)
+         Copyright 1995 by Ethan Brodsky.  All rights reserved.
+
+This library is distributed AS IS.  The author specifically disclaims
+responsibility for any loss of profit or any consequential, incidental,
+or other damages.  SMIX is freeware and is distributed with full source
+code, which is copyright by Ethan Brodsky.  You are free to incorporate
+the code in full or part into your own programs as long as credit is
+given to Ethan Brodsky.  The source code may be distributed in its
+original form only, including this documentation and the copyright
+notices.
+
+------------------------------------------------------------------------
+
+You may have used my SBVOX and SBDSP units.  They both played one VOC
+file at a time.  The whole VOC file had to be loaded into conventional
+memory, taking valuable memory from a real mode program.
+
+SMIX will play up to 8 sounds at one time.  The sounds are stored in
+extended memory and copied to a small buffer as needed.  It should work
+with any Sound Blaster compatible sound card.  It uses auto-initialized
+DMA if it is supported, eliminating clicks between blocks.  If a SB16 is
+installed, it will use 16-bit sound output, increasing the sound
+quality.  Full Borland C source is included.
+
+The sounds are stored on disk as raw signed 8-bit sample data, at a
+sampling rate of 22050 HZ, or the sampling rate specified in the SMIX
+source file.  There are two options for usage of XMS:
+  1)  Each sound can be stored in its own extended memory block.  This
+      allows random allocation and deallocation of sounds.  Each sound
+      uses an extended memory handle.  The default HIMEM configuration
+      has only 32 handles, so the maximum number of sounds that can be
+      loaded is 32.  (Less if TSRs or other drivers use handles)  This
+      is the default mode.
+  2)  All sounds can be loaded into one extended memory block.  Sounds
+      can be loaded one at a time, but all sounds must be deallocated
+      at once.  Initialize this mode by calling InitSharing before
+      allocating any sounds.  Sounds should be allocated and freed as
+      usual by using the LoadSound and FreeSound procedures, but all
+      extended memory will remain allocated until ShutdownSharing is
+      called.
+
+In case you are wondering about the three counters displayed by the test
+program, the first one counts in the CPU's free time, the second counts
+the number of interrupts that have occurred, and the third is the number
+of sounds currently being played.  If you have any problems, please tell
+me what each counter is doing.
+
+This library will work in the real-mode IDE but requires a little work
+to get it to work in the protected mode IDE.  By default, the IDE's DPMI
+extender uses all extended memory.  The demo requires 200k of extended
+memory, and any programs using SMIX require extended memory to hold all
+the sounds.  You can decrease the amount of extended memory used by the
+IDE by setting the DPMIMEM environment variable:
+  SET DPMIMEM=MAXMEM x
+where x is the number of kilobytes of extended memory to use for the
+IDE.  You will have to find a balance between memory left over for your
+program and memory available for IDE use.  (Source code, online help,
+compilation...)  It is very important to deallocate extended memory on
+program termination.  The run-time library will free the heap, but
+extended memory is left allocated.  The handles and memory will be lost
+until the next reboot.  It is not enough just to deallocate XMS at the
+end of your code, because a run-time error or exit() will stop execution
+before the memory has been deallocated.  I would recommend using an exit
+procedure, as demonstrated in the example program, to deallocate memory.
+
+You can change the sampling rate used for output by changing the
+constant at the top of the SMIX source file.  If you decide to do this,
+all sound effects must be sampled at the rate you specify, or they will
+play at the wrong frequency.  Higher sampling rates will increase CPU
+usage.  Do not use a rate larger than 22050 HZ or SMIX will not work on
+sound cards older than the SB16.
+
+SMIX either uses a raw 8-bit unsigned file format, or in a combined
+resource file.  I have included a program that will convert WAV files to
+the raw format necessary, and a program to combine raw sound files into
+a resource file.  The WAV files must be 8-bit and sampled at 22050 HZ,
+or the output will be distorted.  If you have changed the sampling rate
+constant in the SMIX source file then the sounds should be sampled at
+the rate you have specified.
+
+Use the SNDLIB utility included with this package to build sound
+resource files.  The syntax for SNDLIB is similar to that of Borland's
+TLIB, but it is much more restrictive.  Remember that resources are
+identified by their "key", which comes after the filename when adding a
+resource.  The key is an 8 character case-insensitive string that is
+should be passsed to the load sound function after you have opened the
+resource file.
+
+The mixing algorithm I use for the SB16 sacrifices volume level for
+precision.  This means that the mixed output will be fairly quiet on
+16-bit sounds cards.  However, the SB16 has fairly load output, so it
+should come out about right.  If you think that the output is too quiet,
+you can disable 16-bit output by passing "0" as the 16-bit DMA channel
+to the SB initialization function, ignoring what the detect routine
+returns.
+
+SMIX is not written in C++, but it can be used in a C++ program.
+However, you must compile the SMIX, XMS, and DETECT modules as C
+code, since they will not compile when treated as C++.  Since the SMIX
+modules are compiled as C code, function names are not mangled, and
+you must tell your program not to expect mangled names.  To do this,
+replace your SMIX includes with this code fragment:
+  extern "C"
+    {
+      #include "smix.h"
+      #include "detect.h"
+    }
+
+I have several improvements planned, but I need feedback.  If you are
+using my code, I would greatly appreciate it if you would mail me and
+tell me about it.  If you have any bug reports, suggestions, or have
+made improvements, please tell me!  I have added volume control to the
+protected mode libraries, but not this version, since a 32k lookup table
+is required. If you want volume control implemented in this version,
+tell me!  I also have finished a FM synthesis MIDI music library and am
+working on a digital music library, so tell me what you want!
+
+This library is freeware, but I would appreciate contributions so I can
+continue to buy development kits and upgrade my computer.  You don't
+NEED to send me anything, but if you are making money by using this,
+please send whatever you feel it is worth.
+
+Features:
+  * Up to 8 sounds played simultaneously
+  * Sampling rate of 22050 HZ (changable at compile-time)
+  * Autoinitialized DMA prevents clicking
+  * 16-bit sound output increases quality
+  * Mixes in the background using a fraction of CPU time
+  * Sounds stored in extended memory
+  * Sound resource files allow you to store all sounds in one file
+
+------------------------------------------------------------------------
+
+There are several ways to contact me:
+    E-Mail:  ebrodsky@pobox.com       (Preferred)
+             brodskye@cae.wisc.edu
+    WWW:     http://www.pobox.com/~ebrodsky/
+             http://www.xraylith.wisc.edu/~ebrodsky/
+    Phone:   (608) 238-4830
+    Mail:
+        Ethan Brodsky
+      4010 Cherokee Dr.
+      Madison, WI 53711
+
+Bug fixes and other announcements will be posted in:
+    alt.sb.programmer
+    comp.archives.msdos.announce
+    comp.sys.ibm.pc.soundcard.tech
+    rec.games.programmer
+Up-to-date versions may be downloaded from:
+    http://www.pobox.com/~ebrodsky/smix/smix.html
+    ftp.simtel.net /pub/simtelnet/msdos/sound/smix*.zip
+    x2ftp.oulu.fi /pub/msdos/programming/mxlibs/smix*.zip
+
+Revision history:
+ 1.11 - Initial release corresponding with SMIX (Pascal) v1.11
+ 1.15 - Switched to a new mixing algorithm that doesn't reduce sound
+        volume on 8-bit sound cards.  Fixed a problem with output on
+        Sound Blaster Pros.  Optimized mixing code.  Modified code in
+        exit procedure to reset sound card on termination.
+ 1.16 - Fixed a file problem and modified shutdown code
+ 1.17 - Fixed a problem that caused static in the last block of sound
+        loaded from an sound files with an odd length.  Thanks to Mike
+        Polly for informing me of this problem and helping me resolve
+        it.
+ 1.18 - Fixed a detection problem with sound cards on DMA0.  Fixed the
+        failure condition in the reset_dsp procedure.  Added a new
+        sound_playing function to check if a sound is still playing.
+ 1.19 - Fixed setup for SB16s that use an 8-bit DMA channel for 16-bit
+        sound.  Made all internal functions static.  Used far versions
+        of memset function so that SMIX will work in programs using
+        Borland C's large memory model.  Added sound_playing function
+        to smix.h and copied the interface documentation from smix.c to
+        smix.h.
+ 1.20 - Fixed a bug in the XMS module that prevented it from working
+        in the huge model.  Fixed a bug that caused problems using the
+        sound_playing function to check for sounds using index 0.
+ 1.21 - Added support for sound resource files.  New WAV2RAW converter
+        that correctly converts all conformant WAV files containing the
+        correct type of data.
+ 1.22 - Fixed a problem in loading sounds from resource files that
+        caused a "burp" at the end of certain sound files.  Thanks to
+        Ron T. Lewis for his assistance in resolving this problem. Also
+        fixed a minor bug in the demo program.
+ 1.25 - Put the MIXTEST.C demo back into the ZIP, since I forgot to
+        include it for the last release.  Fixed a problem in addressing
+        the second half of the DMA memory area.  Variable sampling rate.
+        Modified clipping data structures slightly.  Rewrote mixing code
+        in assembly for more efficiency.  Added FILE_ID.DIZ for BBS use.
+ 1.26 - Fixed a minor bug in the 8-bit clipping routine, eliminating
+        clicking in 8-bit playback.
+ 1.27 - Discovered a bug in the Borland C compiler.  When 386 code
+        generation is enabled, the compiler generates code that changes
+        the 32-bit registers, but doesn't preserve them for interrupt
+        handlers.  This caused problems with programs using SMIX and
+        certain TSRs (including SmartDrive, resulting in corruption of
+        disk I/O).  Fixed problem by disabling use of 386 instructions
+        for SMIX module.  Thanks to Thomas Wehrle for his assistance
+        in resolving this problem.  Also fixed minor bugs in WAV2RAW
+        and SNDLIB tools.
+ 1.30 - Fixed a bug in the WAV2RAW converter that caused problems with
+        non-typical WAV files.  Changed interface variable dspversion
+        to type short.  Removed all floating point math from SMIX to
+        avoid linking in unnecssary floating point code.  Fixed a minor
+        bug in the initialization routines that prevented SMIX from
+        using autoinitialized DMA on sound cards with DSP v2.00.  Made
+        XMS move transfer parameter structures local variables.
+        Prevented SMIX from installing its exit handler multiple times.
+        Improved mixtest example program.  Changed load_sound to a
+        function and added error handling.  Made start_sound a function,
+        returning whether or not it could play the sound.  Removed
+        redundant function definition comments in smix.c.  If you want
+        to see an explanation of the functions, read smix.h.  Explicitly
+        disabled stack checking for SMIX modules to prevent erroneous
+        stack overflow errors if checking is enabled.  Switched calls
+        to min() and max() to my own MIN() and MAX() to avoid problems
+        if the macros are not implemented.  Removed redundant definition
+        of handler_installed.  Made open_sound_resource_file a function.
+        Changed getfreexms to return an unsigned short.  Added explicit
+        typecasts to eliminate warnings I previously had disabled.
+        Added instructions on how to use SMIX in a C++ program.  Thanks
+        to Ulrich Doewich, Pawel Veselov (a.k.a. Black Angel),Bojan
+        Resnik, Christopher Adams, and Robert Rand for their help in
+        improving SMIX.
+
+I've been looking to get in with a commercial software company.  If any
+companies are interested, write to me at the above address.  Thanks!
+
+    Ethan Brodsky

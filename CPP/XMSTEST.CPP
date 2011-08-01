@@ -1,0 +1,26 @@
+#include<xms.h>
+#include<image.h>
+#include<iostream.h>
+#include<conio.h>
+
+
+void main()
+{
+
+	clrscr();
+	XMS block1(1024);
+	char a[50];
+	int loop;
+	for(loop=0;loop<49;loop++)
+		a[loop]=loop+'A';
+	a[49]='\0';
+	cout << a << endl;
+	XMS::copy(block1[0],a,49);
+	for(loop=0;loop<49;loop++)
+		a[loop]='0';
+	cout << a << endl;
+	XMS::copy(a,block1[20],29);
+	cout << a;
+
+	getch();
+}

@@ -1,0 +1,43 @@
+Yoyo Stu-donts, gotta wait fo' the ding dong.  (those of you that had Queeny as a busdriver will understand).
+
+**Massive Website Additions and Changes***
+
+1.  The Next LAN Date Voting feature is implemented.  You all have until next Sunday Night(April 21) to Vote on the date of the next LAN.  Hope to see everyone vote.  The following are the dates for which you can vote and possible conflicts:
+
+6/1/02 - Possible conflict: High School Exams
+6/8/02 - Possible conflict: High School Graduation
+6/15/02 - Possible conflict: High School Graduation Party
+
+The Voting feature requires Registration and is located in the upper left corner of the Website (just above the main menu).
+
+
+2.  The forum has been upgraded severely.  I've implemented the flat layout of Forums.  If you want to use the threaded view, that is availaible as well.
+
+I'll be implementing an Edit Post option (so you can edit posts that might have been messed up) and a forum search feature.
+
+
+3.  GuLP Has been updated to 0.32.  I've modified it to use the new forum layout, and I've added a Edit Profile Menu option.   Also improved the Status indicator slightly.
+
+
+4.  Story Feature.  Any of you that might have seen that5 big ass post by me, nghi , and funger, where we were making a sentence, one word at a time, this is a fully function version of that.  It's called the "Stories" Section, and you can create a new story, and add to each story.  I think this could be a fun game.  Once again, you must be logged in to interact with this.
+
+
+***Warcraft 3 Update***
+
+I've found a functonal Server for Version 1.20 so we'll have the most recent Warcraft 3 Beta.  I'm still considering distribution options (download or CD).  Obviously I'll have a lot of copies at LAN Party, but I want everyone to have a copy now.  That's pretty much it.
+
+
+***Next LAN***
+
+This was a short one, just letting everyone know.
+
+LAN 3² Either:
+Saturday, 6/1/02 @ 5Pm
+Saturday, 6/8/02 @ 5Pm
+Saturday, 6/15/02 @ 5Pm
+
+Enjoy,
+
+-Gumm
+
+http://www.gummlanparty.net

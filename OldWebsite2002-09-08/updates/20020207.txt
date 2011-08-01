@@ -1,0 +1,5 @@
+Well the login feature is complete.  I have yet to implement the RSVP Section.  One nice thing about all this is that the Newsletters are automatically sent by the Server now, so they won't all be sent to one big list of people.  This will keep people's Email Addresses confidential.
+
+Everyone new will hafta create an account.
+
+LAN 7 was a success and LAN 8 is approaching in 4 weeks, so brace yourselves.  I'd like to get teh rSVP function working within a week.

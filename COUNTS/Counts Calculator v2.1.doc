@@ -1,0 +1,338 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
+{\f32\froman\fcharset238\fprq2 Times New Roman CE;}{\f33\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f35\froman\fcharset161\fprq2 Times New Roman Greek;}{\f36\froman\fcharset162\fprq2 Times New Roman Tur;}
+{\f37\froman\fcharset177\fprq2 Times New Roman (Hebrew);}{\f38\froman\fcharset178\fprq2 Times New Roman (Arabic);}{\f39\froman\fcharset186\fprq2 Times New Roman Baltic;}{\f48\fmodern\fcharset238\fprq1 Courier New CE;}
+{\f49\fmodern\fcharset204\fprq1 Courier New Cyr;}{\f51\fmodern\fcharset161\fprq1 Courier New Greek;}{\f52\fmodern\fcharset162\fprq1 Courier New Tur;}{\f53\fmodern\fcharset177\fprq1 Courier New (Hebrew);}
+{\f54\fmodern\fcharset178\fprq1 Courier New (Arabic);}{\f55\fmodern\fcharset186\fprq1 Courier New Baltic;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;
+\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;}{\stylesheet{
+\ql \li0\ri0\widctlpar\aspalpha\aspnum\faauto\adjustright\rin0\lin0\itap0 \fs24\lang1033\langfe1033\cgrid\langnp1033\langfenp1033 \snext0 Normal;}{\*\cs10 \additive Default Paragraph Font;}}{\info{\author Gumm}{\operator Gumm}
+{\creatim\yr2001\mo11\dy23\hr4\min46}{\revtim\yr1988\mo1\dy1\min46}{\version3}{\edmins12}{\nofpages11}{\nofwords4089}{\nofchars23311}{\*\company Gumm LAN Party}{\nofcharsws0}{\vern8247}}
+\widowctrl\ftnbj\aenddoc\noxlattoyen\expshrtn\noultrlspc\dntblnsbdb\nospaceforul\hyphcaps0\horzdoc\dghspace120\dgvspace120\dghorigin1701\dgvorigin1984\dghshow0\dgvshow3\jcompress\viewkind1\viewscale100\nolnhtadjtbl \fet0\sectd \linex0\sectdefaultcl 
+{\*\pnseclvl1\pnucrm\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl2\pnucltr\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl3\pndec\pnstart1\pnindent720\pnhang{\pntxta .}}{\*\pnseclvl4\pnlcltr\pnstart1\pnindent720\pnhang{\pntxta )}}{\*\pnseclvl5
+\pndec\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl6\pnlcltr\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl7\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}{\*\pnseclvl8\pnlcltr\pnstart1\pnindent720\pnhang
+{\pntxtb (}{\pntxta )}}{\*\pnseclvl9\pnlcrm\pnstart1\pnindent720\pnhang{\pntxtb (}{\pntxta )}}\pard\plain \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 \fs24\lang1033\langfe1033\cgrid\langnp1033\langfenp1033 {\f2\fs16  
+\par Revised Wednesday, January 24, 2002
+\par }\pard \qc \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\b\f2\fs40 Counts Calculator v2.1
+\par by Jesse Gumm of Whoa! Productions}{\fs40 
+\par }{
+\par }\pard \ql \li0\ri0\nowidctlpar\faauto\rin0\lin0\itap0 {\fs28 Table of Contents
+\par 
+\par }{1 Copyright
+\par 2 Overview
+\par 3 Installation
+\par \tab 3.1 "Read this first"
+\par \tab 3.2 Selecting an install location
+\par \tab 3.3 Perceived Drive
+\par \tab 3.4 Installing
+\par \tab 3.5 Vending Stand
+\par \tab 3.6 Startup Disk
+\par 4 Setup
+\par \tab 4.1 Creating Item  and Field list
+\par \tab 4.2 Setting activation time
+\par \tab 4.3 Editing Case/Sleeve/Stack Info
+\par \tab 4.4 Editing Full Case Info
+\par \tab 4.5 Exiting the main program
+\par 5 Vendor Side
+\par \tab 5.1 Starting the program
+\par \tab 5.2 Editing the "counts sheet"
+\par \tab \tab 5.2.1 Setting a value
+\par \tab \tab 5.2.2 Totaling up each value
+\par \tab \tab 5.2.3 Scrolling up and down
+\par \tab \tab 5.3.4 Clearing all values
+\par \tab 5.3 Editing Wastes
+\par \tab \tab 5.3.1 Getting into the waste screen
+\par \tab \tab 5.3.2 Adding and removing wastes
+\par \tab \tab 5.3.3 Returning to main screen
+\par \tab 5.4 Backup Saving
+\par \tab \tab 5.4.1 How to Save
+\par \tab \tab 5.4.2 How to Load
+\par \tab 5.5 Sending to Office
+\par \tab \tab 5.5.1 Make sure everything is complete
+\par \tab \tab 5.5.2 "Waiting for Response" screen
+\par \tab \tab 5.5.3 Response
+\par \tab \tab \tab 5.5.3.1\tab Recounts
+\par \tab \tab \tab 5.5.3.2\tab Counts are Done
+\par 6 Office Side
+\par \tab 6.1 Starting the Program
+\par \tab 6.2 Main Window
+\par \tab \tab 6.2.1 Wastes
+\par \tab \tab 6.2.2 Entering the Counts
+\par \tab \tab 6.2.3 Minimize and Hide Buttons
+\par \tab \tab 6.2.4 View Counts
+\par \tab \tab 6.2.5 Sending Back to Vending Stand
+\par \tab 6.3 When Counts are Done
+\par 7 Things to look for in upgrades
+\par 8 Some closing thoughts from the programmer
+\par }{\fs20 
+\par 
+\par 
+\par 
+\par 
+\par }{\b\fs28 1 Copyright, Disclaimer, and End User License Agreement
+\par }{\tab By using this software package, you agree to the following:
+\par Counts Calculator ("the program") is copyright 2000 by Jesse Gumm and Whoa! Productions.  Any unauthorized use of this program is strictly prohibited and will be prosecuted to the full extent of the law.  Unauthorized use includes but is not limited to: m
+o
+difying the program, reverse engineering the program, or use of the program by one other than an authorized individual.  Jesse Gumm and Whoa! Productions are not responsible for any damages that may result from the installation and normal use of this prog
+ram.}{\b\fs28 
+\par 
+\par 2 Overview}{\b 
+\par \tab }{This program was designed to aide both the vendors and the managers by speeding up the counts process. Originally done on paper with a calculator, this program eliminates the need for a calculator and instead of running the counts back to 
+office, they are now sent to the office via the network.  This has noticeably sped up the counts process at the theater in which it was pioneered.
+\par \tab If anyone has any questions, comments, ideas for further versions, or any bug reports, please contact Jesse Gumm at: jgumm@wi.rr.com.  If there is a bug report, please }{\ul describe in detail }{what happened and any error messages if there were any.
+
+\par }{\b\ul 
+\par }{\b\fs28 3 Installation
+\par }{\tab This is where it all begins.  Insert the disk labeled "Installation Diskette" and run the file install.exe on the disk.  This begins the install program.
+\par 
+\par }{\b 3.1 \tab "Read this first"
+\par \tab }{All the interactive things on the window are disabled until this button is pressed and "OK" is replied.  Clicking "OK" means you understand the message in the window.  This is there
+ to make sure you install the file into the correct location, failure to do so will result in a program that doesn't really do anything useful.  After this button is pressed and "OK" is selected, all the buttons and boxes become active.
+\par 
+\par }{\b 3.2 \tab Selecting an install location
+\par }{\tab The message was to make sure you understand where to install the program.  To actually commence installation, either select a path for installation, or type one in the box.  If a directory typed in the box is non-existent, it will be crea
+ted.  If it installed to an already existing directory, any files in the directory may be overwritten if there are any name conflicts.  When you have chosen a directory, press the "Install CC v1.0" button.
+\par 
+\par }{\b 3.3 \tab Perceived Drive
+\par }{\tab This is the drive that the vending stand perceives as the location of the installed program.  Here is the example provided in the program when the "Help" button is pressed:
+\par \tab For Example: The vending stand apparently has two hard drives, C and D.  The C drive is a normal hard drive, 
+but the D drive is actually the C drive of the back office computer.  So if you are installing to the Back office computer's C drive, then choose the D drive for this text box.
+\par 
+\par }{\b 3.4 \tab Installing
+\par }{\tab A box will appear showing a progress bar.  There will also be
+ a number of messages to follow.  When the progress bar indicates completion, the two windows will close and a window with "Waiting for Response from Vending Stand" will open up.  There is the menu option of "Cancel" on that window.  If that is pressed, t
+h
+e program will exit installation.  Now it is time to remove the startup disk and take it to a vending terminal.  When the vending stand responds to this window, setup will be complete.  If the vending stand does not respond, then there has been an error a
+nd the "Cancel" option should be selected.  Once again, if you have any questions, please let me know at: jgumm@wi.rr.com
+\par 
+\par }{\b 3.5 \tab Vending Stand
+\par \tab }{Take the disk and insert into the computer of any vending terminal (preferably one that is not heavily used) and r
+estart the computer.  The computer will startup with a different screen indicating that files are being modified and copied to the disk.  Also notice that the screen indicates that the office has been notified.  Remove the startup disk and restart the ter
+minal.  This disk is now ready for counts.
+\par 
+\par }{\b 3.6 \tab Startup Disk
+\par }{\tab To run counts on any vending terminal, insert the disk into the vending terminal diskette drive and restart the computer.  It will boot with the counts program.
+\par }{\b\fs28 
+\par 4 Setup}{\b 
+\par }{\tab The setup program is created with a number of different options.  This will edit the item list and will set the time for the office side program to drop out of standby mode and into "Waiting for Counts" Mode.
+\par \tab To run the setup program, run setup.exe from the directory that CC was installed.
+\par \tab You will have a window open with a number of different options, listed below:
+\par }{\b 
+\par 4.1\tab Creating Item list
+\par }{\tab This is the most important file of the counts program.  Both the vending side and the office side reads this file an
+d everything is based on this file.  When setup.exe is loaded, you'll notice that the list boxes on the left are automatically filled with the current lists.  If no lists have been created, then the lists are empty and must be filled.  It is advisable tha
+t the file be set in the same order that is in the Radiant system.  This will make in the input of the counts a lot faster.
+\par \tab In the frame labeled "Item and Field Lists" you will notice five different buttons, two radio buttons (labeled "Item list" and "Fiel
+d List"), and a text box.  When an item in either list is selected, the text box will be filled with the selected item, and the cursor will be passed to the text box. The four editing buttons art the "Set", "(Insert) Before", "(Insert) After", and "Delete
+" Buttons.
+\par The Editing buttons ("Insert", "Set", and "Delete") work on the list whose corresponding radio button is selected.  When a list is clicked or an item selected within the list, you'll notice that the corresponding radio button becomes selected.
+\par \tab T
+he "Set" button changes the selected item.  If an item is selected in the list box, then this button will change the selected item to whatever is typed in the text box.  This is the default button which means when typing in the text box, if you press [Ent
+er], it will act as though the "Set" buttons was pressed.  If an item is not selected in the list, then this button will append the item to the end of the list.
+\par \tab The "Insert" buttons, "Before" and "After", insert a new item into the list.  If an item is not
+ selected, then it acts the same as the "Set" Button.  If an item is selected, then when pressed, this will insert the text in the text box either before or after (depending on which button is pressed) the selected item.
+\par \tab The "Delete" button removes the selected item from the list.  If no item is selected, then this button will do nothing.  Otherwise, it will remove the selected item from the list.
+\par \tab The two other buttons, "Save List" and "Load List" do just as their label suggests.  The "Load List" Button will load the list from disk.  The "Save List" button will save the current list to disk.
+\par }{\b 
+\par 4.2\tab Setting activation time
+\par }{\tab The activation time is the time when the program drops out of "Standby Mode" and enters into "Waiting for Counts" Mode.  This time should
+ be set a few minutes before the vending stand closes.  For instance, at my theater, the vending stand closes at 10:10 to 10:15, and the program enters "Waiting for Counts" Mode at 9:55.
+\par \tab To edit this "Activation time", all one must do is to press the scro
+ll buttons in the "Activation Time" frame.  The bar in the left will change the hour, and the button on the right will change the minute.  The time is also set in military time (7:34pm = 19:34) so there is no confusion between AM and PM (Everyone has been
+ 
+the victim of a messed up AM and PM button on their alarm clock, I have numerous times).  The "Default" button will set the time to 9:55 PM.  The "Save" button will save the file to disk.  Also the activation time will take effect in the main program with
+in the minute if it's running.  If the program is not running, then it will take effect as soon as it is loaded.
+\par 
+\par }{\b 4.3 \tab Editing Case/Sleeve/Stack Info
+\par }{\tab When the "Edit Case/Sleeve/Stack . . . " button is pressed, a new window shows up with the item list and t
+hree more lists.  The list in the middle is the Case/Sleeve/Stack (CSS) list, and the longer list on the left is the Full Case list.  The smaller list above the latter list is the Applicant Fields list. Also notice that a number of values in the lists are
+ 
+-1.  A value of -1 is a passive amount. If a value is passive, it does nothing to the value inputted in the vending terminal program.  This will be explained shortly.  To change a number in either list, press either "Set" button below it's corresponding l
+i
+st.  When a list is selected, the default button (the button that can be activated by pressing the [Enter] key) becomes the button under the selected list.  Also notice that when an item in a list is selected, then the value of the selected item will be i
+n the text box and highlighted.  To change a value, select an item in either list, change the value in the text box, and press either the corresponding "Set" button or the [Enter] key.
+\par \tab Notice the three radio buttons above the CSS list.  The list correspond
+s to the selected radio button. For instance, if the "Case" button is selected, each value in the list corresponds to the number of items in a case or box of something (48 Spree in a box).  If the "Sleeve" button is selected then the values in the list ar
+e
+ the number of items in a sleeve.  If an item does not have sleeves, like candy, then the value should be left at -1.  The "Stack" button works the same as the "Sleeve" or "Stack" buttons.  If the idea of a stack is unusual, the reason for it's addition t
+o the program is this: At Theatre X, the nacho trays and pretzel trays are divided into little stacks of 25 for easy counting or the Jr Corn sleeves consist of two stacks of 50 each.
+\par 
+\par }{\b 4.4 \tab Editing Full Case Info
+\par \tab }{The "Full Case" lists correspond to the "Ful
+l" button on the vending terminal.  The number that should be entered here are for a cabinet of some sort.  For instance: Theatre X has four display candy cases, each one stocked to a default number.  When the case is fully stocked to the default numbers 
+t
+hen the "Full" button on the vending terminal will take all those numbers in the "Full Case" list and put them into the selected field in the vending terminal.  The items in the list that have a value of -1 will be ignored by the vending terminal and will
+ 
+not change the value in the corresponding cell.  The smaller list above the "Full Case" list is the "Applicant Fields" list.  This is where you select which fields to which the "Full Case" list will apply.  If on the vending terminal, a field is selected 
+which is not selected in the "Applicant Fields" list, then the "Full" button will do nothing.
+\par \tab The Save and Load buttons will do just that, save and load the values.
+\par }{\b 
+\par 4.5 \tab Exiting the main program
+\par }{\tab 
+As you run the main program, one will notice that the only way to end the program is either if it runs into a Critical Error or to end it via CTRL+ALT+DELETE.  This is the natural way to "Kill the instance" of office.exe.  The "Halt the Main Program" butt
+o
+n will end the main program (office.exe) file.  If the program is not running, then nothing will obviously happen.  If there are more than one instance running (for whatever reason), this will kill one instance.  Otherwise, if there is one instance runnin
+g, then one of two things will happen (both of which result in the program ending).
+\par \tab If the program is in "Standby Mode" - there are no visible windows - then the program will take up to sixty-five seconds for the program to end.  Also, if it's in "Standby Mode" there will be no confirmation informing of the ending of the program.
+
+\par \tab If the program has any visible windows, then the "Halt . . . " button will take effect within five seconds.  There will be a confirmation Dialog Box reading "Halt Message Occurred."  After OK is pressed, the program ends.}{\b 
+\par 
+\par }{\b\fs28 5 Vendor Side}{\b 
+\par }{\tab This is where all the counts are entered from the vending stand.  This will run on any Vending terminal, and it is suggested to choose the least used terminal.
+\par }{\b 
+\par 5.1\tab Starting the program
+\par }{\tab This program is very easy to start, all one must do is to insert the startup disk provided, acquired by a manager or whatever, and restart the vending terminal.  The computer will then startup with Counts Calculator.
+\par }{\b 
+\par 5.2 \tab Editing the "counts sheet"
+\par }{\tab The "counts sheet" used by this program is designed based on the counts sheets used at the testing theater.
+\par }{\b 
+\par 5.2.1\tab Setting a value
+\par }{\tab The first step in setting a value into the table is to select the cell to change.  To do this, one must click on the screen the desired cell.  You will notice that the cell you select will then be highlighted in red.
+\par \tab After the desired cell is selected, then the numbers must be entered into the "calculator" in the upper left corner.  The maximum size of a number is 4 digits (9999).  When the 
+number is keyed into the calculator, you must press one of the four buttons found below the calculator: "Case", "Sleeve", "Stack", and "Indiv".  If the "Indiv" button is pressed, then the number in the calculator will be put straight into the table.  If t
+h
+e "Case" button is pressed, then the number in the calculator will be multiplied by the number of items in a Case or Box.  This will set the value of the selected cell to the value in the calculator.  If a number was erratically keyed into the calculator,
+ 
+then you can press the "Del <<<" button, to erase the rightmost digit.  After a value is set into the table then the total column is automatically calculated and the selected cell "increments" (moves down, if the lowermost cell is selected, then the first
+ cell of the next field(column) is selected; if the last cell of the last row is selected, then the selected cell moves to the first cell of the first row). 
+\par \tab The "Full" button is a fast way of inputting numbers for preset values.  To use the full button, s
+elect a target field, or any cell within the target field, and press the "Full" button.  This will fill in preset values for all items designated in the office setup program.  If the selected fields is not set as an "Applicant Field", the "Full" button wi
+l
+l do nothing.  To make this function a little clearer, Theatre X has 4 candy display cases, and the values are the same for all 4 cases.  When a display case is filled to the preset values, press the full button and the preset values for the items will be
+ set into the table. 
+\par \tab To clear a value, then select a cell and press the "Indiv" button, making sure that the value in the calculator is either 0 or empty.
+\par 
+\par }{\b 5.2.2\tab Totaling up each value
+\par \tab }{As mentioned in the last section, all the totals are calculated automatically as values are entered. This feature practically eliminates the necessity of a calculator.
+\par 
+\par }{\b 5.2.3\tab Scrolling
+\par }{\tab Because the lists get larger than is supported by the screen, the scrolling buttons become a necessity.  There are four buttons along the b
+ottom of the screen under the table.  The ones with the arrows pointing left and right scroll left and right if there are more than 6 fields for input.  The up and down arrows scroll up and down accordingly.
+\par 
+\par }{\b 5.2.4\tab Clearing all values
+\par }{\tab To clear all values from the table, press the "Clear" button in the lower left corner.
+\par }{\b 
+\par 5.3\tab Editing Wastes
+\par }{\tab Wastes are an essential part of doing counts, so a program that is designed to do counts, must also incorporate wastes as well.}{\b 
+\par 
+\par 5.3.1\tab Getting into the waste screen
+\par }{\tab To access the waste screen, press the "Wastes" button on the main vending screen.  This will bring up a list of all the items with numbers next to them.  If it is the first time that the wastes screen has been accessed on a given day, the
+n all the numbers should read 0, otherwise, the wastes will be saved.
+\par }{\b 
+\par 5.3.2\tab Adding and removing wastes
+\par \tab }{To add a waste to the list, select an item, select a reason for waste, and change the amount to waste.  To change the amount to waste, press on the up 
+and down arrow buttons next to the text box in the upper right corner.  Pressing up will increment up to 99 and pressing down will decrement down to 1.  The reason for 1 being the lowest is that  there is no reason to waste 0 of something.  When everythin
+g is selected and all numbers are set, press the "Add Waste" button.  This will add an item to the list of total wastes.  To remove an item from the list, select the item you want to remove and press the "Remove Waste" button.
+\par }{\b 
+\par 5.3.3\tab Returning to main screen
+\par }{\tab When all the wastes are finally inputted, press the "Wastes Done" button.  This will take you back to the main counts screen and will save the waste file in the process.
+\par }{\b 
+\par 5.4\tab Backup Saving
+\par }{\tab As in every program, I have included the option to backup your 
+files in case of a crash or whatnot.  This is pretty much a necessary feature in all programs.  Obviously, you'll want to occasionally save your files, in case the system did crash or an accidental restart or any other possible way of losing information s
+tored in RAM.}{\b 
+\par 5.4.1\tab How to Save
+\par }{\tab To save your counts information, press the "Save" button.  This will store the files to disk until you save again.
+\par }{\b 
+\par 5.4.2\tab How to Load
+\par }{\tab To load your saved file, press the "Load" button.  This will load your previously saved file from disk.
+\par }{\b 
+\par 5.5\tab Sending to Office
+\par \tab }{After all of your counts and wastes have been inputted, then all that is left is to have the managers check your counts.  Look over everything and make sure that it is complete.. It is not necessary to fill all of the
+ cells for it to be complete.  Save it just to be safe, and press the send button.  There will be a confirmation box reading "Are you sure you want to send the counts in?" or something like that.  If you click no, then the screen returns to normal, if you
+ 
+click Yes, the screen changes to a "Waiting for Response from Office" screen.  Pressing this button will also write the text file that will be used for printing after counts are finally done, but the vendors need not worry about that, for it is done in th
+e office automatically.
+\par }{\b 
+\par 5.5.1\tab "Waiting for Response" screen
+\par }{\tab During this screen, you will notice little dots bounding around within the window.  these are here just to show that the program is still running.  If these little dots stop, then the program is 
+frozen.  When the office responds, there are two possible responses: "Recounts" and "Counts are Done".
+\par }{\b 
+\par 5.5.2\tab Response
+\par }{\tab There are two different responses, pretty much the same as doing normal counts: "Recounts" and "Counts are Done"
+\par }{\b 
+\par 5.5.2.1\tab Recounts
+\par }{\tab 
+If there are recounts then the terminal will return to the normal counts screen, but the items that need to be recounted will be highlighted in green.  Recount the necessary values and reinput the numbers for the values and when recounts are ready send ba
+ck to the office to be checked, like before.  This pattern gets repeated until counts are done.
+\par }{\b 
+\par 5.5.2.2\tab Counts are Done
+\par }{\tab If counts are done, then the screen will notify you of this.  To get rid of this screen, follow the instructions on the terminal screen.  Remove the startup disk and restart the terminal.  This will return the terminal to the normal Radiant screen.
+
+\par }{\b 
+\par }{\b\fs28 6 Office Side
+\par \tab }{This is the side that the managers control.  This is where the counts are compared to the numbers in the Radiant system and sent back to the vending stand with the recounts.
+\par }{\b 
+\par 6.1\tab Starting the Program
+\par \tab }{To start the program, go to the directory where CC was installed and run office.exe.  Then a window will pop up with two buttons on it: "Launch Standby Mode" and "About . . ."
+\par \tab "Lau
+nch Standby Mode" will set the program into "Standby mode".  While in Standby mode, the program lays dormant and undetectable, in the task bar, and it occupies little RAM.  It stays in this Standby Mode until the activation time is reached (Specified in t
+he Setup Program).  When this time is reached, the program enters a new stage, "Waiting for counts" Mode.
+\par \tab This "Waiting for Counts" mode is when the computer starts waitingg for the vending stand to send back the counts.  When the vending stand finally sen
+ds back the counts, a red flashing window reading "Counts Are In."  This window cannot be ignored, as it is always on top.  To acknowledge that you are ready to input counts, click on the red window anywhere.  This will open up the Main Office window.
+
+\par }{\b 
+\par 6.2\tab Main Window
+\par }{\tab This is where all the main work is done in the office side terminal.  When the main window opens, you'll also notice that the "Waste" Window opens.  You'll notice that the two list boxes on the left are filled with item names and numbers. The
+ item names in the left list are self explanatory, and the values in the right list are the total counts for it's corresponding item.  You'll also notice that if you scroll with one list, the other list scrolls with it.  This is to eliminate any possible 
+c
+onfusion caused by misalignment.  Here you can run down the list and compare the counts to the values in the computer very efficiently.  No more looking at a separate sheet to do the comparisons.  Before counts are entered, though, remember to input waste
+s.
+\par }{\b 
+\par 6.2.1\tab Wastes
+\par }{\tab When the main window first opens, the "Wastes" window should also open.  If there are no wastes, then the window will not open.  Every time counts are returned to the office, the "Waste" window will be opened only if the wastes have change
+d.  To see view what the wastes are, press on the "Waste" button.  This will bring up the "Wastes" window.  If the "Waste" window is already open, then this button does nothing.  If there are no items in the lists, then there are no wastes for that day.  
+W
+hen you are done with wastes, simply close the box by pressing the little X in the upper left corner.  Wastes can always be redisplayed by pressing the "Waste" Button.  Note: if counts are sent back to the vending stand, and the waste window is open, it w
+ill be closed automatically.
+\par }{\b 
+\par 6.2.2\tab Entering the Counts
+\par }{\tab Here you simply traverse down the list and enter the numbers into the Radiant system and check for anything that needs to be recounted.  This window will always stay on top so there is no flipping back and forth between windows.
+\par \tab If along the way, you find an item that needs to be recounted, simply highlight that item in the list by clicking on either it's name or it's value.
+\par }{\b 
+\par 6.2.3\tab Minimize and Hide Buttons
+\par }{\tab 
+The "Minimize" and "Hide" Buttons have no effect on the list or recounts.  They are only to change the visual appearance of the main counts window.  The Minimize button is the same as the standard Minimize in the upper right corner of windows.  The "Hide"
+ 
+button is the button that changes from "->" to "<-".  If the button is labeled "<-", then pressing that button will hide the text and the minimize button by making he window thinner, then it will change the button to display "->".  Pressing the button whe
+n it is labeled "->" will restore the window back to original size.
+\par }{\b 
+\par 6.2.4\tab View Counts
+\par \tab }{This button just gives you a preview of what the current counts sheet entered by the vendors look like.  This is if you want to either print out the current form for wha
+tever reason or if you want to perhaps see what the vendors have done wrong.  This will become a valuable asset later in the development of this program, soon I will add the options of sending a message from the office to the vending stand.
+\par }{\b 
+\par 6.2.5\tab Sending Back to Vending Stand
+\par }{\tab When all the wastes have been entered and all the recounts have been selected, then it is time to return the list of recounts to the vending stand.  Notice the Button that reads either "Back" or "Done".  If there are no items selecte
+d in the list (no recounts), the button will read "Done" Pressing this when it reads "Back" will send the list of recounts back to the vending stand and return to "Waiting for Recounts" mode.  When the recounts return from the vending stand, the items tha
+t
+ needed recounting will remain highlighted to make it easy to find which items needed recounting.  All the items remain where they are (as opposed to eliminating items that did not need recounting), because occasionally a manager will forget to select an 
+i
+tem that needs recounting. When this happens, the manager needs the list of items to select the item that was accidentally overlooked (I apologize for the complexity of the last two sentences).  This process repeats until there are no recounts and the "Do
+ne" Button is pressed.
+\par }{\b 
+\par 6.3\tab When Counts are Done}{
+\par \tab When counts are finally done, the "Done" button must be pressed.  This does a number of things.  First it opens up the text file created by the vending stand and prints it through notepad.  Then it closes no
+tepad and falls back into "Standby Mode", waiting for the next evening to return to "Waiting for Counts" mode.
+\par \tab Each day a new text file is created by the vending stand and archived in the "daily" directory.  This directory can be found in the folder where Counts Calculator was installed (ex: c:\\counts\\
+daily).  The text file is named based on the day in this format: yyyymmdd.txt - yyyy is year; mm is month, and dd is day.  This is the file that is printed when the "Done" Button is pressed.
+\par }{\b 
+\par }{\b\fs28 7 Things to look for in upgrades
+\par }{\fs28 \tab }{There are a number of different options that are going to be added in future versions:
+\par \tab }{\b 1. Messages from office to vending - }{This option is if the managers want to send a message from the office to the vending when returning recounts.  Th
+is could be any sort of message like, "Spree are short" or "Recount Twist 'n go again, stupid." or "There aren't 45 M&Ms in a display case."  This is used to improve communication between the office and vending stand and could potentially speed up the cou
+nts process.
+\par \tab }{\b 2. Inputting the values of the counts into the Radiant system - }{This will be some button that inputs the values automatically, all this will consist of three different buttons: "Move up", "Move down", and "Input Next".  Overall, this will most
+ly eliminate the need for entering the values via the keyboard.  It's hard to explain when not implemented, so I'll leave it at that.
+\par \tab }{\b 3. Timer to keep track of amount of time spent on counts -}{ This will keep track of the amount of time counts spent in the
+ office and in the vending stand.  This is just a little feature to add that is not all that important, but would be an interesting addition to the group.
+\par 
+\par If you have any suggestions for upgrades, feel free to let me know via email at: jgumm@wi.rr.com.
+\par \tab \tab }{\b\fs28 
+\par 8 Some closing thoughts from the programmer
+\par }{\fs28 \tab }{Finally, this file is done.  I sincerely hope that this new system is accepted and used quite often and speeds up the drawn out counts process.  I realize that change is generally not accepted, as it is only hu
+man to fear change, but I feel if you give this a try and learn to use this, it can speed up counts very substantially.  I've truly enjoyed (and continue to enjoy) working on this program and I look forward to making many following versions, and making th
+e process that much faster.  Thank you for choosing Whoa! Productions for all your counting needs.
+\par 
+\par \tab \tab \tab Logging Off,
+\par 
+\par \tab \tab \tab      Jesse Gumm}{\b\fs20 
+\par }{\fs20 
+\par }}

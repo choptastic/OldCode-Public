@@ -1,0 +1,15 @@
+Hello Y'all,
+
+For those of you that have already recieved these emails, just ignore them.  I was having some problems with my code for my login procedure.  It turns out that I forgot to include a return address in the email and that was causing problems, and it would only send to a few email addresses.  But the problem has been fixed and this time all the web-generated emails will work.
+
+For those of you that registered, but had no confirmation email, I've Activated your login by hand, so you can now log in to the website.
+
+For those of you that have not recieved any of these, please read them and please create an account on the GummLANParty.net website.  Thanx.
+
+Just letting you know that a "Where's Ruf' At?" Section is on the way.  Get ready for some fun.
+
+http://www.gummlanparty.net
+
+LAN Party 8: Saturday, March 9th, 5:00PM.  Brace yourselves.
+
+-Gumm

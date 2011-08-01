@@ -1,0 +1,22 @@
+[SCC]
+SCC=This is a source code control file
+
+[COUNTS.MAK]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+
+[SETUP.MAK]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+[COUNTS.VBP]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+[INSTALL.VBP]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+[SETUP.VBP]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+[RADIANT.VBP]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>

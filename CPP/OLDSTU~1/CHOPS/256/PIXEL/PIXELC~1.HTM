@@ -1,0 +1,158 @@
+<!-- C/C++/Java to HTML/CSS converter, http://silo.csci.unt.edu/home/brackeen/  -->
+<HTML>
+  <HEAD>
+  <TITLE>pixel.c</TITLE>
+  <STYLE TYPE="text/css"><!--
+    PRE {color: #000000}
+    .c0 /* space */  			{color: #000000}
+    .c1 /* id */    			{color: #000088}
+    .c2 /* keyword */     {color: #000000}
+    .c3 /* int */         {color: #880088}
+    .c4 /* float */       {color: #880088}
+    .c5 /* hex */         {color: #880088}
+    .c6 /* string */      {color: #880088}
+    .c7 /* char */        {color: #883388}
+    .c8 /* directive */   {color: #008800}
+    .c9 /* comment */     {color: #888888; font-style: italic}
+    .c10 /* eol comment */ {color: #888888; font-style: italic}
+    .c11 /* doc comment */ {color: #888888; font-style: italic}
+    .c12 /* other */       {color: #000000}
+  --></STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<PRE>
+<SPAN CLASS=c9>/**************************************************************************
+ * pixel.c                                                                *
+ * written by David Brackeen                                              *
+ * brackeen@silo.csci.unt.edu                                             *
+ * http://silo.csci.unt.edu/home/brackeen/vga/                            *
+ *                                                                        *
+ * This is a 16-bit program.                                              *
+ * Tab stops are set to 2.                                                *
+ * Remember to compile in the LARGE memory model!                         *
+ *                                                                        *
+ * This program will only work on DOS- or Windows-based systems with a    *
+ * VGA, SuperVGA or compatible video adapter.                             *
+ *                                                                        *
+ * Please feel free to copy this source code.                             *
+ *                                                                        *
+ * DESCRIPTION: This program demostrates how much faster writing directly *
+ * to video memory is.                                                    *
+ **************************************************************************/</SPAN>
+
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>stdio</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>stdlib</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>dos</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>VIDEO_INT</SPAN>           <SPAN CLASS=c5>0x10</SPAN>      <SPAN CLASS=c9>/* the BIOS video interrupt. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>WRITE_DOT</SPAN>           <SPAN CLASS=c5>0x0C</SPAN>      <SPAN CLASS=c9>/* BIOS func to plot a pixel. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SET_MODE</SPAN>            <SPAN CLASS=c5>0x00</SPAN>      <SPAN CLASS=c9>/* BIOS func to set the video mode. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>VGA_256_COLOR_MODE</SPAN>  <SPAN CLASS=c5>0x13</SPAN>      <SPAN CLASS=c9>/* use to set 256-color mode. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>TEXT_MODE</SPAN>           <SPAN CLASS=c5>0x03</SPAN>      <SPAN CLASS=c9>/* use to set 80x25 text mode. */</SPAN>
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SCREEN_WIDTH</SPAN>        <SPAN CLASS=c3>320</SPAN>       <SPAN CLASS=c9>/* width in pixels of mode 0x13 */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SCREEN_HEIGHT</SPAN>       <SPAN CLASS=c3>200</SPAN>       <SPAN CLASS=c9>/* height in pixels of mode 0x13 */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>NUM_COLORS</SPAN>          <SPAN CLASS=c3>256</SPAN>       <SPAN CLASS=c9>/* number of colors in mode 0x13 */</SPAN>
+
+typedef unsigned char  <SPAN CLASS=c1>byte</SPAN>;
+typedef unsigned short <SPAN CLASS=c1>word</SPAN>;
+
+
+<SPAN CLASS=c1>byte</SPAN> *<SPAN CLASS=c1>VGA</SPAN>=(<SPAN CLASS=c1>byte</SPAN> *)<SPAN CLASS=c5>0xA0000000L</SPAN>;        <SPAN CLASS=c9>/* this points to video memory. */</SPAN>
+<SPAN CLASS=c1>word</SPAN> *<SPAN CLASS=c1>my_clock</SPAN>=(<SPAN CLASS=c1>word</SPAN> *)<SPAN CLASS=c5>0x0000046C</SPAN>;    <SPAN CLASS=c9>/* this points to the 18.2hz system
+                                         clock. */</SPAN>
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  set_mode                                                              *
+ *     Sets the video mode.                                               *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>byte</SPAN> <SPAN CLASS=c1>mode</SPAN>)
+{
+  union <SPAN CLASS=c1>REGS</SPAN> <SPAN CLASS=c1>regs</SPAN>;
+
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>ah</SPAN> = <SPAN CLASS=c1>SET_MODE</SPAN>;
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>al</SPAN> = <SPAN CLASS=c1>mode</SPAN>;
+  <SPAN CLASS=c1>int86</SPAN>(<SPAN CLASS=c1>VIDEO_INT</SPAN>, &amp;<SPAN CLASS=c1>regs</SPAN>, &amp;<SPAN CLASS=c1>regs</SPAN>);
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  plot_pixel_slow                                                       *
+ *    Plot a pixel by using BIOS function 0x0C (Write Dot).               *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>plot_pixel_slow</SPAN>(int <SPAN CLASS=c1>x</SPAN>,int <SPAN CLASS=c1>y</SPAN>,<SPAN CLASS=c1>byte</SPAN> <SPAN CLASS=c1>color</SPAN>)
+{
+  union <SPAN CLASS=c1>REGS</SPAN> <SPAN CLASS=c1>regs</SPAN>;
+
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>ah</SPAN> = <SPAN CLASS=c1>WRITE_DOT</SPAN>;
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>al</SPAN> = <SPAN CLASS=c1>color</SPAN>;
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>x</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>cx</SPAN> = <SPAN CLASS=c1>x</SPAN>;
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>x</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>dx</SPAN> = <SPAN CLASS=c1>y</SPAN>;
+  <SPAN CLASS=c1>int86</SPAN>(<SPAN CLASS=c1>VIDEO_INT</SPAN>, &amp;<SPAN CLASS=c1>regs</SPAN>, &amp;<SPAN CLASS=c1>regs</SPAN>);
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  plot_pixel_fast                                                       *
+ *    Plot a pixel by directly writing to video memory.                   *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>plot_pixel_fast</SPAN>(int <SPAN CLASS=c1>x</SPAN>,int <SPAN CLASS=c1>y</SPAN>,<SPAN CLASS=c1>byte</SPAN> <SPAN CLASS=c1>color</SPAN>)
+{
+  <SPAN CLASS=c1>VGA</SPAN>[<SPAN CLASS=c1>y</SPAN>*<SPAN CLASS=c1>SCREEN_WIDTH</SPAN>+<SPAN CLASS=c1>x</SPAN>]=<SPAN CLASS=c1>color</SPAN>;
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  Main                                                                  *
+ *    Plots 50000 pixels two different ways: using the BIOS and by        *
+ *    directly writing to video memory.                                   *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>main</SPAN>()
+{
+  int <SPAN CLASS=c1>x</SPAN>,<SPAN CLASS=c1>y</SPAN>,<SPAN CLASS=c1>color</SPAN>;
+  float <SPAN CLASS=c1>t1</SPAN>,<SPAN CLASS=c1>t2</SPAN>;
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>i</SPAN>,<SPAN CLASS=c1>start</SPAN>;
+
+  <SPAN CLASS=c1>srand</SPAN>(*<SPAN CLASS=c1>my_clock</SPAN>);                   <SPAN CLASS=c9>/* seed the number generator. */</SPAN>
+  <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>VGA_256_COLOR_MODE</SPAN>);       <SPAN CLASS=c9>/* set the video mode. */</SPAN>
+
+  <SPAN CLASS=c1>start</SPAN>=*<SPAN CLASS=c1>my_clock</SPAN>;                    <SPAN CLASS=c9>/* record the starting time. */</SPAN>
+  for(<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c3>50000L</SPAN>;<SPAN CLASS=c1>i</SPAN>++)               <SPAN CLASS=c9>/* randomly plot 50000 pixels. */</SPAN>
+  {
+    <SPAN CLASS=c1>x</SPAN>=<SPAN CLASS=c1>rand</SPAN>()%<SPAN CLASS=c1>SCREEN_WIDTH</SPAN>;
+    <SPAN CLASS=c1>y</SPAN>=<SPAN CLASS=c1>rand</SPAN>()%<SPAN CLASS=c1>SCREEN_HEIGHT</SPAN>;
+    <SPAN CLASS=c1>color</SPAN>=<SPAN CLASS=c1>rand</SPAN>()%<SPAN CLASS=c1>NUM_COLORS</SPAN>;
+    <SPAN CLASS=c1>plot_pixel_slow</SPAN>(<SPAN CLASS=c1>x</SPAN>,<SPAN CLASS=c1>y</SPAN>,<SPAN CLASS=c1>color</SPAN>);
+  }
+
+  <SPAN CLASS=c1>t1</SPAN>=(*<SPAN CLASS=c1>my_clock</SPAN>-<SPAN CLASS=c1>start</SPAN>)/<SPAN CLASS=c4>18.2</SPAN>;          <SPAN CLASS=c9>/* calculate how long it took. */</SPAN>
+
+  <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>VGA_256_COLOR_MODE</SPAN>);       <SPAN CLASS=c9>/* set the video mode again in order
+                                         to clear the screen. */</SPAN>
+
+  <SPAN CLASS=c1>start</SPAN>=*<SPAN CLASS=c1>my_clock</SPAN>;                    <SPAN CLASS=c9>/* record the starting time. */</SPAN>
+  for(<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c3>50000L</SPAN>;<SPAN CLASS=c1>i</SPAN>++)               <SPAN CLASS=c9>/* randomly plot 50000 pixels. */</SPAN>
+  {
+    <SPAN CLASS=c1>x</SPAN>=<SPAN CLASS=c1>rand</SPAN>()%<SPAN CLASS=c1>SCREEN_WIDTH</SPAN>;
+    <SPAN CLASS=c1>y</SPAN>=<SPAN CLASS=c1>rand</SPAN>()%<SPAN CLASS=c1>SCREEN_HEIGHT</SPAN>;
+    <SPAN CLASS=c1>color</SPAN>=<SPAN CLASS=c1>rand</SPAN>()%<SPAN CLASS=c1>NUM_COLORS</SPAN>;
+    <SPAN CLASS=c1>plot_pixel_fast</SPAN>(<SPAN CLASS=c1>x</SPAN>,<SPAN CLASS=c1>y</SPAN>,<SPAN CLASS=c1>color</SPAN>);
+  }
+
+  <SPAN CLASS=c1>t2</SPAN>=(*<SPAN CLASS=c1>my_clock</SPAN>-<SPAN CLASS=c1>start</SPAN>)/<SPAN CLASS=c4>18.2</SPAN>;          <SPAN CLASS=c9>/* calculate how long it took. */</SPAN>
+  <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>TEXT_MODE</SPAN>);                <SPAN CLASS=c9>/* set the video mode back to
+                                         text mode. */</SPAN>
+
+  <SPAN CLASS=c9>/* output the results... */</SPAN>
+  <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Slow pixel plotting took %f seconds.\n&quot;</SPAN>,<SPAN CLASS=c1>t1</SPAN>);
+  <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Fast pixel plotting took %f seconds.\n&quot;</SPAN>,<SPAN CLASS=c1>t2</SPAN>);
+  <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Fast pixel plotting was %f times faster.\n&quot;</SPAN>,<SPAN CLASS=c1>t1</SPAN>/<SPAN CLASS=c1>t2</SPAN>);
+
+  return;
+}
+
+</PRE>
+
+</BODY>
+</HTML>

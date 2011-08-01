@@ -1,0 +1,14 @@
+Case	ATX		.
+Mobo	ECS K7AMA	.
+Proc	1.4 GHz AMD	.
+Snd	built in	300	phone order
+Vid	PNY GeForce3	310	phone order
+Mem	512 MB DDR	90	crucial
+HD	40GB 7200 RPM	117	phone order
+DVD-ROM	12x40x		31	phone order
+CD-RW	16x10x40	105	infinity
+Floppy	Generic		15
+19"	1600x1200	213	pricewatch
+
+
+Total 1181

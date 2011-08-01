@@ -1,0 +1,115 @@
+
+//Title:
+//Version:     1.0
+//Copyright:   Copyright (c) Jesse Gumm
+//Author:      Jesse Gumm
+//Company:
+//Description:
+package thread;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class ThreadApplet extends Applet implements Runnable,ActionListener{
+  boolean isStandalone = false;
+  Thread counterThread;
+  Label countValue;
+  Button s,r;
+  int count=2000;
+
+  //Get a parameter value
+  public String getParameter(String key, String def) {
+    return isStandalone ? System.getProperty(key, def) :
+      (getParameter(key) != null ? getParameter(key) : def);
+  }
+
+  //Construct the applet
+  public ThreadApplet() {
+  }
+
+  //Initialize the applet
+  public void init()
+  {
+    s=new Button("Stop");
+    r=new Button("Resume");
+    add(s);
+    add(r);
+    s.addActionListener(this);
+    r.addActionListener(this);
+    add(new Label("Count :"));
+    countValue=new Label(Integer.toString(count));
+    add(countValue);
+  }
+
+  //Component initialization
+  private void jbInit() throws Exception {
+  }
+
+  //Start the applet
+  public void start()
+  {
+    if(counterThread==null)
+    {
+      counterThread=new Thread(this);
+      counterThread.start();
+    }
+  }
+
+  //Stop the applet
+  public void stop()
+  {
+    if (counterThread!=null)
+      counterThread=null;
+  }
+
+  public void run()
+  {
+    while(true)
+    {
+      try
+      {
+        counterThread.sleep(4);
+        if(counterThread!=null)
+        {
+          startCounting();
+        }
+      }
+      catch(InterruptedException e)
+      {}
+    }
+  }
+
+  public void actionPerformed(ActionEvent e)
+  {
+    Button b = (Button)e.getSource();
+    if(b.equals(s))
+    {
+      counterThread.stop();
+      counterThread=null;
+    }
+    else
+      start();
+  }
+  public void startCounting()
+  {
+    count --;
+    if(count<=0)
+      count=2000;
+    countValue.setText(Integer.toString(count));
+  }
+
+  //Destroy the applet
+  public void destroy() {
+  }
+
+  //Get Applet information
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+
+  //Get parameter info
+  public String[][] getParameterInfo() {
+    return null;
+  }
+}

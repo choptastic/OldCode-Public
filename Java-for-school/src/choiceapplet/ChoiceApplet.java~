@@ -1,0 +1,111 @@
+
+//Title:       Choice applet
+//Version:     1.0
+//Copyright:   Copyright (c) Jesse Gumm
+//Author:      Jesse Gumm
+//Company:
+//Description:
+package choiceapplet;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class ChoiceApplet extends Applet implements ItemListener
+{
+  boolean isStandalone = false;
+  Choice colorchoice;
+  Color color;
+  int fontsize=24;
+  //Get a parameter value
+  public String getParameter(String key, String def) {
+    return isStandalone ? System.getProperty(key, def) :
+      (getParameter(key) != null ? getParameter(key) : def);
+  }
+
+  //Construct the applet
+  public ChoiceApplet() {
+  }
+
+  //Initialize the applet
+  public void init()
+  {
+    colorchoice= new Choice();
+    colorchoice.addItem("Black");
+    colorchoice.addItem("Red");
+    colorchoice.addItem("Green");
+    colorchoice.addItem("Blue");
+    colorchoice.addItem("Magenta");
+    colorchoice.addItem("Cyan");
+    add(colorchoice);
+    colorchoice.addItemListener(this);
+    setBackground(Color.white);
+
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void paint(Graphics g)
+  {
+    Font font = new Font("TimesRoman",Font.BOLD,fontsize);
+    int height=font.getSize();
+    g.setFont(font);
+    g.setColor(color);
+    g.drawString("This text is drawn in",32, 75);
+    g.drawString("the color selected from ",32,75+height);
+    g.drawString("the above choice menu.",32,75+2*height);
+  }
+
+  public void itemStateChanged(ItemEvent e)
+  {
+    Choice c=(Choice)e.getSource();
+    if(c.equals(colorchoice))
+    {
+      fontsize=(c.getSelectedIndex() + 1)* 8;
+      handleMenu(c.getSelectedItem());
+    }
+
+
+  }
+
+  public void handleMenu(String selectedcolor)
+  {
+      if(selectedcolor=="Black") color=Color.black;
+      else if(selectedcolor=="Red") color=Color.red;
+      else if(selectedcolor=="Green") color=Color.green;
+      else if(selectedcolor=="Blue") color=color.blue;
+      else if(selectedcolor=="Magenta") color=color.magenta;
+      else if(selectedcolor=="Cyan") color=color.cyan;
+    repaint();
+  }
+
+  //Component initialization
+  private void jbInit() throws Exception {
+  }
+
+  //Start the applet
+  public void start() {
+  }
+
+  //Stop the applet
+  public void stop() {
+  }
+
+  //Destroy the applet
+  public void destroy() {
+  }
+
+  //Get Applet information
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+
+  //Get parameter info
+  public String[][] getParameterInfo() {
+    return null;
+  }
+}

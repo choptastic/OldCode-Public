@@ -1,0 +1,26 @@
+<? 	$title = "Newsletters";
+	require("header.php");
+
+function fdate($d)
+{
+	return date("n/j/Y",$d);
+}
+extract($_GET);
+$rst=mysql_query("Select * from newsletter where newsletterid=$newsletterid order by day desc;");
+$row = mysql_fetch_array($rst);
+extract($row);
+$rst=mysql_query("select * from contact where email like '%@%.%'");
+$rows = mysql_num_rows($rst);
+for($i=0;$i<$rows;$i++)
+{
+	$row = mysql_fetch_array($rst);
+	extract($row);
+	$targetlist.=$email;
+	if($i+1<$rows) $targetlist.=',';
+}
+	mail("jgumm@wi.rr.com",stripslashes($newsletter),stripslashes($txt),"From: Gumm LAN Party<jgumm@wi.rr.com>\r \nReply-To: Gumm<jgumm@wi.rr.com>\r \nBcc:$targetlist\r \nX-Mailer: GLP Mailer\r \nMIME-version: 1.0\r \nContent-type: text/plain; charset=iso-8859-1");
+	echo "Sent to : $targetlist";
+?>
+
+
+<? require("footer.php"); ?>

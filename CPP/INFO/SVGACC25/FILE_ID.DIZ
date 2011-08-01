@@ -1,0 +1,10 @@
+SVGACC.LIB-ver 2.5 is a high-res, 256-color
+real mode graphics library for MS compatible
+C/C++ compilers.  It recognizes 20+ different
+SVGA cards and VESA in 640x480, 800x600,
+1024x768 and 1280x1024 modes.  Capabilities:
+hardware id, simple primitives, 2D/3D points,
+joystick/mouse support, PCX encode/decode,
+paging, XMS, palettes, bitmaps and sprites.
+
+ 

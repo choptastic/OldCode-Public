@@ -1,0 +1,21 @@
+' To disable task keys
+Call EnableTaskKeys(False)
+
+Private Const SPI_SCREENSAVERRUNNING = 97
+
+Declare Function SystemParametersInfo Lib "user32" _
+    Alias "SystemParametersInfoA" (ByVal uAction As _
+    Long, ByVal uParam As Long, lpvParam As Any, ByVal _
+    fuWinIni As Long) As Long
+
+Public Sub EnableTaskKeys(Enabled As Boolean)
+
+If Enabled = False Then
+    'Disable task keys
+    SystemParametersInfo SPI_SCREENSAVERRUNNING, 1&, 0&, 0
+Else
+    'Enable task keys
+    SystemParametersInfo SPI_SCREENSAVERRUNNING, 0&, 0&, 0
+End If
+
+End Sub

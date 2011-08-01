@@ -1,0 +1,20 @@
+#include <iostream.h>
+#include <fcntl.h>
+#include <io.h>
+#include <stdio.h>
+#include <alloc.h>
+
+
+void main()
+{
+	cout << endl;
+	int handle;
+	char *swell;
+	swell=(char*)malloc(20);
+	handle=_open("c:\\logo.sys",O_RDONLY);
+	_read(handle,(void*)swell,15);
+	swell[15]='\0';
+	for(int loop=0;loop<15;loop++)
+		cout << int(unsigned char)(swell[loop]) << endl;
+
+}

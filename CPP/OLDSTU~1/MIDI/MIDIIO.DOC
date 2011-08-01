@@ -1,0 +1,486 @@
+		******************************
+			MIDIIO v1.11
+	
+	       standard midi input and output for C++
+		      by Guenter Nagler
+			    1995 
+		  (gnagler@ihm.tu-graz.ac.at)
+		******************************
+
+[0] FEATURES
+    + parses binary midi files
+    + writes binary midi files
+    + copies binary midi files
+    + sorts midi events by time
+    + maps channels of binary midi files
+    + checks validity of binary midi files
+
+[1] BACKGROUND
+My first midi parser was written in programming language "C".
+It was impossible to reuse the C code in other programs in slightly
+modified ways without duplicating the code.
+
+In combination with the class facilities of "C++" (invented 1983 by
+B. Stroustrup) it is very simple to reuse source code.
+
+For my midi purpose I only needed to pack the knowhow of midi file format
+parsing into a virtual base class. This class reads the midi file and
+validates it. For all information in the midi song the parser calls a
+function that usually does nothing in the base class but can be overwritten
+in derived classes so that the owner of the derived class can act on midi
+events like in event oriented programming method.
+
+I used the midiio classes in various utilities:
+
++ The program midi2txt shows how the midi events are fired by the midi parser.
++ The program midifmt shows how to get the header information of a midi file
+  using the midi parser.
++ The program midi2gm shows how midi files can be copied with
+  modifications.
+
+My wish to port the module and other utilities to Macintosh environment 
+failed because some Macintosh users told me that file handling is very 
+different to other machines.
+
+[2] FILES DESCRIPTION
+
+MIDIIO.CPP..........C++ implementation of midi parser and midi writer
+MIDIIO.HPP..........C++ class definitions of midi parser and midi writer
+MIDIIO.DOC..........some help to the C++ classes
+
+[3] COPYRIGHT
+
+MIDIIO (c) 1995 was created by Guenter Nagler.
+
+MIDIIO is free and may be used as you wish with this one exception:
+
+    You may NOT charge any fee or derive any profit for distribution
+    of MIDIIO.  Thus, you may NOT sell or bundle MIDIIO with any
+    product in a retail environment (shareware disk distribution, CD-ROM,
+    etc.) without permission of the author.
+
+You may give MIDIIO to your friends, upload it to a BBS, or ftp it to
+another internet site, as long as you don't charge anything for it.
+
+[4] DISCLAIMER
+
+MIDIIO was designed to handle 100% compatible midi files.
+It was tested with 600 different midi files but I can not say if 
+each 100% midi compatible midi file can be correctly converted.
+So I give no guarantees of the results, especially with non 100% 
+compatible midi files.
+If you find a midi file that you think to be 100% compatible midi
+that is not correctly parsed or copied, please send a sample file to
+gnagler@ihm.tu-graz.ac.at . 
+
+Use MIDIIO at your own risk.  Anything you do with MIDIIO is your
+responsibility, and not the author's.  Any damage caused to any person,
+computer, software, hardware, company, or business by running MIDIIO
+is your responsibility, and the author will not be liable.
+
+If you don't understand these terms, or are not sure of something, or
+are afraid something bad might come of using MIDIIO, don't  use  it!
+You are here forewarned.
+
+[5] Compile
+
+Use a C++ compiler to compile and link
+
+e.g.
+
+   g++ -o program program.cpp midiio.cpp otherfiles.cpp
+
+Force the compiler to compile C++ code!
+Some compilers use the file extension to decide compile mode.
+If you compiler compiles only .C files then rename the file extension.
+
+
+[6] USAGE
+midiio.hpp defines following classes:
+
+class MidiRead;
+class MidiWrite;
+class MidiCopy;
+class MidiSerial;
+
+Include the header file into your source:
+#include "midiio.hpp"
+
+CONSTRUCTION
+
+All of theses need a filename to construct an instance of this class.
+The class opens or creats a file with that filename.
+MidiRead and MidiCopy allow to use an already opened file handle, so that
+the filename is only stored but not used by the base classes.
+The constructors do not write or read data.
+
+Dynamic construction of a parser class:
+
+	MidiRead *read = new MidiRead(input_filename);
+
+Automatic construction of a writer class:
+
+	MidiWrite midiwrite(output_filename);
+
+Construction of a class using an open file:
+
+	FILE* inputf = fopen(input_filename, READ_BINARY);
+	if (!inputf)
+	  error...
+	MidiCopy midicopy(input_filename, inputf);
+
+Construction of a serial midi reader: 
+        MidiSerial* serial = new MidiSerial(input_filename);
+
+TEST IF CONSTRUCTION WAS SUCCESSFUL
+
+	MidiRead* midiread = new MidiRead(filename);
+	if (!midiread)
+	  not enough memory
+	else if (midiread->getf())
+	  file filename not found
+	else
+	  use midiread as parser
+
+DESTRUCTION
+
+If automatic construction was used then destructor is called automatically.
+if dynamic construction was used (new ...) then you must call delete operator
+
+  MidiRead* midiread = new MidiRead(filename);
+  ...
+  delete midiread;
+
+The destructor frees memory allocated by the class and finishs writing of
+midi files and closes the file if it was opened by the class constructor.
+
+
+PARSING MIDI FILES
+
+Following functions parse midi files or parts of midi files:
+  int run();	     // parses full midi file
+  int runhead();     // parses only header of midi file
+  int runtrack(int trackno);   // parses a single track 
+  int runevent(long trackend);	// parses a single midi event
+
+run() and runhead() automatically parse from the beginning of the file.
+run() automatically calls the other functions for parsing special parts
+of the file. In MidiRead and MidiCopy run() delivers events tracks by tracks.
+In MidiSerial it delivers events sorted by time.
+
+For direct use of runtrack() and runevent() the file must be positioned
+to a valid file position (use MidiRead::seek) that it will work properly.
+(E.g. you get the file positions by running in different passes, first
+  call run() and collect positions when reaching the position of track 
+  or certain event, and call runtrack() or runevent() when run()  is ready,
+  see mididrum.cpp for use of these special parsing technic).
+
+Following functions are called by the parser while working or 
+when errors are found:
+
+virtual void error(const char* msg); // found midi file format error, you should abort the procedure
+virtual void warning(const char* msg); // found harmless error or incompatibility
+virtual void percent(int perc);	 // percentage 0..100 of parsed midi file, could be confusing if not 
+				// sequentially parsing like run() does
+
+run() and runhead() call the function head() with header information:
+	virtual void head(unsigned version, unsigned tracks, unsigned unitperbeat);
+
+run() calls the function end() at end of midi file parsing
+
+run() runtrack() call the functions 
+
+virtual void track(int trackno, long length, int channel); // at beginning of a track
+virtual void endtrack(int trackno); // at end of a track
+
+A track is a part of a song played by a certain group of instruments.
+All tracks are playing together at same time.
+
+run() and runtrack() call the time() function between all midi events
+that delivers the pause between two midi events of this track.
+run() and runtrack() call runevent() to parse single events.
+
+runtrack() can be aborted by setting member variable skiptrack_ to 1.
+
+runevent() calls a function for each different midi event type.
+Some event types belong to a group and an option flag controls if 
+the group function or the specialized functions are called.
+
+The option OPTION_NOCONTROLS controls if the function control() is called
+rather than one of the functions:
+	highbank(), wheel(), breath(), foot(), portamentotime(), data(), 
+	volume(), balance(), expression(), lowbank(), hold(), reverb(), 
+	chorus(), datainc(), datadec()
+
+The option OPTION_NOEVENTS controls if the function rather calls only track() and endtrack()
+or the time() and all the midi event functions functions too.
+
+The option OPTION_NOMETAEVENTS controls if the function meta() is called
+rather than one of the functions
+	seqnumber(), smpteofs(), key(),	prefixchannel(), prefixport(),
+	text(),	end(), tact(), tempo()
+
+The option OPTION_NOSYSEVENTS  controls if the function sysex() is called
+rather than one of the functions 
+	gmreset(), gsreset(), gsexit()
+
+In case that the special coding is not known as standard event the 
+group function is called.
+
+The parser options can be assigned to the public member variable
+MidiRead::options_ . If more than one options are set then use the | operator
+to combine them (e.g. midiread->options_ = OPTION_NOSYSEVENTS | OPTION_METAEVENTS; ). By default all special functions are called rather than their
+group function.
+
+Group functions help to treat events of same type common, if it is not
+not necessary to distinguish them.
+
+See midi2txt implementation as a good example for the midi parser.
+
+See midifade implementation as example for calculating midi time to 
+real time.
+
+See mididmp implementation as example for sorting midi events by real time.
+
+WRITING MIDI FILES
+
+1. construct an instance of a midi writer
+	MidiWrite *midiwrite = new  MidiWrite(output_filename);
+	if (!midiwrite)
+	  error out of memory
+	if (!midiwrite.getf())
+	  error cannot create file 
+
+2. generate the midi header
+	midiwrite->head(VERSION_SINGLECHANNEL, 0, resolution);
+
+   You need to know with format you want to write:
+   VERSION_SINGLECHANNEL:  only one track that contains whole song (preferred format)
+   VERSION_MULTICHANNEL:   a tempo track and one or more tracks that 
+			   contain only events of certain midi channel
+			   (different tracks could use same channel)
+   VERSION_MULTISONG:	   each track contains a whole song (rarely used)
+
+   You need to know which note resolution (= units per quarternote) you use:
+   Usually values 96, 120, 384 are used.
+   The value should be computable by:    resolution = 3 * 2 * 2 * 2 * ... * 2
+
+   The number of tracks will be updated automatically, when the destructor of the 
+   class is called.
+
+3. generate track
+   midiwrite->track(); 
+
+   it depends on the chosen format (version) which events you should 
+   generate in this track:
+   
+   VERSION_SINGLECHANNEL:
+      first track (tempo track) should contain only events that have no
+      channel parameter,
+      for each other track you should select one channel (0-15) and use
+      events that have no channel parameter or events generated with this 
+      channel number. Only the first track should contain tempo or tact
+      events.
+
+   VERSION_MULTICHANNEL:    
+      Only one track is to generate and contains any events.
+
+   VERSION_MULTISONG:
+      Each track is a song (as in VERSION_MULTICHANNEL) and contains 
+      any events.
+
+4. generate pause to start of next event
+   midiwrite->time( pause_units );
+   
+   A quarternote has  midiwrite->unitsperquarter()  midi units.
+
+   The time will be written to the file when you generate an event or
+   close the track.
+   You can call it several and the function will add it to the current pause.
+
+   The function getcurtime() delivers the total midi time units since start
+   of the track inclusive already chosen pause to the following event.
+
+   You can reset current pause to 0 with call of function cleardelta().
+
+   You can set current pause to a certain value by following sequence:
+	midiwrite->cleardelta();
+	midiwrite->time(newpause);
+
+5. generate event
+   use one of many event functions:
+
+   Some functions are usable for a whole group of events:
+
+void event(int what, int len, unsigned char* data); // write any event
+void meta(int what, int len, unsigned char* data); // write meta events
+void sysex(int syslen, unsigned char* sysdata); // write sysex events
+void text(int what, int len, unsigned char* txt); // write text meta events
+     // use defines meta_ in header for what parameter
+void control(int channel, int what, int val);   // write control event
+
+The special events are similiar to the events in the midi parser.
+
+6. closing the track
+  You can enter pauses and events as many as you want into a track.
+  When you are ready you should close the track:
+
+  midiwrite->endtrack();
+
+  This will call MidiWrite::end() automatically to append an end of track
+  event to the track once and updates the length of the track.
+
+7. closing the midi file
+  Repeat writing tracks until enough tracks are written.
+  The midifile is finished when the destructor of the class is called.
+
+  Therefor you use
+      delete midiwrite
+  or wait until the program leaves the block { ... } wherein the
+  instance was automatically constructed.
+
+  The destructor updates the length of the file, updates the number of
+  tracks and flushes cached data to the file.
+
+  if  the file was opened by the class itself the file handle is
+  closed automatically, otherwise you need to close it after the
+  class was destructed.
+
+  Now the midi file is ready.
+  Use midi2txt to test if the resulting file is valid and contains
+  the correct information.
+
+  See midi0to1 and midi1to0 how midi files are read and stored in an other format.
+
+MODIFIYING MIDI FILES
+  The class MidiCopy reads a midifile and writes it in same format
+  to another file. While copying the channels can be mapped.
+
+  By derivation of class MidiCopy minor changes to the
+  file are possible.
+
+1. derivation of class MidiCopy
+
+class MidiChange : public MidiCopy
+{
+public:
+  MidiChange(char* name);
+
+  virtual void track(int trackno, long length, int channel);
+  // specify all virtual functions that change
+};
+
+void MidiChange::track(int trackno, long length, int channel)
+{
+    MidiChange::track();
+
+    // e.g. add some events at beginning of track
+    char* copyright = "(c) G. Nagler";
+    MidiChange::text(meta_copyright, strlen(copyright), "copyright", copyright);
+}
+
+2. construct a parser object from own type
+
+  MidiChange midi(input_filename);
+  if (!midi.getf())
+    error cannot open ...
+
+3. construct a midi writer object
+  MidiWrite* write = new MidiWrite(output_filename);
+  if (!write)
+    error not enough memory
+  if (!write->getf())
+    error cannot create midi file
+
+4. connect midi parser and midi writer
+  midi.setoutput(write);
+
+5. set channel mapping option if wanted
+  for (int c = 0; c < 16; c++)
+    midi.mapchannel(c, map[c]);
+6. set channel ignore option if wanted
+  midi.ignorechannel(9);
+
+7. set parser options if wanted
+  midi.options_ = OPTION_NOEVENTS;
+
+8. start midi parser
+  if (!midi.run())
+    fprintf(stderr, "%s: midi read error at %04lX\n", input_filename, midi.getpos());
+
+9. close output midi file by destructing object
+  delete write;
+
+You can add events, ignore events, replace events using this technic:
+e.g. change volume, change speed, change programs, transpose notes, ...
+
+See midi2gm example that adds and ignores events to make midi files more
+general midi compatible.
+
+Use getcurunit() to ask current in midi units.
+Use getcurmillisec() to ask current time since start of track.
+Hints:
+  Use this time information only in first track and
+  do not specify option OPTION_NOREALTIMEEVENTS or OPTION_NOMETAEVENTS
+  because these options ignore tempo changes and tempo changes are
+  only available in first track.
+
+[7] SUGGESTIONS / COMMENTS / BUG REPORTS / QUESTIONS
+
+	     WWW:    http://fiicmhm02.tu-graz.ac.at/Cpub
+  		contains all my dos/unix midi programs
+	     EMAIL:  gnagler@ihm.tu-graz.ac.at
+
+[8] CHANGES
+v1.0 to v1.1:
+  * some portability changes for UNIX compatibility
+
+v1.1 to v1.2
+  * midiio engine writes less compressed but safer files (more compatibility
+    to weak midi readers)
+
+v1.2 to v1.3
+  * added option -version
+  * added class MidiCopy for modifying midi files
+
+v1.3 to v1.4
+  * better sysex support (unusual and elder variants)
+  * all functions are of MidiRead are now public, that reading midi files
+    can be done without functions runhead() runevent(), runtrack(), run()
+
+v1.4 to v1.5
+  * File I/O in separate base class MidiBuffer
+  * MidiBuffer allows preloading loading of file into memory
+  * MidiBuffer allows work on memory midi data (in DOS realtime mode 
+    limited to 32 KB!, in protected mode or 32bit environments not limited)
+  * MidiRead: current time position available by function getcurmillisec()
+  * MidiRead: current beat number available by function getcurbeat()
+
+v1.5 to v1.6:
+  * added class MidiSerial that reads a midi file and delivers events 
+    sorted by time (also see sample program midinote.zip)
+
+v1.6 to v1.7:
+  * added skiptrack_ member to abort function runtrack if wanted
+  * removed exit(1) if track is incomplete, trying to skip the track with
+    skiptrack_
+
+v1.7 to v1.8:
+  * sysex length information evaluated and skipped before calling 
+    (now reader does not need to know about sysex midi format)
+
+v1.8 to v1.9:
+  * smpte event: hour devided into two parameters:  mode, hour. modes are
+    listed in midio.hpp
+  * reading and writing of long events (sysex, meta, event)
+
+v1.9 to v1.10:
+  * make automatically compilable for Win32 compilers (defined _WIN32)
+  * modified MidiBuffer to use with MidiWrite class, new need functions
+  * some larger events (meta, event, text, sysex) use "unsigned int" instead of 
+    "signed int" in function parameters for length
+
+v1.10 to v1.11:
+  * bug fix: memory variable not freed in MidiSerial (lost only 88 bytes, but
+     when doing it very often the program might get out of memory, e.g. mididir)
+   

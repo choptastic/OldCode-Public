@@ -1,0 +1,52 @@
+#include<conio.h>
+#include<iostream.h>
+#include<graph.h>
+
+
+
+void main()
+{
+
+	initgraph();
+	/*
+	pset(100,100,15);
+	getch();
+	endgraph();
+	*/
+	//_ES=0xa000;
+	//SREGS v;
+
+	//v.es=0xa000;
+	char far *addr;
+	*addr=0xA0000000L;
+	addr[100+100*320]=14;
+
+
+	getch();
+	endgraph();
+	/*
+	unsigned char swell;
+	int X=100;
+	int Y=100;
+	char color=15;
+	clrscr();
+	asm{
+		mov DI, 0xA000
+		mov ES, DI
+		mov AX, Y
+		mov BX, Y
+		shl AX, 8
+		shl BX, 6
+		add AX, BX
+		add AX, X
+		mov DI, AX
+		mov AL, color
+		mov AL, ES:[DI]
+		mov swell, AL
+
+
+	}
+	cout << int(swell);
+	getch();
+	*/
+}

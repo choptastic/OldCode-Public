@@ -1,0 +1,136 @@
+Cool beans.... read on.
+
+
+***My Lil' Sweatshop***
+
+This is a new toy by mattel featuring a bunch of 8 year olds making shoes for Nike.  hehe.
+
+Actually, it's a reference to the fact that I had all Jeff's friends make our Peanut Butter and Jelly sandwiches.  I had 4 and a half loaves for them to convert into the edible happiness that is PB&J.  We were all happy, and it was a good thing.
+
+
+***Quake 1 Tournament***
+
+After much hype and even some practicing, we finally had our first Gumm LAN Party Tourney, and it was quite a success.  When it started, we had 13 people (excluding me) in the five-map FFA.  By the end of the FFA we only had 8 people playing anyway (also excluding me).  Which means the FFA was pretty pointless.  But after that, the one on one battles were pretty extreme.  Some of the high points, were underdog Adam making it to the semifinals, and Jeff actually losing on match to Mike V.  Both were pretty exciting.  Aaron Beckett (aka Fries) won the whole thing against Jeff for the last match, in Claustrophobopolis (dm2) which was chosen by Jeff (as he was in the loser's bracket).  Aaron won his digital camera (and for those of you that didn't hear, it was a Dimera 3500 or something.  Max resolution of 640x480, and a 2 MB flash chip (though not compacflash or smart media or anything, it was some proprietary shit that'super expensive.  But it's still a digital camera.  I Actually bought it on eBay like a year ago for $40 and hated it so much that I was planning on selling it on ebay as the "Shittiest camera ever".  But instead I decided to use it as a tourney prize.
+
+
+***General***
+
+The LAN was definatly a success.  We had a considerable number of people in attendance, and we all played a wide variety of games.  One of the coolest things was Zumo getting a copy of Unreal Tournamet 2003 on IRC or something.  So that was a lot of fun, but still nto as much fun as Quake 3.  The Asians played alot of Warcraft III, and I would have liked getting into at least 1 game.  All i remember of that was seeing a lot of shamans with bloodlust.
+
+We of course played about 2.5 hours of Quake 1 for the tourney, which was fun, but we also played some Quake 3 for a while.  It's amazing how much draw that games has.  Fleming was pressuring us to play it all night, as he had his laptop loaded with a linux dedicated server.  Sweet deal.
+
+After the Quake 3, we unleashed some Ghost Recon playing some very skillfull games of all Grenades, All Rocket Launchers, then All Claymore Mines.  Certainly a joy.  It was so funny when I threw a grenade, abnd Jeff layed down on top of it.  that was priceless.
+
+Much to my surprise, there was no Jedi Knight or Soldier of Fortune 2.  Oh well.
+
+The food was good, as there was a much more diverse selection from which to choose.  In addition to Pizza, we had PB&J made by my lil' sweatshop.  We had Chips and salsa starring "Jesse's Homemade Happiness."  hehe.  Also instead of Pink Lemonade as usual, I went out an bought like 17 3-liter bottles of Generic Soda, and Unger brought 3 cubes of Dew.  Next LAN I wanna get some Blackbear.  yum.
+
+Overall it was a very good time, and I hope erveryone enjoyed themselves.  Remember the next one is far off, but it's approaching fast.  Maybe this time, I'll make a map, and actually finish it for the big one.
+
+
+***Statistics***
+
+Number of Fast Computers: 24  
+Collective CPU Speed: 31.29 GHz 
+Total RAM: 11648 MB 
+Total Hard Disk Space: 1377 GB 
+Average CPU Speed: 1,303.75 GHz 
+Average RAM: 485.33 MB 
+Average Hard Disk Space: 57.38 GB 
+
+Not bad.  We have less computers that LAN 9, but almost all the totals increased.
+
+
+***Awards***
+
+First attendee : Billy and Josh.  Josh was here at noon, but left at 5:30 for an hour and a half or so.  Bil.ly was here at 2 and stayed straight.
+
+Last to Leave : Adam, who left at 9.  Not that he had a choice though, as Beth was his ride.
+
+Greatest Old-schooler : Aaron, for smokin us all up in Quake 1.
+
+l337 h4x0r : Zumo for acquiring a copy of Unreal Tournment 2003.
+
+You can Dew it : Unger, for bringing 72 cans of Mt Dew.
+
+Crazy Nuts : Jeff for being awake 48 hours then sleeping for 20.
+
+Coolest Setup : Billy, with his fast CPU, bad-ass video card, and sweet windowed toer with neon lights inside.
+
+Fastest CPU : Billy with his AMD XP 1900+
+
+Fastest Video Card : Josh with his GF4 Ti4400.  Runner up is Joe with his Ti4200 overclocked to 4400 speed.
+
+Most RAM : Bill with 1.5 GB SDRAM in one system
+
+Most Hard Disk Space : Josh with 200 Gigs.
+
+Most Overclocked : Bill with his 800 Oced to 990.
+
+Been to Every LAN : Bill, Jackie, and Evan (remember War3 didn't count)
+
+
+***New Website***
+
+Within the next month sometime, I will finish the MASSIVE overhaul of the website.  This is not just a simple upgrade, with additional functions and better layout.  This is a COMPLETE REBUILD.  From Scratch.  All new table structure (powered by SQL Server 2000), and utilizing what's called the "three tiered" system.  In this system, the website, and the Database are never in direct contact with each other.  Instead there is a middle tier that does all the business logic and database requests of the website.  In addition to being easier to code, it's also much faster as the middle tier is compiled into a DLL, so it's machine code, rather than a website being compiled every time it's run.  Good stuff.
+
+There'll be a new color scheme, and I just finished ther logo today.  I've been working on the new website for a week or so, and I have to get the Forum working next.  I intend on there being many sections including a T-Shirt section,
+
+
+***The End of the Snowstorm***
+
+Vivendi publishing is in a 19billion dollar debt.  Vivendo publishing owns Blizzard Entertainment and Sierra.  To try to recover from the debt, Vivendi is selling off it's games division.  That means that Blizzard and Sierra are up for grabs.  This isn't a big deal, except fro the top 3 contenders to possible buy the companies.  Sega, Sony, and the infamous Microsoft are all top contenders.  It seems that no matter that happens, the Blizzard games will probably end up getting gay by being put on some shitty consoles.  If M$ buys it, of course it'll be on XBox in a heartbeat.  If Sony PS2, if Sega, who knows, but console-city.
+
+Everyone played War2 on playstation or whatever, and it was shitty.  Everyone played Starcraft on N64 (I think) and it was shitty.  RTS's were not designed for consoles, and I don't want Blizzard to hurt the genre it currently is the master of, by focusing the gameply too much on console-ability.  If that happens, I'm done with blizzard.  I've been a dedicated fan since Blackthorne (in 1993 or whatever), all the way through War3 (except for Diablo 2, which I sadly have never played).
+
+We can only pray that God likes Real Time Strategy and won't let the tyranny of Console based companies to get thier grubby paws on Blizzard.
+
+
+***Almost Public***
+
+Since the recent registrations of people I've never met, and live in other parts of the country, and with pressuring from Nghi asnd Zumo, I will be trying diligently to get a Public LAN Party organized.  My first choice is for Classic Lanes in Oak Creek...(my parents had the reception for their marriage there 25 years ago).  Why not keep up the tradition.  Additionally, I think that cuz Classic isn't the ultra-classiest place(it IS a bowling alley), I can probably afford it.  Addtionally, maybe I can work something out with bowling (if you get tired of playing games, you can always go bowl a round or two).
+
+If not Classic, then I can try East Middle School, since Siglar (the principal) is pretty cool and likes me.  Maybe I can get him to let us use the cafeteria.  That'd be sweet.
+
+I've been hitting many LAN Party websites recently to see what they do for Public LANs and many of them get sponsors.  I saw a few with Sponsors like nVidia... that would be bad ass.  I'd like to see if Blackbear Soda is willing to exchange a bunch of soda for a Link on the website.
+
+Just looking for a Black Bear website, I find that they do not.  I wonder if they are willing to pay me to get them on the web.  That would be sweet wouldn't it.  I've love it.
+
+
+***Government Waste***
+
+I'm steaming right now.  Although this is for a reason about which most of you won't care, but I'm still pissed off for a reason that applies to me and all of you.
+
+Several Points (and i'll add them up when I'm done)
+
+1. I Host a LAN Party Every few months.  Every LAN Party, someone has a dream machine...This time it was Billy, and it's different every time.  Soemtimes it's cuz someone has the most bad-ass video card available, or a sweet processor, or a ton of memory.  But none of them can ever afford to have the best of everything.
+
+2. Now when you are at work (assuming you work on a computer) what do you do?  Generally typing, internet, and email.  Unless you are a designer using CAD or something like that.
+
+3. MPS is a pile of shit.  Everyone knows that the Milwaukee Public School System sucks big fat black ass.  It's just fact.  One, it's all ghetto, and I've gone on and on a few times about some of the stories from Jackie's sister that was a teacher at Keefe Ave School for a while.  I've been to many of the MPS Schools and they are all dumps.
+
+Now let's add this all up.  Many of us throw a fit when Marcus wastes it's money on stupid shit like Lounge signs and various stuff.  But Marcus's money is just that-Marcus's money.  Not our money, not my money, his money.  And he can waste all he wants for all I care.  My problem arises here.  An official at MPS (I won't name who for whatever reason) has decided that he wants a "top of the line" computer.  Now this guy does pretty much what everyone else does at work - he types, he hits the web, he checks email, and he runs basic administrative software.  He doesn't play unreal 2003 at 1600x1200 resolution at full everything.  But his top of the line computer contains the following hardware: Pentium 4 2.8 GHZ (a $600 processor), GeForce4 Ti4600(a $350 video card), 1GB Rambus RAM ($400 worth).  And on the quote it says they want 5 of these, for a total price of $13,230.  Hmmm....  This is absolute bullshit.   If marcus did it, I wouldn't care.  But this is PUBLIC MONEY.  These people that will be using this ULTIMATE POWER HOUSE COMPUTERS are not Gamers, they do not need the video card or the massive processor, yet they are spending $13G on 5 computers when they could spend $10G on 10 computers (and even those computers would be high end), and give them to some of the piece of shit schools that probably need them.  Instead they are WASTING MY GOD DAMN TAX DOLLARS ON COMPUTER THAT EVEN US (THE HARDCOREST OF THE HARDCORE) can't afford.  BULLSHIT!!! Instead I had to pay five-hundred some dollars to the IRS and The State (which pretty much funds the dollars).  Better yet.   Give me that money as a grant to start a business, because $13 is plenty of money for venture capital, not for 5 fucking computers!
+
+
+***No Smoking in West Bend***
+
+The west bend common counsil is voting(or voted) to outlaw smoking in restaurants altogether.  On the face, this is a good idea.  Smoking is stupid and harms others with 2nd degree smoke.  I personally don't like being around people who are smoking, but I can live with it.
+ 
+But of you think a little deeper into it, this is the government putting unneccesary regulations on businesses.  If you don't want to breathe in smoke in a restaurant, don't go to that restaurant.  Simple as that.  The government is in no position to make a regulation like that.  That's like saying it's illegal to smoke in your house.  A business is no different.  You still own the property, and you should be allowed to make your own rules on your property.  Just a small rant.
+
+
+***Conclusion***
+
+This was certainly a fun LAN Party, and I'm already looking forward for another.
+
+If i can get the Public LAN Earlier, I Will.  I'm looking at a Weekend in November (only 3 months away).
+
+We'll see what happens, but as it stand right now:
+
+LAN Party 11 : Saturday, Jan 4 @ 5PM.
+
+Don't worry about RSVPing, right yet, wait until the website is finished.
+
+"Conservatives generally do what works.  Liberals generally do what makes them feel good." -Mark Belling
+
+-Gumm

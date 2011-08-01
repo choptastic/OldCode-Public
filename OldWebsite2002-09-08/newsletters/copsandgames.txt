@@ -1,0 +1,171 @@
+Hi,
+
+***Games***
+
+Everyone likes Quake 3 for the most part.  That is obvious from the overwhelming dominance at almost ALL LAN Parties.  Many of you know and love at least of the following games: Commander Keen, Wolfenstein 3D, Doom 1 & 2, Quake 1-3, & Return to Castle Wolfenstein.  Every one of t hose games was revolutionary in some form or another:
+
+Commander Keen-The first Scrolling game to incorporate a vetry smooth scrolling algorithm, as opposed to previously shoppy scrolling schemes.
+
+Wolfenstein 3D - Defined the 3D Shooter, almost single handedly as a genre in Computer Gaming.
+
+Doom - Changed the future of games by introducing for the first time, the Deathmatch over LAN.  In addition to that, it also incorporated more axes that just the X and Y, but b rought in the Z axis in 3D games, giving rooms a variable height, allowing for complex geomotry.  That combined with the Dynamic lighting, makes Doom the Gamespy Best PC Game of all time.  Many people agree with that.
+
+Quake - First 3D Shooter to completely remove all sprites from a game and making everything 3D rendered.  This game is practically the reason we also have readily available 3D Accellerators, as this was the first game ot utilize OpenGL for 3D accelleration, causing a boom in 3D Accellerators, also sealing the Voodoo card forever in the PC Gaming Hall of Fame. 
+
+Quake 2 - Incorporated Colored lighting with 3d Accelleration.
+
+Quake 3 - Still the highest standard in 3D Games.  Most games are done in Direct3D, where Direct3D8 was practically built around the GeForce3 Video Card, yet the OpenGL Code for Quake3 is still the most solid, cheater free, engine yet.  Also uses Curved Surfaces.
+
+Well, the master programmer of those games, John Carmack, is to my knowledge approaching completion of the newest addition to the list of revolutionary 3D Graphics Engines.  Doom 3 is on the way.  Gamespot says it should be done in 2002, which would be outstanding for the LAN Party in January.  This engine provides a final unification of lighting in a 3D Engine.  Relying on the power of newer video cards, there will no longer be a distinction between Dynamic Lights and Static Lights, No more differentation between ddynamic objects(characters and weapons) and static objects (Walls and floors).  This means that every object can cast aa shadow on any other object and lights can move where ever they want, flash if they want, flicker, get brighter, dimmer, whatever.  The Doom 3 Engine (yet to be named) will be the new standard in 3D Games and I'm officially announcing a LAN Party the Saturday after Doom 3 is released.   I'll be keeping everyone posted on that status.  So be pumped for the next addition to the list of 3D Engines put out by the god of 3D, John Carmack, founder and lead programmer of id software.
+
+Check out some stuff at: http://www.doom3.at
+
+
+In more game related news, PC Gamer has announced its games of the year,  Here are a few that I feel apply to us:
+
+Best Mod of the Year: Day of Defeat (I'm sure Slaw Approves)
+
+Best Multiplayer game: Return to Castle Wolfenstein (a great choice even though I've never played it)
+
+Game of the Year: Ghost Recon (I am extatic over this.  Ghost Recon is an outstanding game)
+
+
+Solder of Fortune 2 will be coming out later this month hopefully.  I was under the impression that it was only going to be single player, but in a recent preview I've read, it will definatly have multiplayer, so that should be a fun game to play at Lan 3².  That will be fun.  For those of you that don't knwo the general attraction to SoF, the game is one of the most gruesome games available.  Exit wounds, destorying other parts of the body, if you shoot someone in the chest with a shotgun, their chest like blows upen and if you shoot someone in the head, they're head gets blows up.  quality stuff.
+
+
+
+***GuLP Messenger***
+
+Get the newest version (0.3 Beta) available for download at http://www.gummlanparty.net/messanger.asp
+
+Here are currently all the features supported with a brief description:
+
+Messaging - Send an instant message to someone else online.
+
+IP Address Query - Get the IP Address of someone connected.
+
+User Info - Currently this only returns the Full Name, but will incorporate other various notes in a future version.
+
+Auto Update - If your version is not the most recent version, this will prompt you if you would like to download and install the newest version.  If you choose Yes it will download install and run the newest version automatically.
+
+New Posts of the Messageboard - This will inform anyone who is currently online if there is a new post to the messageboard.
+
+Status Indicator - This will tell you if the person with whom you are chatting, has typed anything recently.
+
+Time Synchronization - This will synchronize your system time with that of my Server, which is Synced with the Atomic clock.  You can diable this feature if you like.
+
+LAN Party Countdown - This informs whoever is connected of the time to the next LAN Party down to the second.
+
+Bug Reporting - There is an interface to report any bugs or suggestions.
+
+Version Info - This just tells you the version of the Server Software and the Client software.
+
+So Download it and install it, and join the fun.
+
+NOTE: IF YOU'VE ALREADY INSTALLED IT, YOU MAY NEED TO UNINSTALL IT BEFORE INSTALLING THIS VERSION.
+
+
+
+***Goddamn Fucking Speeding Tickets***
+A Rant by Jesse Gumm
+
+
+Guess what happened to me today?!?
+
+No Guess!?!?
+
+Its easy, guess!!?!?
+
+Yup, I got YET ANOTHER SPEEDING TICKET!!
+
+AND YES! I AM FUCKING PISSED!!
+
+Why, you ask?  Well let's look at this particular situation.  I was going 50 in a 35 (down college).  Most of you know me as an avid speeder and I have the patience of a bacterium, however, this time it was not the case.  I was just cruising down college, off to the post office to ship some stuff I sold on ebay, and I notice a cop, I look at my spedometer and sure enough I was doing like 52.  I wasn't even rushing, it just seemed like a natural speed on that road (Two ways in both directions devided by a median of grass).  I tapped my breaks to bring me down to just under 50, but it was already too late as I could see that he was already creeping out of his camping spot.  Just as I passed him, the flashing red and blue began and I pulled over as I have done many a time in the past.  I was hoping that maybe I could talk this cop down as it seems I've gotten pretty good at that.
+
+I turned off my car, set the keys on the dash, had my license rready, and didn't have the radio going.  I was following all the standard protocol for respect.
+
+the cop came to my door and informed me I had been going 50 and college is a 35 zone.  He didn't even ask for an explanation like most cops.  I said I'm sorry and that I just wasn't really paying attention to the speed.  He took my license and was gone for a while.  Then the thoughts started racing . . . Did my payment for the last ticket go though.  I never had any confirmation that it was payed (I payed electronically over the phone the day before it was due).  If that hadn't gone through, I was about to face a night or so in jail.  Then I started worrying, let me tell ya.
+
+I heard a door close and I saw the little pink slip I've gotten so used to seeing in his hand.  A Sigh of relief in knowing I wasn't going to jail, but annoyance at the cop giving me a ticket, rather than letting me off for my good record (I do actually have a good record since the last ticket that has actually done any damage to me was in 1999).
+
+He said he was giving me a citation for going 15 over the limit cuz 50 is "way to fast" for this road.
+
+Immediate thought:  WAY TO FUCKING FAST FOR A TWO LANE IN BOTH DIRECTION ROAD DIVIDED BY A MEDIAN!!  WHAT THE FUCK!?!?
+
+I Said I was sorry again and that I'm just going to my brother's birthday party (which I was, but it wasn't really a party, just a little mini-celebration), trying to at least get a little bit of his soft side.  
+"Don't apologize to me, apologize to the guy you could have hit going 50!," Said the fuckin pig!  Truthfully, had thier been no repercussions, I would have chewed my way clear through his fucking neck, taking the head home as a prize.
+
+
+Many of you have heard my incessant rants about speeding tickets.  Here's a slightly revised version.
+Milwaukee is a shitty city.  We all agree with that.  70% of the Sherrifs are professional ticket givers.  Many Milwaukee and suburban cops do nothing but give out speeding tickets.  This of course generates a hug amount of revenue for the city and state.  So if they took those cops off "speeding ticket duty," milwaukee would hafta raise taxes to make up for the lost revenue, right?
+
+WRONG!
+
+Milwaukee is one of the most segregated cities in the country (2nd, I believe, to Detroit).  Everyone that lives here wants to leave.  What percentage of people you know opted to go to a school not in Milwaukee?  Most of them, eh?  Thought so. Why is that?  That's because Milwaukee sucks.  Why does Milwaukee suck?  Because it's all ghetto and no one wants to start a business in the ghetto, which leads to a lack of anything to do except for get drunk on water street.
+
+What is the incentive for people to come here? None.  What is the Incentive for people to leave? Something to do!
+
+So let's say they take the useless cops off "Parking Ticket" and "Speeding Ticket" Duty and put them on 6th and north.  The Ghetto will clean uppretty quickly, and maybe over time, the insane amount of racism present will slowly diminish.  At first, yes this will hurt the milwaukee economy.  But over time this will raise the standard of living in Milwaukee, encouraging businesses to come here, providing jobs.  More jobs means more people, more people means more taxes the government will collect.
+
+All of a sudden, Milwaukee is a decent place to live, rather than this racist, segregated, useless cop ridden pile of steaming shit!
+
+IN SHORT, GET THE FUCKING COPS OUT OF THE "GOOD" AREAS AND DUMP THEM IN THE GHETTO!!!
+
+
+Some of you don't know my ticket record from beginning to end so here's a short chronology:
+
+March 1999, got my first speeding ticket 51 in a 35.  Just payed it cuz I didn't think I'd be getting any more.
+
+Summer 1999, got pulled over for doing 51 in a 35 again, this tiem i got off.
+
+Late Summer 1999, got pulled over for my headlights being off.  My fogs were on though.
+
+Oct 1999, 79 in a 55, bastard sherrif.  Got dropped from 6 points to 3 points.
+
+Nov 1999, 46 in a 30, nicer guy, but kept repeating the phrase "Zero Tolerance Policy."  Was 5 minutes from going to trial until I managed to get the DA to drop the points in exchange for a higher fine.  This is the one for which I went an made all those famous diagrams.
+
+Dec 1999, Car accident.  Inmattentive driving ticket.  Also went a few minutes before going to trial.  After much pleading, the DA dropped the points for a MUCH Higher fine (from $75 to #205)  For these last two tickets I NEEDED to get he points dropped or I'd have lost my license.
+
+Dec 1999, Nutcracker Story.  The Second cop to deal with us was the same dick cop that gave me my  79 in a 55 ticket.  He was more of a dick this time, though he didn't recognize me, and he accused me of drinking.
+
+Summer 2000, got pulled over for leaving the south Shore parking lot after hours.  I weas dropping off jackie after playing tirvial persuit at Weiss's.  
+
+Fall 2000, My radar detector is stolen.
+
+Fall 2000, Got pulled over for doing 51 in a 35 AGAIN.  Talked the cop out of it.
+
+Fall 2000. Got pulled over for doing 41 in a 25.  Talked the cop out of it, again.  These last two are a sign that redar detectors work, since I got nailed twice in two weeks after my detector was genked.
+
+Late 2000, got pulled over for "running a stop sign."  Every sign on that corner was a Yield except for the Stop that I had.  I was also turning.  Talked my way out of it.
+
+Early 2001, got pulled over on 76th street at 2am for "Prowling."  My first experience with the infamous Greendale cops with whom Bresnehan has had so many encounters.  I weas looking for a place to start a business that never happened.
+
+Early 2001, Got a ticket for being in Grant Park after hours.  This was right after out trip to haunchyville.  Creepy stuff.
+
+Early 2001, was questioned by two cops for being in the South Shore parking lot after hours.  I showed them my nametag and everything, I was even wearing the tux and they still tookm y information like I didn't belong.  This was a record week for me having encountered something like 10 cops in a 1 week span. (the past three including this one are all in one week).
+
+Fall 2001, Got pulled over by a COMPLETELY undercover cop for 79 in a 50.  No marks on the car, not even a spotlight on the side.  The cop wasn't even wearing a uniform, he busted out his badge from his wallet.  Got the points dropped completly.
+
+March 2002, Pulled over for 50 in a 35.  I go to court on May 7.
+
+I think that's all of it.  I may be missing one or two, but I'm tired and it's time for bed.
+
+
+
+***Conclusion***
+
+Alrighty.  The messageboard was pretty hopping for a while and the page hits were pretty good for a week or so.  I'd like to see that continue, and see the GuLP Messenger become more widly used.
+
+We have some maps in the making.  Unger has made his first map for Quake 3.  It's a decent DM map, designed for quite a few people.  We can demo it at LAN, and I can make it available for download whenever he authorizes,  In addion to that once we have a few maps, I can make a server that plays only our custom maps.
+
+Hopefully, the Southridge map will be done by LAN 3², which it should.
+
+I will be activating the Southshore map page just to see what I had done.
+
+LAN 3²: Saturday, June 8th @ 5PM
+
+"Du hast mich!"
+
+-Gumm
+
+http://www.gummlanparty.net

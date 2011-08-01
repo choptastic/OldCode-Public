@@ -1,0 +1,5 @@
+The Games section is up.  Soon I'll have an option to add whatever games you want to the list.  It'll be instantaniously updated using ASP.
+
+I've been having problems with Win2K Server.  For some reason or another, IIS has been automatically shutting itself down.  If anyone has any ideas, send me some mail.
+
+Links will be made next.

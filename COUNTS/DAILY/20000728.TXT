@@ -1,0 +1,40 @@
+Marcus Counts -- End of the Day
+For the date of :7/28/2000
+Counts were done at: 12:37
+
+Item            Stock Cab Case1 Case2 Case3 Case4 Total
+|-------------------------------------------------------|
+|swell        | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|doobeedoo    | --  | --  | --  | --  | --  | --  | --  |
+|-------------------------------------------------------|
+
+Marcus Counts v1.0 by Whoa! Productions

@@ -1,0 +1,109 @@
+Five Newsletters in Five days.  Damn, nigga!!
+
+***Comin up***
+
+According to the GuLP Messenger: LAN PArty 3² is in 16 days, 4 hours, 11 minutes, and 54 seconds.  That means only that it's getting down to the wire, and preparations will begin.  I need to make an updated Utilities CD, and I also need to make roughly 15 copies of each Jedi Knight and Soldier of Fortune 2.
+
+Another great thing about SoF2 and Jedi Knight 2 is that tey have followed the lead of id Software (the greatest and most powerful 3D Caming force in the World)...they have eliminated CD-Keys.  You knwo what that means, Pirating like hell!!  Although I do support you buying your own version of the game and supporting the developers, since as a developer, I realize how gay it is if you make something sweet and score no money on it.
+
+Good to see several more people have RSVPed.  I'm looking forward to seeing more RSVP as the time approaches.  Please.
+
+***Proud Father***
+
+I am now the proud owner of Soldier of Fortune II:Double Helix.  The long awaited sequal to the goriest game I never played.  I have yet to play it, as I just got back from Best Buy now, but I assure you, tonight will be a late one, as I'll be playing lotsa SoF2 until late.  And beginning the copying process of SoF2 and Jedi Knight 2.
+
+For those of you that haven't played the Multiplayer test, go get it, or better yet, go buy the game.  It's been out since Monday, but as of this second, the only Best Buy that has any copies is the Mayfair one.  First I called the Greenfield one, and asked if they had it.  They said no, but they should have it soon..."Our Brookfield location is the only one that has it right now."  So I went to the Brookfield one.
+
+Clerk: "Nope, we don't have it, I checked this morning at 10, first thing when I got in."
+Me: "Oh, cuz the greenfield location said you were the only best buy that has it."
+Clerk: "What?!?! Well, I'll check in case we got some in.....nope, we have it on order, wee should have it later today, but as of right now the only place that has it is the Mayfair location"
+
+So I went to Mayfair.  And they didn't have it on the shelves.  The Guy I asked was the department manager, too and he was like "Well I don't think we have that,  we haven't had a shipment for a few days, but I'll go check in back, just in case."
+
+So I waited for like 5 minutes and he came back with pure happiness in his hand.  He handed it to me, and the angels sung on high, and the dogs and the cats liveth together, and there was mass hysteria.
+
+So I will not be getting much sleep tonight...haha
+
+
+***Reservoir Dogs***
+
+This happened a few weeks ago, but I forgot to tell everyone...
+
+Jackie and I were walking around Oak Creek at midnight cuz there's nothing else to do, since Walmart is closed and Denny's is gross.  We were near Carrollton Elementary, when we saw and heard a bunch of dogs, big dogs, barking and stuff, in front of someone's house.  We thought nothing of it..."I'm sure they're tied up"...
+
+They weren't tied up.
+
+So all of a sudden we find ourselves in a position to be ripped to shreads by these relativly big dogs (not rotweilers or anything, but big enough).  Both Jackie and my first reactions were to run, so we ran.  
+
+Jackie got to a fence and thought to herself, "I can jump it.  No I can't.  Yes I can....where is Jesse?"  She turned around, to see me facing the dogs in what I guess you would call a "battle pose."  hehe.
+
+After 10 feet or so, I had decided to turn around and face the threat...I don't know why...I'm pretty sure they could have taken me, but for some reason I seemed to think I could take them.  All 4 of them.  Maybe, I really did think I could take them...maybe I was subconsiously sacrificing myself for Jackie...Maybe I thought I could "scare" them or something...I don't know why I did it, but I did.
+
+When the dogs finally reached me, they were jumping and snarling, but NOT biting.  I hadn't taken any swings or anything (I was waiting for one to make a move first...I didn't wanna piss them off more than I needed to) when the owner called the dogs back to the house.
+
+Needless to say, Jackie and I were very shaken up.  We continued on our walk, thinking it was nothing, just someone that assumed no one would be walking around at midnight...as presumably safe assumption.
+
+I recently talked to Erik Kopperud, who informed me that that is not the first time those dogs have "Attacked" people.  Several kids have been attacked, many people just going for walks.  He told me that the city is trying to get the owners to constrict the animals somehow, either lease or fense, and the owners refuse...
+
+I hope someone gets hurt by one of those dogs and they sue the shit out of that white trash family.  Sue them for thier house, thier car, thier zubas.  Sue them for thier dogs and kill them right in front of the former owners!  HA!
+
+That's it for me ranting.  I'm really not pissed off, just to hopefully make someone laugh or cringe in disgust.  I've actually been very relaxed, and not gotten pissed off over anything in the past few days.
+
+But I wonder...how cool would that have been had I taken 4 dogs?!?  That would have been sweet.!!
+
+
+***120 Gigabytes of happiness***
+
+Today, because of my Busted Hard Drive, and because I fear IBM will take waaay to damn long to send me a new one, I have ordered a 120GB 7200spin IBM Deskstar.  It cost me $160 total.  I would have splurged on the 160GB, but I wanted 7200 spin and they don't make 7200 spin Hard Drives in 160 GB (at least Pricewatch doesn't have any).
+
+So now I have a whole ton of space to work with, and most likely, after LAN Party, that is all going into the Server, and My computer will get the 40 GB that's currently in there.  This gives me lotsa rom for Warez.
+
+Anything anyone wants to upload will be a free for all...but this is all after LAN 3².
+
+
+***Wide Open***
+
+I am wide open to hackers.  I will hafta secure myself a little better.
+
+Here's a printout of a Port Scan Courtesy of Brutha d33t:
+
+21/tcp open ftp 
+25/tcp open smtp 
+80/tcp open http 
+119/tcp open nntp 
+135/tcp open loc-srv 
+137/tcp filtered netbios-ns 
+138/tcp filtered netbios-dgm 
+139/tcp filtered netbios-ssn 
+389/tcp open ldap 
+443/tcp open https 
+563/tcp open snews 
+1002/tcp open unknown 
+1025/tcp open listen 
+1026/tcp open nterm 
+3006/tcp open deslogind 
+
+Look how even 389 is open.  That is the windows Sharing port or something.  I think.
+
+
+***Conclusion***
+
+Alrighty, I'm surprised I had as much to write about as I did.  I was only expecting to tell you about SoF2, but it ballooned into so much more.  So much more depth and thought, I know it's difficult to confuse my writing with that of Hawthorne.  MY writing has such soulful meaning, that most of you probably want to cry, just thinking of how lucky you are to know such a talented writer.
+
+hehe.
+
+ALrighty:  LAN 3²: Saturday June 8th, @ 5PM
+
+Be there or be cube....or maybe even dodecahedron.
+
+I've also added more directions to my house and improved the interface for it:
+http://www.gummlanparty.net/drivingdirections.asp
+
+Thanx y'all
+
+Q: Whaddya call a nun that has a sex change?
+A: A Transister.  Oh Yeah!
+
+http://www.gummlanparty.net
+
+-Gumm

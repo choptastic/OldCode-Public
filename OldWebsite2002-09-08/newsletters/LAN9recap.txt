@@ -1,0 +1,131 @@
+Yup, I called it LAN 9,.. Ya know why… because 3² is gay. That's why. I honestly don't know why I called it that in the first place, but I did for some sick reason or another. 
+1. Powers of 3 have nothing to do with computers, it would have been more relevant to do 2^3 than the other way around, since 2^3=8. 
+2. It's longer to say "3 squared" than to say 9, so no one would refer to it as "3 squared" verbally or in writing. 
+3. No one knows off the top of their head that the ascii code for " ² " is 253. 
+
+
+***LAN 9 Recap***
+
+Well LAN 9 was certainly very successful, and in my opinion, the seconed best LAN yet.  We were very organized, so organizxed in fact that even I got to play games, which doesn't happen much at the LAN Parties.  I could really get used to this.
+
+
+***Surprise No-Shows***
+
+I was very surprised to find out that several historical shoe-ins were not in attendance at our most recent LAN.  Nick and Castro, of course, who before this LAN, had not missed a single one were both out.  They had very legitimate reasons (Nick was sick, and Castro had worked a double on Saturday, and had to open on Sunday).  Additionally, Beth and Adam (Jackie's cousins) had Beth's graduation to attend.  I was surprised, however, to see that Bee hadn't come.  It was also rather surprising to see that Derrick hadn't shown.  Dunno...he RSVPed.  One last surprise was the lack of Mark Heiderich, whom I was very strongly expecting ot see singing Meatloaf.
+
+
+***Overview: Setup***
+
+So what all happened during setup.  Nothing particularly special, except for Jef spilling soda into his monitor the night before the LAN Party.
+
+I started setup Thursday morning at 4AM....yup 4 in the morning.  I actually was working on the website until 8 AM, then I started setup.  Bill joined me in the afternoon, with setting up tables, and picking up stuff, and other various setup related things.  We got all the stuff from is house...a ridiculous amount of stuff, considering Bill has acquired quite a few more systems since his recent ascension to the Marcus IT dept (even though his nametag says "Operations" which would put him up there with Gramz and stuff).  Plus Bill was working on his water-cooling, which he finally got working after testing it with a dead processor.  I proceeded to set up the Tetrinet room (which was completely unused, during the LAN Party).  We cleaned the main room and rearranged the furniture for the Console Area, a layout which I feel worked very well, and will stick to that for future LAN Parties.
+
+Friday, the setup continued.  Bill, Unger, and I had begun running the cables and setting up switches, and of course, making fun of Jeff because he's a big dork. At around 8 or 9ish, i believe, Unger and Bill left, and Fleming came by only a few minutes later.  We didn't do much for LAN Setup, but rather just talked shop and made fun of Jeff some more.
+
+My brother's friends brought over most of thier computer on Friday as well, and they slept over.
+
+
+***Overview: The Big Day***
+
+Saturday started around 11:30AM, when I woke up, rearranged and cleaned my room, and set up the projector, which was also unused at the LAN Party.  I also began getting the actual network up an running.
+
+The first person here, excluding Ian and Bobby, was Mark (aka Farsight), who made his appearance at 1PM.  He stuck around for a while, then left, to return at 6ish.  I was flyign around getting things done, and I never got around to making a Utilities CD.
+
+At around 4, all hell broke loose.  Everyone started funneling in at a ridiculous rate.  For a while, it seemed that it wasn't going to stop and that we wouldn't have enought stuff for everyone.  But around 5, the rush ended.  Also since so many people came in so quickly, it seemed as though we were ill-prepared for it, despite the longest setup yet.  But everything worked itself out by 6.
+
+We played lots of great games at this most recent LAN, partially due to the fact that plenty of great games were released since the last LAN.  Particularly Jedki Knight 2 and Soldier of Fortune 2.
+
+We played lots of JK2, which the younguns and the asians seemed to prefer, and we played an outstanding game of Sof2 (it some like 8 on 8 so it was pretty fun).  Additionally, Quake 3 had it's strong points as tradition dictates.  And the younguns decided to play some bloody Counter-Strike.  One of the more exciting games was the Ghost Recon game, however, I would prefer if we didn't play with respawns...Playing with respawns removes some of the tension from the game.
+
+We also had on REALLY crazy game of Q3 in the smaller map, and teams like 8 on 8, it was hectic to put it mildly.  If you didn't have a good gun in the first 5 seconds after a respawn, you were done.
+
+We ate lots of pizza, and drank lots of Pink Lemonade, and KAren and Rick Beckett were nice enough to bring us some taco bell.  And of course Slaw was nice enough to eat 23 tacos which brings me to the next topic.
+
+
+***"Slaw Our Victor"***
+
+Slaw and Sean had their Taco eating Rematch, and Slaw once again smoked up Sean.  The final count was Sean with 12 and Slaw with 23.  Slaw actually wanted to go for 25, but his body was beginning to reject the feces-ridden, half-meat Taco Bell meat.
+
+
+***Statistics***
+
+Number of Fast Computers: 26  
+Collective CPU Speed: 30.15 GHz 
+Total RAM: 11648 MB 
+Total Hard Disk Space: 1414 GB 
+Average CPU Speed: 1,159.62 MHz 
+Average RAM: 448.00 MB 
+Average Hard Disk Space: 54.38 GB 
+
+
+***Awards***
+
+Fastest CPU: I'm giving myself this award for having my XP1800+ overclocked effectivly to 2000+
+
+Most RAM: Bill and his 1.5GB of SDRAM PC133, too bad it's not DDR, maybe next time.
+
+Best Video Card: This is a tie between Slaw and Nghi.  Slaw for his GeForce3 Ti500, and Nghi for his Radeon 8500 128MB, disqualified is Unger, despite him having the best card any of us have ever seen, the GeForce4 Ti4600...You hafta own the card to win.
+
+Most Hard Drive Space: This goes to Josh Klamecki for having a 120GB and an 80GB Drive in the same computer.
+
+First Attendee: THis is a technical tie between Mark Piotrowski, and Nghi and Zumo.  Mark was here at 1ish, but left and came back.  The Asians were here just before 4, if memory serves me right (Iron Chef Reference), and they stayed throughout.  Ian and Bobby were disqualiofied for sleeping over the night before.
+
+Last to Leave: This goes to Ian and BObby for staying awake playing games until late morning, however they were sleeping over and don't have jobs or a car or anything.  Runner up is Slaw for leaving at 7AM
+
+Longest in attendance: I'll hafta give this to Ian and Bobby for starting on Friday and not leaving until 7ish Sunday night.  Runner up would be slaw for Starting at 4ish and leaving around 7AM.
+
+Most Overclocked: This goes to Bill for his water-cooled system overclocking his 800MHz Pentium 3 to 1050MHz, and it's stable.
+
+Most Bad-Ass Computer: This is a tie between Slaw and Bill.  Slaw for his Super fast system, and Bill for Water cooling his (ya hafta admin that's pretty bad ass)
+
+Girl: Jackie and Amy - We had very few girls this time...you brave souls, you.
+
+Been to Every LAN: Jackie, Bill, and Evan - Pretty self explanitory.
+
+Troubleshooting: This goes to Mickey for not having his Computer online all night.  Runner up is Josh for messin with his hard drive most of hte night.
+
+
+
+***New Award for the later LANs***
+
+I am going to want every attendee to install 3D Mark 2001 on thier comptuers as soon as they arrive, and run 3 benchmarks.  The Highest successful bench for each person's computers will count.  This will be used to determine "Highest Performance Computer"  So Everyone begin tweaking your systems and getting some cooler fans to apply.  The onyl rule is that you must OWN everything in your computer.  You cannot buy a GF4 only to return it after the LAN, that doesn't count.
+
+
+***Sean up late***
+
+Sean Kurtz was awake after midnight... that's right y'all.  He was.  I saw it.  Sadly, we didn't get a timestamped picture of it, but many witnesses will recall a walking talking tree at the LAN Party well after midnight, looking up Movie Statistics on the web.  Maybe we should call unsolved mysteries.
+
+
+***Puke Video***
+
+Those of you that stayed late got to see the absolute happiness that is the PAt Gaynor Drinking Puke video.  I can assure you I was happy as a clam.  It was beautiful in it's disgustingness, watching him retch, and heave, but never spewing and not eve taking a chaser.  And Carlos puking was precious.
+
+
+***War3 LAN***
+
+So as a reminder, Warcraft 3 will be released Wednesday July 3rd, so everyone make sure to go out and buy it.  Additionally, as I poromised the day I started the website, we'll be having a LAN Party the saturday Directlry after the release of Warcraft 3, which happens to be Saturday, July 6th, 2002.
+
+So once again: War3 LAN : Saturday July 6th, 2002.
+
+Officially: This is a smaller LAN with a much more specific purpose, so it will NOT count against those who will be unable to make it (in terms of the Benn to Every LAN award)
+
+Remember to RSVP for it on the website, we've alraedy had quite a few RSVPed.
+
+
+***Conclusion***
+
+I finished this up really fast, and I apologize for the lateness in sending this.  I just couldn't fill it with enough info and I was procrastinating.  I hope everyone had a lot of fun, and I lo0ok forward to seeing everyone at LAN War3.
+
+Also Remember that there will be a survey on the website determining the date of LAN A, but it will be held on either Friday August 23rd, Saturday the 24th.
+
+Alrightythen.... I'm out.
+
+"I don't...feel drunk..."
+-Lenny from Memento
+
+
+Wang Chung baby,
+
+-Gumm
+
+http://www.gummlanparty.net

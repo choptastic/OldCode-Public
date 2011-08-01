@@ -1,0 +1,67 @@
+Well, the hour is approaching.  As I write this, there are exactly 39 hours before LAN 8 kicks off.  I'd be programming now, working on the GuLP Messenger, but I'm tired and will be going to bed soon.
+
+Really the point of this is just to let everyone know the status of gaming at the LAN.
+
+1.  We will be setting up the network ahead of time for easy installation.  Just "Plug and Play".
+
+2.  Everyone knows I need to save my money, that I tend to buy a little more than I earn, but not too bad.  At least I was smart enough to cancel my credit cards when I did.  So the point is I went to Sams today and bought another CD-R, for rapid production of CDs.  So today, my brother and I commensed copying everything we could get our hands on.  Here's the current list of CDs we have:
+
+Red Alert 2 & Yuri's revenge -> 9 copies
+Starcraft & Broodwar -> 4 copies each
+Ghost Recon -> 13 copies
+Diablo (yes the original) -> 2 copies (I thought I had more of them)
+Quake 3 Arena -> 7 (making more)
+Red Faction -> 7 disc 1's, 11 disc 2's (disc 2 is required to play)
+Half Life -> 8 copies
+Aliens vs Predator 2 -> 9 copies (more comin)
+
+That's just what I have done so far, I intend on make more Quake 3 and AvP2 CDs (as stated) as well as the Gumm LAN Party Utilities CD, which will contain at least the following:
+-Cracks to several games
+-Serials 2000
+-GuLP Messenger 0.22
+-TetriNET
+-Warcraft 1
+-Possibly some MODs for games
+-The forever unfinished and legenday South Shore map for Red Faction
+-Few videos and sound clips, as well as important game patches (like the Q3A point releases).
+
+So that's what we're looking at so far.
+
+
+The GuLP Messenger will be recieving a few upgrades (however probably not by LAN Party as I'd like).  I'd like to see all of these features implemented at least by March 31:
+Auto Update - will notify you if there is an updated version availaible
+Web messaging - will allow a registered member to send you a message via the web
+Offline messaging storage - will allow a message to be sent when the user comes online
+Offline list - will list all current members who have logged on to the GuLP messenger in the last month (or whatever)
+Transparency Slider - will control the opacity of the windows up to a certain point.
+Docking - Allow the window to dock on the side of the screen, like ICQ
+Messageboard Viewing - Will allow you to read messages through the GuLP interface rather than the web interface.
+Chat Room - Pretty self explanitory
+Encryption - I'd like to do RSA, but I'll probably just do some shitty self-thought up, easy to break encryption.
+File Transfer - Send files to friends.
+
+
+Food wise, we have a 5 gallon bucket of Pickels, 40 or so Pizzas, and to my knowledge, a ton of Juice.  And a pizza oven for the basement.
+
+
+For those of you interested, my server got slammed at 10:39am Monday by the Nimda virus only days ago.  I've just finished recovering, but just in case, I plan on having a few copies of Norton 2002 floating around.
+
+Alrightythen, Preparation for LAN 8 is fully underway, and it won't really stop except for sleep, until the party is over.
+
+Get pumped, everyone will want to watch Slaw play my Brother in DoD, as well as play some Ghost Recon with Nghi as he shoots off 100 rouns a second to get our attention.  And we will be playing in a scaled down version of South Shore . . . Some info on that:
+
+I had lost the original data files used for the Red Faction map, and my almost done version (11 theatres), but I was able to find the version that my brother and I played that has 6 theatres (it's more stable anyway).  As I've said before, Red Faction is an incredible idea, and implemented well on the PS2, but as a PC game, it severly lacks power and moddability.  The game doesn't even support true dynamic lighting, which makes the Doom engine in some respects more powerful.
+
+But it'll still be fun to Bust up South Shore with Rocket Launchers and Remote Mines.
+
+Alrightythen, I'm out to sleep jus to wake up and prepare!
+
+LAN Party 8: Saturday March 9th @ 5PM
+
+and
+
+LAN Party 3 Squared: Saturday June 8th @ 5 PM
+
+-Gumm
+
+http://www.gummlanparty.net

@@ -1,0 +1,7 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\GummLANParty.net]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\GummLANParty.net\Client]
+"IPAddress"="gummlanparty.net"
+

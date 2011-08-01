@@ -1,0 +1,64 @@
+Here's some great news for us Blizzard fans out there:
+
+***Warcraft 3 Battle.net Emulator***
+
+I think it was the same minute that Nghi told me about a Battle.net Emulator, that I started looking for it.  I was evan at work while doing it, but Warcraft 3 takes priority over everything.
+
+After looking for a few minutes (I did hafta do some work...at work...ya know), I found the Linux Source code, for (although I didn't know it at the time) an earlier version of it.  Well that's doesn't work for War3 since that version was still trying to get Starcraft working.
+
+During my search, I did find some fun information.  The Emulator is called BnetD, and Blizzard is filing massive lawsuits against it and anything else hosting it publicly, but you know what happens when you piss off computer geeks, they release source code and make mirrors everywhere.  Yet, blizzard has done a pretty good job of containing it, since I had lotsa of trouble finding anything that would work.
+
+This morning, at roughly 5:30am, I commenced my search.  This time my search wasn't in vain.  I found a working win32 version of the emulator, though it was too old for War3.  I found the files needed to make War3 run on a server, which I didn't have yet.  Finally, I had found the holy grail: a working win32 Server that supports Warcraft 3.
+
+Extatic, I installed it on my server and gave it a test run.
+
+It works.
+
+yup.
+
+I HAVE AS WARCRAFT 3 SERVER THAT DOES NOT REQUIRE CD-KEY VALIDATION AND I HAVE A CD-KEY TO USE FOR INSTALLATION (not Nghi's Legitimate CD-Key).
+
+I'll be releasing the information on how to download and play Warcraft 3 soon, however, right now I don't want everyone downloading 600 MB from me all the time, cua my games will get laggy.  I'll probably be more prone to sending out physical CD-Copies of the game with the cracks on it.
+
+In addition to my server, which would more than likely just be for games between us, there are also LOTSA online servers running BnetD, which means that anyone can play anytime.  I'll be including a program that searches for Servers.
+
+Drawbacks:
+
+This only supports Beta 1.13, which anyone who has the beta would know, that they are up to version 1.2 I believe.  The changes are noticable, but not terribly significant (minor changes to the tech tree and stuff).
+
+When I ran an Auto-search for a game, war3 crashed.  I had to make a custom game to make it work.
+
+The GummLANParty.net Battle.net Server is up and running as we speak.
+
+
+***Additional Players per CD-Key***
+
+I Read the following on WarcraftIII.net( http://www.WarcraftIII.net ):
+
+---Start Quote---
+Additional players - For the Warcraft III Beta we will now allow up to 5 people to play on Battle.net per CD key simultaneously. 
+
+Following are some important points you should know about the CD key upgrade.
+
+1. You can now include your friends by having them install from your CD using your key. The CD does not need to be in the CD-ROM drive after installation, but each person needs to install using a different installation name.
+
+2. Beware that if you choose to let others use your CD-Key you should ensure that they do not distribute the key to anyone else. Doing so could mean that the next time you try to log on, all 5 available slots will be filled. If all 5 slots are filled, you will not be able to play on Battle.net. Please note that we will not be able to create additional slots, so please display caution when distributing your CD key.
+---End Quote---
+
+It seems that Blizzard is trying to bring it's fans back to Battle.net since most players play on the hacked servers.  Think about this:  Blizzard gave out 5000 copies of War3Beta, and only 500 are ever on.  I bet that's frustrating.
+
+So Here's the summarized information:
+
+Warcraft 3 is practically open to anyone that can run it, but we hafta run an older version of it, oh well, they'll make a hack eventually.
+
+Watch the website for information.
+
+LAN 3² Scheduled: Saturday June 8th @ 5PM
+The following are the revised dates for which I'll be having a voting feature:
+June 1
+June 8
+June 15
+
+Think about which day you would prefer, the voter will be done by Monday (I'll send out a newsletter informing everyone of this)
+
+-Gumm

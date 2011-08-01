@@ -1,0 +1,622 @@
+#include <h:\include\include.h>
+
+//tank and weapon variables
+int missle1x;
+int missle1y;
+int missle2x;
+int missle2y;
+int missle1dir;
+int missle2dir;
+int missle1exist;
+int missle2exist;
+int tank1x,tank1y;
+int tank2x,tank2y;
+int tank1dir,tank2dir;
+int tank1move,tank2move;
+//speed stuff
+const int missle1speed=3;
+const int missle2speed=3;
+
+const int explodesize=3;
+
+//map constants
+const int size=8;             //Change this to changessize of map
+const int thick=30;            //thischangesthe density of the wall
+const int speed=55;            //this changes the framerate, higher is slower
+//const int tanksize=5;
+
+//drawing elements
+const int mwall=0;
+const int empty=1;
+const int missle=2;
+const int tank=3;
+const int explosion=4;
+const int shot=5;
+
+// Wall Array
+int wall[640/size][480/size];
+
+//directions for tank facing
+const int n=1;
+const int e=2;
+const int s=3;
+const int w=4;
+
+const int null=3;
+const int false=0;
+const int true=1;
+
+
+void titlescreen()
+{
+	clrscr();
+	cout << "Chops's Crappy yet cool Combat Game" << endl;
+	cout << "Sorry, it's only 2 player for now" << endl;
+	cout << "Press P during play for Options" << endl;
+	cout << "Tank 1 Commands:" <<endl;
+	cout << "W=move up, S=move down, A=move left, D=move right, E=Stop, X=shoot" << endl;
+	cout << "Tank 2 Commands:" << endl;
+	cout << "8=move up, 5=move down, 4=move left, 6=move right, 7=Stop, 2=shoot" << endl;
+	cout << "Press any Key to Begin Batle";
+	getch();
+}
+
+void clear()
+{
+	missle1x=0;
+	missle1y=0;
+	missle2x=0;
+	missle2y=0;
+	tank1x=1;
+	tank1y=1;
+	tank2x=640/size;
+	tank2y=480/size;
+	missle1exist=false;
+	missle2exist=false;
+	tank2move=false;
+	tank1move=false;
+	tank1dir=s;
+	tank2dir=n;
+	return;
+}
+
+void makesound(int thing)
+{
+	int loop;
+	if(thing==shot) sound(1000);
+	else if(thing==explosion)
+	{
+		for(loop=1;loop<100;loop++)
+		{
+			sound(random(300)+200-(loop*3));
+			delay(10);
+		}
+	}
+	delay(20);
+	nosound();
+}
+
+void drawthing(int x, int y, int thing)
+{
+	if(thing==mwall) setfillstyle(1,1);
+	else if(thing==empty) setfillstyle(1,0);
+	else if(thing==missle) setfillstyle(1,8);
+	else if(thing==explosion) setfillstyle(1,14);
+	bar(1+(x-1)*size,1+(y-1)*size,1+(x*size),1+(y*size));
+	return;
+}
+
+
+
+void drawtank(int player, int x, int y, int direction)
+{
+	if(player==1) setfillstyle(1,5);
+	else if(player==2) setfillstyle(1,6);
+	else if(player==0) setfillstyle(1,0);
+	drawthing(x,y,tank);
+	drawthing(x,y+1,tank);
+	drawthing(x,y-1,tank);
+	drawthing(x-1,y,tank);
+	drawthing(x-1,y+1,tank);
+	drawthing(x-1,y-1,tank);
+	drawthing(x+1,y,tank);
+	drawthing(x+1,y+1,tank);
+	drawthing(x+1,y-1,tank);
+	if(direction==n) drawthing(x,y-2,tank);
+	else if(direction==e) drawthing(x+2,y,tank);
+	else if(direction==s) drawthing(x,y+2,tank);
+	else if(direction==w) drawthing(x-2,y,tank);
+	return;
+}
+
+void explode(int x, int y)
+{
+	int loopx,loopy;
+	for(loopx=x-explodesize;loopx<=x+explodesize;loopx++)
+	{
+		for(loopy=y-explodesize;loopy<=y+explodesize;loopy++)
+		{
+			wall[loopx][loopy]=0;
+			drawthing(loopx,loopy,explosion);
+		}
+	}
+	makesound(explosion);
+	for(loopx=x-explodesize;loopx<=x+explodesize;loopx++)
+	{
+		for(loopy=y-explodesize;loopy<=y+explodesize;loopy++)
+		{
+			wall[loopx][loopy]=0;
+			drawthing(loopx,loopy,empty);
+		}
+	}
+}
+
+
+
+void misslecheck()
+{
+
+	// player 1 missle
+	if(wall[missle1x][missle1y]==1) missle1exist=false;
+	if(missle1dir==n)
+	{
+		if(wall[missle1x][missle1y-1]==1) missle1exist=false;
+	}
+	else if(missle1dir==s)
+	{
+		if(wall[missle1x][missle1y+1]==1) missle1exist=false;
+	}
+	else if(missle1dir==e)
+	{
+		if(wall[missle1x+1][missle1y]==1) missle1exist=false;
+	}
+	else if(missle1dir==w)
+	{
+		if(wall[missle1x+1][missle1y]==1) missle1exist=false;
+	}
+	if(missle1x>640/size) missle1exist=false;
+	if(missle1y>480/size) missle1exist=false;
+	if(missle1x<1) missle1exist=false;
+	if(missle1y<1) missle1exist=false;
+
+
+	// P1 hit P2 test
+	if(	(missle1x==tank2x && missle1y+1==tank2y) ||
+		(missle1x==tank2x && missle1y-1==tank2y) ||
+		(missle1x==tank2x && missle1y==tank2y) ||
+		(missle1x+1==tank2x && missle1y+1==tank2y) ||
+		(missle1x+1==tank2x && missle1y-1==tank2y) ||
+		(missle1x+1==tank2x && missle1y==tank2y) ||
+		(missle1x-1==tank2x && missle1y+1==tank2y) ||
+		(missle1x-1==tank2x && missle1y-1==tank2y) ||
+		(missle1x-1==tank2x && missle1y==tank2y))
+	{
+		explode(tank2x,tank2y);
+		drawtank(0,tank2x,tank2y,tank2dir);
+		tank2x=640/size;
+		tank2y=480/size;
+		missle1exist=false;
+
+	}
+
+
+	//player 2 missle
+	if(wall[missle2x][missle2y]==1) missle2exist=false;
+	if(missle2dir==n)
+	{
+		if(wall[missle2x][missle2y-1]==1) missle2exist=false;
+	}
+	else if(missle2dir==s)
+	{
+		if(wall[missle2x][missle2y+1]==1) missle2exist=false;
+	}
+	else if(missle2dir==e)
+	{
+		if(wall[missle2x+1][missle2y]==1) missle2exist=false;
+	}
+	else if(missle2dir==w)
+	{
+		if(wall[missle2x+1][missle2y]==1) missle2exist=false;
+	}
+
+	if(missle2x>640/size)
+	{
+		missle2exist=false;
+	}
+
+	if(missle2y>480/size) missle2exist=false;
+	if(missle2x<1) missle2exist=false;
+	if(missle2y<1) missle2exist=false;
+
+	if(	(missle2x==tank1x && missle2y+1==tank1y) ||
+		(missle2x==tank1x && missle2y-1==tank1y) ||
+		(missle2x==tank1x && missle2y==tank1y) ||
+		(missle2x+1==tank1x && missle2y+1==tank1y) ||
+		(missle2x+1==tank1x && missle2y-1==tank1y) ||
+		(missle2x+1==tank1x && missle2y==tank1y) ||
+		(missle2x-1==tank1x && missle2y+1==tank1y) ||
+		(missle2x-1==tank1x && missle2y-1==tank1y) ||
+		(missle2x-1==tank1x && missle2y==tank1y))
+	{
+		explode(tank1x,tank1y);
+		drawtank(0,tank1x,tank1y,tank1dir);
+		tank1x=1;
+		tank1y=1;
+		missle2exist=false;
+
+	}
+
+}
+
+
+
+
+
+void wallcheck()
+{
+
+	if(tank1dir==n)
+	{
+		if(wall[tank1x][tank1y-3]==1) tank1move=false;
+		else if(wall[tank1x-1][tank1y-2]==1) tank1move=false;
+		else if(wall[tank1x+1][tank1y-2]==1) tank1move=false;
+	}
+	else if(tank1dir==s)
+	{
+		if(wall[tank1x][tank1y+3]==1) tank1move=false;
+		else if(wall[tank1x-1][tank1y+2]==1) tank1move=false;
+		else if(wall[tank1x+1][tank1y+2]==1) tank1move=false;
+	}
+	else if(tank1dir==e)
+	{
+		if(wall[tank1x+3][tank1y]==1) tank1move=false;
+		else if(wall[tank1x+2][tank1y+1]==1) tank1move=false;
+		else if(wall[tank1x+2][tank1y-1]==1) tank1move=false;
+	}
+	else if(tank1dir==w)
+	{
+		if(wall[tank1x-3][tank1y]==1) tank1move=false;
+		else if(wall[tank1x-2][tank1y+1]==1) tank1move=false;
+		else if(wall[tank1x-2][tank1y-1]==1) tank1move=false;
+	}
+
+	if(tank2dir==n)
+	{
+		if(wall[tank2x][tank2y-3]==1) tank2move=false;
+		else if(wall[tank2x-1][tank2y-2]==1) tank2move=false;
+		else if(wall[tank2x+1][tank2y-2]==1) tank2move=false;
+	}
+	else if(tank2dir==s)
+	{
+		if(wall[tank2x][tank2y+3]==1) tank2move=false;
+		else if(wall[tank2x-1][tank2y+2]==1) tank2move=false;
+		else if(wall[tank2x+1][tank2y+2]==1) tank2move=false;
+	}
+	else if(tank2dir==e)
+	{
+		if(wall[tank2x+3][tank2y]==1) tank2move=false;
+		else if(wall[tank2x+2][tank2y+1]==1) tank2move=false;
+		else if(wall[tank2x+2][tank2y-1]==1) tank2move=false;
+	}
+	else if(tank2dir==w)
+	{
+		if(wall[tank2x-3][tank2y]==1) tank2move=false;
+		else if(wall[tank2x-2][tank2y+1]==1) tank2move=false;
+		else if(wall[tank2x-2][tank2y-1]==1) tank2move=false;
+	}
+	return;
+
+	/*if(	(tank1x==tank2x && tank1y+1==tank2y) ||
+		(tank1x==tank2x && tank1y-1==tank2y) ||
+		(tank1x==tank2x && tank1y==tank2y) ||
+		(tank1x-1==tank2x && tank1y+1==tank2y) ||
+		(tank1x-1==tank2x && tank1y-1==tank2y) ||
+		(tank1x-1==tank2x && tank1y==tank2y) ||
+		(tank1x+1==tank2x && tank1y+1==tank2y) ||
+		(tank1x+1==tank2x && tank1y-1==tank2y) ||
+		(tank1x+1==tank2x && tank1y==tank2y) )
+	{
+		tank2move=false;
+		tank1move=false;
+	}*/
+}
+
+
+void makemap()
+{
+	int loopx,loopy;
+	for(loopx=1;loopx<(640/size);loopx++)
+	{
+		for(loopy=1;loopy<(480/size);loopy++)
+		{
+			wall[loopx][loopy]=random(thick);
+			if(wall[loopx][loopy]==1) drawthing(loopx,loopy,mwall);
+			else drawthing(loopx,loopy,empty);
+
+		}
+
+
+	}
+	return;
+}
+
+
+void main()
+{
+nosound();
+randomize();
+char choice,choice2;
+int oldtank1dir,oldtank2dir;
+titlescreen();
+setup();
+clear();
+makemap();
+
+do{
+do{
+
+	delay(speed);
+
+	if(missle1exist==true)
+	{
+		drawthing(missle1x,missle1y,empty);
+		if(missle1dir==n) missle1y-=2;
+		else if(missle1dir==s) missle1y+=2;
+		else if(missle1dir==e) missle1x+=2;
+		else if(missle1dir==w) missle1x-=2;
+		misslecheck();
+		if(missle1exist==true) drawthing(missle1x,missle1y,missle);
+
+	}
+	if(missle2exist==true)
+	{
+		drawthing(missle2x,missle2y,empty);
+		if(missle2dir==n) missle2y-=2;
+		else if(missle2dir==s) missle2y+=2;
+		else if(missle2dir==e) missle2x+=2;
+		else if(missle2dir==w) missle2x-=2;
+		misslecheck();
+		if(missle2exist==true) drawthing(missle2x,missle2y,missle);
+	}
+
+
+	wallcheck();
+
+
+	//Drawing Tank 1
+
+	drawtank(0,tank1x,tank1y,oldtank1dir);
+	if(tank1move==true)
+	{
+
+		if(tank1dir==n) tank1y=tank1y--;
+		else if(tank1dir==s) tank1y++;
+		else if(tank1dir==e) tank1x++;
+		else if(tank1dir==w) tank1x--;
+	}
+	if(tank1x<1)
+	{
+		if(	wall[size/640][tank1y]!=1 &&
+			wall[size/640-1][tank1y]!=1 &&
+			wall[size/640][tank1y+1]!=1 &&
+			wall[size/640][tank1y-1]!=1) tank1x=640/size;
+	}
+	else if(tank1y<1)
+	{
+		if(	wall[tank1x][size/480]!=1 &&
+			wall[tank1x][size/480-1]!=1 &&
+			wall[tank1x-1][size/480]!=1 &&
+			wall[tank1x+1][size/480]!=1) tank1y=480/size;
+	}
+	else if(tank1x>640/size)
+	{
+		if(	wall[1][tank1y]!=1 &&
+			wall[2][tank1y]!=1 &&
+			wall[1][tank1y-1]!=1 &&
+			wall[1][tank1y+1]!=1) tank1x=1;
+	}
+	else if(tank1y>480/size)
+	{
+		if(	wall[tank1x][1]!=1 &&
+			wall[tank1x][2]!=1 &&
+			wall[tank1x-1][1]!=1 &&
+			wall[tank1x+1][1]!=1) tank1y=1;
+	}
+	drawtank(1,tank1x,tank1y,tank1dir);
+
+	//Drawing Tank 2
+	drawtank(0,tank2x,tank2y, oldtank2dir);
+	if(tank2move==true)
+	{
+		if(tank2dir==n) tank2y--;
+		else if(tank2dir==s) tank2y++;
+		else if(tank2dir==e) tank2x++;
+		else if(tank2dir==w) tank2x--;
+	}
+	if(tank2x<1)
+	{
+		if(	wall[size/640][tank2y]!=1 &&
+			wall[size/640-1][tank2y]!=1 &&
+			wall[size/640][tank2y+1]!=1 &&
+			wall[size/640][tank2y-1]!=1) tank2x=640/size;
+	}
+	else if(tank2y<1)
+	{
+		if(	wall[tank2x][size/480]!=1 &&
+			wall[tank2x][size/480-1]!=1 &&
+			wall[tank2x-1][size/480]!=1 &&
+			wall[tank2x+1][size/480]!=1) tank2y=480/size;
+	}
+	else if(tank2x>640/size)
+	{
+		if(	wall[1][tank2y]!=1 &&
+			wall[2][tank2y]!=1 &&
+			wall[1][tank2y-1]!=1 &&
+			wall[1][tank2y+1]!=1) tank2x=1;
+	}
+	else if(tank2y>480/size)
+	{
+		if(	wall[tank2x][1]!=1 &&
+			wall[tank2x][2]!=1 &&
+			wall[tank2x-1][1]!=1 &&
+			wall[tank2x+1][1]!=1) tank2y=1;
+	}
+	drawtank(2,tank2x,tank2y,tank2dir);
+
+	oldtank1dir=tank1dir;
+	oldtank2dir=tank2dir;
+}
+while(bioskey(1)==0);
+choice=getch();
+choice=toupper(choice);
+
+
+
+switch(choice)
+{
+	case('8'):
+	{
+		if(wall[tank2x][tank2y-2]!=1)
+		{
+			tank2dir=n;
+			tank2move=true;
+		}
+		else tank2move=false;
+		break;
+	}
+	case('5'):
+	{
+		if(wall[tank2x][tank2y+2]!=1)
+		{
+		tank2dir=s;
+		tank2move=true;
+		}
+		else tank2move=false;
+		break;
+	}
+	case('4'):
+	{
+	if(wall[tank2x-2][tank2y]!=1)
+		{
+		tank2dir=w;
+		tank2move=true;
+		}
+		else tank2move=false;
+		break;
+	}
+	case('6'):
+	{
+		if(wall[tank2x+2][tank2y]!=1)
+		{
+		tank2dir=e;
+		tank2move=true;
+		}
+		else tank2move=false;
+		break;
+	}
+	case('W'):
+	{
+		if(wall[tank1x][tank1y-2]!=1)
+		{
+			tank1dir=n;
+			tank1move=true;
+		}
+		else tank1move=false;
+		break;
+	}
+	case('S'):
+	{
+		if(wall[tank1x][tank1y+2]!=1)
+		{
+		tank1dir=s;
+		tank1move=true;
+		}
+		else tank1move=false;
+		break;
+	}
+	case('A'):
+	{
+		if(wall[tank1x-2][tank1y]!=1)
+		{
+		tank1dir=w;
+		tank1move=true;
+		}
+		else tank1move=false;
+		break;
+	}
+	case('D'):
+	{
+		if(wall[tank1x+2][tank1y]!=1)
+		{
+		tank1dir=e;
+		tank1move=true;
+		}
+		else tank1move=false;
+		break;
+	}
+	case('2'):
+	{
+		if(missle2exist==true) drawthing(missle2x,missle2y,empty);
+		else
+		{
+		makesound(shot);
+		missle2exist=true;
+		missle2dir=tank2dir;
+		missle2x=tank2x;
+		missle2y=tank2y;
+		}
+		break;
+	}
+	case('X'):
+	{
+		if(missle1exist==true) drawthing(missle1x,missle1y,empty);
+		else
+		{
+		makesound(shot);
+		missle1exist=true;
+		missle1dir=tank1dir;
+		missle1x=tank1x;
+		missle1y=tank1y;
+		}
+		break;
+	}
+	case('E'):
+	{
+		tank1move=false;
+		break;
+	}
+	case('7'):
+	{
+		tank2move=false;
+		break;
+	}
+	/*case('3'):
+	{
+		explode(tank2x,tank2y);
+		break;
+	}
+	case('C'):
+	{
+		explode(tank1x,tank1y);
+		break;
+	}*/
+	case('P'):
+	{
+		cleardevice();
+		cout << "Q=Quit, R=Restart" << endl << "Press any other key to return";
+		choice2=getch();
+		choice2=toupper(choice2);
+		if (choice2=='R') clear();
+	}
+}
+
+}
+while(choice2!='Q');
+closegraph();
+
+
+}
+
+
+
+

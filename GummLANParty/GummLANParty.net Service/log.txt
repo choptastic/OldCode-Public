@@ -1,0 +1,357 @@
+3/7/2002 1:46:15 AM > 127.0.0.1 >  -- Con Req
+3/7/2002 1:46:15 AM >  >  -- LOGIN : Chops
+3/7/2002 1:46:15 AM > 127.0.0.1 > Server -- WELCOME
+3/7/2002 1:46:15 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:46:24 AM > 127.0.0.1 > Chops -- Disconnected
+3/7/2002 1:47:41 AM > 127.0.0.1 >  -- Con Req
+3/7/2002 1:47:41 AM >  >  -- LOGIN : Chops
+3/7/2002 1:47:41 AM > 127.0.0.1 > Server -- WELCOME
+3/7/2002 1:47:41 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:47:57 AM > 127.0.0.1 > Chops -- Disconnected
+3/7/2002 1:48:06 AM > 127.0.0.1 >  -- Con Req
+3/7/2002 1:48:06 AM >  >  -- LOGIN : Chops
+3/7/2002 1:48:06 AM > 127.0.0.1 > Server -- WELCOME
+3/7/2002 1:48:06 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:48:23 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:48:26 AM >  > Chops -- BUG : warsghdf
+3/7/2002 1:48:26 AM > 127.0.0.1 > Server -- MSG : Server (Do Not reply)
+3/7/2002 1:48:34 AM >  > Chops -- SERVERVERSION
+3/7/2002 1:48:34 AM > 127.0.0.1 > Server -- SERVERVERSION
+3/7/2002 1:48:36 AM >  > Chops -- CHATSTATUS : Server (Do Not reply)
+3/7/2002 1:49:17 AM > 127.0.0.1 > Chops -- Disconnected
+3/7/2002 1:49:24 AM > 127.0.0.1 >  -- Con Req
+3/7/2002 1:49:24 AM >  >  -- LOGIN : Chops
+3/7/2002 1:49:24 AM > 127.0.0.1 > Server -- WELCOME
+3/7/2002 1:49:24 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:49:25 AM > 127.0.0.1 >  -- Con Req
+3/7/2002 1:49:25 AM >  >  -- LOGIN : Chops
+3/7/2002 1:49:25 AM > 127.0.0.1 > Server -- WELCOME
+3/7/2002 1:49:25 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:49:29 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:49:29 AM > 127.0.0.1 > Chops -- Disconnected
+3/7/2002 1:49:37 AM > 127.0.0.1 >  -- Con Req
+3/7/2002 1:49:37 AM >  >  -- LOGIN : Spinal
+3/7/2002 1:49:37 AM > 127.0.0.1 > Server -- WELCOME
+3/7/2002 1:49:37 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:49:41 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:49:41 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:49:46 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:49:46 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:49:54 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:49:54 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:49:55 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:49:55 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:49:56 AM >  > Chops -- MSG : Spinal
+3/7/2002 1:49:56 AM > 127.0.0.1 > Server -- MSG : Chops
+3/7/2002 1:50:00 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:50:00 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:50:09 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:50:09 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:50:10 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:50:10 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:50:11 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:50:11 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:50:13 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:50:13 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:50:14 AM >  > Chops -- MSG : Spinal
+3/7/2002 1:50:14 AM > 127.0.0.1 > Server -- MSG : Chops
+3/7/2002 1:50:15 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:50:15 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:50:18 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:50:18 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:50:23 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:50:23 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:50:27 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:50:27 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:50:28 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:50:28 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:50:29 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:50:29 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:50:30 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:50:30 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:50:34 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:50:37 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:50:37 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:50:44 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:50:44 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:50:54 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:50:54 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:50:55 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:50:55 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:50:56 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:50:56 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:50:57 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:50:57 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:51:01 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:51:01 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:51:02 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:51:02 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:51:14 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:51:14 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:51:20 AM > 127.0.0.1 > Chops -- Disconnected
+3/7/2002 1:51:21 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:51:22 AM > 127.0.0.1 >  -- Con Req
+3/7/2002 1:51:22 AM >  >  -- LOGIN : Chops
+3/7/2002 1:51:22 AM > 127.0.0.1 > Server -- WELCOME
+3/7/2002 1:51:22 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:51:25 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:51:25 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:51:26 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:51:26 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:51:35 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:51:35 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:51:37 AM >  > Chops -- MSG : Spinal
+3/7/2002 1:51:37 AM > 127.0.0.1 > Server -- MSG : Chops
+3/7/2002 1:51:38 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:51:38 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:51:40 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:51:42 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:51:42 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:51:50 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:51:50 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:51:52 AM >  > Chops -- MSG : Spinal
+3/7/2002 1:51:52 AM > 127.0.0.1 > Server -- MSG : Chops
+3/7/2002 1:51:52 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:51:52 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:51:54 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:51:54 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:51:55 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:51:55 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:01 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:01 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:04 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:52:04 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:52:07 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:52:07 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:52:07 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:07 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:08 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:08 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:08 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:08 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:09 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:09 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:09 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:09 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:10 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:10 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:10 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:10 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:11 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:11 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:11 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:11 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:12 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:12 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:12 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:12 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:13 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:13 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:17 AM >  > Spinal -- MSG : Chops : 
+3/7/2002 1:52:17 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:18 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:18 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:20 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:20 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:20 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:20 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:21 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:21 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:22 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:22 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:23 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:23 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:24 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:24 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:34 AM >  > Spinal -- MSG : Chops : ddfhjdfklhjdflj
+3/7/2002 1:52:34 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:34 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:34 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:35 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:35 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:36 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:36 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:37 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:37 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:38 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:38 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:38 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:38 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:39 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:39 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:40 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:40 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:40 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:40 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:41 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:41 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:41 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:41 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:41 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:41 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:42 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:42 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:42 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:42 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:42 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:42 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:42 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:42 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:43 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:43 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:45 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:45 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:45 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:45 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:45 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:45 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:46 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:52:46 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:46 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:46 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:46 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:47 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:47 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:47 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:47 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:48 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:48 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:49 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:49 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:49 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:49 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:50 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:50 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:51 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:51 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:51 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:51 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:52 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:52 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:52 AM >  > Spinal -- MSG : Chops
+3/7/2002 1:52:52 AM > 127.0.0.1 > Server -- MSG : Spinal
+3/7/2002 1:52:53 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:53 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:58 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:52:58 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:52:58 AM >  > Chops -- MSG : Spinal
+3/7/2002 1:52:58 AM > 127.0.0.1 > Server -- MSG : Chops
+3/7/2002 1:53:02 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:53:02 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:53:06 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:53:06 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:53:08 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:53:08 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:53:15 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:53:15 AM > 127.0.0.1 > Server -- CHATSTATUS : Spinal
+3/7/2002 1:53:19 AM >  > Spinal -- SERVERVERSION
+3/7/2002 1:53:19 AM > 127.0.0.1 > Server -- SERVERVERSION
+3/7/2002 1:53:48 AM >  > Spinal -- SERVERVERSION
+3/7/2002 1:53:48 AM > 127.0.0.1 > Server -- SERVERVERSION
+3/7/2002 1:53:51 AM > 127.0.0.1 > Server -- NEXTLAN : 3/9/2002 5:00:00 PM
+3/7/2002 1:53:53 AM >  > Spinal -- SERVERVERSION
+3/7/2002 1:53:53 AM > 127.0.0.1 > Server -- SERVERVERSION
+3/7/2002 1:53:57 AM >  > Chops -- CHATSTATUS : Spinal
+3/7/2002 1:53:57 AM > 127.0.0.1 > Server -- CHATSTATUS : Chops
+3/7/2002 1:54:00 AM >  > Chops -- MSG : Spinal
+3/7/2002 1:54:00 AM > 127.0.0.1 > Server -- MSG : Chops
+3/7/2002 1:54:08 AM > 127.0.0.1 > Chops -- Disconnected
+3/7/2002 1:54:09 AM >  > Spinal -- CHATSTATUS : Chops
+3/7/2002 1:54:11 AM > 127.0.0.1 > Spinal -- Disconnected
+3/17/2002 6:28:11 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:28:11 PM >  >  -- LOGIN : Chops
+3/17/2002 6:28:11 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:28:12 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:28:20 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:28:20 PM >  >  -- LOGIN : Chops
+3/17/2002 6:28:20 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:28:20 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:28:20 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:28:25 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:28:25 PM >  >  -- LOGIN : Chops
+3/17/2002 6:28:25 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:28:25 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:28:25 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:28:40 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:28:40 PM >  >  -- LOGIN : Chops
+3/17/2002 6:28:40 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:28:40 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:28:40 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:29:12 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:29:32 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:29:32 PM >  >  -- LOGIN : Chops
+3/17/2002 6:29:32 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:29:32 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:29:34 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:30:21 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:30:21 PM >  >  -- LOGIN : Chops
+3/17/2002 6:30:21 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:30:21 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:30:22 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:30:44 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:30:44 PM >  >  -- LOGIN : Chops
+3/17/2002 6:30:45 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:30:45 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:30:45 PM >  > Chops -- INVALID : CLIENTVERSION
+3/17/2002 6:31:09 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:31:09 PM >  > Chops -- INVALID : CLIENTVERSION
+3/17/2002 6:31:26 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:31:26 PM >  >  -- LOGIN : Chops
+3/17/2002 6:31:26 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:31:26 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:31:26 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:31:52 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:32:17 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:32:17 PM >  >  -- LOGIN : Chops
+3/17/2002 6:32:17 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:32:17 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:32:22 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:32:34 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:32:34 PM >  >  -- LOGIN : Chops
+3/17/2002 6:32:34 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:32:34 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:32:34 PM >  > Chops -- INVALID : CLIENTVERSION
+3/17/2002 6:32:40 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:36:48 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:36:48 PM >  >  -- LOGIN : Chops
+3/17/2002 6:36:48 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:36:48 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:36:48 PM >  > Chops -- INVALID : CLIENTVERSION
+3/17/2002 6:37:07 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:37:27 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:37:27 PM >  >  -- LOGIN : Chops
+3/17/2002 6:37:27 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:37:27 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:37:30 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:40:21 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:40:21 PM >  >  -- LOGIN : Chops
+3/17/2002 6:40:21 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:40:21 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:40:34 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:40:36 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:40:36 PM >  >  -- LOGIN : Chops
+3/17/2002 6:40:36 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:40:36 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:40:36 PM >  > Chops -- INVALID : CLIENTVERSION
+3/17/2002 6:40:45 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:41:03 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:41:03 PM >  >  -- LOGIN : Chops
+3/17/2002 6:41:03 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:41:03 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:41:17 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 6:41:19 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 6:41:19 PM >  >  -- LOGIN : Chops
+3/17/2002 6:41:19 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 6:41:19 PM > 127.0.0.1 > Server -- CLIENTVERSION
+3/17/2002 6:41:19 PM >  > Chops -- INVALID : CLIENTVERSION
+3/17/2002 6:41:44 PM >  > Chops -- SERVERVERSION
+3/17/2002 6:41:44 PM > 127.0.0.1 > Server -- SERVERVERSION
+3/17/2002 6:41:52 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 7:07:12 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 7:07:12 PM >  >  -- LOGIN : Chops
+3/17/2002 7:07:12 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 7:07:27 PM > 127.0.0.1 > Chops -- Disconnected
+3/17/2002 7:08:15 PM > 127.0.0.1 >  -- Con Req
+3/17/2002 7:08:15 PM >  >  -- LOGIN : Chops
+3/17/2002 7:08:15 PM > 127.0.0.1 > Server -- WELCOME
+3/17/2002 7:08:58 PM > 127.0.0.1 > Chops -- Disconnected

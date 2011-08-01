@@ -1,0 +1,4 @@
+VBGROUP 5.0
+Project=GummLANPartyServer.vbp
+StartupProject=GummLANPartyClient.vbp
+Project=AutoUpdater.vbp

@@ -1,0 +1,95 @@
+
+//Title:       Scroll Bar Applet
+//Version:     1.0
+//Copyright:   Copyright (c)
+//Author:      Jesse Gumm
+//Company:
+//Description:
+package scrollbarapplet;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class ScrollBarApplet extends Applet implements AdjustmentListener{
+  boolean isStandalone = false;
+  Scrollbar scrollbar;
+  Scrollbar scrollbar2;
+  String s,s2;
+
+  //Get a parameter value
+  public String getParameter(String key, String def) {
+    return isStandalone ? System.getProperty(key, def) :
+      (getParameter(key) != null ? getParameter(key) : def);
+  }
+
+  //Construct the applet
+  public ScrollBarApplet() {
+  }
+
+  //Initialize the applet
+  public void init() {
+    BorderLayout layout = new BorderLayout();
+    setLayout(layout);
+    setBackground(Color.white);
+
+    scrollbar = new Scrollbar (Scrollbar.HORIZONTAL,50,0,1,100);
+    scrollbar2=new Scrollbar(Scrollbar.VERTICAL,50,0,1,100);
+    add("North",scrollbar);
+    add("East",scrollbar2);
+    scrollbar.addAdjustmentListener(this);
+    scrollbar2.addAdjustmentListener(this);
+    s=s2="50";
+    Font font = new Font("Times New Roman",Font.BOLD,72);
+    setFont(font);
+
+    try {
+      jbInit();
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void paint(Graphics g)
+  {
+    g.drawString(s + "," + s2,60,120);
+
+  }
+
+  //Component initialization
+  private void jbInit() throws Exception {
+  }
+
+  public void adjustmentValueChanged(AdjustmentEvent e)
+  {
+    Scrollbar sb=(Scrollbar)e.getSource();
+    int value=sb.getValue();
+    if(sb.equals(scrollbar))
+      s=String.valueOf(value);
+    else
+      s2=String.valueOf(value);
+    repaint();
+  }
+  //Start the applet
+  public void start() {
+  }
+
+  //Stop the applet
+  public void stop() {
+  }
+
+  //Destroy the applet
+  public void destroy() {
+  }
+
+  //Get Applet information
+  public String getAppletInfo() {
+    return "Applet Information";
+  }
+
+  //Get parameter info
+  public String[][] getParameterInfo() {
+    return null;
+  }
+}

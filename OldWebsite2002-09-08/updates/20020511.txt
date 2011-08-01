@@ -1,0 +1,7 @@
+Well there is RSVP Functionality up now.   To RSVP for a LAN Party, Login and edit your profile.  If you don't have a login, use the "No Login? Register" Link under the Login Area.
+
+When you are logged in, you can then view all the currently scheduled LAN Parties, and sign up for whichever ones you plan on attending.
+
+To View the current status of the LAN Party (who's all comin, and howm any computers are coming, check out the Statistics Section.
+
+I'm working on custom Profiles like Quotes, Computer Descriptions, etc..  That should be next.

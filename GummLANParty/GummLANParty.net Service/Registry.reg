@@ -1,0 +1,10 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\GummLANParty.net]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\GummLANParty.net\Client]
+"IPAddress"="192.168.0.137"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\GummLANParty.net\Server]
+"Database"="\\\\server\\webserver\\gummlanparty.mdb"
+

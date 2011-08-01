@@ -1,0 +1,407 @@
+<!-- C/C++/Java to HTML/CSS converter, http://silo.csci.unt.edu/home/brackeen/  -->
+<HTML>
+  <HEAD>
+  <TITLE>modes.c</TITLE>
+  <STYLE TYPE="text/css"><!--
+    PRE {color: #000000}
+    .c0 /* space */  			{color: #000000}
+    .c1 /* id */    			{color: #000088}
+    .c2 /* keyword */     {color: #000000}
+    .c3 /* int */         {color: #880088}
+    .c4 /* float */       {color: #880088}
+    .c5 /* hex */         {color: #880088}
+    .c6 /* string */      {color: #880088}
+    .c7 /* char */        {color: #883388}
+    .c8 /* directive */   {color: #008800}
+    .c9 /* comment */     {color: #888888; font-style: italic}
+    .c10 /* eol comment */ {color: #888888; font-style: italic}
+    .c11 /* doc comment */ {color: #888888; font-style: italic}
+    .c12 /* other */       {color: #000000}
+  --></STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<PRE>
+<SPAN CLASS=c9>/**************************************************************************
+ * modes.c                                                                *
+ * written by David Brackeen                                              *
+ * brackeen@silo.csci.unt.edu                                             *
+ * http://silo.csci.unt.edu/home/brackeen/vga/                            *
+ *                                                                        *
+ * This is a 16-bit program.                                              *
+ * Tab stops are set to 2.                                                *
+ * Remember to compile in the LARGE memory model!                         *
+ *                                                                        *
+ * This DOS program will only work on DOS- or Windows-based systems with  *
+ * a VGA, SuperVGA, or compatible video adapter.                          *
+ *                                                                        *
+ * Please feel free to copy this source code.                             *
+ *                                                                        *
+ * DESCRIPTION: This program demonstrates various unchained modes         *
+ **************************************************************************/</SPAN>
+
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>stdio</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>stdlib</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>dos</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>mem</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>conio</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>VIDEO_INT</SPAN>           <SPAN CLASS=c5>0x10</SPAN>      <SPAN CLASS=c9>/* the BIOS video interrupt. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SET_MODE</SPAN>            <SPAN CLASS=c5>0x00</SPAN>      <SPAN CLASS=c9>/* BIOS func to set the video mode. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>VGA_256_COLOR_MODE</SPAN>  <SPAN CLASS=c5>0x13</SPAN>      <SPAN CLASS=c9>/* use to set 256-color mode. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>TEXT_MODE</SPAN>           <SPAN CLASS=c5>0x03</SPAN>      <SPAN CLASS=c9>/* use to set 80x25 text mode. */</SPAN>
+
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>MISC_OUTPUT</SPAN>         <SPAN CLASS=c5>0x03c2</SPAN>    <SPAN CLASS=c9>/* VGA misc. output register */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SC_INDEX</SPAN>            <SPAN CLASS=c5>0x03c4</SPAN>    <SPAN CLASS=c9>/* VGA sequence controller */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SC_DATA</SPAN>             <SPAN CLASS=c5>0x03c5</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>PALETTE_INDEX</SPAN>       <SPAN CLASS=c5>0x03c8</SPAN>    <SPAN CLASS=c9>/* VGA digital-to-analog converter */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>PALETTE_DATA</SPAN>        <SPAN CLASS=c5>0x03c9</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>CRTC_INDEX</SPAN>          <SPAN CLASS=c5>0x03d4</SPAN>    <SPAN CLASS=c9>/* VGA CRT controller */</SPAN>
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>MAP_MASK</SPAN>            <SPAN CLASS=c5>0x02</SPAN>      <SPAN CLASS=c9>/* Sequence controller registers */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>MEMORY_MODE</SPAN>         <SPAN CLASS=c5>0x04</SPAN>
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>H_TOTAL</SPAN>             <SPAN CLASS=c5>0x00</SPAN>      <SPAN CLASS=c9>/* CRT controller registers */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>H_DISPLAY_END</SPAN>       <SPAN CLASS=c5>0x01</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>H_BLANK_START</SPAN>       <SPAN CLASS=c5>0x02</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>H_BLANK_END</SPAN>         <SPAN CLASS=c5>0x03</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>H_RETRACE_START</SPAN>     <SPAN CLASS=c5>0x04</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>H_RETRACE_END</SPAN>       <SPAN CLASS=c5>0x05</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>V_TOTAL</SPAN>             <SPAN CLASS=c5>0x06</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>OVERFLOW</SPAN>            <SPAN CLASS=c5>0x07</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>MAX_SCAN_LINE</SPAN>       <SPAN CLASS=c5>0x09</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>V_RETRACE_START</SPAN>     <SPAN CLASS=c5>0x10</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>V_RETRACE_END</SPAN>       <SPAN CLASS=c5>0x11</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>V_DISPLAY_END</SPAN>       <SPAN CLASS=c5>0x12</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>OFFSET</SPAN>              <SPAN CLASS=c5>0x13</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>UNDERLINE_LOCATION</SPAN>  <SPAN CLASS=c5>0x14</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>V_BLANK_START</SPAN>       <SPAN CLASS=c5>0x15</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>V_BLANK_END</SPAN>         <SPAN CLASS=c5>0x16</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>MODE_CONTROL</SPAN>        <SPAN CLASS=c5>0x17</SPAN>
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>NUM_COLORS</SPAN>          <SPAN CLASS=c3>256</SPAN>       <SPAN CLASS=c9>/* number of colors in mode 0x13 */</SPAN>
+
+<SPAN CLASS=c9>/* macro to skip bytes in a file */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c1>n</SPAN>)   \
+{                     \
+   int <SPAN CLASS=c1>i</SPAN>;             \
+                      \
+   for (<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c1>n</SPAN>;<SPAN CLASS=c1>i</SPAN>++)  \
+      <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>);      \
+}
+
+<SPAN CLASS=c9>/* macro to return the sign of a number */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>sgn</SPAN>(<SPAN CLASS=c1>x</SPAN>) \
+  ((<SPAN CLASS=c1>x</SPAN>&lt;<SPAN CLASS=c3>0</SPAN>)?-<SPAN CLASS=c3>1</SPAN>:((<SPAN CLASS=c1>x</SPAN>&gt;<SPAN CLASS=c3>0</SPAN>)?<SPAN CLASS=c3>1</SPAN>:<SPAN CLASS=c3>0</SPAN>))
+
+<SPAN CLASS=c9>/* macro to write a word to a port */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>port</SPAN>,register,<SPAN CLASS=c1>value</SPAN>) \
+  <SPAN CLASS=c1>outpw</SPAN>(<SPAN CLASS=c1>port</SPAN>,(((<SPAN CLASS=c1>word</SPAN>)<SPAN CLASS=c1>value</SPAN>&lt;&lt;<SPAN CLASS=c3>8</SPAN>) + register))
+
+typedef unsigned char  <SPAN CLASS=c1>byte</SPAN>;
+typedef unsigned short <SPAN CLASS=c1>word</SPAN>;
+typedef unsigned long  <SPAN CLASS=c1>dword</SPAN>;
+
+<SPAN CLASS=c9>/* the structure for a planar bitmap. */</SPAN>
+typedef struct <SPAN CLASS=c1>tagPLANAR_BITMAP</SPAN>
+{
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>width</SPAN>;
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>height</SPAN>;
+  <SPAN CLASS=c1>byte</SPAN> <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c3>256</SPAN>*<SPAN CLASS=c3>3</SPAN>];
+  <SPAN CLASS=c1>byte</SPAN> *<SPAN CLASS=c1>data</SPAN>[<SPAN CLASS=c3>4</SPAN>];
+} <SPAN CLASS=c1>PLANAR_BITMAP</SPAN>;
+
+<SPAN CLASS=c1>byte</SPAN> *<SPAN CLASS=c1>VGA</SPAN>=(<SPAN CLASS=c1>byte</SPAN> *)<SPAN CLASS=c5>0xA0000000L</SPAN>;        <SPAN CLASS=c9>/* this points to video memory. */</SPAN>
+<SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>screen_width</SPAN>, <SPAN CLASS=c1>screen_height</SPAN>;
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  set_mode                                                              *
+ *     Sets the video mode.                                               *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>byte</SPAN> <SPAN CLASS=c1>mode</SPAN>)
+{
+  union <SPAN CLASS=c1>REGS</SPAN> <SPAN CLASS=c1>regs</SPAN>;
+
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>ah</SPAN> = <SPAN CLASS=c1>SET_MODE</SPAN>;
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>al</SPAN> = <SPAN CLASS=c1>mode</SPAN>;
+  <SPAN CLASS=c1>int86</SPAN>(<SPAN CLASS=c1>VIDEO_INT</SPAN>, &amp;<SPAN CLASS=c1>regs</SPAN>, &amp;<SPAN CLASS=c1>regs</SPAN>);
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  set_unchained_mode                                                    *
+ *    Resets VGA mode 0x13 to unchained mode to access all 256K of        *
+ *    memory.  width may be 320 or 360, height may be 200, 400, 240 or    *
+ *    480.  If an invalid width or height is specified, it defaults to    *
+ *    320x200                                                             *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>set_unchained_mode</SPAN>(int <SPAN CLASS=c1>width</SPAN>, int <SPAN CLASS=c1>height</SPAN>)
+{
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>i</SPAN>;
+  <SPAN CLASS=c1>dword</SPAN> *<SPAN CLASS=c1>ptr</SPAN>=(<SPAN CLASS=c1>dword</SPAN> *)<SPAN CLASS=c1>VGA</SPAN>;
+
+  <SPAN CLASS=c9>/* set mode 13 */</SPAN>
+  <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>VGA_256_COLOR_MODE</SPAN>);
+
+  <SPAN CLASS=c9>/* turn off chain-4 mode */</SPAN>
+  <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>SC_INDEX</SPAN>, <SPAN CLASS=c1>MEMORY_MODE</SPAN>,<SPAN CLASS=c5>0x06</SPAN>);
+
+  <SPAN CLASS=c9>/* set map mask to all 4 planes for screen clearing */</SPAN>
+  <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>SC_INDEX</SPAN>, <SPAN CLASS=c1>MAP_MASK</SPAN>, <SPAN CLASS=c5>0xff</SPAN>);
+
+  <SPAN CLASS=c9>/* clear all 256K of memory */</SPAN>
+  for(<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c5>0x4000</SPAN>;<SPAN CLASS=c1>i</SPAN>++)
+    *<SPAN CLASS=c1>ptr</SPAN>++ = <SPAN CLASS=c3>0</SPAN>;
+
+  <SPAN CLASS=c9>/* turn off long mode */</SPAN>
+  <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>UNDERLINE_LOCATION</SPAN>, <SPAN CLASS=c5>0x00</SPAN>);
+
+  <SPAN CLASS=c9>/* turn on byte mode */</SPAN>
+  <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>MODE_CONTROL</SPAN>, <SPAN CLASS=c5>0xe3</SPAN>);
+
+
+  <SPAN CLASS=c1>screen_width</SPAN>=<SPAN CLASS=c3>320</SPAN>;
+  <SPAN CLASS=c1>screen_height</SPAN>=<SPAN CLASS=c3>200</SPAN>;
+
+  if (<SPAN CLASS=c1>width</SPAN>==<SPAN CLASS=c3>360</SPAN>)
+  {
+    <SPAN CLASS=c9>/* turn off write protect */</SPAN>
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_RETRACE_END</SPAN>, <SPAN CLASS=c5>0x2c</SPAN>);
+
+    <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>MISC_OUTPUT</SPAN>, <SPAN CLASS=c5>0xe7</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>H_TOTAL</SPAN>, <SPAN CLASS=c5>0x6b</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>H_DISPLAY_END</SPAN>, <SPAN CLASS=c5>0x59</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>H_BLANK_START</SPAN>, <SPAN CLASS=c5>0x5a</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>H_BLANK_END</SPAN>, <SPAN CLASS=c5>0x8e</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>H_RETRACE_START</SPAN>, <SPAN CLASS=c5>0x5e</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>H_RETRACE_END</SPAN>, <SPAN CLASS=c5>0x8a</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>OFFSET</SPAN>, <SPAN CLASS=c5>0x2d</SPAN>);
+
+    <SPAN CLASS=c9>/* set vertical retrace back to normal */</SPAN>
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_RETRACE_END</SPAN>, <SPAN CLASS=c5>0x8e</SPAN>);
+
+    <SPAN CLASS=c1>screen_width</SPAN>=<SPAN CLASS=c3>360</SPAN>;
+  }
+  else
+  {
+    <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>MISC_OUTPUT</SPAN>, <SPAN CLASS=c5>0xe3</SPAN>);
+  }
+
+  if (<SPAN CLASS=c1>height</SPAN>==<SPAN CLASS=c3>240</SPAN> || <SPAN CLASS=c1>height</SPAN>==<SPAN CLASS=c3>480</SPAN>)
+  {
+    <SPAN CLASS=c9>/* turn off write protect */</SPAN>
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_RETRACE_END</SPAN>, <SPAN CLASS=c5>0x2c</SPAN>);
+
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_TOTAL</SPAN>, <SPAN CLASS=c5>0x0d</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>OVERFLOW</SPAN>, <SPAN CLASS=c5>0x3e</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_RETRACE_START</SPAN>, <SPAN CLASS=c5>0xea</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_RETRACE_END</SPAN>, <SPAN CLASS=c5>0xac</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_DISPLAY_END</SPAN>, <SPAN CLASS=c5>0xdf</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_BLANK_START</SPAN>, <SPAN CLASS=c5>0xe7</SPAN>);
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>V_BLANK_END</SPAN>, <SPAN CLASS=c5>0x06</SPAN>);
+    <SPAN CLASS=c1>screen_height</SPAN>=<SPAN CLASS=c1>height</SPAN>;
+  }
+
+  if (<SPAN CLASS=c1>height</SPAN>==<SPAN CLASS=c3>400</SPAN> || <SPAN CLASS=c1>height</SPAN>==<SPAN CLASS=c3>480</SPAN>)
+  {
+    <SPAN CLASS=c1>word_out</SPAN>(<SPAN CLASS=c1>CRTC_INDEX</SPAN>, <SPAN CLASS=c1>MAX_SCAN_LINE</SPAN>, <SPAN CLASS=c5>0x40</SPAN>);
+    <SPAN CLASS=c1>screen_height</SPAN>=<SPAN CLASS=c1>height</SPAN>;
+  }
+
+
+
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  draw_bitmap                                                           *
+ *    Draws a bitmap. Bitmaps are stored in a four-plane format to ease   *
+ *    the drawing process (the plane is changed only four times)          *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>draw_bitmap</SPAN>(<SPAN CLASS=c1>PLANAR_BITMAP</SPAN> *<SPAN CLASS=c1>bmp</SPAN>,int <SPAN CLASS=c1>x</SPAN>,int <SPAN CLASS=c1>y</SPAN>)
+{
+  int <SPAN CLASS=c1>j</SPAN>,<SPAN CLASS=c1>plane</SPAN>;
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>screen_offset</SPAN>;
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>bitmap_offset</SPAN>;
+
+  for(<SPAN CLASS=c1>plane</SPAN>=<SPAN CLASS=c3>0</SPAN>; <SPAN CLASS=c1>plane</SPAN>&lt;<SPAN CLASS=c3>4</SPAN>; <SPAN CLASS=c1>plane</SPAN>++)
+  {
+    <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>SC_INDEX</SPAN>, <SPAN CLASS=c1>MAP_MASK</SPAN>);          <SPAN CLASS=c9>/* select plane */</SPAN>
+    <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>SC_DATA</SPAN>,  <SPAN CLASS=c3>1</SPAN> &lt;&lt; ((<SPAN CLASS=c1>plane</SPAN>+<SPAN CLASS=c1>x</SPAN>)&amp;<SPAN CLASS=c3>3</SPAN>) );
+    <SPAN CLASS=c1>bitmap_offset</SPAN>=<SPAN CLASS=c3>0</SPAN>;
+    <SPAN CLASS=c1>screen_offset</SPAN> = ((<SPAN CLASS=c1>dword</SPAN>)<SPAN CLASS=c1>y</SPAN>*<SPAN CLASS=c1>screen_width</SPAN>+<SPAN CLASS=c1>x</SPAN>+<SPAN CLASS=c1>plane</SPAN>) &gt;&gt; <SPAN CLASS=c3>2</SPAN>;
+    for(<SPAN CLASS=c1>j</SPAN>=<SPAN CLASS=c3>0</SPAN>; <SPAN CLASS=c1>j</SPAN>&lt;<SPAN CLASS=c1>bmp</SPAN>-&gt;<SPAN CLASS=c1>height</SPAN>; <SPAN CLASS=c1>j</SPAN>++)
+    {
+      <SPAN CLASS=c1>memcpy</SPAN>(&amp;<SPAN CLASS=c1>VGA</SPAN>[<SPAN CLASS=c1>screen_offset</SPAN>], &amp;<SPAN CLASS=c1>bmp</SPAN>-&gt;<SPAN CLASS=c1>data</SPAN>[<SPAN CLASS=c1>plane</SPAN>][<SPAN CLASS=c1>bitmap_offset</SPAN>], (<SPAN CLASS=c1>bmp</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN> &gt;&gt; <SPAN CLASS=c3>2</SPAN>));
+
+      <SPAN CLASS=c1>bitmap_offset</SPAN>+=<SPAN CLASS=c1>bmp</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>&gt;&gt;<SPAN CLASS=c3>2</SPAN>;
+      <SPAN CLASS=c1>screen_offset</SPAN>+=<SPAN CLASS=c1>screen_width</SPAN>&gt;&gt;<SPAN CLASS=c3>2</SPAN>;
+    }
+  }
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  load_bmp                                                              *
+ *    Loads a bitmap file into memory. Only works for bitmaps whose width *
+ *    is divible by 4!                                                    *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>load_bmp</SPAN>(char *<SPAN CLASS=c1>file</SPAN>,<SPAN CLASS=c1>PLANAR_BITMAP</SPAN> *<SPAN CLASS=c1>b</SPAN>)
+{
+  <SPAN CLASS=c1>FILE</SPAN> *<SPAN CLASS=c1>fp</SPAN>;
+  long <SPAN CLASS=c1>index</SPAN>,<SPAN CLASS=c1>size</SPAN>;
+  int <SPAN CLASS=c1>x</SPAN>,<SPAN CLASS=c1>num_colors</SPAN>,<SPAN CLASS=c1>plane</SPAN>;
+
+  <SPAN CLASS=c9>/* open the file */</SPAN>
+  if ((<SPAN CLASS=c1>fp</SPAN> = <SPAN CLASS=c1>fopen</SPAN>(<SPAN CLASS=c1>file</SPAN>,<SPAN CLASS=c6>&quot;rb&quot;</SPAN>)) == <SPAN CLASS=c1>NULL</SPAN>)
+  {
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Error opening file %s.\n&quot;</SPAN>,<SPAN CLASS=c1>file</SPAN>);
+    <SPAN CLASS=c1>exit</SPAN>(<SPAN CLASS=c3>1</SPAN>);
+  }
+
+  <SPAN CLASS=c9>/* check to see if it is a valid bitmap file */</SPAN>
+  if (<SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>)!=<SPAN CLASS=c7>'B'</SPAN> || <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>)!=<SPAN CLASS=c7>'M'</SPAN>)
+  {
+    <SPAN CLASS=c1>fclose</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;%s is not a bitmap file.\n&quot;</SPAN>,<SPAN CLASS=c1>file</SPAN>);
+    <SPAN CLASS=c1>exit</SPAN>(<SPAN CLASS=c3>1</SPAN>);
+  }
+
+  <SPAN CLASS=c9>/* read in the width and height of the image, and the
+     number of colors used; ignore the rest */</SPAN>
+  <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c3>16</SPAN>);
+  <SPAN CLASS=c1>fread</SPAN>(&amp;<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>, sizeof(<SPAN CLASS=c1>word</SPAN>), <SPAN CLASS=c3>1</SPAN>, <SPAN CLASS=c1>fp</SPAN>);
+  <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c3>2</SPAN>);
+  <SPAN CLASS=c1>fread</SPAN>(&amp;<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>height</SPAN>,sizeof(<SPAN CLASS=c1>word</SPAN>), <SPAN CLASS=c3>1</SPAN>, <SPAN CLASS=c1>fp</SPAN>);
+  <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c3>22</SPAN>);
+  <SPAN CLASS=c1>fread</SPAN>(&amp;<SPAN CLASS=c1>num_colors</SPAN>,sizeof(<SPAN CLASS=c1>word</SPAN>), <SPAN CLASS=c3>1</SPAN>, <SPAN CLASS=c1>fp</SPAN>);
+  <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c3>6</SPAN>);
+
+  <SPAN CLASS=c9>/* assume we are working with an 8-bit file */</SPAN>
+  if (<SPAN CLASS=c1>num_colors</SPAN>==<SPAN CLASS=c3>0</SPAN>) <SPAN CLASS=c1>num_colors</SPAN>=<SPAN CLASS=c3>256</SPAN>;
+
+  <SPAN CLASS=c1>size</SPAN>=<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>*<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>height</SPAN>;
+
+  <SPAN CLASS=c9>/* try to allocate memory */</SPAN>
+  for(<SPAN CLASS=c1>plane</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>plane</SPAN>&lt;<SPAN CLASS=c3>4</SPAN>;<SPAN CLASS=c1>plane</SPAN>++)
+  {
+    if ((<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>data</SPAN>[<SPAN CLASS=c1>plane</SPAN>] = (<SPAN CLASS=c1>byte</SPAN> *) <SPAN CLASS=c1>malloc</SPAN>((<SPAN CLASS=c1>word</SPAN>)(<SPAN CLASS=c1>size</SPAN>&gt;&gt;<SPAN CLASS=c3>2</SPAN>))) == <SPAN CLASS=c1>NULL</SPAN>)
+    {
+      <SPAN CLASS=c1>fclose</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+      <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Error allocating memory for file %s.\n&quot;</SPAN>,<SPAN CLASS=c1>file</SPAN>);
+      <SPAN CLASS=c1>exit</SPAN>(<SPAN CLASS=c3>1</SPAN>);
+    }
+  }
+
+  <SPAN CLASS=c9>/* read the palette information */</SPAN>
+  for(<SPAN CLASS=c1>index</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>index</SPAN>&lt;<SPAN CLASS=c1>num_colors</SPAN>;<SPAN CLASS=c1>index</SPAN>++)
+  {
+    <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>palette</SPAN>[(int)(<SPAN CLASS=c1>index</SPAN>*<SPAN CLASS=c3>3</SPAN>+<SPAN CLASS=c3>2</SPAN>)] = <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>) &gt;&gt; <SPAN CLASS=c3>2</SPAN>;
+    <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>palette</SPAN>[(int)(<SPAN CLASS=c1>index</SPAN>*<SPAN CLASS=c3>3</SPAN>+<SPAN CLASS=c3>1</SPAN>)] = <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>) &gt;&gt; <SPAN CLASS=c3>2</SPAN>;
+    <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>palette</SPAN>[(int)(<SPAN CLASS=c1>index</SPAN>*<SPAN CLASS=c3>3</SPAN>+<SPAN CLASS=c3>0</SPAN>)] = <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>) &gt;&gt; <SPAN CLASS=c3>2</SPAN>;
+    <SPAN CLASS=c1>x</SPAN>=<SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+  }
+
+  <SPAN CLASS=c9>/* read the bitmap */</SPAN>
+  for(<SPAN CLASS=c1>index</SPAN> = (<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>height</SPAN>-<SPAN CLASS=c3>1</SPAN>)*<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>; <SPAN CLASS=c1>index</SPAN> &gt;= <SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>index</SPAN>-=<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>)
+    for(<SPAN CLASS=c1>x</SPAN> = <SPAN CLASS=c3>0</SPAN>; <SPAN CLASS=c1>x</SPAN> &lt; <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>; <SPAN CLASS=c1>x</SPAN>++)
+      <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>data</SPAN>[<SPAN CLASS=c1>x</SPAN>&amp;<SPAN CLASS=c3>3</SPAN>][(int)((<SPAN CLASS=c1>index</SPAN>+<SPAN CLASS=c1>x</SPAN>)&gt;&gt;<SPAN CLASS=c3>2</SPAN>)]=(<SPAN CLASS=c1>byte</SPAN>)<SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+
+  <SPAN CLASS=c1>fclose</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  set_palette                                                           *
+ *    Sets all 256 colors of the palette.                                 *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>set_palette</SPAN>(<SPAN CLASS=c1>byte</SPAN> *<SPAN CLASS=c1>palette</SPAN>)
+{
+  int <SPAN CLASS=c1>i</SPAN>;
+
+  <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>PALETTE_INDEX</SPAN>,<SPAN CLASS=c3>0</SPAN>);              <SPAN CLASS=c9>/* tell the VGA that palette data
+                                         is coming. */</SPAN>
+  for(<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c3>256</SPAN>*<SPAN CLASS=c3>3</SPAN>;<SPAN CLASS=c1>i</SPAN>++)
+    <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>PALETTE_DATA</SPAN>,<SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c1>i</SPAN>]);    <SPAN CLASS=c9>/* write the data */</SPAN>
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  plot_pixel                                                            *
+ *    Plots a pixel in unchained mode                                     *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>plot_pixel</SPAN>(int <SPAN CLASS=c1>x</SPAN>,int <SPAN CLASS=c1>y</SPAN>,<SPAN CLASS=c1>byte</SPAN> <SPAN CLASS=c1>color</SPAN>)
+{
+  <SPAN CLASS=c1>dword</SPAN> <SPAN CLASS=c1>offset</SPAN>;
+
+  <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>SC_INDEX</SPAN>, <SPAN CLASS=c1>MAP_MASK</SPAN>);          <SPAN CLASS=c9>/* select plane */</SPAN>
+  <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>SC_DATA</SPAN>,  <SPAN CLASS=c3>1</SPAN> &lt;&lt; (<SPAN CLASS=c1>x</SPAN>&amp;<SPAN CLASS=c3>3</SPAN>) );
+
+  <SPAN CLASS=c1>offset</SPAN>=((<SPAN CLASS=c1>dword</SPAN>)<SPAN CLASS=c1>y</SPAN>*<SPAN CLASS=c1>screen_width</SPAN>+<SPAN CLASS=c1>x</SPAN>) &gt;&gt; <SPAN CLASS=c3>2</SPAN>;
+
+  <SPAN CLASS=c1>VGA</SPAN>[(<SPAN CLASS=c1>word</SPAN>)<SPAN CLASS=c1>offset</SPAN>]=<SPAN CLASS=c1>color</SPAN>;
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  Main                                                                  *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>main</SPAN>(void)
+{
+  int <SPAN CLASS=c1>x</SPAN>,<SPAN CLASS=c1>y</SPAN>,<SPAN CLASS=c1>plane</SPAN>,<SPAN CLASS=c1>choice</SPAN>=<SPAN CLASS=c3>1</SPAN>;
+  int <SPAN CLASS=c1>x_size</SPAN>[<SPAN CLASS=c3>2</SPAN>]={<SPAN CLASS=c3>320</SPAN>,<SPAN CLASS=c3>360</SPAN>};
+  int <SPAN CLASS=c1>y_size</SPAN>[<SPAN CLASS=c3>4</SPAN>]={<SPAN CLASS=c3>200</SPAN>,<SPAN CLASS=c3>240</SPAN>,<SPAN CLASS=c3>400</SPAN>,<SPAN CLASS=c3>480</SPAN>};
+  <SPAN CLASS=c1>PLANAR_BITMAP</SPAN> <SPAN CLASS=c1>bmp</SPAN>;
+
+  <SPAN CLASS=c9>/* load the images */</SPAN>
+  <SPAN CLASS=c1>load_bmp</SPAN>(<SPAN CLASS=c6>&quot;ghosts.bmp&quot;</SPAN>,&amp;<SPAN CLASS=c1>bmp</SPAN>);
+
+  while (<SPAN CLASS=c1>choice</SPAN>!=<SPAN CLASS=c3>8</SPAN>)
+  {
+    <SPAN CLASS=c9>/* present menu */</SPAN>
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Select a mode to test\n\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;0. 320x200\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;1. 320x240\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;2. 320x400\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;3. 320x480\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;4. 360x200\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;5. 360x240\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;6. 360x400\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;7. 360x480\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;8. Quit\n\n&quot;</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Your choice? &quot;</SPAN>);
+
+    <SPAN CLASS=c9>/* get input */</SPAN>
+    <SPAN CLASS=c1>scanf</SPAN>(<SPAN CLASS=c6>&quot;%i&quot;</SPAN>,&amp;<SPAN CLASS=c1>choice</SPAN>);
+    <SPAN CLASS=c1>fflush</SPAN>(<SPAN CLASS=c1>stdin</SPAN>);
+
+    if (<SPAN CLASS=c1>choice</SPAN>!=<SPAN CLASS=c3>8</SPAN>)
+    {
+      <SPAN CLASS=c1>set_unchained_mode</SPAN>(<SPAN CLASS=c1>x_size</SPAN>[(<SPAN CLASS=c1>choice</SPAN>&amp;<SPAN CLASS=c3>4</SPAN>)&gt;&gt;<SPAN CLASS=c3>2</SPAN>],<SPAN CLASS=c1>y_size</SPAN>[<SPAN CLASS=c1>choice</SPAN>&amp;<SPAN CLASS=c3>3</SPAN>]);
+      <SPAN CLASS=c1>set_palette</SPAN>(<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>palette</SPAN>);
+
+      <SPAN CLASS=c9>/* tile the images */</SPAN>
+      for(<SPAN CLASS=c1>x</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>x</SPAN>&lt;=<SPAN CLASS=c1>screen_width</SPAN>-<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>width</SPAN>;<SPAN CLASS=c1>x</SPAN>+=<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>width</SPAN>)
+        for(<SPAN CLASS=c1>y</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>y</SPAN>&lt;=<SPAN CLASS=c1>screen_height</SPAN>-<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>height</SPAN>;<SPAN CLASS=c1>y</SPAN>+=<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>height</SPAN>)
+          <SPAN CLASS=c1>draw_bitmap</SPAN>(&amp;<SPAN CLASS=c1>bmp</SPAN>,<SPAN CLASS=c1>x</SPAN>,<SPAN CLASS=c1>y</SPAN>);
+
+      <SPAN CLASS=c9>/* use getchar(); here if your compiler doesn't have getch(); */</SPAN>
+      <SPAN CLASS=c1>getch</SPAN>();
+
+      <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>TEXT_MODE</SPAN>);
+    }
+  }
+
+  for(<SPAN CLASS=c1>plane</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>plane</SPAN>&lt;<SPAN CLASS=c3>4</SPAN>;<SPAN CLASS=c1>plane</SPAN>++)
+    <SPAN CLASS=c1>free</SPAN>(<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>data</SPAN>[<SPAN CLASS=c1>plane</SPAN>]);
+
+
+  return;
+}
+
+
+</PRE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,76 @@
+#include <iostream.h>
+#include <dir.h>
+#include <conio.h>
+#include <fstream.h>
+#include <malloc.h>
+
+
+
+char* autofile[100];
+char* temp;
+int numlines;
+
+int length(char* c)
+{
+	for(int loop=0;c[loop]!=0;loop++);
+	return loop;
+}
+
+
+
+void main()
+{
+	clrscr();
+	cout << "Step 2 of 2 . . .Create Actual startup disk\nand communicate with office\n\n";
+
+	temp=(char*)malloc(200);
+	cout << "Loading autoexec.bat from A: . . . ";
+
+	ifstream in("a:\\autoexec.bat");
+
+	numlines=0;
+	while(!in.eof())
+	{
+		autofile[numlines]=(char*)malloc(150);
+		in.getline(autofile[numlines],150);
+		numlines++;
+	}
+	in.close();
+
+	for(int loop=numlines-1;loop>0;loop--)
+	{
+		if(length(autofile[loop])==0)
+			numlines--;
+	}
+
+	autofile[numlines]="counts";
+
+	cout << "DONE\n\n";
+
+	cout << "Writing modified autoexec.bat to A: . . . ";
+
+	ofstream out("a:\\autoexec.bat");
+	for(loop=0;loop<=numlines;loop++)
+		out << autofile[loop] << endl;
+	out.close();
+	cout << "DONE\n\n";
+
+
+
+
+
+	cout << "Setup Successful, informing office . . . ";
+	out.open("vendres.cts");
+	out << "2000" << endl;
+	out.close();
+	cout << "DONE\n\n";
+	cout << "Please remove the disk and restart the computer.\n"
+		<< "This disk will be the startup disk.\n"
+		<< "When it is time to run counts, insert this disk into \n"
+		<< "any vending terminal and restart the computer.  This will\n"
+		<< "then load the counts program . . .\n";
+	getch();
+
+}
+
+

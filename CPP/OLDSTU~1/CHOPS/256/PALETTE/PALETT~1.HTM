@@ -1,0 +1,300 @@
+<!-- C/C++/Java to HTML/CSS converter, http://silo.csci.unt.edu/home/brackeen/  -->
+<HTML>
+  <HEAD>
+  <TITLE>palette.c</TITLE>
+  <STYLE TYPE="text/css"><!--
+    PRE {color: #000000}
+    .c0 /* space */  			{color: #000000}
+    .c1 /* id */    			{color: #000088}
+    .c2 /* keyword */     {color: #000000}
+    .c3 /* int */         {color: #880088}
+    .c4 /* float */       {color: #880088}
+    .c5 /* hex */         {color: #880088}
+    .c6 /* string */      {color: #880088}
+    .c7 /* char */        {color: #883388}
+    .c8 /* directive */   {color: #008800}
+    .c9 /* comment */     {color: #888888; font-style: italic}
+    .c10 /* eol comment */ {color: #888888; font-style: italic}
+    .c11 /* doc comment */ {color: #888888; font-style: italic}
+    .c12 /* other */       {color: #000000}
+  --></STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<PRE>
+<SPAN CLASS=c9>/**************************************************************************
+ * palette.c                                                              *
+ * written by David Brackeen                                              *
+ * brackeen@silo.csci.unt.edu                                             *
+ * http://silo.csci.unt.edu/home/brackeen/vga/                            *
+ *                                                                        *
+ * This is a 16-bit program.                                              *
+ * Tab stops are set to 2.                                                *
+ * Remember to compile in the LARGE memory model!                         *
+ *                                                                        *
+ * This program will only work on DOS- or Windows-based systems with a    *
+ * VGA, SuperVGA or compatible video adapter.                             *
+ *                                                                        *
+ * Please feel free to copy this source code.                             *
+ *                                                                        *
+ * DESCRIPTION: This program demostrates palette manipulation and         *
+ * vertical retrace sychronization.                                       *
+ **************************************************************************/</SPAN>
+
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>stdio</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>stdlib</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>dos</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+<SPAN CLASS=c8>#include</SPAN> &lt;<SPAN CLASS=c1>mem</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN>&gt;
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>VIDEO_INT</SPAN>           <SPAN CLASS=c5>0x10</SPAN>      <SPAN CLASS=c9>/* the BIOS video interrupt. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SET_MODE</SPAN>            <SPAN CLASS=c5>0x00</SPAN>      <SPAN CLASS=c9>/* BIOS func to set the video mode. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>VGA_256_COLOR_MODE</SPAN>  <SPAN CLASS=c5>0x13</SPAN>      <SPAN CLASS=c9>/* use to set 256-color mode. */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>TEXT_MODE</SPAN>           <SPAN CLASS=c5>0x03</SPAN>      <SPAN CLASS=c9>/* use to set 80x25 text mode. */</SPAN>
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>PALETTE_INDEX</SPAN>       <SPAN CLASS=c5>0x03c8</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>PALETTE_DATA</SPAN>        <SPAN CLASS=c5>0x03c9</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>INPUT_STATUS</SPAN>        <SPAN CLASS=c5>0x03da</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>VRETRACE</SPAN>            <SPAN CLASS=c5>0x08</SPAN>
+
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SCREEN_WIDTH</SPAN>        <SPAN CLASS=c3>320</SPAN>       <SPAN CLASS=c9>/* width in pixels of mode 0x13 */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>SCREEN_HEIGHT</SPAN>       <SPAN CLASS=c3>200</SPAN>       <SPAN CLASS=c9>/* height in pixels of mode 0x13 */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>NUM_COLORS</SPAN>          <SPAN CLASS=c3>256</SPAN>       <SPAN CLASS=c9>/* number of colors in mode 0x13 */</SPAN>
+
+<SPAN CLASS=c9>/* macro to skip bytes in a file */</SPAN>
+<SPAN CLASS=c8>#define</SPAN> <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c1>n</SPAN>)   \
+{                     \
+   int <SPAN CLASS=c1>i</SPAN>;             \
+                      \
+   for (<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c1>n</SPAN>;<SPAN CLASS=c1>i</SPAN>++)  \
+      <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>);      \
+}
+
+typedef unsigned char  <SPAN CLASS=c1>byte</SPAN>;
+typedef unsigned short <SPAN CLASS=c1>word</SPAN>;
+typedef unsigned long  <SPAN CLASS=c1>dword</SPAN>;
+
+<SPAN CLASS=c1>byte</SPAN> *<SPAN CLASS=c1>VGA</SPAN>=(<SPAN CLASS=c1>byte</SPAN> *)<SPAN CLASS=c5>0xA0000000L</SPAN>;        <SPAN CLASS=c9>/* this points to video memory. */</SPAN>
+<SPAN CLASS=c1>word</SPAN> *<SPAN CLASS=c1>my_clock</SPAN>=(<SPAN CLASS=c1>word</SPAN> *)<SPAN CLASS=c5>0x0000046C</SPAN>;    <SPAN CLASS=c9>/* this points to the 18.2hz system
+                                         clock. */</SPAN>
+
+typedef struct <SPAN CLASS=c1>tagBITMAP</SPAN>              <SPAN CLASS=c9>/* the structure for a bitmap. */</SPAN>
+{
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>width</SPAN>;
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>height</SPAN>;
+  <SPAN CLASS=c1>byte</SPAN> <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c3>256</SPAN>*<SPAN CLASS=c3>3</SPAN>];
+  <SPAN CLASS=c1>byte</SPAN> *<SPAN CLASS=c1>data</SPAN>;
+} <SPAN CLASS=c1>BITMAP</SPAN>;
+
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  set_mode                                                              *
+ *     Sets the video mode.                                               *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>byte</SPAN> <SPAN CLASS=c1>mode</SPAN>)
+{
+  union <SPAN CLASS=c1>REGS</SPAN> <SPAN CLASS=c1>regs</SPAN>;
+
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>ah</SPAN> = <SPAN CLASS=c1>SET_MODE</SPAN>;
+  <SPAN CLASS=c1>regs</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>h</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>al</SPAN> = <SPAN CLASS=c1>mode</SPAN>;
+  <SPAN CLASS=c1>int86</SPAN>(<SPAN CLASS=c1>VIDEO_INT</SPAN>, &amp;<SPAN CLASS=c1>regs</SPAN>, &amp;<SPAN CLASS=c1>regs</SPAN>);
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  load_bmp                                                              *
+ *    Loads a bitmap file into memory.                                    *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>load_bmp</SPAN>(char *<SPAN CLASS=c1>file</SPAN>,<SPAN CLASS=c1>BITMAP</SPAN> *<SPAN CLASS=c1>b</SPAN>)
+{
+  <SPAN CLASS=c1>FILE</SPAN> *<SPAN CLASS=c1>fp</SPAN>;
+  long <SPAN CLASS=c1>index</SPAN>;
+  int <SPAN CLASS=c1>x</SPAN>,<SPAN CLASS=c1>num_colors</SPAN>;
+
+  <SPAN CLASS=c9>/* open the file */</SPAN>
+  if ((<SPAN CLASS=c1>fp</SPAN> = <SPAN CLASS=c1>fopen</SPAN>(<SPAN CLASS=c1>file</SPAN>,<SPAN CLASS=c6>&quot;rb&quot;</SPAN>)) == <SPAN CLASS=c1>NULL</SPAN>)
+  {
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Error opening file %s.\n&quot;</SPAN>,<SPAN CLASS=c1>file</SPAN>);
+    <SPAN CLASS=c1>exit</SPAN>(<SPAN CLASS=c3>1</SPAN>);
+  }
+
+  <SPAN CLASS=c9>/* check to see if it is a valid bitmap file */</SPAN>
+  if (<SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>)!=<SPAN CLASS=c7>'B'</SPAN> || <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>)!=<SPAN CLASS=c7>'M'</SPAN>)
+  {
+    <SPAN CLASS=c1>fclose</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;%s is not a bitmap file.\n&quot;</SPAN>,<SPAN CLASS=c1>file</SPAN>);
+    <SPAN CLASS=c1>exit</SPAN>(<SPAN CLASS=c3>1</SPAN>);
+  }
+
+  <SPAN CLASS=c9>/* read in the width and height of the image, and the
+     number of colors used; ignore the rest */</SPAN>
+  <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c3>16</SPAN>);
+  <SPAN CLASS=c1>fread</SPAN>(&amp;<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>, sizeof(<SPAN CLASS=c1>word</SPAN>), <SPAN CLASS=c3>1</SPAN>, <SPAN CLASS=c1>fp</SPAN>);
+  <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c3>2</SPAN>);
+  <SPAN CLASS=c1>fread</SPAN>(&amp;<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>height</SPAN>,sizeof(<SPAN CLASS=c1>word</SPAN>), <SPAN CLASS=c3>1</SPAN>, <SPAN CLASS=c1>fp</SPAN>);
+  <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c3>22</SPAN>);
+  <SPAN CLASS=c1>fread</SPAN>(&amp;<SPAN CLASS=c1>num_colors</SPAN>,sizeof(<SPAN CLASS=c1>word</SPAN>), <SPAN CLASS=c3>1</SPAN>, <SPAN CLASS=c1>fp</SPAN>);
+  <SPAN CLASS=c1>fskip</SPAN>(<SPAN CLASS=c1>fp</SPAN>,<SPAN CLASS=c3>6</SPAN>);
+
+  <SPAN CLASS=c9>/* assume we are working with an 8-bit file */</SPAN>
+  if (<SPAN CLASS=c1>num_colors</SPAN>==<SPAN CLASS=c3>0</SPAN>) <SPAN CLASS=c1>num_colors</SPAN>=<SPAN CLASS=c3>256</SPAN>;
+
+
+  <SPAN CLASS=c9>/* try to allocate memory */</SPAN>
+  if ((<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>data</SPAN> = (<SPAN CLASS=c1>byte</SPAN> *) <SPAN CLASS=c1>malloc</SPAN>((<SPAN CLASS=c1>word</SPAN>)(<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>*<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>height</SPAN>))) == <SPAN CLASS=c1>NULL</SPAN>)
+  {
+    <SPAN CLASS=c1>fclose</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+    <SPAN CLASS=c1>printf</SPAN>(<SPAN CLASS=c6>&quot;Error allocating memory for file %s.\n&quot;</SPAN>,<SPAN CLASS=c1>file</SPAN>);
+    <SPAN CLASS=c1>exit</SPAN>(<SPAN CLASS=c3>1</SPAN>);
+  }
+
+  <SPAN CLASS=c9>/* read the palette information */</SPAN>
+  for(<SPAN CLASS=c1>index</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>index</SPAN>&lt;<SPAN CLASS=c1>num_colors</SPAN>;<SPAN CLASS=c1>index</SPAN>++)
+  {
+    <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>palette</SPAN>[(int)(<SPAN CLASS=c1>index</SPAN>*<SPAN CLASS=c3>3</SPAN>+<SPAN CLASS=c3>2</SPAN>)] = <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>) &gt;&gt; <SPAN CLASS=c3>2</SPAN>;
+    <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>palette</SPAN>[(int)(<SPAN CLASS=c1>index</SPAN>*<SPAN CLASS=c3>3</SPAN>+<SPAN CLASS=c3>1</SPAN>)] = <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>) &gt;&gt; <SPAN CLASS=c3>2</SPAN>;
+    <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>palette</SPAN>[(int)(<SPAN CLASS=c1>index</SPAN>*<SPAN CLASS=c3>3</SPAN>+<SPAN CLASS=c3>0</SPAN>)] = <SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>) &gt;&gt; <SPAN CLASS=c3>2</SPAN>;
+    <SPAN CLASS=c1>x</SPAN>=<SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+  }
+
+  <SPAN CLASS=c9>/* read the bitmap */</SPAN>
+  for(<SPAN CLASS=c1>index</SPAN>=(<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>height</SPAN>-<SPAN CLASS=c3>1</SPAN>)*<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>;<SPAN CLASS=c1>index</SPAN>&gt;=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>index</SPAN>-=<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>)
+    for(<SPAN CLASS=c1>x</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>x</SPAN>&lt;<SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>;<SPAN CLASS=c1>x</SPAN>++)
+      <SPAN CLASS=c1>b</SPAN>-&gt;<SPAN CLASS=c1>data</SPAN>[(<SPAN CLASS=c1>word</SPAN>)(<SPAN CLASS=c1>index</SPAN>+<SPAN CLASS=c1>x</SPAN>)]=(<SPAN CLASS=c1>byte</SPAN>)<SPAN CLASS=c1>fgetc</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+
+  <SPAN CLASS=c1>fclose</SPAN>(<SPAN CLASS=c1>fp</SPAN>);
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  draw_bitmap                                                           *
+ *    Draws a bitmap.                                                     *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>draw_bitmap</SPAN>(<SPAN CLASS=c1>BITMAP</SPAN> *<SPAN CLASS=c1>bmp</SPAN>,int <SPAN CLASS=c1>x</SPAN>,int <SPAN CLASS=c1>y</SPAN>)
+{
+  int <SPAN CLASS=c1>j</SPAN>;
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>screen_offset</SPAN> = (<SPAN CLASS=c1>y</SPAN>&lt;&lt;<SPAN CLASS=c3>8</SPAN>)+(<SPAN CLASS=c1>y</SPAN>&lt;&lt;<SPAN CLASS=c3>6</SPAN>)+<SPAN CLASS=c1>x</SPAN>;
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>bitmap_offset</SPAN> = <SPAN CLASS=c3>0</SPAN>;
+
+  for(<SPAN CLASS=c1>j</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>j</SPAN>&lt;<SPAN CLASS=c1>bmp</SPAN>-&gt;<SPAN CLASS=c1>height</SPAN>;<SPAN CLASS=c1>j</SPAN>++)
+  {
+    <SPAN CLASS=c1>memcpy</SPAN>(&amp;<SPAN CLASS=c1>VGA</SPAN>[<SPAN CLASS=c1>screen_offset</SPAN>],&amp;<SPAN CLASS=c1>bmp</SPAN>-&gt;<SPAN CLASS=c1>data</SPAN>[<SPAN CLASS=c1>bitmap_offset</SPAN>],<SPAN CLASS=c1>bmp</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>);
+
+    <SPAN CLASS=c1>bitmap_offset</SPAN>+=<SPAN CLASS=c1>bmp</SPAN>-&gt;<SPAN CLASS=c1>width</SPAN>;
+    <SPAN CLASS=c1>screen_offset</SPAN>+=<SPAN CLASS=c1>SCREEN_WIDTH</SPAN>;
+  }
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  set_palette                                                           *
+ *    Sets all 256 colors of the palette.                                 *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>set_palette</SPAN>(<SPAN CLASS=c1>byte</SPAN> *<SPAN CLASS=c1>palette</SPAN>)
+{
+  int <SPAN CLASS=c1>i</SPAN>;
+
+  <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>PALETTE_INDEX</SPAN>,<SPAN CLASS=c3>0</SPAN>);              <SPAN CLASS=c9>/* tell the VGA that palette data
+                                         is coming. */</SPAN>
+  for(<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c3>256</SPAN>*<SPAN CLASS=c3>3</SPAN>;<SPAN CLASS=c1>i</SPAN>++)
+    <SPAN CLASS=c1>outp</SPAN>(<SPAN CLASS=c1>PALETTE_DATA</SPAN>,<SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c1>i</SPAN>]);    <SPAN CLASS=c9>/* write the data */</SPAN>
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  rotate_palette                                                        *
+ *    Rotates the colors of the palette.                                  *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>rotate_palette</SPAN>(<SPAN CLASS=c1>byte</SPAN> *<SPAN CLASS=c1>palette</SPAN>)
+{
+  int <SPAN CLASS=c1>i</SPAN>,<SPAN CLASS=c1>red</SPAN>,<SPAN CLASS=c1>green</SPAN>,<SPAN CLASS=c1>blue</SPAN>;
+
+  <SPAN CLASS=c1>red</SPAN>  = <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c3>3</SPAN>];
+  <SPAN CLASS=c1>green</SPAN>= <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c3>4</SPAN>];
+  <SPAN CLASS=c1>blue</SPAN> = <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c3>5</SPAN>];
+
+  for(<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>3</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c3>256</SPAN>*<SPAN CLASS=c3>3</SPAN>-<SPAN CLASS=c3>3</SPAN>;<SPAN CLASS=c1>i</SPAN>++)
+    <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c1>i</SPAN>]=<SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c1>i</SPAN>+<SPAN CLASS=c3>3</SPAN>];
+
+  <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c3>256</SPAN>*<SPAN CLASS=c3>3</SPAN>-<SPAN CLASS=c3>3</SPAN>]=<SPAN CLASS=c1>red</SPAN>;
+  <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c3>256</SPAN>*<SPAN CLASS=c3>3</SPAN>-<SPAN CLASS=c3>2</SPAN>]=<SPAN CLASS=c1>green</SPAN>;
+  <SPAN CLASS=c1>palette</SPAN>[<SPAN CLASS=c3>256</SPAN>*<SPAN CLASS=c3>3</SPAN>-<SPAN CLASS=c3>1</SPAN>]=<SPAN CLASS=c1>blue</SPAN>;
+
+  <SPAN CLASS=c1>set_palette</SPAN>(<SPAN CLASS=c1>palette</SPAN>);
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  wait_for_retrace                                                      *
+ *    Wait until the *beginning* of a vertical retrace cycle (60hz).      *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>wait_for_retrace</SPAN>(void)
+{
+    <SPAN CLASS=c9>/* wait until done with vertical retrace */</SPAN>
+    while  ((<SPAN CLASS=c1>inp</SPAN>(<SPAN CLASS=c1>INPUT_STATUS</SPAN>) &amp; <SPAN CLASS=c1>VRETRACE</SPAN>)) {};
+    <SPAN CLASS=c9>/* wait until done refreshing */</SPAN>
+    while (!(<SPAN CLASS=c1>inp</SPAN>(<SPAN CLASS=c1>INPUT_STATUS</SPAN>) &amp; <SPAN CLASS=c1>VRETRACE</SPAN>)) {};
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  wait                                                                  *
+ *    Wait for a specified number of clock ticks (18hz).                  *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>wait</SPAN>(int <SPAN CLASS=c1>ticks</SPAN>)
+{
+  <SPAN CLASS=c1>word</SPAN> <SPAN CLASS=c1>start</SPAN>;
+
+  <SPAN CLASS=c1>start</SPAN>=*<SPAN CLASS=c1>my_clock</SPAN>;
+
+  while (*<SPAN CLASS=c1>my_clock</SPAN>-<SPAN CLASS=c1>start</SPAN>&lt;<SPAN CLASS=c1>ticks</SPAN>)
+  {
+    *<SPAN CLASS=c1>my_clock</SPAN>=*<SPAN CLASS=c1>my_clock</SPAN>;              <SPAN CLASS=c9>/* this line is for some compilers
+                                         that would otherwise ignore this
+                                         loop */</SPAN>
+  }
+}
+
+<SPAN CLASS=c9>/**************************************************************************
+ *  Main                                                                  *
+ *    Draws a bitmap and then rotates the palette.                        *
+ **************************************************************************/</SPAN>
+
+void <SPAN CLASS=c1>main</SPAN>()
+{
+  <SPAN CLASS=c1>BITMAP</SPAN> <SPAN CLASS=c1>bmp</SPAN>;
+  int <SPAN CLASS=c1>i</SPAN>;
+
+  <SPAN CLASS=c1>load_bmp</SPAN>(<SPAN CLASS=c6>&quot;mset.bmp&quot;</SPAN>,&amp;<SPAN CLASS=c1>bmp</SPAN>);          <SPAN CLASS=c9>/* open the file */</SPAN>
+
+  <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>VGA_256_COLOR_MODE</SPAN>);       <SPAN CLASS=c9>/* set the video mode. */</SPAN>
+
+  <SPAN CLASS=c1>set_palette</SPAN>(<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>palette</SPAN>);           <SPAN CLASS=c9>/* set the palette */</SPAN>
+
+  <SPAN CLASS=c1>draw_bitmap</SPAN>(&amp;<SPAN CLASS=c1>bmp</SPAN>,                   <SPAN CLASS=c9>/* draw the bitmap centered */</SPAN>
+    (<SPAN CLASS=c1>SCREEN_WIDTH</SPAN>-<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>width</SPAN>) &gt;&gt;<SPAN CLASS=c3>1</SPAN>,
+    (<SPAN CLASS=c1>SCREEN_HEIGHT</SPAN>-<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>height</SPAN>) &gt;&gt;<SPAN CLASS=c3>1</SPAN>);
+
+  <SPAN CLASS=c1>wait</SPAN>(<SPAN CLASS=c3>25</SPAN>);
+
+  for(<SPAN CLASS=c1>i</SPAN>=<SPAN CLASS=c3>0</SPAN>;<SPAN CLASS=c1>i</SPAN>&lt;<SPAN CLASS=c3>510</SPAN>;<SPAN CLASS=c1>i</SPAN>++)                  <SPAN CLASS=c9>/* rotate the palette at 30hz */</SPAN>
+  {
+    <SPAN CLASS=c1>wait_for_retrace</SPAN>();
+    <SPAN CLASS=c1>wait_for_retrace</SPAN>();
+    <SPAN CLASS=c1>rotate_palette</SPAN>(<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>palette</SPAN>);
+  }
+
+  <SPAN CLASS=c1>wait</SPAN>(<SPAN CLASS=c3>25</SPAN>);
+
+  <SPAN CLASS=c1>free</SPAN>(<SPAN CLASS=c1>bmp</SPAN><SPAN CLASS=c4>.</SPAN><SPAN CLASS=c1>data</SPAN>);                     <SPAN CLASS=c9>/* free up memory used */</SPAN>
+
+  <SPAN CLASS=c1>set_mode</SPAN>(<SPAN CLASS=c1>TEXT_MODE</SPAN>);                <SPAN CLASS=c9>/* set the video mode back to
+                                         text mode. */</SPAN>
+
+  return;
+}
+
+
+</PRE>
+
+</BODY>
+</HTML>
